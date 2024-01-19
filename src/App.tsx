@@ -1,5 +1,14 @@
+import { Outlet } from 'react-router-dom';
+import { Header } from './components/Header/Header';
+
 export const App = () => (
-  <div>
-    <p>Hello</p>
+  <div data-cy="app">
+    <Header />
+
+    <main className="section">
+      <div className="container">
+        <Outlet />
+      </div>
+    </main>
   </div>
 );

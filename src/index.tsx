@@ -1,4 +1,24 @@
 import { createRoot } from 'react-dom/client';
-import { Root } from './root';
+import {
+  HashRouter as Router,
+  Routes,
+  Route,
+} from 'react-router-dom';
 
-createRoot(document.getElementById('root') as HTMLElement).render(<Root />);
+import { App } from './app';
+import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
+import { PhonePage } from './pages/PhonePage/PhonePage';
+import { HomePage } from './pages/HomePage/HomePage';
+
+createRoot(document.getElementById('root') as HTMLDivElement).render(
+  <Router>
+    <Routes>
+      <Route path="/" element={<App />}>
+        <Route index element={<HomePage />} />
+        <Route path="phones" element={<PhonePage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+
+    </Routes>
+  </Router>,
+);
