@@ -1,1 +1,1 @@
-# gadjet_store
+readme file
