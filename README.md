@@ -1,0 +1,1 @@
+# gadjet_store
