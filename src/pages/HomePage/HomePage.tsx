@@ -3,10 +3,10 @@
 // import { Loader } from '../../components/Loader';
 import TabletImg from '../../images/tablets.png';
 import PhoneImg from '../../images/mobilePhones.png';
-import Accesories from '../../images/accesorise.png';
+import Accessories from '../../images/accesorise.png';
 
 import './HomePage.scss';
-import { Card } from '../../components/Card/Card';
+// import { Card } from '../../components/Card/Card';
 import { Footer } from '../../components/Footer/Footer';
 
 export const HomePage = () => {
@@ -52,7 +52,7 @@ export const HomePage = () => {
 
             <div className="categoryItem">
               <img
-                src={Accesories}
+                src={Accessories}
                 alt="Iphone cases"
                 className="categoryImg"
               />

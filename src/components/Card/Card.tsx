@@ -1,7 +1,7 @@
 import './Card.scss';
 
 import like from '../../icons/like.svg';
-import test from '../Footer/img/00.webp';
+import test from '../../images/00.webp';
 import { Product } from '../../types/product';
 
 type Props = {
