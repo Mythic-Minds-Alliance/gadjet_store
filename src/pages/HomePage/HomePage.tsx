@@ -1,17 +1,50 @@
 import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Footer } from '../../components/Footer/Footer';
+import { Product } from '../../types/product';
+import { Loader } from '../../components/Loader';
+import './HomePage.scss';
 
 export const HomePage = () => {
-  const [productList, setProductList] = useState('');
+  const [productList, setProductList] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch('https://gadjets-store.onrender.com/products')
-      .then((res) => res.json())
-      .then(setProductList);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:3005/products');
+
+        setProductList(response.data);
+      } catch (error) {
+        throw new Error('error');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (
     <div className="container">
-      {productList}
+      <div className="hello">
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <ul>
+            {productList.map((product) => {
+              const { id, name } = product;
+
+              return (
+                <li key={id}>
+                  {`${name}`}
+                </li>
+              );
+            })}
+          </ul>
+        )}
+        <Footer />
+      </div>
     </div>
   );
 };
