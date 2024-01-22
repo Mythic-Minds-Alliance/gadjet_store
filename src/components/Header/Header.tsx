@@ -1,5 +1,5 @@
 export const Header = () => (
   <div className="header">
-    Header block
+    Header block1
   </div>
 );
