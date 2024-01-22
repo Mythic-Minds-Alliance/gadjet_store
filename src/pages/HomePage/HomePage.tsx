@@ -1,6 +1,10 @@
 // import { useContext } from 'react';
 // import { DataContext } from '../../App';
 // import { Loader } from '../../components/Loader';
+import TabletImg from '../../images/tablets.png';
+import PhoneImg from '../../images/mobilePhones.png';
+import Accessories from '../../images/accesorise.png';
+
 import './HomePage.scss';
 // import { Card } from '../../components/Card/Card';
 import { Footer } from '../../components/Footer/Footer';
@@ -28,7 +32,7 @@ export const HomePage = () => {
           <div className="categoriesContainer">
             <div className="categoryItem">
               <img
-                src="../../images/mobilePhones.png"
+                src={PhoneImg}
                 alt="Iphone 14 in black color"
                 className="categoryImg"
               />
@@ -38,7 +42,7 @@ export const HomePage = () => {
 
             <div className="categoryItem">
               <img
-                src="../../images/tablets.png"
+                src={TabletImg}
                 alt="Ipad in black, grey and white color"
                 className="categoryImg"
               />
@@ -48,7 +52,7 @@ export const HomePage = () => {
 
             <div className="categoryItem">
               <img
-                src="../../images/accesorise.png"
+                src={Accessories}
                 alt="Iphone cases"
                 className="categoryImg"
               />
