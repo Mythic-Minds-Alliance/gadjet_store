@@ -10,7 +10,6 @@ export const HomePage = () => {
   return (
     <>
       <div className="mainPageContainer">
-        {/* {productList} */}
         <h1 className="mainTitle">Welcome to Nice Gadgets store!</h1>
 
         <div className="slider">slider</div>
@@ -65,26 +64,5 @@ export const HomePage = () => {
 
       <Footer />
     </>
-
-  // <div className="container">
-  //   <div className="hello">
-  //     {isLoading ? (
-  //       <Loader />
-  //     ) : (
-  //       <ul>
-  //         {productList.map((product) => {
-  //           const { id, name } = product;
-  //
-  //           return (
-  //             <li key={id}>
-  //               {`${name}`}
-  //             </li>
-  //           );
-  //         })}
-  //       </ul>
-  //     )}
-  //     <Footer />
-  //   </div>
-  // </div>
   );
 };
