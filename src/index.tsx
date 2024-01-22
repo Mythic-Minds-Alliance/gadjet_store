@@ -5,7 +5,7 @@ import {
   Route,
 } from 'react-router-dom';
 
-import { App } from './app';
+import { App } from './App';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { PhonePage } from './pages/PhonePage/PhonePage';
 import { HomePage } from './pages/HomePage/HomePage';
