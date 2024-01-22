@@ -17,6 +17,12 @@
   }
 }
 
+@mixin onLDeskTop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
 @mixin pageGrid {
   display: grid;
   column-gap: 30px;

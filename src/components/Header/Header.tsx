@@ -3,10 +3,10 @@ import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { NavigationLink } from '../NavigationLink/NavigationLink';
 
-import logo from '../../img/logo.png';
+import logo from '../../images/Logo.png';
 import './Header.scss';
-import favoriteImg from '../../img/Favourites.png';
-import ordersLogo from '../../img/ShoppingBag.png';
+import favoriteImg from '../../images/Favourites.png';
+import ordersLogo from '../../images/ShoppingBag.png';
 import { BurgerMenuOpened } from '../BurgerMenuOpened';
 
 export const Header = () => {
@@ -16,7 +16,7 @@ export const Header = () => {
     <header className="header">
       <div className="container">
         <div className="links">
-          <NavLink to="/">
+          <NavLink to="/" className="logo-link">
             <img
               src={logo}
               alt="Nice Gadgets logo"
@@ -25,7 +25,7 @@ export const Header = () => {
           </NavLink>
 
           {!isMenuOpen && (
-            <nav className={classNames('nav')}>
+            <nav className="nav">
               <NavigationLink
                 to="/"
                 linkText="Home"
@@ -48,7 +48,9 @@ export const Header = () => {
               />
             </nav>
           )}
+        </div>
 
+        <div className="links">
           <NavLink
             to="/orders"
             className={({ isActive }) => classNames(

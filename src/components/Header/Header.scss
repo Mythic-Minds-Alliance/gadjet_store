@@ -1,5 +1,5 @@
-@import '../../assets/colors/colors.scss';
-@import '../../assets/variebles.scss';
+@import '../../colors.scss';
+@import '../../_mixins.scss';
 
 .header {
   position: sticky;
@@ -17,6 +17,11 @@
 
   &__logo:hover {
     animation: wave 2s infinite linear;
+  }
+
+  &__logo.active {
+    position: relative;
+    color: $primary;
   }
 
   &__service {
@@ -37,6 +42,15 @@
 .links {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.logo-link.active {
+  color: initial;
+
+  &::after {
+    display: none;
+  }
 }
 
 .service_btn {
@@ -45,6 +59,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 18px 0;
   cursor: pointer;
   background: transparent;
   border: none;
@@ -55,8 +70,8 @@
     position: absolute;
     transition: transform 0.3s ease-in-out;
 
-    @include onDesktop {
-      left: 40%;
+    @include onLDeskTop {
+      position: relative;
     }
   }
 
@@ -287,13 +302,16 @@
 }
 
 @keyframes wave {
+
   0%,
   100% {
     transform: translateY(0);
   }
+
   25% {
     transform: translateY(-4px);
   }
+
   75% {
     transform: translateY(4px);
   }
