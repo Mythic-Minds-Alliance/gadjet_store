@@ -19,6 +19,12 @@
   }
 }
 
+@mixin onHugeDesktop {
+  @media (min-width: 1201px) {
+    @content;
+  }
+}
+
 .footerContainer {
   position: absolute;
   bottom: 0;
@@ -33,13 +39,23 @@
   @include onTablet {
     padding: 32px;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
+    justify-content: space-between;
+
   }
 
   @include onDesktop {
     justify-content: space-between;
   }
+
+  @include onHugeDesktop {
+    padding: 32px 152px;
+  }
+}
+
+.footerLogo {
+  width: 89px;
+  height: 30.252px;
 }
 
 .footerLinks {
@@ -84,6 +100,10 @@
   font-weight: 700;
   line-height: normal;
   color: #89939A;
+}
+
+.goUpBtn {
+  display: block;
 }
 
 

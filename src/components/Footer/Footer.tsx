@@ -1,9 +1,15 @@
 import './Footer.scss';
+import Logo from './img/Logo.png';
+import ArrowUp from './img/Slider_button.png';
 
 export const Footer = () => (
   <footer className="footerContainer">
     <a href="/" className="footerLogoLink">
-      <img src="img/Logo.png" alt="Logotype of company" />
+      <img
+        src={Logo}
+        alt="Logotype of company"
+        className="footerLogo"
+      />
     </a>
 
     <div className="footerLinks">
@@ -16,7 +22,7 @@ export const Footer = () => (
       <p className="goUpText">Back to top</p>
       <a href="/" className="goUpLink">
         <img
-          src="img/Slider_button.png"
+          src={ArrowUp}
           alt="Arrow Up"
           className="goUpBtn"
         />
