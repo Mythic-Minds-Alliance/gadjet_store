@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import './HomePage.scss';
 
 export const HomePage = () => {
   const [productList, setProductList] = useState('');
@@ -12,6 +13,7 @@ export const HomePage = () => {
   return (
     <div className="container">
       {productList}
+      <h1 className="hello">hello world</h1>
     </div>
   );
 };
