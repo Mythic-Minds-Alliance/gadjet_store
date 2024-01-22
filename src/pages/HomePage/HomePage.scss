@@ -1,3 +1,69 @@
-.hello {
-  color: aqua;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=Poppins:wght@400;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
+
+.mainPageContainer {
+  padding: 0 16px;
+}
+
+.mainTitle {
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.32px;
+  color: #313237;
+
+  margin-bottom: 24px;
+}
+
+.section{
+  margin-bottom: 32px;
+}
+
+.sectionTitle {
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 140%;
+  color: #313237;
+
+  margin-bottom: 24px;
+}
+
+.categoriesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.categoryImg{
+  width: 100%;
+  height: 100%;
+  margin-bottom: 24px;
+}
+
+.categoryTitle {
+  color: #313237;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 4px;
+}
+
+.categorySubtitle{
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 21px;
+  color: #89939A;
+}
+
+
+
