@@ -2,6 +2,8 @@ import { FC, MouseEvent } from 'react';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 
+import './NavigationLink.scss';
+
 export interface NavigationLinkProps {
   to: string;
   linkText: string;
