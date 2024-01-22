@@ -1,6 +1,7 @@
 import './Card.scss';
 
 import like from '../../icons/like.svg';
+import test from '../Footer/img/00.webp';
 import { Product } from '../../types/product';
 
 type Props = {
@@ -14,7 +15,7 @@ export const Card: React.FC<Props> = ({ product }) => {
     screen,
     capacity,
     ram,
-    image,
+    // image,
   } = product;
 
   return (
@@ -22,7 +23,7 @@ export const Card: React.FC<Props> = ({ product }) => {
       <div className="card--top">
         <a href="/" className="card--photo">
           <img
-            src={image}
+            src={test}
             alt={`${name}`}
             className="card--image"
           />
@@ -32,7 +33,7 @@ export const Card: React.FC<Props> = ({ product }) => {
         {name}
       </p>
       <p className="card--price">
-        {price}
+        {`$${price}`}
       </p>
       <p className="card--line" />
 
@@ -51,8 +52,8 @@ export const Card: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className="card--buttons">
-        <button type="submit">Add to cart</button>
-        <button type="submit">
+        <button className="addToCartBtn" type="submit">Add to cart</button>
+        <button type="submit" className="likeBtn">
           <img src={like} alt="like" />
         </button>
       </div>

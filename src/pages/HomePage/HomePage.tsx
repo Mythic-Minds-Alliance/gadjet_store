@@ -14,14 +14,14 @@ export const HomePage = () => {
         {isLoading ? (
           <Loader />
         ) : (
-          <ul>
+          <>
             {productList.map((product) => (
               <Card
                 key={product.id}
                 product={product}
               />
             ))}
-          </ul>
+          </>
         )}
         <Footer />
       </div>
