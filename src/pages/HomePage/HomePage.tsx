@@ -6,6 +6,7 @@ import PhoneImg from '../../images/mobilePhones.png';
 import Accesories from '../../images/accesorise.png';
 
 import './HomePage.scss';
+import { Card } from '../../components/Card/Card';
 import { Footer } from '../../components/Footer/Footer';
 
 export const HomePage = () => {

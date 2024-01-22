@@ -1,9 +1,102 @@
 .card {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 
   width: 288px;
   height: 440px;
+  padding: 32px;
 
-  border: 1px solid #E2E6E9
+  border: 1px solid #E2E6E9;
+
+  &--photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 223px;
+    height: 130px;
+    margin-bottom: 8px;
+  }
+
+  &--image {
+    width: 45%;
+    height: 100%;
+  }
+
+  &--title {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+  }
+
+  &--price {
+    width: 100%;
+
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 31px;
+
+    text-align: left;
+  }
+
+  &--details {
+    list-style: none;
+
+    &-item {
+      margin-bottom: 8px;
+
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 15px;
+
+      color: #89939A;
+    }
+  }
+
+  &--characteristics {
+    list-style: none;
+
+    &-item {
+      margin-bottom: 8px;
+
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 15px;
+      color: inherit;
+    }
+  }
+
+  &--bottom {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &--buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+  }
+}
+
+.addToCartBtn {
+  padding: 9px 45px;
+
+  background-color: #313237;
+
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  color: white;
+  border: none;
+}
+
+.likeBtn {
+  width: 40px;
+  height: 40px;
+
+  border: 1px solid #B4BDC3
 }
