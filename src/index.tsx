@@ -18,7 +18,6 @@ createRoot(document.getElementById('root') as HTMLDivElement).render(
         <Route path="phones" element={<PhonePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
-
     </Routes>
   </Router>,
 );

@@ -1,6 +1,6 @@
 import './Footer.scss';
-import Logo from './img/Logo.png';
-import ArrowUp from './img/Slider_button.png';
+import Logo from '../../images/Logo.png';
+import ArrowUp from '../../images/Slider_button.png';
 
 export const Footer = () => (
   <footer className="footerContainer">
