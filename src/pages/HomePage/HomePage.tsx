@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Footer } from '../../components/Footer/Footer';
 import { Product } from '../../types/product';
 import { Loader } from '../../components/Loader';
 import './HomePage.scss';
@@ -25,7 +26,8 @@ export const HomePage = () => {
   }, []);
 
   return (
-    <div className="hello">
+    <div className="container">
+      <div className="hello">
       {isLoading ? (
         <Loader />
       ) : (
@@ -41,6 +43,7 @@ export const HomePage = () => {
           })}
         </ul>
       )}
+      <Footer />
     </div>
   );
 };
