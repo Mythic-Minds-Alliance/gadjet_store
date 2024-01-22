@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Footer } from '../../components/Footer/Footer';
 
 export const HomePage = () => {
   const [productList, setProductList] = useState('');
@@ -12,6 +13,7 @@ export const HomePage = () => {
   return (
     <div className="container">
       {productList}
+      <Footer />
     </div>
   );
 };
