@@ -4,6 +4,7 @@ import { Footer } from '../../components/Footer/Footer';
 import { Product } from '../../types/product';
 import { Loader } from '../../components/Loader';
 import './HomePage.scss';
+import { Card } from '../../components/Card/Card';
 
 export const HomePage = () => {
   const [productList, setProductList] = useState<Product[]>([]);
@@ -32,15 +33,12 @@ export const HomePage = () => {
           <Loader />
         ) : (
           <ul>
-            {productList.map((product) => {
-              const { id, name } = product;
-
-              return (
-                <li key={id}>
-                  {`${name}`}
-                </li>
-              );
-            })}
+            {productList.map((product) => (
+              <Card
+                key={product.id}
+                product={product}
+              />
+            ))}
           </ul>
         )}
         <Footer />
