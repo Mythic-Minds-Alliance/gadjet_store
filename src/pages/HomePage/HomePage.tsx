@@ -1,24 +1,20 @@
-import { useEffect, useState } from 'react';
+// import { useContext } from 'react';
+// import { DataContext } from '../../App';
+// import { Loader } from '../../components/Loader';
 import './HomePage.scss';
 import { Footer } from '../../components/Footer/Footer';
 
 export const HomePage = () => {
-  const [productList, setProductList] = useState('');
-
-  useEffect(() => {
-    fetch('https://gadjets-store.onrender.com/products')
-      .then((res) => res.json())
-      .then(setProductList);
-  }, []);
+  // const { productList, isLoading } = useContext(DataContext);
 
   return (
     <>
       <div className="mainPageContainer">
-        {productList}
+        {/* {productList} */}
         <h1 className="mainTitle">Welcome to Nice Gadgets store!</h1>
 
         <div className="slider">slider</div>
-        <img src="images/sliderPhoneImg1.png" alt="khj" />
+        <img src="../../images/sliderPhoneImg1.png" alt="khj" />
 
         <section className="section newModels">
           <h3 className="sectionTitle">Brand new models</h3>
@@ -32,7 +28,7 @@ export const HomePage = () => {
           <div className="categoriesContainer">
             <div className="categoryItem">
               <img
-                src="images/mobilePhones.png"
+                src="../../images/mobilePhones.png"
                 alt="Iphone 14 in black color"
                 className="categoryImg"
               />
@@ -42,7 +38,7 @@ export const HomePage = () => {
 
             <div className="categoryItem">
               <img
-                src="images/tablets.png"
+                src="../../images/tablets.png"
                 alt="Ipad in black, grey and white color"
                 className="categoryImg"
               />
@@ -52,7 +48,7 @@ export const HomePage = () => {
 
             <div className="categoryItem">
               <img
-                src="images/accesorise.png"
+                src="../../images/accesorise.png"
                 alt="Iphone cases"
                 className="categoryImg"
               />
@@ -69,5 +65,26 @@ export const HomePage = () => {
 
       <Footer />
     </>
+
+  // <div className="container">
+  //   <div className="hello">
+  //     {isLoading ? (
+  //       <Loader />
+  //     ) : (
+  //       <ul>
+  //         {productList.map((product) => {
+  //           const { id, name } = product;
+  //
+  //           return (
+  //             <li key={id}>
+  //               {`${name}`}
+  //             </li>
+  //           );
+  //         })}
+  //       </ul>
+  //     )}
+  //     <Footer />
+  //   </div>
+  // </div>
   );
 };
