@@ -28,22 +28,23 @@ export const HomePage = () => {
   return (
     <div className="container">
       <div className="hello">
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <ul>
-          {productList.map((product) => {
-            const { id, name } = product;
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <ul>
+            {productList.map((product) => {
+              const { id, name } = product;
 
-            return (
-              <li key={id}>
-                {`${name}`}
-              </li>
-            );
-          })}
-        </ul>
-      )}
-      <Footer />
+              return (
+                <li key={id}>
+                  {`${name}`}
+                </li>
+              );
+            })}
+          </ul>
+        )}
+        <Footer />
+      </div>
     </div>
   );
 };
