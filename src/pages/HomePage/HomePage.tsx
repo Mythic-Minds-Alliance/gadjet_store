@@ -4,7 +4,6 @@ import { Product } from '../../types/product';
 import { Loader } from '../../components/Loader';
 import './HomePage.scss';
 
-
 export const HomePage = () => {
   const [productList, setProductList] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -26,21 +25,22 @@ export const HomePage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="hello">
       {isLoading ? (
         <Loader />
       ) : (
         <ul>
           {productList.map((product) => {
-            const { id, image } = product;
+            const { id, name } = product;
 
             return (
               <li key={id}>
-                <img src={`${image}`} alt="" />
+                {`${name}`}
               </li>
             );
           })}
         </ul>
       )}
+    </div>
   );
 };
