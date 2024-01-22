@@ -2,7 +2,7 @@
 // import { DataContext } from '../../App';
 // import { Loader } from '../../components/Loader';
 import './HomePage.scss';
-import { Card } from '../../components/Card/Card';
+// import { Card } from '../../components/Card/Card';
 import { Footer } from '../../components/Footer/Footer';
 
 export const HomePage = () => {
