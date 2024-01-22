@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Product } from '../../types/product';
 import { Loader } from '../../components/Loader';
+import './HomePage.scss';
+
 
 export const HomePage = () => {
   const [productList, setProductList] = useState<Product[]>([]);
@@ -40,6 +42,5 @@ export const HomePage = () => {
           })}
         </ul>
       )}
-    </div>
   );
 };
