@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/gadjets_store_client/static/js/main.5b3d7f55.js",
+    "main.js": "/gadjets_store_client/static/js/main.8e822488.js",
     "index.html": "/gadjets_store_client/index.html",
-    "main.5b3d7f55.js.map": "/gadjets_store_client/static/js/main.5b3d7f55.js.map"
+    "main.8e822488.js.map": "/gadjets_store_client/static/js/main.8e822488.js.map"
   },
   "entrypoints": [
-    "static/js/main.5b3d7f55.js"
+    "static/js/main.8e822488.js"
   ]
 }
