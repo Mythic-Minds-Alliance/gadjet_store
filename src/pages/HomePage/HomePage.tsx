@@ -1,29 +1,11 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useContext } from 'react';
+import { DataContext } from '../../App';
 import { Footer } from '../../components/Footer/Footer';
-import { Product } from '../../types/product';
 import { Loader } from '../../components/Loader';
 import './HomePage.scss';
 
 export const HomePage = () => {
-  const [productList, setProductList] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('http://localhost:3005/products');
-
-        setProductList(response.data);
-      } catch (error) {
-        throw new Error('error');
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const { productList, isLoading } = useContext(DataContext);
 
   return (
     <div className="container">
