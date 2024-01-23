@@ -1,16 +1,13 @@
-/* eslint-disable import/no-cycle */
 import axios from 'axios';
 import { Outlet } from 'react-router-dom';
-import { createContext, useEffect, useState } from 'react';
-import { Header } from './components/Header';
 import {
   Dispatch, SetStateAction,
   createContext, useEffect, useState,
 }
   from 'react';
-import { Header } from './components/Header/Header';
 import { Product } from './types/product';
 import { Footer } from './components/Footer/Footer';
+import { Header } from './components/Header';
 
 interface DataContextType {
   productList: Product[];
@@ -139,7 +136,10 @@ export const App = () => {
     }}
     >
       <div data-cy="app">
-        <Header />
+        <Header
+          cartCount={cartStorage.length}
+          favoriteCount={favoriteStorage.length}
+        />
         <Outlet />
         <Footer />
       </div>

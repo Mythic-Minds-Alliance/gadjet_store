@@ -11,15 +11,15 @@ import { HeaderCounter } from '../HeaderCounter/HeaderCounter';
 interface BurgerMenuProps {
   isMenuOpen: boolean;
   setIsMenuOpen: (isOpen: boolean) => void;
-  cart: number;
-  favorites: number;
+  cartCount: number,
+  favoriteCount: number,
 }
 
 export const BurgerMenuOpened: FC<BurgerMenuProps> = ({
   isMenuOpen,
   setIsMenuOpen,
-  cart,
-  favorites,
+  cartCount,
+  favoriteCount,
 }) => {
   const handleMenuClose = () => {
     setIsMenuOpen(false);
@@ -65,7 +65,7 @@ export const BurgerMenuOpened: FC<BurgerMenuProps> = ({
               className={classNames('like')}
             />
 
-            <HeaderCounter productsCount={favorites} />
+            <HeaderCounter productsCount={cartCount} />
           </div>
         </Link>
 
@@ -85,7 +85,7 @@ export const BurgerMenuOpened: FC<BurgerMenuProps> = ({
               className={classNames('service_btn_img')}
             />
 
-            <HeaderCounter productsCount={cart} />
+            <HeaderCounter productsCount={favoriteCount} />
           </div>
         </Link>
       </div>

@@ -1,8 +1,6 @@
-/* eslint-disable import/no-cycle */
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
-import { DataContext } from '../../App';
 
 import './Header.scss';
 import { NavigationLink } from '../NavigationLink/NavigationLink';
@@ -14,12 +12,13 @@ import burgerMenu from '../../images/Menu.png';
 import close from '../../images/Close.png';
 import { HeaderCounter } from '../HeaderCounter/HeaderCounter';
 
-export const Header = () => {
+type Props = {
+  cartCount: number,
+  favoriteCount: number,
+};
+
+export const Header: React.FC<Props> = ({ cartCount, favoriteCount }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const {
-    cart,
-    favorites,
-  } = useContext(DataContext);
 
   return (
     <header className="header">
@@ -79,7 +78,7 @@ export const Header = () => {
             />
 
             <div className={classNames('headerCounter')}>
-              <HeaderCounter productsCount={favorites.length} />
+              <HeaderCounter productsCount={favoriteCount} />
             </div>
           </NavLink>
 
@@ -97,7 +96,7 @@ export const Header = () => {
             />
 
             <div className={classNames('headerCounter')}>
-              <HeaderCounter productsCount={cart.length} />
+              <HeaderCounter productsCount={cartCount} />
             </div>
           </NavLink>
         </div>
@@ -121,8 +120,8 @@ export const Header = () => {
       <BurgerMenuOpened
         isMenuOpen={isMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
-        cart={cart.length}
-        favorites={favorites.length}
+        cartCount={cartCount}
+        favoriteCount={favoriteCount}
       />
     </header>
   );

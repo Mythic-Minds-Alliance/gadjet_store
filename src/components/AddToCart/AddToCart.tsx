@@ -70,7 +70,7 @@ export const AddToCart: React.FC<Props> = ({ product }) => {
         }}
       >
         <img
-          src={isActiveFavorite ? like : likeActive}
+          src={isActiveFavorite ? likeActive : like}
           alt="like"
           className="addToCart--icons"
         />
