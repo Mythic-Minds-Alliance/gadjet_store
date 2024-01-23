@@ -1,6 +1,11 @@
 @import '../../colors.scss';
 @import '../../_mixins.scss';
 
+@mixin iconseSize {
+  width: 16px; 
+  height: 16px;
+}
+
 .header {
   position: sticky;
   top: 0;
@@ -297,6 +302,7 @@
     &_img {
       position: relative;
       width: 16px;
+      height: 16px;
     }
   }
 }
@@ -315,4 +321,19 @@
   75% {
     transform: translateY(4px);
   }
+}
+
+.burger-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.burger-btn img {
+  width: 16px; 
+  height: 16px;
 }

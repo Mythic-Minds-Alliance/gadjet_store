@@ -75,18 +75,6 @@ export const BurgerMenuOpened: FC<BurgerMenuProps> = ({
             />
           </div>
         </Link>
-
-        {/* <Link
-          to="/cart"
-          className={classNames('service__button', 'service__cart', {
-            'service__button-active': isMenuOpen,
-          })}
-          onClick={handleMenuClose}
-        >
-          <div className={classNames('imageContainer')}>
-            <img src={cart} alt="cart button" className={classNames('cart')} />
-          </div>
-        </Link> */}
       </div>
     </div>
   );
