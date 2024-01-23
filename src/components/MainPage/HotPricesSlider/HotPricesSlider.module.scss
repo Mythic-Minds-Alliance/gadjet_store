@@ -15,6 +15,11 @@
 }
 
 .hotPrices {
+  padding-bottom: 350px;
+
+  @include onTablet {
   padding-bottom: 180px;
 }
+}
+
 
