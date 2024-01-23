@@ -1,6 +1,8 @@
+/* eslint-disable react/button-has-type */
 import FooterStyle from './Footer.module.scss';
 import Logo from '../../images/Logo.png';
 import ArrowUp from '../../images/Slider_button.png';
+import { scrollToTop } from '../../utils/helpers';
 
 export const Footer = () => (
   <footer className={FooterStyle.footerContainer}>
@@ -20,13 +22,16 @@ export const Footer = () => (
 
     <div className={FooterStyle.footerGoUp}>
       <p className={FooterStyle.goUpText}>Back to top</p>
-      <a href="/" className={FooterStyle.goUpLink}>
+      <button
+        className={FooterStyle.goUpLink}
+        onClick={scrollToTop}
+      >
         <img
           src={ArrowUp}
           alt="Arrow Up"
           className={FooterStyle.goUpBtn}
         />
-      </a>
+      </button>
     </div>
   </footer>
 );
