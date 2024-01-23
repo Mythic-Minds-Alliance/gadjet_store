@@ -1,4 +1,7 @@
 @import "../../assets/normalize";
+@import '../../assets/colors.scss';
+@import '../../assets/variables';
+@import "../../assets/mixins";
 
 .notFound {
   &--section {
@@ -10,13 +13,13 @@
   }
 
   &--title {
-    font-family: Mont;
-    font-size: 46px;
-    font-weight: 700;
+    @include headline-1;
+    margin-bottom: 40px;
   }
 }
 
 .homeButton {
+  @include buttonsText;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,8 +32,5 @@
   background: #313237;
   border-radius: 4px;
 
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  color: #FFFFFF;
+  color: $white;
 }
