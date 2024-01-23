@@ -9,6 +9,7 @@ import { App } from './App';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { PhonePage } from './pages/PhonePage/PhonePage';
 import { HomePage } from './pages/HomePage/HomePage';
+import { CartPage } from './pages/CartPage/CartPage';
 
 createRoot(document.getElementById('root') as HTMLDivElement).render(
   <Router>
@@ -16,6 +17,7 @@ createRoot(document.getElementById('root') as HTMLDivElement).render(
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
         <Route path="phones" element={<PhonePage />} />
+        <Route path="cart" element={<CartPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
