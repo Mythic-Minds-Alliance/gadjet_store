@@ -56,6 +56,7 @@
     @include buttonsText;
     padding: 0 15px;
     text-align: center;
+    color: $primary;
   }
 
   &_plus, &_minus {
@@ -85,6 +86,7 @@
   &_price {
     @include headline-2;
     text-align: end;
+    color: $primary;
 
     @include onTablet {
       @include headline-3;

@@ -1,5 +1,6 @@
 import { CartItem } from '../../components/CartItem';
 import './CartPage.scss';
+import { CartCheckout } from '../../components/CartCheckout/CartCheckout';
 
 export const CartPage = () => {
   return (
@@ -14,7 +15,7 @@ export const CartPage = () => {
         </div>
 
         <div className="CartPage--Checkout">
-          adsa
+          <CartCheckout />
         </div>
       </div>
 

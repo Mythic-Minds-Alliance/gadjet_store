@@ -120,6 +120,7 @@ $sliderItemSize: 100%;
   &__dot {
     width: 16px;
     height: 4px;
+    background-color: $icons;
   }
 
   &__dot-active {
