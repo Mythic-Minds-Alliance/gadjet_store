@@ -21,7 +21,6 @@ export const ImageSlider: FC<ImageSliderProps> = ({ slides, currentIndex }) => {
           {slides.map((slide) => (
             <Link
               to="/phones/apple-iphone-14-pro-128gb-spaceblack"
-              // key={i}
               className={cn('slider__slide')}
             >
               <img

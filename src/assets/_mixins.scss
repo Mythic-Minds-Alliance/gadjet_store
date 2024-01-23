@@ -34,14 +34,14 @@
 @mixin pageGrid {
   display: grid;
   column-gap: 30px;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(1, 1fr);
 
   @include onTablet {
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(3, 4fr);
   }
 
   @include onDesktop {
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(3, 8fr);
   }
 }
 
@@ -49,12 +49,13 @@
   font-size: 32px;
   font-style: normal;
   font-weight: 800;
-  line-height: 41px; /* 128.125% */
+  line-height: 41px;
   letter-spacing: -0.32px;
 
   @include onTablet {
     font-size: 48px;
     line-height: 56px;
+    font-weight: 800;
     letter-spacing: -0.48px;
   }
 }
@@ -76,7 +77,6 @@
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
-  line-height: normal;
 
   @include onTablet {
     font-size: 22px;

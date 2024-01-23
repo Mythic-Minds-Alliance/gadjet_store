@@ -1,25 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=Poppins:wght@400;500;700&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
-}
+@import "../../assets/normalize";
+@import '../../assets/colors.scss';
+@import '../../assets/variables';
+@import "../../assets/mixins";
 
 .mainPageContainer {
   padding: 0 16px;
+
+  @include onLargeDesktop {
+    padding-left: 152px;
+    padding-right: 152px;
+  }
 }
 
 .mainTitle {
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 41px;
-  letter-spacing: -0.32px;
-  color: #313237;
+  @include headline-1;
+  color:$primary;
+  padding-top: 24px;
 
   margin-bottom: 24px;
+
+  @include onTablet {
+    padding-top: 56px;
+    margin-bottom: 56px;
+  }
 }
 
 .section{
@@ -27,42 +30,39 @@
 }
 
 .sectionTitle {
-  font-size: 22px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 140%;
-  color: #313237;
+  @include headline-2;
+  color: $primary;
 
   margin-bottom: 24px;
 }
 
 .categoriesContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+  @include pageGrid;
 }
 
-.categoryImg{
+.categoryImg {
   width: 100%;
-  height: 100%;
+  max-height: 100%;
   margin-bottom: 24px;
+  border-radius: 7px;
+  transition: transform 0.3s ease;
+}
+
+.categoryImg:hover {
+  transform: scale(1.03);
 }
 
 .categoryTitle {
-  color: #313237;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
+  color: $primary;
+  @include headline-3;
   margin-bottom: 4px;
 }
 
 .categorySubtitle{
-  font-size: 14px;
-  font-style: normal;
+  @include secondaryText;
   font-weight: 600;
-  line-height: 21px;
-  color: #89939A;
+  color: $secondary;
+  margin-bottom: 32px;
 }
 
 

@@ -18,10 +18,19 @@ $sliderItemSize: 100%;
 
   @include onTablet {
     margin-bottom: 64px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 
   @include onDesktop {
     margin-bottom: 80px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @include onLargeDesktop {
+    padding-left: 152px;
+    padding-right: 152px;
   }
 }
 
@@ -30,8 +39,7 @@ $sliderItemSize: 100%;
     display: grid;
     grid-column: 1 / -1;
     margin-bottom: 8px;
-    //@include global-grid-container;
-    padding: 24px 0 0 0;
+
     @include onTablet {
       margin-top: 32px;
       display: grid;
@@ -51,15 +59,15 @@ $sliderItemSize: 100%;
       height: 100%;
       display: grid;
       width: 32px;
-      border: 1px solid black;
-      border-radius: 48px;
+      border: 1px solid $icons;
+      background-color: $white;
       align-items: center;
       justify-content: center;
       cursor: pointer;
 
       &:hover {
         transition: all 0.3s;
-        border: 1px solid black;
+        border: 1px solid $primary;
 
         img {
           transform: scale(1.1);
@@ -67,15 +75,16 @@ $sliderItemSize: 100%;
       }
 
       &:active {
-        border: 1px solid grey;
+        border: 1px solid $icons;
       }
 
       &-left {
         grid-column: 1 / 1;
+        margin-right: 17px;
       }
 
       &-right {
-        margin-left: auto;
+        margin-left: 17px;
         transform: rotate(180deg);
         grid-column: 12;
 
@@ -111,10 +120,9 @@ $sliderItemSize: 100%;
   &__dot {
     width: 16px;
     height: 4px;
-    background-color: grey;
   }
 
   &__dot-active {
-    background-color: black;
+    background-color: $secondary;
   }
 }
