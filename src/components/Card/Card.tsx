@@ -4,6 +4,7 @@ import test from '../../images/00.webp';
 import { Product } from '../../types/product';
 import { DetailsList } from '../DetailsList/DetailsList';
 import { AddToCart } from '../AddToCart/AddToCart';
+import { CardSeparator } from '../СardSeparator/CardSeparator';
 
 type Props = {
   product: Product,
@@ -30,13 +31,16 @@ export const Card: React.FC<Props> = ({ product }) => {
           />
         </a>
       </div>
+
       <p className="card--title">
         {name}
       </p>
+
       <p className="card--price">
         {`$${price}`}
       </p>
-      <p className="card--line" />
+
+      <CardSeparator />
 
       <div className="card--bottom">
         <DetailsList />
