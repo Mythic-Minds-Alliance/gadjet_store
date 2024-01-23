@@ -74,6 +74,8 @@
   color: $secondary;
 }
 
-.goUpBtn {
+.goUpBtn, .goUpLink {
   display: block;
+  background-color: $white;
+  border: none;
 }

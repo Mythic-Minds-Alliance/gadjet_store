@@ -1,0 +1,117 @@
+@import "../../assets/normalize";
+@import "../../assets/variables";
+@import "../../assets/colors";
+@import "../../assets/mixins";
+
+.item__container {
+  margin: 16px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+  gap: 16px;
+  flex-grow: 1;
+
+  background-color: $white;
+  border: 1px solid $elements;
+
+  @include onTablet {
+    flex-direction: row;
+    padding: 24px;
+  }
+
+  &_close {
+    width: 16px;
+    height: 16px;
+    display: block;
+
+    color: $secondary;
+    :hover {
+      transition: 0.3s;
+      color: $primary;
+    }
+  }
+
+  &_phone {
+    object-fit: contain;
+    object-position: center;
+    height: 60px;
+    width: 60px;
+  }
+
+  &_model {
+    @include secondaryText;
+    font-weight: 600;
+    color: $primary;
+  }
+
+  &_buttons {
+    display: flex;
+    gap: 1px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &_number {
+    @include buttonsText;
+    padding: 0 15px;
+    text-align: center;
+  }
+
+  &_plus, &_minus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+
+    background-color: $white;
+    border: 1px solid $icons;
+    cursor: pointer;
+
+    transition: border, color 0.3s;
+
+    &_disabled {
+      color: $secondary;
+      cursor: auto;
+      border: 1px solid $elements;
+    }
+
+    &:hover:not(.item__container_plus_disabled) {
+      border: 1px solid $primary;
+    }
+  }
+
+  &_price {
+    @include headline-2;
+    text-align: end;
+
+    @include onTablet {
+      @include headline-3;
+    }
+  }
+}
+
+.item_phone_info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  gap: 23px;
+
+  @include onTablet {
+    gap: 32px;
+  }
+}
+
+.item_price_info {
+  display: flex;
+  align-self: stretch;
+  justify-content: space-around;
+  gap: 48px;
+
+  @include onTablet {
+    align-items: center;
+  }
+}
