@@ -58,7 +58,7 @@ export const Header = () => {
 
         <div className="links">
           <NavLink
-            to="/orders"
+            to="/cart"
             className={({ isActive }) => classNames(
               'service_btn',
               { active: isActive },

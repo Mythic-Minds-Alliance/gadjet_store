@@ -3,6 +3,7 @@ import { Card } from '../../components/Card/Card';
 import { DataContext } from '../../App';
 import { Loader } from '../../components/Loader';
 
+
 export const PhonePage = () => {
   const { productList, isLoading } = useContext(DataContext);
 

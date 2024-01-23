@@ -47,7 +47,6 @@
 
 @mixin headline-1 {
   font-size: 32px;
-  font-style: normal;
   font-weight: 800;
   line-height: 41px;
   letter-spacing: -0.32px;
@@ -62,7 +61,6 @@
 
 @mixin headline-2 {
   font-size: 22px;
-  font-style: normal;
   font-weight: 800;
   line-height: 140%;
 
@@ -75,7 +73,6 @@
 
 @mixin headline-3 {
   font-size: 20px;
-  font-style: normal;
   font-weight: 700;
 
   @include onTablet {
@@ -97,9 +94,7 @@
 
 @mixin headline-4 {
   font-size: 16px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
 
   @include onTablet {
     font-size: 20px;
@@ -108,7 +103,6 @@
 
 @mixin uppercaseText {
   font-size: 12px;
-  font-style: normal;
   font-weight: 700;
   line-height: 11px;
   letter-spacing: 0.48px;
@@ -117,21 +111,17 @@
 
 @mixin buttonsText {
   font-size: 14px;
-  font-style: normal;
   font-weight: 600;
   line-height: 21px;
 }
 
 @mixin bodyText {
   font-size: 14px;
-  font-style: normal;
   font-weight: 500;
   line-height: 21px;
 }
 
 @mixin smallText {
   font-size: 12px;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
 }
