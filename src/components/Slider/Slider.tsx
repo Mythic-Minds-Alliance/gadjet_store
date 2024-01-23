@@ -15,7 +15,7 @@ import { ImageSlider } from '../ImageSlider/ImageSlider';
 
 const cn = classNames.bind(SliderStyle);
 
-const mobileSlides = [SliderImage1, SliderImg2, SliderImg3];
+const mobileSlides = [SliderImage1, SliderImg3, SliderImg2];
 const bigSlides = [oneBig, twoBig, threeBig];
 
 const getWindowWidth = () => window.innerWidth;
