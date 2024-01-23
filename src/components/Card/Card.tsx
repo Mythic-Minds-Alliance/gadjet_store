@@ -14,9 +14,7 @@ export const Card: React.FC<Props> = ({ product }) => {
   const {
     name,
     price,
-    // screen,
-    // capacity,
-    // ram,
+    fullPrice,
     // image,
   } = product;
 
@@ -36,14 +34,20 @@ export const Card: React.FC<Props> = ({ product }) => {
         {name}
       </p>
 
-      <p className="card--price">
-        {`$${price}`}
-      </p>
-
+      <div className="card--prices">
+        <p className="card--price">
+          {`$${price}`}
+        </p>
+        <strong className="card--price card--price-maxPrice">
+          {`$${fullPrice}`}
+        </strong>
+      </div>
       <CardSeparator />
 
       <div className="card--bottom">
-        <DetailsList />
+        <DetailsList
+          product={product}
+        />
       </div>
 
       <AddToCart product={product} />

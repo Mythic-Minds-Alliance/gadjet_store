@@ -1,6 +1,17 @@
+import { Product } from '../../types/product';
 import './DetailsList.scss';
 
-export const DetailsList = () => {
+type Props = {
+  product: Product,
+};
+
+export const DetailsList: React.FC<Props> = ({ product }) => {
+  const {
+    screen,
+    capacity,
+    ram,
+  } = product;
+
   return (
     <div className="details">
       <ul className="details--list">
@@ -10,9 +21,9 @@ export const DetailsList = () => {
       </ul>
 
       <ul className="details--characteristics">
-        {/* <li className="details--characteristics-item">{screen}</li>
+        <li className="details--characteristics-item">{screen}</li>
         <li className="details--characteristics-item">{capacity}</li>
-        <li className="details--characteristics-item">{ram}</li> */}
+        <li className="details--characteristics-item">{ram}</li>
       </ul>
     </div>
   );

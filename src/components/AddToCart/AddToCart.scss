@@ -1,3 +1,5 @@
+@import '../../assets/mixins';
+
 .addToCart {
   display: flex;
   justify-content: space-between;
@@ -16,11 +18,15 @@
     line-height: 21px;
     color: white;
     border: none;
+    white-space: nowrap;
 
     cursor: pointer;
 
     &:hover {
       box-shadow: 0px 3px 13px 0px #17203166;
+    }
+    @include onTablet {
+      padding: 9px 22px;
     }
   }
 
@@ -37,6 +43,10 @@
     border: 1px solid #E2E6E9;
 
     cursor: pointer;
+
+    @include onTablet {
+      padding: 9px 22px;
+    }
   }
 
   &--favorite {
