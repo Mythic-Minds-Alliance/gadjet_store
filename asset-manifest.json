@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/gadjets_store_client/static/css/main.2be82258.css",
-    "main.js": "/gadjets_store_client/static/js/main.a6472cb6.js",
+    "main.css": "/gadjets_store_client/static/css/main.3e39f790.css",
+    "main.js": "/gadjets_store_client/static/js/main.fff1d316.js",
     "static/media/tablets.png": "/gadjets_store_client/static/media/tablets.8ca07b70f7b983efdcf4.png",
     "static/media/sliderBig1.png": "/gadjets_store_client/static/media/sliderBig1.2df82b50899099e0108b.png",
     "static/media/accesorise.png": "/gadjets_store_client/static/media/accesorise.7836a378770602c325a4.png",
@@ -12,15 +12,17 @@
     "static/media/mobilePhones.png": "/gadjets_store_client/static/media/mobilePhones.20e72feaf44379701c25.png",
     "static/media/00.webp": "/gadjets_store_client/static/media/00.2b214f0ba820b6a2078a.webp",
     "static/media/sliderImg2.jpg": "/gadjets_store_client/static/media/sliderImg2.7222b9ccb94f32682aa5.jpg",
+    "static/media/image 8.png": "/gadjets_store_client/static/media/image 8.0062c04b6df04cb1d590.png",
     "static/media/like.svg": "/gadjets_store_client/static/media/like.87fbe581c0493d3cf3f1c5b08aa5a250.svg",
     "static/media/like-active.svg": "/gadjets_store_client/static/media/like-active.d554a185325e4fb0609231b1cff64b18.svg",
+    "static/media/Plus.svg": "/gadjets_store_client/static/media/Plus.eb0a620344493c8446b93fac3dd53591.svg",
     "static/media/Arrow.svg": "/gadjets_store_client/static/media/Arrow.837e2957378258c8ddb071859e53301f.svg",
     "index.html": "/gadjets_store_client/index.html",
-    "main.2be82258.css.map": "/gadjets_store_client/static/css/main.2be82258.css.map",
-    "main.a6472cb6.js.map": "/gadjets_store_client/static/js/main.a6472cb6.js.map"
+    "main.3e39f790.css.map": "/gadjets_store_client/static/css/main.3e39f790.css.map",
+    "main.fff1d316.js.map": "/gadjets_store_client/static/js/main.fff1d316.js.map"
   },
   "entrypoints": [
-    "static/css/main.2be82258.css",
-    "static/js/main.a6472cb6.js"
+    "static/css/main.3e39f790.css",
+    "static/js/main.fff1d316.js"
   ]
 }
