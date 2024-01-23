@@ -4,8 +4,13 @@ import { Cross } from '../Cross/Cross';
 import TestImg from '../../images/image 8.png';
 import { Minus } from '../Minus/Minus';
 import plus from '../../images/Plus.svg';
+import { Product } from '../../types/product';
 
-export const CartItem = () => {
+type Props = {
+  item: Product;
+};
+
+export const CartItem: React.FC<Props> = ({ item }) => {
   return (
     <div className={styles.item__container}>
       <div className={styles.item_phone_info}>
@@ -26,7 +31,7 @@ export const CartItem = () => {
           to="./phones"
         >
           <p className={styles.item__container_model}>
-            Apple iPhone 14 Pro 128GB Silver (MQ023)
+            {item.name}
           </p>
         </Link>
       </div>
@@ -56,7 +61,7 @@ export const CartItem = () => {
         </div>
 
         <span className={styles.item__container_price}>
-          $999
+          {`$${item.price}`}
         </span>
       </div>
     </div>
