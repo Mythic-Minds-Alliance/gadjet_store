@@ -1,0 +1,26 @@
+.addToCart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+
+  &--add {
+    padding: 9px 45px;
+
+    background-color: #313237;
+
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    color: white;
+    border: none;
+  }
+
+  &--favorite {
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid #B4BDC3
+  }
+}

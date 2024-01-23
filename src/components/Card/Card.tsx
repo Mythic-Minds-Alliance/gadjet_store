@@ -1,9 +1,9 @@
 import './Card.scss';
 
-import like from '../../icons/like.svg';
 import test from '../../images/00.webp';
 import { Product } from '../../types/product';
 import { DetailsList } from '../DetailsList/DetailsList';
+import { AddToCart } from '../AddToCart/AddToCart';
 
 type Props = {
   product: Product,
@@ -42,12 +42,7 @@ export const Card: React.FC<Props> = ({ product }) => {
         <DetailsList />
       </div>
 
-      <div className="card--buttons">
-        <button className="addToCartBtn" type="submit">Add to cart</button>
-        <button type="submit" className="likeBtn">
-          <img src={like} alt="like" />
-        </button>
-      </div>
+      <AddToCart />
     </div>
   );
 };
