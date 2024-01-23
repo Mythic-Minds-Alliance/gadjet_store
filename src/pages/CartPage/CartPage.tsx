@@ -20,7 +20,9 @@ export const CartPage = () => {
         </div>
 
         <div className="CartPage--Checkout">
-          <CartCheckout />
+          <CartCheckout
+            cartStorage={cartStorage}
+          />
         </div>
       </div>
 
