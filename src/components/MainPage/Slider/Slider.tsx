@@ -2,16 +2,16 @@ import {
   FC, useEffect, useState, useRef, useCallback,
 } from 'react';
 import classNames from 'classnames/bind';
-import SliderImage1 from '../../images/sliderPhoneImg1.png';
-import SliderImg2 from '../../images/sliderImg2.jpg';
-import SliderImg3 from '../../images/sliderImg3.jpg';
+import SliderImage1 from '../../../images/sliderPhoneImg1.png';
+import SliderImg2 from '../../../images/sliderImg2.jpg';
+import SliderImg3 from '../../../images/sliderImg3.jpg';
 import SliderStyle from './Slider.module.scss';
-import arrow from '../../images/Arrow.svg';
-import twoBig from '../../images/bigSlider2.jpg';
-import oneBig from '../../images/sliderBig1.png';
-import threeBig from '../../images/bigSlider3.webp';
+import arrow from '../../../images/Arrow.svg';
+import twoBig from '../../../images/bigSlider2.jpg';
+import oneBig from '../../../images/sliderBig1.png';
+import threeBig from '../../../images/bigSlider3.webp';
 
-import { ImageSlider } from '../ImageSlider/ImageSlider';
+import { ImageSlider } from '../../ImageSlider/ImageSlider';
 
 const cn = classNames.bind(SliderStyle);
 

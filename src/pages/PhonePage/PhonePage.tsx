@@ -1,9 +1,22 @@
-export const PhonePage = () => (
-  <div className="container">
-    Phone block!!!
-    <h1>sadsad</h1>
+import { useContext } from 'react';
+import { Card } from '../../components/Card/Card';
+import { DataContext } from '../../App';
+import { Loader } from '../../components/Loader';
 
-    dsfs
+export const PhonePage = () => {
+  const { productList, isLoading } = useContext(DataContext);
 
-  </div>
-);
+  return (
+    (isLoading ? (
+      <Loader />
+    ) : (
+      <div className="container">
+        <Card product={productList[0]} />
+        <Card product={productList[1]} />
+        <Card product={productList[2]} />
+        <Card product={productList[3]} />
+        <Card product={productList[4]} />
+      </div>
+    ))
+  );
+};
