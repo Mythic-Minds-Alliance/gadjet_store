@@ -7,7 +7,6 @@ import Accessories from '../../images/accesorise.png';
 
 import './HomePage.scss';
 // import { Card } from '../../components/Card/Card';
-import { Footer } from '../../components/Footer/Footer';
 import { Slider } from '../../components/Slider/Slider';
 
 export const HomePage = () => {
@@ -71,8 +70,6 @@ export const HomePage = () => {
 
         </section>
       </div>
-
-      <Footer />
     </>
   );
 };
