@@ -38,12 +38,7 @@ export const App = () => {
     <DataContext.Provider value={{ productList, isLoading }}>
       <div data-cy="app">
         <Header />
-
-        <main className="section">
-          <div className="container">
-            <Outlet />
-          </div>
-        </main>
+        <Outlet />
       </div>
     </DataContext.Provider>
   );
