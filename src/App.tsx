@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { createContext, useEffect, useState } from 'react';
 import { Header } from './components/Header/Header';
 import { Product } from './types/product';
+import { Footer } from './components/Footer/Footer';
 
 interface DataContextType {
   productList: Product[];
@@ -39,6 +40,7 @@ export const App = () => {
       <div data-cy="app">
         <Header />
         <Outlet />
+        <Footer />
       </div>
     </DataContext.Provider>
   );

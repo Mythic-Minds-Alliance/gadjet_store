@@ -1,11 +1,11 @@
-@import '../../colors.scss';
-@import '../../_mixins.scss';
+@import '../../assets/colors/colors.scss';
+@import '../../assets/variables';
+@import "../../assets/mixins";
 
 @mixin iconseSize {
   width: 16px; 
   height: 16px;
 }
-
 .header {
   position: sticky;
   top: 0;
@@ -337,3 +337,4 @@
   width: 16px; 
   height: 16px;
 }
+

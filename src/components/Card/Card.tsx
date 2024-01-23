@@ -1,8 +1,9 @@
 import './Card.scss';
 
-import like from '../../icons/like.svg';
 import test from '../../images/00.webp';
 import { Product } from '../../types/product';
+import { DetailsList } from '../DetailsList/DetailsList';
+import { AddToCart } from '../AddToCart/AddToCart';
 
 type Props = {
   product: Product,
@@ -12,9 +13,9 @@ export const Card: React.FC<Props> = ({ product }) => {
   const {
     name,
     price,
-    screen,
-    capacity,
-    ram,
+    // screen,
+    // capacity,
+    // ram,
     // image,
   } = product;
 
@@ -38,25 +39,10 @@ export const Card: React.FC<Props> = ({ product }) => {
       <p className="card--line" />
 
       <div className="card--bottom">
-        <ul className="card--details">
-          <li className="card--details-item">Screen</li>
-          <li className="card--details-item">Capacity</li>
-          <li className="card--details-item">RAM</li>
-        </ul>
-
-        <ul className="card--characteristics">
-          <li className="card--characteristics-item">{screen}</li>
-          <li className="card--characteristics-item">{capacity}</li>
-          <li className="card--characteristics-item">{ram}</li>
-        </ul>
+        <DetailsList />
       </div>
 
-      <div className="card--buttons">
-        <button className="addToCartBtn" type="submit">Add to cart</button>
-        <button type="submit" className="likeBtn">
-          <img src={like} alt="like" />
-        </button>
-      </div>
+      <AddToCart />
     </div>
   );
 };
