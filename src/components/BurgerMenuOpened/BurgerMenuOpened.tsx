@@ -45,6 +45,24 @@ export const BurgerMenuOpened: FC<BurgerMenuProps> = ({
 
       <div className={classNames('burger__service')}>
         <Link
+          to="/favourites"
+          className={classNames(
+            'service__button',
+            'service__like',
+            { 'service__button-active': isMenuOpen },
+          )}
+          onClick={handleMenuClose}
+        >
+          <div className={classNames('imageContainer')}>
+            <img
+              src={favoriteImg}
+              alt="like button"
+              className={classNames('like')}
+            />
+          </div>
+        </Link>
+
+        <Link
           to="/orders"
           className={classNames(
             'service__button',
@@ -58,22 +76,6 @@ export const BurgerMenuOpened: FC<BurgerMenuProps> = ({
             alt="orders button"
             className={classNames('service_btn_img')}
           />
-        </Link>
-
-        <Link
-          to="/favourites"
-          className={classNames('service__button', 'service__like', {
-            'service__button-active': isMenuOpen,
-          })}
-          onClick={handleMenuClose}
-        >
-          <div className={classNames('imageContainer')}>
-            <img
-              src={favoriteImg}
-              alt="like button"
-              className={classNames('like')}
-            />
-          </div>
         </Link>
       </div>
     </div>
