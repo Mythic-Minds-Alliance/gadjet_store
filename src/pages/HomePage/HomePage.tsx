@@ -1,50 +1,30 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Footer } from '../../components/Footer/Footer';
-import { Product } from '../../types/product';
-import { Loader } from '../../components/Loader';
+// import { useContext } from 'react';
+// import { DataContext } from '../../App';
+// import { Loader } from '../../components/Loader';
 import './HomePage.scss';
+// import { Card } from '../../components/Card/Card';
+import { Slider } from '../../components/MainPage/Slider/Slider';
+import { MainPageTitle } from '../../components/MainPage/MainPageTitle';
+import { NewModelsSlider } from '../../components/MainPage/newModelsSlider';
+import { HotPricesSlider } from '../../components/MainPage/HotPricesSlider';
+import { ShopByCategory } from '../../components/MainPage/ShopByCategory';
 
 export const HomePage = () => {
-  const [productList, setProductList] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('http://localhost:3005/products');
-
-        setProductList(response.data);
-      } catch (error) {
-        throw new Error('error');
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
+  // const { productList, isLoading } = useContext(DataContext);
 
   return (
-    <div className="container">
-      <div className="hello">
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <ul>
-            {productList.map((product) => {
-              const { id, name } = product;
-
-              return (
-                <li key={id}>
-                  {`${name}`}
-                </li>
-              );
-            })}
-          </ul>
-        )}
-        <Footer />
+    <>
+      <div className="mainPageContainer">
+        <MainPageTitle />
       </div>
-    </div>
+
+      <Slider />
+
+      <div className="mainPageContainer">
+        <NewModelsSlider />
+        <ShopByCategory />
+        <HotPricesSlider />
+      </div>
+    </>
   );
 };

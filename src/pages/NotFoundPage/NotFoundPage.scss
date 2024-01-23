@@ -1,3 +1,5 @@
+@import "../../assets/normalize";
+
 .notFound {
   &--section {
     display: flex;
@@ -27,7 +29,7 @@
   background: #313237;
   border-radius: 4px;
 
-  font-family: 'Montserrat', sans-serif;;
+  font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   font-weight: 700;
   color: #FFFFFF;

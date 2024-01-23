@@ -1,30 +1,52 @@
 import './Card.scss';
 
-export const Card = () => {
-  //
+import test from '../../images/00.webp';
+import { Product } from '../../types/product';
+import { DetailsList } from '../DetailsList/DetailsList';
+import { AddToCart } from '../AddToCart/AddToCart';
+import { CardSeparator } from '../СardSeparator/CardSeparator';
+
+type Props = {
+  product: Product,
+};
+
+export const Card: React.FC<Props> = ({ product }) => {
+  const {
+    name,
+    price,
+    // screen,
+    // capacity,
+    // ram,
+    // image,
+  } = product;
 
   return (
     <div className="card">
-      <div className="card--top" />
+      <div className="card--top">
+        <a href="/" className="card--photo">
+          <img
+            src={test}
+            alt={`${name}`}
+            className="card--image"
+          />
+        </a>
+      </div>
 
       <p className="card--title">
-        Apple iPhone 14 Pro 128GB Deep Purple (MQ0G3)
+        {name}
       </p>
-      <p className="card--price">$999</p>
-      <p className="card--line" />
+
+      <p className="card--price">
+        {`$${price}`}
+      </p>
+
+      <CardSeparator />
+
       <div className="card--bottom">
-        <ul className="card--details">
-          <li className="card--details-item">Screen</li>
-          <li className="card--details-item">Capacity</li>
-          <li className="card--details-item">RAM</li>
-        </ul>
-        <ul className="card--characteristics">
-          <li className="card--characteristics-item">6.1” OLED</li>
-          <li className="card--characteristics-item">128 GB</li>
-          <li className="card--characteristics-item">6 GB</li>
-        </ul>
+        <DetailsList />
       </div>
-      <div className="card--buttons" />
+
+      <AddToCart product={product} />
     </div>
   );
 };
