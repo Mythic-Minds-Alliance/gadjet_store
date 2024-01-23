@@ -2,6 +2,10 @@
 @import '../../assets/variables';
 @import "../../assets/mixins";
 
+@mixin iconseSize {
+  width: 16px; 
+  height: 16px;
+}
 .header {
   position: sticky;
   top: 0;
@@ -18,6 +22,11 @@
 
   &__logo:hover {
     animation: wave 2s infinite linear;
+  }
+
+  &__logo.active {
+    position: relative;
+    color: $primary;
   }
 
   &__service {
@@ -38,6 +47,15 @@
 .links {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.logo-link.active {
+  color: initial;
+
+  &::after {
+    display: none;
+  }
 }
 
 .service_btn {
@@ -46,6 +64,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 18px 0;
   cursor: pointer;
   background: transparent;
   border: none;
@@ -56,8 +75,8 @@
     position: absolute;
     transition: transform 0.3s ease-in-out;
 
-    @include onDesktop {
-      left: 40%;
+    @include onLDeskTop {
+      position: relative;
     }
   }
 
@@ -283,19 +302,39 @@
     &_img {
       position: relative;
       width: 16px;
+      height: 16px;
     }
   }
 }
 
 @keyframes wave {
+
   0%,
   100% {
     transform: translateY(0);
   }
+
   25% {
     transform: translateY(-4px);
   }
+
   75% {
     transform: translateY(4px);
   }
 }
+
+.burger-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.burger-btn img {
+  width: 16px; 
+  height: 16px;
+}
+
