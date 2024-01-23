@@ -6,15 +6,20 @@ import './BurgerMenuOpened.modules.scss';
 import favoriteImg from '../../images/Favourites.png';
 import ordersLogo from '../../images/ShoppingBag.png';
 import { NavigationLink } from '../NavigationLink/NavigationLink';
+import { HeaderCounter } from '../HeaderCounter/HeaderCounter';
 
 interface BurgerMenuProps {
   isMenuOpen: boolean;
   setIsMenuOpen: (isOpen: boolean) => void;
+  cart: number;
+  favorites: number;
 }
 
 export const BurgerMenuOpened: FC<BurgerMenuProps> = ({
   isMenuOpen,
   setIsMenuOpen,
+  cart,
+  favorites,
 }) => {
   const handleMenuClose = () => {
     setIsMenuOpen(false);
@@ -59,6 +64,8 @@ export const BurgerMenuOpened: FC<BurgerMenuProps> = ({
               alt="like button"
               className={classNames('like')}
             />
+
+            <HeaderCounter productsCount={favorites} />
           </div>
         </Link>
 
@@ -71,11 +78,15 @@ export const BurgerMenuOpened: FC<BurgerMenuProps> = ({
           )}
           onClick={handleMenuClose}
         >
-          <img
-            src={ordersLogo}
-            alt="orders button"
-            className={classNames('service_btn_img')}
-          />
+          <div className={classNames('imageContainer')}>
+            <img
+              src={ordersLogo}
+              alt="orders button"
+              className={classNames('service_btn_img')}
+            />
+
+            <HeaderCounter productsCount={cart} />
+          </div>
         </Link>
       </div>
     </div>
