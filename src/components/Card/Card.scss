@@ -1,7 +1,9 @@
+@import '../../assets/mixins';
+
 .card {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
 
   width: 288px;
@@ -30,14 +32,38 @@
     line-height: 21px;
   }
 
-  &--price {
+  &--prices {
+    display: flex;
+    justify-content: left;
+
     width: 100%;
+  }
+
+  &--price {
+    margin-right: 8px;
 
     font-size: 22px;
     font-weight: 800;
     line-height: 31px;
 
     text-align: left;
+    &-maxPrice {
+      opacity: 0;
+      
+      
+      @include onLargeDesktop {
+        opacity: 1;
+
+        color: #89939A;
+        font-weight: 400;
+
+        text-decoration: line-through;
+      }
+    }
+  }
+
+  &--bottom {
+    width: 100%;
   }
 }
 
