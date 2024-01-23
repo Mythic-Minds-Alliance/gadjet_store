@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import React from 'react';
 import styles from './CartItem.module.scss';
 import { Cross } from '../Cross/Cross';
 import TestImg from '../../images/image 8.png';
