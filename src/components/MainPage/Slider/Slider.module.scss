@@ -1,6 +1,6 @@
-@import '../../assets/colors.scss';
-@import '../../assets/variables';
-@import "../../assets/mixins";
+@import '../../../assets/colors';
+@import '../../../assets/variables';
+@import "../../../assets/mixins";
 
 .sliderImg {
   width: 100%;
@@ -123,6 +123,7 @@ $sliderItemSize: 100%;
   }
 
   &__dot-active {
-    background-color: $secondary;
+    background-color: $primary;
+    border: none;
   }
 }

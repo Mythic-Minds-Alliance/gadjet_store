@@ -4,7 +4,10 @@
 @import "../../assets/mixins";
 
 .footerContainer {
-  margin-top: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
   border-top: 1px solid $secondary;
   padding: 32px 16px;
