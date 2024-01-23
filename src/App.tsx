@@ -31,6 +31,10 @@ export function handleAddToCart(item: Product): void {
     const isItemInCart = currentCart.some(product => product.id === item.id);
 
     if (isItemInCart) {
+      localStorage
+        .setItem('cart', JSON.stringify(currentCart
+          .filter(product => product.id !== item.id)));
+
       return;
     }
 
@@ -51,10 +55,14 @@ export function handleAddToFavorites(item: Product): void {
     const currentFavorites: Product[]
       = JSON.parse(localStorage.getItem('favorites') || '[]');
 
-    const isItemInCart
+    const isItemInFavorites
       = currentFavorites.some(product => product.id === item.id);
 
-    if (isItemInCart) {
+    if (isItemInFavorites) {
+      localStorage
+        .setItem('favorites', JSON.stringify(currentFavorites
+          .filter(product => product.id !== item.id)));
+
       return;
     }
 
