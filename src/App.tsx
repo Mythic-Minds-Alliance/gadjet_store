@@ -12,8 +12,6 @@ import { Header } from './components/Header';
 interface DataContextType {
   productList: Product[];
   isLoading: boolean;
-  cart: Product[];
-  favorites: Product[];
   cartStorage: Product[];
   favoriteStorage: Product[];
   setFavoriteStorage: Dispatch<SetStateAction<Product[]>>;
@@ -23,8 +21,6 @@ interface DataContextType {
 export const DataContext = createContext<DataContextType>({
   productList: [],
   isLoading: true,
-  cart: [],
-  favorites: [],
   cartStorage: [],
   favoriteStorage: [],
   setFavoriteStorage: () => { },
@@ -86,9 +82,6 @@ export function handleAddToFavorites(item: Product,
 }
 
 export const App = () => {
-  const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-  const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-
   const [productList, setProductList] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [cartStorage, setCartStorage] = useState<Product[]>([]);
@@ -127,8 +120,6 @@ export const App = () => {
     <DataContext.Provider value={{
       productList,
       isLoading,
-      cart,
-      favorites,
       cartStorage,
       favoriteStorage,
       setCartStorage,
