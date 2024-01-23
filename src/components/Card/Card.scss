@@ -12,6 +12,11 @@
 
   border: 1px solid #E2E6E9;
 
+  @include onTablet {
+  width: 229px;
+  height: 506px;
+  }
+
   &--photo {
     display: flex;
     align-items: center;
