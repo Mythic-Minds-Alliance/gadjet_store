@@ -1,5 +1,8 @@
+/* eslint-disable import/no-cycle */
 import axios from 'axios';
 import { Outlet } from 'react-router-dom';
+import { createContext, useEffect, useState } from 'react';
+import { Header } from './components/Header';
 import {
   Dispatch, SetStateAction,
   createContext, useEffect, useState,

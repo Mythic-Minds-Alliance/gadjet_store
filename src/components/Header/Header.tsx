@@ -1,18 +1,25 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+/* eslint-disable import/no-cycle */
+import { useContext, useState } from 'react';
 import classNames from 'classnames';
-import { NavigationLink } from '../NavigationLink/NavigationLink';
+import { NavLink } from 'react-router-dom';
+import { DataContext } from '../../App';
 
 import './Header.scss';
+import { NavigationLink } from '../NavigationLink/NavigationLink';
 import { BurgerMenuOpened } from '../BurgerMenuOpened';
 import logo from '../../images/Logo.png';
 import favoriteImg from '../../images/Favourites.png';
 import ordersLogo from '../../images/ShoppingBag.png';
 import burgerMenu from '../../images/Menu.png';
 import close from '../../images/Close.png';
+import { HeaderCounter } from '../HeaderCounter/HeaderCounter';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const {
+    cart,
+    favorites,
+  } = useContext(DataContext);
 
   return (
     <header className="header">
@@ -58,20 +65,6 @@ export const Header = () => {
 
         <div className="links">
           <NavLink
-            to="/cart"
-            className={({ isActive }) => classNames(
-              'service_btn',
-              { active: isActive },
-            )}
-          >
-            <img
-              src={ordersLogo}
-              alt="orders button"
-              className="service_btn_img"
-            />
-          </NavLink>
-
-          <NavLink
             to="/favourites"
             onClick={() => { }}
             className={({ isActive }) => classNames(
@@ -84,6 +77,28 @@ export const Header = () => {
               alt="like button"
               className="service_btn_img"
             />
+
+            <div className={classNames('headerCounter')}>
+              <HeaderCounter productsCount={favorites.length} />
+            </div>
+          </NavLink>
+
+          <NavLink
+            to="/cart"
+            className={({ isActive }) => classNames(
+              'service_btn',
+              { active: isActive },
+            )}
+          >
+            <img
+              src={ordersLogo}
+              alt="orders button"
+              className="service_btn_img"
+            />
+
+            <div className={classNames('headerCounter')}>
+              <HeaderCounter productsCount={cart.length} />
+            </div>
           </NavLink>
         </div>
 
@@ -103,7 +118,12 @@ export const Header = () => {
         </button>
       </div>
 
-      <BurgerMenuOpened isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      <BurgerMenuOpened
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+        cart={cart.length}
+        favorites={favorites.length}
+      />
     </header>
   );
 };
