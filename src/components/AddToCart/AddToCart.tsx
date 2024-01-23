@@ -1,19 +1,39 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import './AddToCart.scss';
 import like from '../../icons/like.svg';
 import likeActive from '../../icons/like-active.svg';
 import { Product } from '../../types/product';
-import { handleAddToCart, handleAddToFavorites } from '../../App';
+import { DataContext, handleAddToCart, handleAddToFavorites } from '../../App';
 
 type Props = {
   product: Product,
 };
 
 export const AddToCart: React.FC<Props> = ({ product }) => {
-  const [icon, setIcon] = useState(like);
   const [isActiveAdd, setIsActiveAdd] = useState(false);
   const [isActiveFavorite, setIsActiveFavorite] = useState(false);
+
+  const {
+    setFavoriteStorage,
+    setCartStorage,
+    cartStorage,
+    favoriteStorage,
+  } = useContext(DataContext);
+
+  const checkIsActive = (item: Product, productStorage: Product[]) => {
+    return productStorage.some(phoneCard => phoneCard.id === item.id);
+  };
+
+  useEffect(() => {
+    if (checkIsActive(product, cartStorage)) {
+      setIsActiveAdd(true);
+    }
+
+    if (checkIsActive(product, favoriteStorage)) {
+      setIsActiveFavorite(true);
+    }
+  }, [cartStorage, favoriteStorage, product]);
 
   const handleClickAdd = () => {
     setIsActiveAdd(!isActiveAdd);
@@ -21,13 +41,6 @@ export const AddToCart: React.FC<Props> = ({ product }) => {
 
   const handleClickFavorite = () => {
     setIsActiveFavorite(!isActiveFavorite);
-  };
-
-  const handlerIcons = () => {
-    setIcon(
-      (currentIcon: string) => (
-        currentIcon === like ? likeActive : like),
-    );
   };
 
   return (
@@ -39,7 +52,7 @@ export const AddToCart: React.FC<Props> = ({ product }) => {
         type="submit"
         onClick={() => {
           handleClickAdd();
-          handleAddToCart(product);
+          handleAddToCart(product, setCartStorage);
         }}
       >
         Add to cart
@@ -52,13 +65,12 @@ export const AddToCart: React.FC<Props> = ({ product }) => {
             : 'addToCart--favorite'
         }
         onClick={() => {
-          handlerIcons();
           handleClickFavorite();
-          handleAddToFavorites(product);
+          handleAddToFavorites(product, setFavoriteStorage);
         }}
       >
         <img
-          src={icon}
+          src={isActiveFavorite ? like : likeActive}
           alt="like"
           className="addToCart--icons"
         />
