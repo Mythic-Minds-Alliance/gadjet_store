@@ -8,6 +8,7 @@ import Accessories from '../../images/accesorise.png';
 import './HomePage.scss';
 // import { Card } from '../../components/Card/Card';
 import { Footer } from '../../components/Footer/Footer';
+import { Slider } from '../../components/Slider/Slider';
 
 export const HomePage = () => {
   // const { productList, isLoading } = useContext(DataContext);
@@ -16,9 +17,11 @@ export const HomePage = () => {
     <>
       <div className="mainPageContainer">
         <h1 className="mainTitle">Welcome to Nice Gadgets store!</h1>
+      </div>
 
-        <div className="slider">slider</div>
-        <img src="../../images/sliderPhoneImg1.png" alt="khj" />
+      <Slider />
+
+      <div className="mainPageContainer">
 
         <section className="section newModels">
           <h3 className="sectionTitle">Brand new models</h3>
@@ -64,6 +67,8 @@ export const HomePage = () => {
 
         <section className="section hotPrices">
           <h3 className="sectionTitle">Hot prices</h3>
+          <div className="card">card</div>
+
         </section>
       </div>
 
