@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
-
 import './Header.scss';
 import { NavigationLink } from '../NavigationLink/NavigationLink';
 import { BurgerMenuOpened } from '../BurgerMenuOpened';
