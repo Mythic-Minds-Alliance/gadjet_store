@@ -1,16 +1,26 @@
 {
   "files": {
-    "main.css": "/gadjets_store_client/static/css/main.a086ee4a.css",
-    "main.js": "/gadjets_store_client/static/js/main.34393506.js",
+    "main.css": "/gadjets_store_client/static/css/main.2be82258.css",
+    "main.js": "/gadjets_store_client/static/js/main.a6472cb6.js",
     "static/media/tablets.png": "/gadjets_store_client/static/media/tablets.8ca07b70f7b983efdcf4.png",
+    "static/media/sliderBig1.png": "/gadjets_store_client/static/media/sliderBig1.2df82b50899099e0108b.png",
     "static/media/accesorise.png": "/gadjets_store_client/static/media/accesorise.7836a378770602c325a4.png",
+    "static/media/bigSlider2.jpg": "/gadjets_store_client/static/media/bigSlider2.d4d45e14e2135ef7773f.jpg",
+    "static/media/sliderImg3.jpg": "/gadjets_store_client/static/media/sliderImg3.99b4769b46d21284b964.jpg",
+    "static/media/sliderPhoneImg1.png": "/gadjets_store_client/static/media/sliderPhoneImg1.eea0b0d1be8372e8adfe.png",
+    "static/media/bigSlider3.webp": "/gadjets_store_client/static/media/bigSlider3.a92fd2d5ca84c7385893.webp",
     "static/media/mobilePhones.png": "/gadjets_store_client/static/media/mobilePhones.20e72feaf44379701c25.png",
+    "static/media/00.webp": "/gadjets_store_client/static/media/00.2b214f0ba820b6a2078a.webp",
+    "static/media/sliderImg2.jpg": "/gadjets_store_client/static/media/sliderImg2.7222b9ccb94f32682aa5.jpg",
+    "static/media/like.svg": "/gadjets_store_client/static/media/like.87fbe581c0493d3cf3f1c5b08aa5a250.svg",
+    "static/media/like-active.svg": "/gadjets_store_client/static/media/like-active.d554a185325e4fb0609231b1cff64b18.svg",
+    "static/media/Arrow.svg": "/gadjets_store_client/static/media/Arrow.837e2957378258c8ddb071859e53301f.svg",
     "index.html": "/gadjets_store_client/index.html",
-    "main.a086ee4a.css.map": "/gadjets_store_client/static/css/main.a086ee4a.css.map",
-    "main.34393506.js.map": "/gadjets_store_client/static/js/main.34393506.js.map"
+    "main.2be82258.css.map": "/gadjets_store_client/static/css/main.2be82258.css.map",
+    "main.a6472cb6.js.map": "/gadjets_store_client/static/js/main.a6472cb6.js.map"
   },
   "entrypoints": [
-    "static/css/main.a086ee4a.css",
-    "static/js/main.34393506.js"
+    "static/css/main.2be82258.css",
+    "static/js/main.a6472cb6.js"
   ]
 }
