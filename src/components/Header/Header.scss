@@ -1,3 +1,4 @@
+@import '../../assets/normalize.scss';
 @import '../../assets/colors.scss';
 @import '../../assets/variables';
 @import "../../assets/mixins";
@@ -10,10 +11,19 @@
 .header {
   position: sticky;
   top: 0;
+  margin-bottom: 24px;
   height: 64px;
   border-bottom: 1px solid $elements;
   background: $white;
   z-index: 10;
+
+  @include onTablet {
+    margin-bottom: 32px;
+  }
+
+  @include onDesktop {
+    margin-bottom: 56px;
+  }
 
   &__logo {
     display: block;
@@ -62,6 +72,7 @@
 .service_btn {
   position: relative;
   width: 64px;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,6 +89,7 @@
 
     @include onDesktop {
       position: relative;
+      width: 16px;
     }
   }
 
