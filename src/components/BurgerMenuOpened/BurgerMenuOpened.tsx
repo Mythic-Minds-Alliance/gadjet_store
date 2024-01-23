@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-
-import './BurgerMenuOpened.scss';
 import classNames from 'classnames';
-import favoriteImg from '../../img/Favourites.png';
-import ordersLogo from '../../img/ShoppingBag.png';
+
+import './BurgerMenuOpened.modules.scss';
+import favoriteImg from '../../images/Favourites.png';
+import ordersLogo from '../../images/ShoppingBag.png';
 import { NavigationLink } from '../NavigationLink/NavigationLink';
 
 interface BurgerMenuProps {
@@ -46,9 +46,11 @@ export const BurgerMenuOpened: FC<BurgerMenuProps> = ({
       <div className={classNames('burger__service')}>
         <Link
           to="/orders"
-          className={classNames('service__button', 'service__orders', {
-            'service__button-active': isMenuOpen,
-          })}
+          className={classNames(
+            'service__button',
+            'service__orders',
+            { 'service__button-active': isMenuOpen },
+          )}
           onClick={handleMenuClose}
         >
           <img
@@ -73,18 +75,6 @@ export const BurgerMenuOpened: FC<BurgerMenuProps> = ({
             />
           </div>
         </Link>
-
-        {/* <Link
-          to="/cart"
-          className={classNames('service__button', 'service__cart', {
-            'service__button-active': isMenuOpen,
-          })}
-          onClick={handleMenuClose}
-        >
-          <div className={classNames('imageContainer')}>
-            <img src={cart} alt="cart button" className={classNames('cart')} />
-          </div>
-        </Link> */}
       </div>
     </div>
   );
