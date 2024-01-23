@@ -1,5 +1,6 @@
 @import '../../assets/colors/colors.scss';
-@import '../../assets/variebles.scss';
+@import '../../assets/variables';
+@import "../../assets/mixins";
 
 .header {
   position: sticky;
