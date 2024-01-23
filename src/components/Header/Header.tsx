@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
-import { NavigationLink } from '../NavigationLink/NavigationLink';
 
 import './Header.scss';
+import { NavigationLink } from '../NavigationLink/NavigationLink';
 import { BurgerMenuOpened } from '../BurgerMenuOpened';
 import logo from '../../images/Logo.png';
 import favoriteImg from '../../images/Favourites.png';
@@ -58,7 +58,7 @@ export const Header = () => {
 
         <div className="links">
           <NavLink
-            to="/orders"
+            to="/cart"
             className={({ isActive }) => classNames(
               'service_btn',
               { active: isActive },

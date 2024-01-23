@@ -63,7 +63,7 @@ export const BurgerMenuOpened: FC<BurgerMenuProps> = ({
         </Link>
 
         <Link
-          to="/orders"
+          to="/cart"
           className={classNames(
             'service__button',
             'service__orders',
