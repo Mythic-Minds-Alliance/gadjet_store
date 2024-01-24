@@ -59,9 +59,6 @@ export function handleRemoveFromCart(item: Product,
 
     localStorage.setItem('cart', JSON.stringify(updatedCart));
     setCartStorage(updatedCart);
-
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
-    setCartStorage(updatedCart);
   } catch (error) {
     throw new Error('Error removing cart data');
   }
@@ -106,44 +103,65 @@ export function handleRemoveFromFavorites(item: Product,
 
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     setFavoriteStorage(updatedFavorites);
-
-    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-    setFavoriteStorage(updatedFavorites);
   } catch (error) {
     throw new Error('Error updating favorites data');
   }
 }
 
 export function changeAmount(item: CartProduct,
-  setCartStorage: React.Dispatch<React.SetStateAction<CartProduct[]>>): void {
+  setCartStorage: React.Dispatch<React.SetStateAction<CartProduct[]>>,
+  action: string): void {
   try {
     const currentCart: CartProduct[]
       = JSON.parse(localStorage.getItem('cart') || '[]');
 
     const isItemInCart = currentCart.find(product => product.id === item.id);
+
+    if (!isItemInCart) {
+      throw new Error('item doesn`t exist');
+    }
+
     const newQuantity = isItemInCart?.quantity
       ? isItemInCart?.quantity + 1
       : 1;
 
-    if (isItemInCart) {
-      const updatedCart = currentCart.map(product => {
-        return product.id === isItemInCart.id
-          ? { ...product, quantity: newQuantity }
-          : { ...product };
-      });
+    switch (action) {
+      case 'plus':
+        if (isItemInCart) {
+          const updatedCart = currentCart.map(product => {
+            return product.id === isItemInCart.id
+              ? { ...product, quantity: newQuantity }
+              : { ...product };
+          });
 
-      localStorage.setItem('cart', JSON.stringify(updatedCart));
-      setCartStorage(updatedCart);
+          localStorage.setItem('cart', JSON.stringify(updatedCart));
+          setCartStorage(updatedCart);
+        }
 
-      return;
+        break;
+      case 'minus':
+        if (isItemInCart?.quantity === 1) {
+          const updatedCart = currentCart
+            .filter(product => product.id !== isItemInCart.id);
+
+          localStorage.setItem('cart', JSON.stringify(updatedCart));
+          setCartStorage(updatedCart);
+        } else {
+          const updatedCart = currentCart.map(product => {
+            return product.id === isItemInCart.id
+              ? { ...product, quantity: product.quantity - 1 }
+              : { ...product };
+          });
+
+          localStorage.setItem('cart', JSON.stringify(updatedCart));
+          setCartStorage(updatedCart);
+        }
+
+        break;
+
+      default:
+        throw new Error('error');
     }
-
-    const itemToAdd = { ...item, quantity: 1 };
-
-    const updatedCart = [...currentCart, itemToAdd];
-
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
-    setCartStorage(updatedCart);
   } catch (error) {
     throw new Error('Error updating cart data');
   }

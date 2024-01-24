@@ -49,6 +49,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
             aria-label="btn"
             className={styles.item__container_minus}
             onClick={() => {
+              changeAmount(item, setCartStorage, 'minus');
             }}
           >
             <Minus />
@@ -62,7 +63,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
             type="button"
             className={styles.item__container_plus}
             onClick={() => {
-              changeAmount(item, setCartStorage);
+              changeAmount(item, setCartStorage, 'plus');
             }}
           >
             <img src={plus} alt="Plus" />
