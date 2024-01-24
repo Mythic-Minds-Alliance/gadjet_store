@@ -1,7 +1,14 @@
+@import '../assets/mixins';
+
 .SortPanel {
   display: flex;
+  flex-direction: column;
   gap: 16px;
   margin-bottom: 24px;
+
+  @include onTablet {
+    flex-direction: row;
+  }
 
   &--title {
     margin-bottom: 4px;
@@ -21,6 +28,10 @@
     font-weight: 700;
     line-height: 21px;
 
-    border: 1px solid #B4BDC3
+    border: 1px solid #B4BDC3;
+
+    @include onTablet {
+      width: 176px;
+    }
   }
 }

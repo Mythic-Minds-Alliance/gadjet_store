@@ -1,33 +1,28 @@
-import { useState } from 'react';
+import { ChangeEvent } from 'react';
 import './SortPanel.scss';
-import { Product } from '../types/product';
+
+type Props = {
+  onSortField: (event: ChangeEvent<HTMLSelectElement>) => void;
+  selectedSortField: string;
+  selectedSortOrder: string;
+  onSelectOrder: (event: ChangeEvent<HTMLSelectElement>) => void;
+};
 
 const sortFields: string[] = ['Years', 'Price', 'Screen'];
 const sortCountOfPage: string[] = ['12', '24', '36'];
+const sortType: string[] = ['Ascending', 'Descending'];
 
-type Props = {
-  productList: Product[];
-};
-
-export const SortPanel: React.FC<Props> = () => {
-  const [
-    selectedSortField, setSelectedSortField,
-  ] = useState(sortFields[0]);
-  const [
-    selectedCountPerPage, setSelectedCountPerPage,
-  ] = useState(sortCountOfPage[0]);
-
-  const handleSortFieldChange = (
-    event: React.ChangeEvent<HTMLSelectElement>,
-  ) => {
-    setSelectedSortField(event.target.value);
-  };
-
-  const handleCountPerPageChange = (
-    event: React.ChangeEvent<HTMLSelectElement>,
-  ) => {
-    setSelectedCountPerPage(event.target.value);
-  };
+export const SortPanel: React.FC<Props> = ({
+  onSortField,
+  selectedSortField,
+  selectedSortOrder,
+  onSelectOrder,
+}) => {
+  // const handleCountPerPageChange = (
+  //   event: React.ChangeEvent<HTMLSelectElement>,
+  // ) => {
+  //   setSelectedCountPerPage(event.target.value);
+  // };
 
   return (
     <div className="SortPanel">
@@ -36,7 +31,7 @@ export const SortPanel: React.FC<Props> = () => {
         <select
           className="SortPanel--fields"
           value={selectedSortField}
-          onChange={handleSortFieldChange}
+          onChange={onSortField}
         >
           {sortFields.map((sortBy) => (
             <option key={sortBy} value={sortBy}>
@@ -50,12 +45,27 @@ export const SortPanel: React.FC<Props> = () => {
         <p className="SortPanel--title">Items on page</p>
         <select
           className="SortPanel--fields"
-          value={selectedCountPerPage}
-          onChange={handleCountPerPageChange}
+        // value={selectedCountPerPage}
+        // onChange={handleCountPerPageChange}
         >
           {sortCountOfPage.map((count) => (
             <option key={count} value={count}>
               {count}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div>
+        <p className="SortPanel--title">Order</p>
+        <select
+          className="SortPanel--fields"
+          value={selectedSortOrder}
+          onChange={onSelectOrder}
+        >
+          {sortType.map((type) => (
+            <option key={type} value={type}>
+              {type}
             </option>
           ))}
         </select>
