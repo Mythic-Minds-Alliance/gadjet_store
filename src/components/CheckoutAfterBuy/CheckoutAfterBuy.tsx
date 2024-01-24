@@ -1,0 +1,70 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './CheckoutAfterBuy.scss';
+import close from '../../images/Close.png';
+import { CartProduct } from '../../types/product';
+import TestImg from '../../images/image 8.png';
+
+interface Props {
+  totalPrice: number;
+  cartStorage: CartProduct[];
+}
+
+export const CheckoutAfterBuy: React.FC<Props> = ({
+  totalPrice,
+  cartStorage,
+}) => {
+  const orderNumber = Math.floor(Math.random() * 10000) + 1;
+
+  return (
+    <div className="page">
+      <div className="checkoutPage">
+        <Link to="/phones" className="checkoutPage__closer">
+          <img
+            src={close}
+            className="checkoutPage__closer--img"
+            alt="phone"
+          />
+        </Link>
+        <h4 className="checkoutPage__h3">
+          thank you for your order
+        </h4>
+
+        <p className="checkoutPage__txt">
+          Your order has been successfully received.
+        </p>
+
+        <div className="orderContainer">
+          {cartStorage.map((product) => (
+            <div key={product.id} className="orderItem">
+              <div className="productInfo">
+                <img
+                  src={TestImg}
+                  alt={product.name}
+                  className="productImage"
+                />
+                <div>
+                  <p>{product.name}</p>
+                  <p>
+                    $
+                    {product.price.toFixed(2)}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <p className="orderTotal">
+          Total: $
+          {totalPrice.toFixed(2)}
+        </p>
+
+        <p className="orderNumber">
+          {`Order Number: №${orderNumber}`}
+        </p>
+
+      </div>
+    </div>
+  );
+};
