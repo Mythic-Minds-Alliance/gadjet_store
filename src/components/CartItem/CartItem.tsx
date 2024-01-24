@@ -16,7 +16,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
     <div className={styles.item__container}>
       <div className={styles.item_phone_info}>
         <div className={styles.item__container_close}>
-          <Cross />
+          <Cross item={item} />
         </div>
 
         <Link
