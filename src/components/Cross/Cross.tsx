@@ -1,11 +1,23 @@
+import { useContext } from 'react';
+import { Product } from '../../types/product';
+import { handleRemoveFromCart } from '../../utils/helpers';
 import './Cross.module.scss';
+import { DataContext } from '../../App';
 
-export const Cross = () => {
+type Props = {
+  item: Product;
+};
+
+export const Cross: React.FC<Props> = ({ item }) => {
+  const { setCartStorage } = useContext(DataContext);
+
   return (
     <button
       type="button"
       aria-label="btn"
-      onClick={() => {}}
+      onClick={() => {
+        handleRemoveFromCart(item, setCartStorage);
+      }}
     >
       <svg
         width="16"
