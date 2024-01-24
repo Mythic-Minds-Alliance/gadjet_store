@@ -43,7 +43,7 @@ export const CheckoutAfterBuy: React.FC<Props> = ({
                   alt={product.name}
                   className="productImage"
                 />
-                <div>
+                <div className="productDescription">
                   <p>{product.name}</p>
                   <p>
                     $
@@ -63,6 +63,10 @@ export const CheckoutAfterBuy: React.FC<Props> = ({
         <p className="orderNumber">
           {`Order Number: №${orderNumber}`}
         </p>
+
+        <Link to="/phones" className="checkoutPage__closerButton">
+          Close
+        </Link>
 
       </div>
     </div>
