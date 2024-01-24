@@ -1,5 +1,10 @@
 import detailsStyles from './ProductDetailsPage.module.scss';
 import { ProductTitle } from '../../components/ProductDetailsPage/ProductTitle';
+import {
+  AboutProduct,
+  phonesFromServer,
+} from '../../components/AboutProduct/AboutProduct';
+import { TechSpecs } from '../../components/TechSpecs/TechSpecs';
 // eslint-disable-next-line max-len
 import { ProductImagesSlider } from '../../components/ProductDetailsPage/ProductImagesSlider';
 import 'swiper/css';
@@ -19,10 +24,15 @@ export const ProductDetailsPage = () => {
             mainInfo
           </div>
           <div className={detailsStyles.extendedDetails__about}>
-            about
+            <AboutProduct />
           </div>
           <div className={detailsStyles.extendedDetails__techSpecs}>
-            techSpecs
+            {phonesFromServer.map(phone => (
+              <TechSpecs
+                phone={phone}
+                key={phone.id}
+              />
+            ))}
           </div>
         </div>
 

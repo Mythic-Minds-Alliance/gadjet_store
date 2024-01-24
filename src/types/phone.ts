@@ -13,7 +13,7 @@ export interface Phone {
   priceDiscount: number;
   colorsAvailable: string[];
   color: string;
-  image: string[];
+  images: string[];
   description: Description[];
   screen: string;
   resolution: string;
