@@ -2,6 +2,8 @@
 
 .PhonePage {
   padding: 16px 24px;
+  max-width: 1136px;
+  margin: 0 auto;
 
   @include onTablet {
     padding: 24px 16px;
@@ -23,6 +25,7 @@
 
     @include onTablet {
       grid-template-columns: repeat(auto-fill, minmax(229px, 6fr));
+      justify-items: start;
     }
 
     @include onLargeDesktop {

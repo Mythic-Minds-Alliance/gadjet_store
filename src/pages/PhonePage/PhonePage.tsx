@@ -4,6 +4,7 @@ import './PhonePage.scss';
 import { Card } from '../../components/Card/Card';
 import { DataContext } from '../../App';
 import { Loader } from '../../components/Loader';
+import { SortPanel } from '../../SortPanel/SortPanel';
 
 export const PhonePage = () => {
   const {
@@ -18,21 +19,9 @@ export const PhonePage = () => {
       </h1>
       <p>95 models</p>
 
-      <div>
-        <div>
-          <p>Sort by</p>
-          <select name="" id="">
-            <option>sad</option>
-          </select>
-        </div>
-
-        <div>
-          <p>Items on page</p>
-          <select name="" id="">
-            <option>asd</option>
-          </select>
-        </div>
-      </div>
+      <SortPanel
+        productList={productList}
+      />
 
       {isLoading ? (
         <Loader />
