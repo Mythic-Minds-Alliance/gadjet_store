@@ -1,1 +1,0 @@
-export { CheckoutPaydPage } from './CheckoutPaydPage';
