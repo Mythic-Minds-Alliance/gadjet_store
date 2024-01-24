@@ -43,6 +43,10 @@
   @include onDesktop {
     grid-template-columns: repeat(3, 8fr);
   }
+
+  @include onLargeDesktop {
+    grid-template-columns: repeat(2, 12fr);
+  }
 }
 
 @mixin headline-1 {

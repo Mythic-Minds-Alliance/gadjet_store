@@ -10,6 +10,8 @@ import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { PhonePage } from './pages/PhonePage/PhonePage';
 import { HomePage } from './pages/HomePage/HomePage';
 import { CartPage } from './pages/CartPage/CartPage';
+// eslint-disable-next-line max-len
+import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
 
 createRoot(document.getElementById('root') as HTMLDivElement).render(
   <Router>
@@ -18,6 +20,7 @@ createRoot(document.getElementById('root') as HTMLDivElement).render(
         <Route index element={<HomePage />} />
         <Route path="phones" element={<PhonePage />} />
         <Route path="cart" element={<CartPage />} />
+        <Route path="productDetails" element={<ProductDetailsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

@@ -138,7 +138,6 @@ export const Slider: FC = () => {
             goToPrevious();
           }}
           onKeyDown={(e) => {
-            // Handle keyboard events
             if (e.key === 'Enter' || e.key === 'Space') {
               setIsAutoScrolling(false);
               goToPrevious();

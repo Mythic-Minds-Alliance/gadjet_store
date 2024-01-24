@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import classNames from 'classnames/bind';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styles from './ImageSlider.module.scss';
 
 const cn = classNames.bind(styles);
@@ -19,8 +19,8 @@ export const ImageSlider: FC<ImageSliderProps> = ({ slides, currentIndex }) => {
           className={cn('slider')}
         >
           {slides.map((slide) => (
-            <Link
-              to="/phones/apple-iphone-14-pro-128gb-spaceblack"
+            <NavLink
+              to="/productDetails"
               className={cn('slider__slide')}
             >
               <img
@@ -28,7 +28,7 @@ export const ImageSlider: FC<ImageSliderProps> = ({ slides, currentIndex }) => {
                 src={slide}
                 alt="slider Item"
               />
-            </Link>
+            </NavLink>
           ))}
         </div>
       </div>
