@@ -9,7 +9,7 @@ interface CartCheckoutProps {
 }
 
 export const CartCheckout: React.FC<CartCheckoutProps> = ({ cartStorage }) => {
-  const [showThankYou, setShowThankYou] = useState(true);
+  const [showThankYou, setShowThankYou] = useState(false);
 
   const totalPrice = cartStorage
     .reduce(
@@ -41,7 +41,7 @@ export const CartCheckout: React.FC<CartCheckoutProps> = ({ cartStorage }) => {
       </button>
 
       {showThankYou && (
-        <CheckoutAfterBuy />
+        <CheckoutAfterBuy totalPrice={totalPrice} cartStorage={cartStorage} />
       )}
     </div>
   );
