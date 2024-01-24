@@ -1,9 +1,9 @@
+import './ProductImagesSlider.scss';
 import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Thumbs } from 'swiper/modules';
-// import 'swiper/css';
-// import 'swiper/css/thumbs';
-import styles from './ProductImagesSlider.module.scss';
+import 'swiper/css';
+import 'swiper/css/thumbs';
 
 import img1 from '../../../images/apple-iphone-11/black/00.jpg';
 import img2 from '../../../images/apple-iphone-11/black/01.jpg';
@@ -17,24 +17,22 @@ export const ProductImagesSlider = () => {
   const [activeThumb, setActiveThumb] = useState(null);
 
   return (
-    <div className={styles.productImagesSlider}>
+    <div className="product-images-slider">
       <Swiper
         loop
         spaceBetween={10}
         modules={[Thumbs]}
         grabCursor
         thumbs={{ swiper: activeThumb }}
-        className={styles.swiperContainer}
+        className="product-images-slider"
       >
-        {productImages.map((item, index) => (
-          <SwiperSlide key={1}>
-            <img
-              src={item}
-              alt={`Product phone ${index}`}
-              className={styles.imgSlider}
-            />
-          </SwiperSlide>
-        ))}
+        {
+          productImages.map((item) => (
+            <SwiperSlide>
+              <img src={item} alt="product images" />
+            </SwiperSlide>
+          ))
+        }
       </Swiper>
       <Swiper
         onSwiper={setActiveThumb}
@@ -42,19 +40,17 @@ export const ProductImagesSlider = () => {
         spaceBetween={10}
         slidesPerView={4}
         modules={[Thumbs]}
-        className={styles.thumbsContainer}
+        className="product-images-slider-thumbs"
       >
-        {productImages.map((item, index) => (
-          <SwiperSlide key={1}>
-            <div className={styles.thumbWrapper}>
-              <img
-                src={item}
-                alt={`Thumb ${index}`}
-                className={styles.imgSlider}
-              />
-            </div>
-          </SwiperSlide>
-        ))}
+        {
+          productImages.map((item) => (
+            <SwiperSlide>
+              <div className="product-images-slider-thumbs-wrapper">
+                <img src={item} alt="product images" />
+              </div>
+            </SwiperSlide>
+          ))
+        }
       </Swiper>
     </div>
   );
