@@ -43,11 +43,11 @@ export const CheckoutAfterBuy: React.FC<Props> = ({
                   alt={product.name}
                   className="productImage"
                 />
-                <div>
-                  <p>{product.name}</p>
+                <div className="productDescription">
+                  <p>{product.quantity > 1 ? `${product.name} x ${product.quantity} items` : product.name}</p>
                   <p>
                     $
-                    {product.price.toFixed(2)}
+                    {`${product.price.toFixed(2)} `}
                   </p>
                 </div>
               </div>
@@ -63,6 +63,10 @@ export const CheckoutAfterBuy: React.FC<Props> = ({
         <p className="orderNumber">
           {`Order Number: №${orderNumber}`}
         </p>
+
+        <Link to="/phones" className="checkoutPage__closerButton">
+          Close
+        </Link>
 
       </div>
     </div>
