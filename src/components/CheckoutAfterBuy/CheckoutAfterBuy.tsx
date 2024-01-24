@@ -44,10 +44,10 @@ export const CheckoutAfterBuy: React.FC<Props> = ({
                   className="productImage"
                 />
                 <div className="productDescription">
-                  <p>{product.name}</p>
+                  <p>{product.quantity > 1 ? `${product.name} x ${product.quantity} items` : product.name}</p>
                   <p>
                     $
-                    {product.price.toFixed(2)}
+                    {`${product.price.toFixed(2)} `}
                   </p>
                 </div>
               </div>
