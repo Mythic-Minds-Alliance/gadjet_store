@@ -2,20 +2,19 @@ import React, { useState } from 'react';
 import styles from './CartCheckout.module.scss';
 import { CardSeparator } from '../СardSeparator/CardSeparator';
 import { CheckoutAfterBuy } from '../CheckoutAfterBuy/CheckoutAfterBuy';
-
-interface CartItem {
-  price: number;
-}
+import { CartProduct } from '../../types/product';
 
 interface CartCheckoutProps {
-  cartStorage: CartItem[];
+  cartStorage: CartProduct[];
 }
 
 export const CartCheckout: React.FC<CartCheckoutProps> = ({ cartStorage }) => {
   const [showThankYou, setShowThankYou] = useState(true);
 
   const totalPrice = cartStorage
-    .reduce((sum: number, item: CartItem) => sum + item.price, 0);
+    .reduce(
+      (sum: number, item: CartProduct) => sum + item.price * item.quantity, 0,
+    );
 
   return (
     <div className={styles.checkout}>
