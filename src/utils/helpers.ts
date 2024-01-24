@@ -218,3 +218,4 @@ export function sortProductList(
   }
 
   return preparedList;
+}
