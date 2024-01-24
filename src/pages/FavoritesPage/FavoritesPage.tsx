@@ -12,11 +12,11 @@ export const FavoritesPage = () => {
   } = useContext(DataContext);
 
   return (
-    <div className="AccessoriesPage">
-      <h1 className="AccessoriesPage--title">
+    <div className="FavoritesPage">
+      <h1 className="FavoritesPage--title">
         Favorites
       </h1>
-      <p className="AccessoriesPage--accessoriesCount">
+      <p className="FavoritesPage--favoritesCount">
         {(favoriteStorage.length === 1)
           ? (`${favoriteStorage.length} item`)
           : (`${favoriteStorage.length} items`)}
@@ -25,7 +25,7 @@ export const FavoritesPage = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="AccessoriesPage--container">
+        <div className="FavoritesPage--container">
           {favoriteStorage.map(product => (
             <Card
               key={product.id}

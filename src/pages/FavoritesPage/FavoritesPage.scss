@@ -1,6 +1,6 @@
 @import '../../assets/mixins';
 
-.AccessoriesPage {
+.FavoritesPage {
   padding: 16px 24px;
   max-width: 1136px;
   margin: 0 auto;
@@ -18,7 +18,7 @@
     margin-bottom: 8px;
   }
 
-  &--accessoriesCount {
+  &--favoritesCount {
     margin-bottom: 32px;
 
     font-size: 14px;
