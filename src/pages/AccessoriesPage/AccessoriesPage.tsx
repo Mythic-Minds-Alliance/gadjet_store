@@ -1,13 +1,13 @@
 import { useContext, useState } from 'react';
 
-import './PhonePage.scss';
+import './AccessoriesPage.scss';
 import { Card } from '../../components/Card/Card';
 import { DataContext } from '../../App';
 import { Loader } from '../../components/Loader';
 import { SortPanel } from '../../SortPanel/SortPanel';
 import { sortProductList } from '../../utils/helpers';
 
-export const PhonePage = () => {
+export const AccessoriesPage = () => {
   const [
     selectedSortField, setSelectedSortField,
   ] = useState('Years');
@@ -40,11 +40,11 @@ export const PhonePage = () => {
   );
 
   return (
-    <div className="PhonePage">
-      <h1 className="PhonePage--title">
-        Mobile phones
+    <div className="AccessoriesPage">
+      <h1 className="AccessoriesPage--title">
+        Accessories Page
       </h1>
-      <p className="PhonePage--phoneCount">
+      <p className="AccessoriesPage--accessoriesCount">
         {`${visibleList.length} models`}
       </p>
 
@@ -58,7 +58,7 @@ export const PhonePage = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="PhonePage--container">
+        <div className="AccessoriesPage--container">
           {visibleList.map(product => (
             <Card
               key={product.id}
