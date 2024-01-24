@@ -24,4 +24,9 @@
   @include onLargeDesktop {
     grid-template-columns: repeat(2, 12fr);
   }
+
+  &__pictures {
+    width: 500px;
+    padding: 20px;
+  }
 }
