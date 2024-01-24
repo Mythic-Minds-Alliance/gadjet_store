@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './CartCheckout.module.scss';
 import { CardSeparator } from '../СardSeparator/CardSeparator';
+import { CheckoutAfterBuy } from '../CheckoutAfterBuy/CheckoutAfterBuy';
 
 interface CartItem {
   price: number;
@@ -11,6 +12,8 @@ interface CartCheckoutProps {
 }
 
 export const CartCheckout: React.FC<CartCheckoutProps> = ({ cartStorage }) => {
+  const [showThankYou, setShowThankYou] = useState(true);
+
   const totalPrice = cartStorage
     .reduce((sum: number, item: CartItem) => sum + item.price, 0);
 
@@ -31,9 +34,16 @@ export const CartCheckout: React.FC<CartCheckoutProps> = ({ cartStorage }) => {
       <button
         type="button"
         className={styles.checkout__btn}
+        onClick={() => {
+          setShowThankYou(true);
+        }}
       >
         Checkout
       </button>
+
+      {showThankYou && (
+        <CheckoutAfterBuy />
+      )}
     </div>
   );
 };
