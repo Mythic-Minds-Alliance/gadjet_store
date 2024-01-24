@@ -21,4 +21,7 @@
 
 .extendedDetails {
   @include pageGrid;
+  @include onLargeDesktop {
+    grid-template-columns: repeat(2, 12fr);
+  }
 }
