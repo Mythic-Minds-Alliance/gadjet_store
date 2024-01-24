@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Product } from '../types/product';
+import { CartProduct, Product } from '../types/product';
 
 export const scrollToTop = () => {
   window.scrollTo({
@@ -22,9 +22,9 @@ export const PageToTop: FC = () => {
 };
 
 export function handleAddToCart(item: Product,
-  setCartStorage: React.Dispatch<React.SetStateAction<Product[]>>): void {
+  setCartStorage: React.Dispatch<React.SetStateAction<CartProduct[]>>): void {
   try {
-    const currentCart: Product[]
+    const currentCart: CartProduct[]
       = JSON.parse(localStorage.getItem('cart') || '[]');
 
     const isItemInCart = currentCart.some(product => product.id === item.id);
@@ -50,9 +50,9 @@ export function handleAddToCart(item: Product,
 }
 
 export function handleRemoveFromCart(item: Product,
-  setCartStorage: React.Dispatch<React.SetStateAction<Product[]>>): void {
+  setCartStorage: React.Dispatch<React.SetStateAction<CartProduct[]>>): void {
   try {
-    const currentCart: Product[]
+    const currentCart: CartProduct[]
       = JSON.parse(localStorage.getItem('cart') || '[]');
 
     const updatedCart = currentCart.filter(product => product.id !== item.id);
@@ -111,5 +111,40 @@ export function handleRemoveFromFavorites(item: Product,
     setFavoriteStorage(updatedFavorites);
   } catch (error) {
     throw new Error('Error updating favorites data');
+  }
+}
+
+export function changeAmount(item: CartProduct,
+  setCartStorage: React.Dispatch<React.SetStateAction<CartProduct[]>>): void {
+  try {
+    const currentCart: CartProduct[]
+      = JSON.parse(localStorage.getItem('cart') || '[]');
+
+    const isItemInCart = currentCart.find(product => product.id === item.id);
+    const newQuantity = isItemInCart?.quantity
+      ? isItemInCart?.quantity + 1
+      : 1;
+
+    if (isItemInCart) {
+      const updatedCart = currentCart.map(product => {
+        return product.id === isItemInCart.id
+          ? { ...product, quantity: newQuantity }
+          : { ...product };
+      });
+
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
+      setCartStorage(updatedCart);
+
+      return;
+    }
+
+    const itemToAdd = { ...item, quantity: 1 };
+
+    const updatedCart = [...currentCart, itemToAdd];
+
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+    setCartStorage(updatedCart);
+  } catch (error) {
+    throw new Error('Error updating cart data');
   }
 }

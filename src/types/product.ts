@@ -11,5 +11,8 @@ export interface Product {
   ram: string;
   year: number;
   image: string;
-  quantity?: number;
+}
+
+export interface CartProduct extends Product {
+  quantity: number;
 }
