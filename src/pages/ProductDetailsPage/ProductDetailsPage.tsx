@@ -1,15 +1,19 @@
 import detailsStyles from './ProductDetailsPage.module.scss';
 import { ProductTitle } from '../../components/ProductDetailsPage/ProductTitle';
+// eslint-disable-next-line max-len
+import { ProductImagesSlider } from '../../components/ProductDetailsPage/ProductImagesSlider';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/thumbs';
 
 export const ProductDetailsPage = () => {
   return (
     <>
       <div className={detailsStyles.container}>
         <ProductTitle />
-        <div>waqwaqwq</div>
         <div className={detailsStyles.extendedDetails}>
           <div className={detailsStyles.extendedDetails__pictures}>
-            pictures
+            <ProductImagesSlider />
           </div>
           <div className={detailsStyles.extendedDetails__mainInfo}>
             mainInfo
