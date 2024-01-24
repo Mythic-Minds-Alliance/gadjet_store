@@ -1,0 +1,32 @@
+@import '../../assets/mixins';
+
+.TechSpecs {
+  display: flex;
+  justify-content: space-between;
+  width: inherit;
+
+  &--list {
+    list-style: none;
+
+    &-item {
+      margin-bottom: 8px;
+
+      @include secondaryText;
+
+      color: #89939A;
+    }
+  }
+
+  &--characteristics {
+    list-style: none;
+
+    &-item {
+      margin-bottom: 8px;
+
+      @include secondaryText;
+      color: #313237;
+
+      white-space: nowrap;
+    }
+  }
+}

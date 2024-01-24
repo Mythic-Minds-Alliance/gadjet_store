@@ -1,5 +1,10 @@
 import detailsStyles from './ProductDetailsPage.module.scss';
 import { ProductTitle } from '../../components/ProductDetailsPage/ProductTitle';
+import {
+  AboutProduct,
+  phonesFromServer,
+} from '../../components/AboutProduct/AboutProduct';
+import { TechSpecs } from '../../components/TechSpecs/TechSpecs';
 
 export const ProductDetailsPage = () => {
   return (
@@ -15,10 +20,15 @@ export const ProductDetailsPage = () => {
             mainInfo
           </div>
           <div className={detailsStyles.extendedDetails__about}>
-            about
+            <AboutProduct />
           </div>
           <div className={detailsStyles.extendedDetails__techSpecs}>
-            techSpecs
+            {phonesFromServer.map(phone => (
+              <TechSpecs
+                phone={phone}
+                key={phone.id}
+              />
+            ))}
           </div>
         </div>
 
