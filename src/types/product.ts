@@ -1,4 +1,5 @@
 export interface Product {
+  localeCompare(b: Product): number;
   id: number;
   category: string;
   itemId: string;
@@ -11,5 +12,8 @@ export interface Product {
   ram: string;
   year: number;
   image: string;
-  quantity?: number;
+}
+
+export interface CartProduct extends Product {
+  quantity: number;
 }
