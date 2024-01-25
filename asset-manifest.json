@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/gadjets_store_client/static/css/main.e663bcf9.css",
-    "main.js": "/gadjets_store_client/static/js/main.27cc9b87.js",
+    "main.css": "/gadjets_store_client/static/css/main.35fe1b26.css",
+    "main.js": "/gadjets_store_client/static/js/main.094230bd.js",
     "static/media/tablets.png": "/gadjets_store_client/static/media/tablets.8ca07b70f7b983efdcf4.png",
     "static/media/sliderBig1.png": "/gadjets_store_client/static/media/sliderBig1.2df82b50899099e0108b.png",
     "static/media/accesorise.png": "/gadjets_store_client/static/media/accesorise.7836a378770602c325a4.png",
@@ -17,16 +17,21 @@
     "static/media/00.jpg": "/gadjets_store_client/static/media/00.4a41bf93f85c04380490.jpg",
     "static/media/04.jpg": "/gadjets_store_client/static/media/04.b46b0a5b4b8b8424f1fe.jpg",
     "static/media/01.jpg": "/gadjets_store_client/static/media/01.0ef6a6762d9cdb256f60.jpg",
+    "static/media/revicons.eot": "/gadjets_store_client/static/media/revicons.a77de540a38981833f9e.eot",
+    "static/media/revicons.ttf": "/gadjets_store_client/static/media/revicons.57fd05d4ae650374c8de.ttf",
+    "static/media/revicons.woff": "/gadjets_store_client/static/media/revicons.e8746a624ed098489406.woff",
     "static/media/like.svg": "/gadjets_store_client/static/media/like.87fbe581c0493d3cf3f1c5b08aa5a250.svg",
+    "static/media/Home.svg": "/gadjets_store_client/static/media/Home.60971baadec27586eb23362b4b81bb33.svg",
     "static/media/like-active.svg": "/gadjets_store_client/static/media/like-active.d554a185325e4fb0609231b1cff64b18.svg",
     "static/media/Plus.svg": "/gadjets_store_client/static/media/Plus.eb0a620344493c8446b93fac3dd53591.svg",
     "static/media/Arrow.svg": "/gadjets_store_client/static/media/Arrow.837e2957378258c8ddb071859e53301f.svg",
+    "static/media/Slider button - Default (right).svg": "/gadjets_store_client/static/media/Slider button - Default (right).fe5b126d8503c91edd77defa8eb6bd03.svg",
     "index.html": "/gadjets_store_client/index.html",
-    "main.e663bcf9.css.map": "/gadjets_store_client/static/css/main.e663bcf9.css.map",
-    "main.27cc9b87.js.map": "/gadjets_store_client/static/js/main.27cc9b87.js.map"
+    "main.35fe1b26.css.map": "/gadjets_store_client/static/css/main.35fe1b26.css.map",
+    "main.094230bd.js.map": "/gadjets_store_client/static/js/main.094230bd.js.map"
   },
   "entrypoints": [
-    "static/css/main.e663bcf9.css",
-    "static/js/main.27cc9b87.js"
+    "static/css/main.35fe1b26.css",
+    "static/js/main.094230bd.js"
   ]
 }
