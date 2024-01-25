@@ -53,7 +53,7 @@ export const App = () => {
           localStorage.getItem('favorites') || '[]',
         ));
       } catch (error) {
-        throw new Error('error');
+        throw new Error('error when fetching data from API');
       } finally {
         setIsLoading(false);
       }
