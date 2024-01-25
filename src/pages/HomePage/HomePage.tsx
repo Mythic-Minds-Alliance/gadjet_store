@@ -1,8 +1,7 @@
 import './HomePage.scss';
 import { Slider } from '../../components/Slider/Slider';
 import { MainPageTitle } from '../../components/MainPageTitle';
-import { NewModelsSlider } from '../../components/newModelsSlider';
-import { HotPricesSlider } from '../../components/HotPricesSlider';
+import { Carusel } from '../../components/Carusel';
 import { ShopByCategory } from '../../components/ShopByCategory';
 
 export const HomePage = () => {
@@ -15,9 +14,15 @@ export const HomePage = () => {
       <Slider />
 
       <div className="mainPageContainer">
-        <NewModelsSlider />
+        <Carusel
+          products={[]}
+          title="New models"
+        />
         <ShopByCategory />
-        <HotPricesSlider />
+        <Carusel
+          products={[]}
+          title="Hot prices"
+        />
       </div>
     </>
   );
