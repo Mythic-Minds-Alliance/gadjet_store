@@ -21,10 +21,14 @@ export const Card: React.FC<Props> = ({ product }) => {
     // image,
   } = product;
 
+  // console.log(product.name.replaceAll('%', ' '))
+
+  const productPageLink = `/phones/${product.name}`;
+
   return (
     <div className="card">
       <div className="card--top">
-        <Link to="/productDetails" className="card--photo">
+        <Link to={productPageLink} className="card--photo">
           <img
             src={test}
             alt={`${name}`}
