@@ -1,5 +1,5 @@
 import {
-  FC, useEffect, useState, useRef, useCallback,
+  useEffect, useState, useRef, useCallback,
 } from 'react';
 import classNames from 'classnames/bind';
 import SliderImage1 from '../../images/sliderPhoneImg1.png';
@@ -20,7 +20,7 @@ const bigSlides = [oneBig, twoBig, threeBig];
 
 const getWindowWidth = () => window.innerWidth;
 
-export const Slider: FC = () => {
+export const Slider = () => {
   const [slides, setSlides] = useState<string[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStartPositionX, setTouchStartPositionX] = useState<number>(0);
@@ -148,7 +148,10 @@ export const Slider: FC = () => {
         </button>
 
         <div className={cn('slider__slides')} ref={sliderElement}>
-          <ImageSlider currentIndex={currentIndex} slides={slides} />
+          <ImageSlider
+            currentIndex={currentIndex}
+            slides={slides}
+          />
         </div>
 
         <button
