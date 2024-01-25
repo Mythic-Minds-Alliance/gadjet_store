@@ -23,11 +23,8 @@ export const ProductDetailsPage = () => {
               <ProductImagesSlider />
             </div>
             <div className={detailsStyles.extendedDetails__mainInfo}>
-              mainInfo
+              <ProductVariants product={phonesFromServer[0]} />
             </div>
-          </div>
-          <div className={detailsStyles.extendedDetails__mainInfo}>
-            <ProductVariants product={phonesFromServer[0]} />
           </div>
           <div className={detailsStyles.bottomContent}>
             <div className={detailsStyles.extendedDetails__about}>
