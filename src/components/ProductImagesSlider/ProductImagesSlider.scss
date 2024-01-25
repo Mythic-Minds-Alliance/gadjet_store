@@ -3,8 +3,16 @@
 @import "../../assets/colors";
 @import "../../assets/mixins";
 
+
+
+
 .product-images-slider {
   max-width: 275px;
+
+  //@include onTablet {
+  //  display: flex;
+  //  flex-direction: row-reverse;
+  //}
 
   .swiper-slide {
     padding-top: 100%;
