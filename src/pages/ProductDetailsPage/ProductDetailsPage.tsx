@@ -10,7 +10,7 @@ import { ProductImagesSlider } from '../../components/ProductImagesSlider';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
-import { ProductVariants } from '../../components/ProductVariants/ProductVariants';
+// import { ProductVariants } from '../../components/ProductVariants/ProductVariants';
 
 export const ProductDetailsPage = () => {
   return (
@@ -22,9 +22,9 @@ export const ProductDetailsPage = () => {
             <div className={detailsStyles.extendedDetails__pictures}>
               <ProductImagesSlider />
             </div>
-            <div className={detailsStyles.extendedDetails__mainInfo}>
+            {/* <div className={detailsStyles.extendedDetails__mainInfo}>
               <ProductVariants product={phonesFromServer[0]} />
-            </div>
+            </div> */}
           </div>
 
           <div className={detailsStyles.bottomContent}>

@@ -18,7 +18,6 @@ export const Card: React.FC<Props> = ({ product }) => {
     name,
     price,
     fullPrice,
-    // image,
   } = product;
 
   const productPageLink = `/phones/${product.name}`;
