@@ -39,8 +39,6 @@ export const SortPanel: React.FC<Props> = ({
         <p className="SortPanel--title">Items on page</p>
         <select
           className="SortPanel--fields"
-        // value={selectedCountPerPage}
-        // onChange={handleCountPerPageChange}
         >
           {sortCountOfPage.map((count) => (
             <option key={count} value={count}>
