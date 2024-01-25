@@ -7,6 +7,10 @@ import {
 } from '../../components/AboutProduct/AboutProduct';
 import { TechSpecs } from '../../components/TechSpecs/TechSpecs';
 import { ProductImagesSlider } from '../../components/ProductImagesSlider';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/thumbs';
+import { ProductVariants } from '../../components/ProductVariants/ProductVariants';
 
 export const ProductDetailsPage = () => {
   return (
@@ -22,7 +26,10 @@ export const ProductDetailsPage = () => {
               mainInfo
             </div>
           </div>
-
+          <div className={detailsStyles.extendedDetails__mainInfo}>
+            <ProductVariants product={phonesFromServer[0]} />
+          </div>
+          
           <div className={detailsStyles.bottomContent}>
             <div className={detailsStyles.extendedDetails__about}>
               <AboutProduct />
