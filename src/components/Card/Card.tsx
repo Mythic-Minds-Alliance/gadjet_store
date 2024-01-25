@@ -1,11 +1,13 @@
-import './Card.scss';
+import { Link } from 'react-router-dom';
 
+import './Card.scss';
 import test from '../../images/00.webp';
 import { Product } from '../../types/product';
 import { DetailsList } from '../DetailsList/DetailsList';
 import { AddToCart } from '../AddToCart/AddToCart';
 import { CardSeparator } from '../СardSeparator/CardSeparator';
 import { CardPrices } from '../CardPrices/CardPrices';
+import { scrollToTop } from '../../utils/helpers';
 
 type Props = {
   product: Product,
@@ -22,13 +24,17 @@ export const Card: React.FC<Props> = ({ product }) => {
   return (
     <div className="card">
       <div className="card--top">
-        <a href="/" className="card--photo">
+        <Link
+          className="card--photo"
+          to="/productDetails"
+          onClick={scrollToTop}
+        >
           <img
             src={test}
             alt={`${name}`}
             className="card--image"
           />
-        </a>
+        </Link>
       </div>
 
       <p className="card--title">
