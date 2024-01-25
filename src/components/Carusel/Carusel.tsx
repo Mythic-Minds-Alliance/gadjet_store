@@ -7,6 +7,10 @@ import { sortProductCarusel } from '../../utils/helpers';
 import { Card } from '../Card/Card';
 import arrou from '../../icons/Slider button - Default (right).svg';
 
+const CART_W = 229;
+const GAP = 16;
+const CARUSEL_STEP = CART_W + GAP;
+
 interface Props {
   title: string;
   selectedSortCarusel: string;
@@ -20,10 +24,15 @@ export const Carusel: React.FC<Props> = ({
   const visibleCart = sortProductCarusel(productList, selectedSortCarusel);
   const [carouselPosition, setCarouselPosition] = useState(0);
   const [counter, setCounter] = useState(0);
+  const [windowWidth] = useState(window.innerWidth);
+
+  const calculateVisiblePages = () => {
+    return (visibleCart.length + 1 - Math.floor(windowWidth / CARUSEL_STEP));
+  };
 
   const handleSlide = (direction: 'left' | 'right') => {
     const newPosition = direction === 'left'
-      ? carouselPosition + 245 : carouselPosition - 245;
+      ? carouselPosition + CARUSEL_STEP : carouselPosition - CARUSEL_STEP;
 
     setCarouselPosition(newPosition);
   };
@@ -55,7 +64,7 @@ export const Carusel: React.FC<Props> = ({
             className={classNames(
               'Button',
               'Button--right',
-              { 'button--disabled': counter === visibleCart.length - 1 },
+              { 'button--disabled': counter === +calculateVisiblePages - 1 },
             )}
             aria-label="Go right"
             onClick={() => {
