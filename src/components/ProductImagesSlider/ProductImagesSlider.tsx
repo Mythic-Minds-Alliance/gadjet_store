@@ -1,9 +1,6 @@
-import './ProductImagesSlider.scss';
 import { useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Thumbs } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/thumbs';
+import cn from 'classnames';
+import style from './ProductImagesSlider.module.scss';
 
 import img1 from '../../images/apple-iphone-11/black/00.jpg';
 import img2 from '../../images/apple-iphone-11/black/01.jpg';
@@ -14,52 +11,43 @@ import img5 from '../../images/apple-iphone-11/black/04.jpg';
 export const productImages = [img1, img2, img3, img4, img5];
 
 export const ProductImagesSlider = () => {
-  const [activeThumb, setActiveThumb] = useState(0);
+  const [selectedPhoto, setSelectedPhoto]
+    = useState<string | null>(productImages[0]);
+
+  const handlePhotoClick = (photo: string) => {
+    setSelectedPhoto(photo);
+  };
 
   return (
-    <div className="product-images-slider">
-      <Swiper
-        loop
-        spaceBetween={10}
-        modules={[Thumbs]}
-        thumbs={{ swiper: activeThumb }}
-        className="product-images-slider"
-      >
-        {productImages.map((item, index) => (
-          <SwiperSlide>
-            <img src={item} alt={`product ${index}`} />
-          </SwiperSlide>
+    <div className={style.container}>
+      <div className={style.photo__block}>
+        {productImages.map((photo, index) => (
+          <button
+            className={cn(style.photo__block_button, {
+              [style['photo__block-button__selected']]: selectedPhoto === photo,
+            })}
+            type="button"
+            key={photo}
+            onClick={() => handlePhotoClick(photo)}
+          >
+            <img
+              className={style.photo__block_img}
+              src={photo}
+              alt={`Thumbnail ${index + 1}`}
+            />
+          </button>
         ))}
-      </Swiper>
-      <Swiper
-        onSwiper={setActiveThumb}
-        loop
-        spaceBetween={10}
-        slidesPerView={5}
-        modules={[Thumbs]}
-        allowSlidePrev={false}
-        allowSlideNext={false}
-        allowTouchMove={false}
-        className="product-images-slider-thumbs"
-      >
-        {productImages.map((item, index) => (
-          <SwiperSlide>
-            <div
-              className="product-images-slider-thumbs-wrapper"
-              role="button"
-              tabIndex={0}
-              onClick={() => setActiveThumb(index)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  setActiveThumb(index);
-                }
-              }}
-            >
-              <img src={item} alt={`product ${index}`} />
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      </div>
+
+      <div>
+        {selectedPhoto && (
+          <img
+            className={style.photo__block_main}
+            src={selectedPhoto}
+            alt={selectedPhoto}
+          />
+        )}
+      </div>
     </div>
   );
 };
