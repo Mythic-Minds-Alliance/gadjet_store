@@ -1,1 +1,0 @@
-export { HotPricesSlider } from './HotPricesSlider';
