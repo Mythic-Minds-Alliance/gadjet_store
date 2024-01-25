@@ -26,6 +26,7 @@ export const ProductDetailsPage = () => {
               <ProductVariants product={phonesFromServer[0]} />
             </div>
           </div>
+
           <div className={detailsStyles.bottomContent}>
             <div className={detailsStyles.extendedDetails__about}>
               <AboutProduct />
