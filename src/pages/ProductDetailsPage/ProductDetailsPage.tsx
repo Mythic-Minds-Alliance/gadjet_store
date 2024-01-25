@@ -1,12 +1,12 @@
 /* eslint-disable max-len */
 import detailsStyles from './ProductDetailsPage.module.scss';
-import { ProductTitle } from '../../components/ProductDetailsPage/ProductTitle';
+import { ProductTitle } from '../../components/ProductTitle';
 import {
   AboutProduct,
   phonesFromServer,
 } from '../../components/AboutProduct/AboutProduct';
 import { TechSpecs } from '../../components/TechSpecs/TechSpecs';
-import { ProductImagesSlider } from '../../components/ProductDetailsPage/ProductImagesSlider';
+import { ProductImagesSlider } from '../../components/ProductImagesSlider';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
