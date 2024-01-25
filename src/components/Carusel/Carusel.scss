@@ -3,18 +3,9 @@
 @import '../../assets/variables';
 @import "../../assets/mixins";
 
-.сarusel {
-  position: relative;
-  padding-bottom: 64px;
-
-  @include onDesktop {
-    padding-bottom: 80px;
-  }
-
-  &__title {
-    @include headline-2;
-    color: $primary
-  }
+.carousel-buttons {
+  display: flex;
+  gap: 16px;
 }
 
 .button {
@@ -33,24 +24,50 @@
   }
 }
 
-.corusel__container {
-  display: flex;
-  flex-direction: column-reverse;
+.carusel {
+  padding-bottom: 80px;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+  }
+
+  &__sliderFull {
+    max-width: 1200px;
+    display: flex;
+    gap: 16px;
+    flex-direction: row;
+    padding-top: 16px;
+    white-space: nowrap;
+  }
+
+  &__slider {
+    max-width: 1200px;
+    display: flex;
+    gap: 16px;
+    flex-direction: row;
+    padding-top: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 }
 
-.carousel-button-group {
+.carusel__slider {
   display: flex;
-  justify-content: end;
-  gap: 16px;
+  transition: transform 0.5s ease-in-out;
 }
 
-.Cards{
-  display: flex;
-  padding-block: 16px;
-  border: 1px solid green;
+.carusel-card {
+  transition: transform 0.5s ease-in-out;
 }
 
-.cart{
-  display: flex;
-  align-items: center;
+.carusel-card--active {
+  transform: translateX(0);
+}
+
+.carusel__title {
+  @include headline-2;
+  color: $primary;
 }

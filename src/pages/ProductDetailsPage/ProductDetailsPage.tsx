@@ -11,6 +11,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 import { ProductVariants } from '../../components/ProductVariants/ProductVariants';
+import { Carusel } from '../../components/Carusel';
+import { CaruselSort } from '../../types/CaruselSort';
 
 export const ProductDetailsPage = () => {
   return (
@@ -42,7 +44,10 @@ export const ProductDetailsPage = () => {
 
         </div>
 
-        <h1>You may also like</h1>
+        <Carusel
+          title="You may also like"
+          selectedSortCarusel={CaruselSort.YouPropose}
+        />
 
       </div>
 
