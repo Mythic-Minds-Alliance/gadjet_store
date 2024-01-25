@@ -170,7 +170,6 @@ export function changeAmount(item: CartProduct,
 export function sortProductList(
   product: Product[],
   sortBy: string,
-  // pageCount: string,
   order: string,
 ) {
   let preparedList = [...product];

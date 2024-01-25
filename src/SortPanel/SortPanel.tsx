@@ -18,12 +18,6 @@ export const SortPanel: React.FC<Props> = ({
   selectedSortOrder,
   onSelectOrder,
 }) => {
-  // const handleCountPerPageChange = (
-  //   event: React.ChangeEvent<HTMLSelectElement>,
-  // ) => {
-  //   setSelectedCountPerPage(event.target.value);
-  // };
-
   return (
     <div className="SortPanel">
       <div>
