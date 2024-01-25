@@ -3,20 +3,8 @@
 @import '../../assets/variables';
 @import "../../assets/mixins";
 
-.сarusel{
+.сarusel {
   position: relative;
-
-  @include onTablet {
-  }
-
-  &__button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    gap: 16px;
-    z-index: 1;
-  }
 }
 
 .arrou {
@@ -32,13 +20,24 @@
   &--right {
     transform: rotate(180deg);
   }
-  
+
   &--left {
     transform: rotate(0deg);
   }
-  
+
   &--disabled {
     cursor: not-allowed;
     opacity: 0.5;
   }
 }
+
+.my-own-custom-container {
+  display: flex;
+  flex-direction: column-reverse;
+};
+
+.carousel-button-group {
+  display: flex;
+  justify-content: end;
+  gap: 16px;
+};

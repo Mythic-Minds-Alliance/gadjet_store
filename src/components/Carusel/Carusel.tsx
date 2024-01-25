@@ -87,7 +87,7 @@ const ButtonGroup: React.FC = ({
 };
 
 interface Props {
-  title: string;
+  title: string,
   selectedSortCarusel: string,
 }
 
@@ -101,10 +101,7 @@ export const Carusel: React.FC<Props> = ({
 
   return (
     <section className="arusel">
-      <div>
-        <h3>{title}</h3>
-      </div>
-
+      <div>{title}</div>
       <div className="my-own-custom-container">
         <Carousel
           itemClass="Cards"
