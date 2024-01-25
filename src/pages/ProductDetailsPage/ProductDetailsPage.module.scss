@@ -4,29 +4,65 @@
 @import "../../assets/mixins";
 
 .container {
-  padding: 16px;
+  padding: 0 16px;
 
   @include onTablet {
-    padding: 16px 24px;
+    padding: 0 24px;
   }
 
   @include onDesktop {
-    padding: 16px 32px;
+    padding: 0 32px;
   }
 
   @include onLargeDesktop {
-    padding: 16px 152px;
+    padding: 0 152px;
   }
 }
 
 .extendedDetails {
-  @include pageGrid;
-  @include onLargeDesktop {
-    grid-template-columns: repeat(2, 12fr);
+  &__pictures {
+    margin: 0 auto;
+
+    @include onDesktop {
+      width: 600px;
+    }
   }
 
-  &__pictures {
-    //padding: 0 20px;
-    margin: 0 auto;
+  &__about {
+    @include onDesktop {
+      width: 600px;
+    }
+  }
+}
+
+.topContent {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 40px 0;
+
+  @include onTablet {
+    gap: 0 23px;
+    grid-template-columns: repeat(2, 6fr);
+  }
+
+  @include onDesktop {
+    gap: 0 75px;
+    grid-template-columns: repeat(2, 6fr);
+  }
+}
+
+.bottomContent {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 40px 0;
+
+  @include onTablet {
+    gap: 0 23px;
+    grid-template-columns: repeat(1, 6fr);
+  }
+
+  @include onDesktop {
+    gap: 0 75px;
+    grid-template-columns: repeat(2, 6fr);
   }
 }
