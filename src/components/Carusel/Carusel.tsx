@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
 import Carousel, { ButtonGroupProps } from 'react-multi-carousel';
-import { DataContext } from '../../App';
 import 'react-multi-carousel/lib/styles.css';
-import styles from './Carusel.module.scss';
-import arrou from '../../icons/Slider button - Default (right).svg';
-import { Card } from '../Card/Card';
+
+import './Carusel.scss';
+import { DataContext } from '../../App';
 import { sortProductCarusel } from '../../utils/helpers';
+import { Card } from '../Card/Card';
+import arrou from '../../icons/Slider button - Default (right).svg';
 
 const responsive = {
   desktop: {
@@ -87,7 +88,7 @@ const ButtonGroup: React.FC = ({
 
 interface Props {
   title: string;
-  selectedSortCarusel:string,
+  selectedSortCarusel: string,
 }
 
 export const Carusel: React.FC<Props> = ({
@@ -99,24 +100,29 @@ export const Carusel: React.FC<Props> = ({
   const visibleList = sortProductCarusel(productList, selectedSortCarusel);
 
   return (
-    <section className={`${styles.section} ${styles.hotPrices}`}>
-      <div className="">
-        <h3 className={styles.sectionTitle}>{title}</h3>
+    <section className="arusel">
+      <div>
+        <h3>{title}</h3>
       </div>
 
-      <Carousel
-        itemClass={classNames('Cards')}
-        responsive={responsive}
-        customButtonGroup={<ButtonGroup />}
-        arrows={false}
-      >
-        {visibleList.map((product) => (
-          <Card
-            product={product}
-            key={product.id}
-          />
-        ))}
-      </Carousel>
+      <div className="my-own-custom-container">
+        <Carousel
+          itemClass="Cards"
+          arrows={false}
+          renderButtonGroupOutside
+          customButtonGroup={<ButtonGroup />}
+          partialVisible
+          responsive={responsive}
+          infinite
+        >
+          {visibleList.map((product) => (
+            <Card
+              product={product}
+              key={product.id}
+            />
+          ))}
+        </Carousel>
+      </div>
     </section>
   );
 };
