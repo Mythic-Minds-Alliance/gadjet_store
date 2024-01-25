@@ -8,6 +8,7 @@ import {
 import { CartProduct, Product } from './types/product';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header';
+import { Breadcrumbs } from './components/Breadcrumbs';
 
 interface DataContextType {
   productList: Product[];
@@ -77,6 +78,8 @@ export const App = () => {
           cartCount={cartStorage.length}
           favoriteCount={favoriteStorage.length}
         />
+        <Breadcrumbs />
+
         <Outlet />
         <Footer />
       </div>
