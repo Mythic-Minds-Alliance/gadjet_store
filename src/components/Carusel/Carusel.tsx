@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import Carousel, { ButtonGroupProps } from 'react-multi-carousel';
+import { DataContext } from '../../App';
 import 'react-multi-carousel/lib/styles.css';
 import styles from './Carusel.module.scss';
-import { Product } from '../../types/product';
-import arrou from '../../icons/CaruselSliderRight.svg';
+import arrou from '../../icons/Slider button - Default (right).svg';
 import { Card } from '../Card/Card';
+import { sortProductCarusel } from '../../utils/helpers';
 
 const responsive = {
   desktop: {
@@ -85,19 +86,22 @@ const ButtonGroup: React.FC = ({
 };
 
 interface Props {
-  products: Product[];
   title: string;
+  selectedSortCarusel:string,
 }
 
 export const Carusel: React.FC<Props> = ({
-  products,
   title,
+  selectedSortCarusel,
 }) => {
+  const { productList } = useContext(DataContext);
+
+  const visibleList = sortProductCarusel(productList, selectedSortCarusel);
+
   return (
     <section className={`${styles.section} ${styles.hotPrices}`}>
       <div className="">
         <h3 className={styles.sectionTitle}>{title}</h3>
-        <div>card</div>
       </div>
 
       <Carousel
@@ -106,13 +110,12 @@ export const Carusel: React.FC<Props> = ({
         customButtonGroup={<ButtonGroup />}
         arrows={false}
       >
-        {products.map((product) => (
+        {visibleList.map((product) => (
           <Card
             product={product}
             key={product.id}
           />
         ))}
-
       </Carousel>
     </section>
   );

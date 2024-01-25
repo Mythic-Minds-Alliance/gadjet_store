@@ -3,6 +3,7 @@ import { Slider } from '../../components/Slider/Slider';
 import { MainPageTitle } from '../../components/MainPageTitle';
 import { Carusel } from '../../components/Carusel';
 import { ShopByCategory } from '../../components/ShopByCategory';
+import { CaruselSort } from '../../types/CaruselSort';
 
 export const HomePage = () => {
   return (
@@ -15,13 +16,13 @@ export const HomePage = () => {
 
       <div className="mainPageContainer">
         <Carusel
-          products={[]}
           title="New models"
+          selectedSortCarusel={CaruselSort.Years}
         />
         <ShopByCategory />
         <Carusel
-          products={[]}
           title="Hot prices"
+          selectedSortCarusel={CaruselSort.Price}
         />
       </div>
     </>
