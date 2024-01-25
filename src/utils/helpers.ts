@@ -218,3 +218,37 @@ export function sortProductList(
 
   return preparedList;
 }
+
+export function sortProductCarusel(
+  product: Product[],
+  sortBy: string,
+) {
+  let preparedList = [...product];
+
+  switch (sortBy) {
+    case 'Years':
+      sortProductList(preparedList, 'Years', 'Ascending');
+
+      break;
+
+    case 'Screen':
+      sortProductList(preparedList, 'Price', 'Ascending');
+
+      break;
+
+    case 'YouPropose':
+      preparedList = preparedList.sort((a, b) => {
+        const aScreenSize = parseFloat(a.screen);
+        const bScreenSize = parseFloat(b.screen);
+
+        return aScreenSize - bScreenSize;
+      });
+
+      break;
+
+    default:
+      break;
+  }
+
+  return preparedList.slice(5);
+}
