@@ -2,6 +2,7 @@ import React from 'react';
 
 import './TechSpecs.scss';
 import { Phone } from '../../types/phone';
+import { DetailsOptions } from '../DetailsOptions/DetailsOptions';
 
 const productDetails = [
   'Screen',
@@ -46,11 +47,14 @@ export const TechSpecs: React.FC<Props> = ({ phone }) => {
         <li className="TechSpecs--characteristics-item">{capacity}</li>
         <li className="TechSpecs--characteristics-item">{camera}</li>
         <li className="TechSpecs--characteristics-item">{zoom}</li>
-        {cell.map(el => (
-          <li className="TechSpecs--characteristics-item">
-            {el}
-          </li>
-        ))}
+        <li className="TechSpecs--characteristics-item">
+          {cell.map(option => (
+            <DetailsOptions
+              key={option}
+              option={option}
+            />
+          ))}
+        </li>
       </ul>
     </div>
   );
