@@ -13,8 +13,8 @@
   border: 1px solid #E2E6E9;
 
   @include onTablet {
-  width: 229px;
-  height: 506px;
+    width: 229px;
+    height: 506px;
   }
 
   &--photo {
@@ -50,18 +50,16 @@
     line-height: 31px;
 
     text-align: left;
+
     &-maxPrice {
-      opacity: 0;
-      
-      
-      @include onLargeDesktop {
-        opacity: 1;
 
-        color: #89939A;
-        font-weight: 400;
+      opacity: 1;
 
-        text-decoration: line-through;
-      }
+      color: #89939A;
+      font-weight: 400;
+
+      text-decoration: line-through;
+
     }
   }
 
@@ -69,4 +67,3 @@
     width: 100%;
   }
 }
-

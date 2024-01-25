@@ -3,6 +3,7 @@ import React from 'react';
 import './TechSpecs.scss';
 import { Phone } from '../../types/phone';
 import { DetailsOptions } from '../DetailsOptions/DetailsOptions';
+import { CardSeparator } from '../СardSeparator/CardSeparator';
 
 const productDetails = [
   'Screen',
@@ -32,30 +33,36 @@ export const TechSpecs: React.FC<Props> = ({ phone }) => {
   } = phone;
 
   return (
-    <div className="TechSpecs">
-      <ul className="TechSpecs--list">
-        {productDetails.map(details => (
-          <li className="TechSpecs--list-item">{details}</li>
-        ))}
-      </ul>
+    <div className="TechSpecsContainer">
+      <h1 className="TechSpecs--title">Tech specs</h1>
 
-      <ul className="TechSpecs--characteristics">
-        <li className="TechSpecs--characteristics-item">{screen}</li>
-        <li className="TechSpecs--characteristics-item">{resolution}</li>
-        <li className="TechSpecs--characteristics-item">{processor}</li>
-        <li className="TechSpecs--characteristics-item">{ram}</li>
-        <li className="TechSpecs--characteristics-item">{capacity}</li>
-        <li className="TechSpecs--characteristics-item">{camera}</li>
-        <li className="TechSpecs--characteristics-item">{zoom}</li>
-        <li className="TechSpecs--characteristics-item">
-          {cell.map(option => (
-            <DetailsOptions
-              key={option}
-              option={option}
-            />
+      <CardSeparator />
+
+      <div className="TechSpecs">
+        <ul className="TechSpecs--list">
+          {productDetails.map(details => (
+            <li className="TechSpecs--list-item">{details}</li>
           ))}
-        </li>
-      </ul>
+        </ul>
+
+        <ul className="TechSpecs--characteristics">
+          <li className="TechSpecs--characteristics-item">{screen}</li>
+          <li className="TechSpecs--characteristics-item">{resolution}</li>
+          <li className="TechSpecs--characteristics-item">{processor}</li>
+          <li className="TechSpecs--characteristics-item">{ram}</li>
+          <li className="TechSpecs--characteristics-item">{capacity}</li>
+          <li className="TechSpecs--characteristics-item">{camera}</li>
+          <li className="TechSpecs--characteristics-item">{zoom}</li>
+          <li className="TechSpecs--characteristics-item">
+            {cell.map(option => (
+              <DetailsOptions
+                key={option}
+                option={option}
+              />
+            ))}
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };
