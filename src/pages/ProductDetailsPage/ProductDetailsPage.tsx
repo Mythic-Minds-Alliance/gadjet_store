@@ -29,7 +29,6 @@ export const ProductDetailsPage = () => {
           <div className={detailsStyles.extendedDetails__mainInfo}>
             <ProductVariants product={phonesFromServer[0]} />
           </div>
-          
           <div className={detailsStyles.bottomContent}>
             <div className={detailsStyles.extendedDetails__about}>
               <AboutProduct />

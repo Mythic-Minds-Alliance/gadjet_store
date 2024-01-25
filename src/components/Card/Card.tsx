@@ -1,5 +1,7 @@
 import './Card.scss';
 
+import { Link } from 'react-router-dom';
+import React from 'react';
 import test from '../../images/00.webp';
 import { Product } from '../../types/product';
 import { DetailsList } from '../DetailsList/DetailsList';
@@ -22,13 +24,13 @@ export const Card: React.FC<Props> = ({ product }) => {
   return (
     <div className="card">
       <div className="card--top">
-        <a href="/" className="card--photo">
+        <Link to="/productDetails" className="card--photo">
           <img
             src={test}
             alt={`${name}`}
             className="card--image"
           />
-        </a>
+        </Link>
       </div>
 
       <p className="card--title">
