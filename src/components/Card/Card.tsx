@@ -21,8 +21,6 @@ export const Card: React.FC<Props> = ({ product }) => {
     // image,
   } = product;
 
-  // console.log(product.name.replaceAll('%', ' '))
-
   const productPageLink = `/phones/${product.name}`;
 
   return (
