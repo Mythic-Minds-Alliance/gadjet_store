@@ -5,6 +5,7 @@ import { Product } from '../../types/product';
 import { DetailsList } from '../DetailsList/DetailsList';
 import { AddToCart } from '../AddToCart/AddToCart';
 import { CardSeparator } from '../СardSeparator/CardSeparator';
+import { CardPrices } from '../CardPrices/CardPrices';
 
 type Props = {
   product: Product,
@@ -34,14 +35,8 @@ export const Card: React.FC<Props> = ({ product }) => {
         {name}
       </p>
 
-      <div className="card--prices">
-        <p className="card--price">
-          {`$${price}`}
-        </p>
-        <strong className="card--price card--price-maxPrice">
-          {`$${fullPrice}`}
-        </strong>
-      </div>
+      <CardPrices price={price} fullPrice={fullPrice} />
+
       <CardSeparator />
 
       <div className="card--bottom">

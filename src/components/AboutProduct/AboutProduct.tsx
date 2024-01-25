@@ -1,3 +1,4 @@
+import { CardSeparator } from '../СardSeparator/CardSeparator';
 import './AboutProduct.scss';
 
 export const phonesFromServer = [
@@ -54,6 +55,8 @@ export const phonesFromServer = [
 export const AboutProduct = () => (
   <div className="AboutProduct">
     <h1 className="AboutProduct--title">About</h1>
+
+    <CardSeparator />
 
     {phonesFromServer.map(element => (
       element.description.map(info => (
