@@ -24,8 +24,8 @@ export const phonesFromServer = [
       {
         title: 'And then there was Pro',
         text: [
-          'A transformative triple-camera system that adds tons of capability without complexity.',
-          'An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro.',
+          'A transformative triple-camera system that adds tons of capability without complexity.\n',
+          '\tAn unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro.',
         ],
       },
       {

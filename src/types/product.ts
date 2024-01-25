@@ -1,5 +1,4 @@
 export interface Product {
-  localeCompare(b: Product): number;
   id: number;
   category: string;
   itemId: string;
