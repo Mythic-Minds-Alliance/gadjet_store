@@ -1,0 +1,53 @@
+@import "../../../assets/normalize";
+@import "../../../assets/variables";
+@import "../../../assets/colors";
+@import "../../../assets/mixins";
+
+.product-images-slider {
+  max-width: 275px;
+
+  .swiper-slide {
+    padding-top: 100%;
+    overflow: hidden;
+    position: relative;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+.product-images-slider-thumbs {
+  width: 75%;
+  margin-top: 23px;
+
+  .swiper-slide {
+    cursor: pointer;
+    border: 1px solid $icons;
+    padding: 0;
+
+    &-thumb-active {
+      border-color: $primary;
+    }
+  }
+
+  &-wrapper {
+    padding-top: 100%;
+    overflow: hidden;
+    position: relative;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}

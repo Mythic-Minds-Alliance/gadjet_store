@@ -3,8 +3,9 @@ import { useContext, useEffect, useState } from 'react';
 import './AddToCart.scss';
 import like from '../../icons/like.svg';
 import likeActive from '../../icons/like-active.svg';
-import { Product } from '../../types/product';
-import { DataContext, handleAddToCart, handleAddToFavorites } from '../../App';
+import { CartProduct, Product } from '../../types/product';
+import { DataContext } from '../../App';
+import { handleAddToCart, handleAddToFavorites } from '../../utils/helpers';
 
 type Props = {
   product: Product,
@@ -21,7 +22,10 @@ export const AddToCart: React.FC<Props> = ({ product }) => {
     favoriteStorage,
   } = useContext(DataContext);
 
-  const checkIsActive = (item: Product, productStorage: Product[]) => {
+  const checkIsActive = (
+    item: Product,
+    productStorage: CartProduct[] | Product[],
+  ) => {
     return productStorage.some(phoneCard => phoneCard.id === item.id);
   };
 
