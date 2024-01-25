@@ -6,10 +6,12 @@ type Props = {
   selectedSortField: string;
   selectedSortOrder: string;
   onSelectOrder: (event: ChangeEvent<HTMLSelectElement>) => void;
+  onSelectPerPage: (event: ChangeEvent<HTMLSelectElement>) => void;
+  postPerPage: number;
 };
 
 const sortFields: string[] = ['Years', 'Price', 'Screen'];
-const sortCountOfPage: string[] = ['12', '24', '36'];
+const sortCountOfPage: number[] = [12, 24, 36];
 const sortType: string[] = ['Ascending', 'Descending'];
 
 export const SortPanel: React.FC<Props> = ({
@@ -17,6 +19,8 @@ export const SortPanel: React.FC<Props> = ({
   selectedSortField,
   selectedSortOrder,
   onSelectOrder,
+  onSelectPerPage,
+  postPerPage,
 }) => {
   return (
     <div className="SortPanel">
@@ -39,6 +43,8 @@ export const SortPanel: React.FC<Props> = ({
         <p className="SortPanel--title">Items on page</p>
         <select
           className="SortPanel--fields"
+          value={postPerPage}
+          onChange={onSelectPerPage}
         >
           {sortCountOfPage.map((count) => (
             <option key={count} value={count}>
