@@ -5,24 +5,26 @@
 
 .сarusel {
   position: relative;
-}
+  padding-bottom: 64px;
 
-.arrou {
-  display: flex;
-  height: 32px;
-  background-color: #fff;
-  border: 1px solid rgba(180, 189, 195, 1);
-  border-radius: 50%;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-
-  &--right {
-    transform: rotate(180deg);
+  @include onDesktop {
+    padding-bottom: 80px;
   }
 
+  &__title {
+    @include headline-2;
+    color: $primary
+  }
+}
+
+.button {
+  display: block;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+
   &--left {
-    transform: rotate(0deg);
+    transform: rotate(180deg)
   }
 
   &--disabled {
@@ -31,13 +33,24 @@
   }
 }
 
-.my-own-custom-container {
+.corusel__container {
   display: flex;
   flex-direction: column-reverse;
-};
+}
 
 .carousel-button-group {
   display: flex;
   justify-content: end;
   gap: 16px;
-};
+}
+
+.Cards{
+  display: flex;
+  padding-block: 16px;
+  border: 1px solid green;
+}
+
+.cart{
+  display: flex;
+  align-items: center;
+}

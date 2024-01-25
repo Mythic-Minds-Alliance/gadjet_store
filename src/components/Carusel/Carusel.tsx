@@ -101,14 +101,13 @@ export const Carusel: React.FC<Props> = ({
 
   return (
     <section className="arusel">
-      <div>{title}</div>
-      <div className="my-own-custom-container">
+      <div className="сarusel__title">{title}</div>
+      <div className="corusel__container">
         <Carousel
           itemClass="Cards"
           arrows={false}
           renderButtonGroupOutside
           customButtonGroup={<ButtonGroup />}
-          partialVisible
           responsive={responsive}
           infinite
         >
