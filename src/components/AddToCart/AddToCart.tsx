@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import classNames from 'classnames';
 
 import './AddToCart.scss';
 import like from '../../icons/like.svg';
@@ -50,22 +51,23 @@ export const AddToCart: React.FC<Props> = ({ product }) => {
   return (
     <div className="addToCart">
       <button
-        className={
-          isActiveAdd ? 'addToCart--active-add' : 'addToCart--add'
-        }
+        className={classNames('addToCart--button', {
+          'addToCart--button-active': isActiveAdd,
+          'addToCart--button-inactive': !isActiveAdd,
+        })}
         type="submit"
         onClick={() => {
           handleClickAdd();
           handleAddToCart(product, setCartStorage);
         }}
       >
-        Add to cart
+        {!isActiveAdd ? 'Add to cart' : 'Added to cart'}
       </button>
       <button
         type="submit"
         className={
           isActiveFavorite
-            ? 'addToCart--active-favorite'
+            ? 'addToCart--favorite-active'
             : 'addToCart--favorite'
         }
         onClick={() => {

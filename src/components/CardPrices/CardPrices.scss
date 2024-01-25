@@ -1,27 +1,10 @@
 @import '../../assets/mixins';
 
 .card {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: space-between;
-
-  width: 288px;
-  height: 440px;
-  padding: 32px;
-
-  border: 1px solid #E2E6E9;
-
-  @include onTablet {
-    width: 229px;
-    height: 506px;
-  }
-
-
-
   &--price {
     display: flex;
     justify-content: left;
+    align-items: center;
 
     width: 100%;
 
@@ -36,14 +19,10 @@
     }
 
     &-maxPrice {
-
-      opacity: 1;
-
+      font-size: 22px;
+      font-weight: 600;
       color: #89939A;
-      font-weight: 400;
-
       text-decoration: line-through;
-
     }
   }
 }

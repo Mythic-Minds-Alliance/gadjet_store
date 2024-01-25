@@ -8,7 +8,7 @@
 
   width: 288px;
   height: 440px;
-  padding: 32px;
+  padding: 28px;
 
   border: 1px solid #E2E6E9;
 
@@ -17,19 +17,28 @@
     height: 506px;
   }
 
-  &--photo {
+  &--top {
     display: flex;
-    align-items: center;
     justify-content: center;
     margin-bottom: 8px;
+    width: 100%;
   }
 
   &--image {
-    width: 45%;
-    height: 100%;
+    margin: 0 auto;
+    width: 160px;
+    height: 130px;
+
+    object-fit: contain;
+
+    @include onTablet {
+      height: 196px;
+    }
   }
 
   &--title {
+    margin-bottom: 8px;
+
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
@@ -38,32 +47,19 @@
   &--prices {
     display: flex;
     justify-content: left;
+    margin-bottom: 8px;
 
     width: 100%;
   }
 
-  &--price {
-    margin-right: 8px;
-
-    font-size: 22px;
-    font-weight: 800;
-    line-height: 31px;
-
-    text-align: left;
-
-    &-maxPrice {
-
-      opacity: 1;
-
-      color: #89939A;
-      font-weight: 400;
-
-      text-decoration: line-through;
-
-    }
+  &--line {
+    display: flex;
+    width: 100%;
+    margin-bottom: 16px;
   }
 
   &--bottom {
     width: 100%;
+    margin-bottom: 8px;
   }
 }
