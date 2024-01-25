@@ -31,7 +31,9 @@ createRoot(document.getElementById('root') as HTMLDivElement).render(
 
         <Route path="cart" element={<CartPage />} />
 
-        <Route path="productDetails" element={<ProductDetailsPage />} />
+        <Route path="phones/:productId" element={<ProductDetailsPage />} />
+        <Route path="tablets/:productId" element={<ProductDetailsPage />} />
+        <Route path="accessories/:productId" element={<ProductDetailsPage />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Route>
