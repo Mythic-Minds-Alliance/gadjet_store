@@ -160,7 +160,6 @@ export const Slider: FC = () => {
             goToNext();
           }}
           onKeyDown={(e) => {
-            // Handle keyboard events
             if (e.key === 'Enter' || e.key === 'Space') {
               setIsAutoScrolling(false);
               goToNext();
@@ -174,7 +173,6 @@ export const Slider: FC = () => {
       <div className={cn('slider__dots')}>
         {slides.map((_slide, index) => (
           <button
-            // key={index}
             type="button"
             className={cn('slider__dot', {
               'slider__dot-active': index === currentIndex,
