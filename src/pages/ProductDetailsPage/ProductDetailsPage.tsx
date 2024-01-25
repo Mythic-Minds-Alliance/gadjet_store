@@ -27,9 +27,11 @@ export const ProductDetailsPage = () => {
             </div>
           </div>
           <div className={detailsStyles.extendedDetails__mainInfo}>
-            <ProductVariants product={phonesFromServer[0]} />
+            <ProductVariants
+              product={phonesFromServer[0]}
+            />
           </div>
-          
+
           <div className={detailsStyles.bottomContent}>
             <div className={detailsStyles.extendedDetails__about}>
               <AboutProduct />

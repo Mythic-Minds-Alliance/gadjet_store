@@ -37,7 +37,9 @@ export const Card: React.FC<Props> = ({ product }) => {
 
       <CardPrices price={price} fullPrice={fullPrice} />
 
-      <CardSeparator />
+      <div className="card--line">
+        <CardSeparator />
+      </div>
 
       <div className="card--bottom">
         <DetailsList
