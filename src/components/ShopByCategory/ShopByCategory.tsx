@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styles from './ShopByCategory.module.scss';
-import TabletImg from '../../../images/tablets.png';
-import Accessories from '../../../images/accesorise.png';
+import TabletImg from '../../images/tablets.png';
+import Accessories from '../../images/accesorise.png';
 
 export const ShopByCategory = () => {
   return (

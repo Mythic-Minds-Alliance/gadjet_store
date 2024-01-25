@@ -1,6 +1,6 @@
-@import "../../../assets/variables";
-@import "../../../assets/colors";
-@import "../../../assets/mixins";
+@import "../../assets/variables";
+@import "../../assets/colors";
+@import "../../assets/mixins";
 
 .mainTitle {
   @include headline-1;
