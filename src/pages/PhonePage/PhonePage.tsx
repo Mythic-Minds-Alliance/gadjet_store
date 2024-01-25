@@ -12,9 +12,6 @@ export const PhonePage = () => {
     selectedSortField, setSelectedSortField,
   ] = useState('Years');
   const [sortOrder, setSortOrder] = useState('Ascending');
-  // const [
-  //   selectedCountPerPage, setSelectedCountPerPage,
-  // ] = useState('12');
 
   const handleSortFieldChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
