@@ -4,13 +4,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  gap: 10px;
   width: 100%;
   height: 40px;
 
   &--add {
     padding: 9px 45px;
-
+    width: 100%;
     background-color: #313237;
 
     font-size: 14px;
