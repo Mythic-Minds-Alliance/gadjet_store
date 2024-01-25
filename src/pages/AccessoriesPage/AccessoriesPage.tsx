@@ -6,8 +6,12 @@ import { DataContext } from '../../App';
 import { Loader } from '../../components/Loader';
 import { SortPanel } from '../../SortPanel/SortPanel';
 import { sortProductList } from '../../utils/helpers';
+import { Pagination } from '../../components/Pagination/Pagination';
 
 export const AccessoriesPage = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage, setPostPerPage] = useState(12);
+
   const [
     selectedSortField, setSelectedSortField,
   ] = useState('Years');
@@ -25,6 +29,12 @@ export const AccessoriesPage = () => {
     setSortOrder(event.target.value);
   };
 
+  const handleSortPostCount = (
+    event: React.ChangeEvent<HTMLSelectElement>,
+  ) => {
+    setPostPerPage(+event.target.value);
+  };
+
   const {
     productList,
     isLoading,
@@ -35,6 +45,14 @@ export const AccessoriesPage = () => {
     selectedSortField,
     sortOrder,
   );
+
+  const indexOfLastItem = currentPage * postPerPage;
+  const indexOfFirstItem = indexOfLastItem - postPerPage;
+  const currentItems = visibleList.slice(indexOfFirstItem, indexOfLastItem);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
 
   return (
     <div className="AccessoriesPage">
@@ -50,13 +68,15 @@ export const AccessoriesPage = () => {
         selectedSortField={selectedSortField}
         selectedSortOrder={sortOrder}
         onSelectOrder={handleSortOrder}
+        onSelectPerPage={handleSortPostCount}
+        postPerPage={postPerPage}
       />
 
       {isLoading ? (
         <Loader />
       ) : (
         <div className="AccessoriesPage--container">
-          {visibleList.map(product => (
+          {currentItems.map(product => (
             <Card
               key={product.id}
               product={product}
@@ -64,6 +84,12 @@ export const AccessoriesPage = () => {
           ))}
         </div>
       )}
+
+      <Pagination
+        postPorPage={postPerPage}
+        totalPost={visibleList.length}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 };
