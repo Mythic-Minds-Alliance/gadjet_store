@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Product } from '../types/product';
+import { CartProduct, Product } from '../types/product';
 
 export const scrollToTop = () => {
   window.scrollTo({
@@ -22,9 +22,9 @@ export const PageToTop: FC = () => {
 };
 
 export function handleAddToCart(item: Product,
-  setCartStorage: React.Dispatch<React.SetStateAction<Product[]>>): void {
+  setCartStorage: React.Dispatch<React.SetStateAction<CartProduct[]>>): void {
   try {
-    const currentCart: Product[]
+    const currentCart: CartProduct[]
       = JSON.parse(localStorage.getItem('cart') || '[]');
 
     const isItemInCart = currentCart.some(product => product.id === item.id);
@@ -50,15 +50,12 @@ export function handleAddToCart(item: Product,
 }
 
 export function handleRemoveFromCart(item: Product,
-  setCartStorage: React.Dispatch<React.SetStateAction<Product[]>>): void {
+  setCartStorage: React.Dispatch<React.SetStateAction<CartProduct[]>>): void {
   try {
-    const currentCart: Product[]
+    const currentCart: CartProduct[]
       = JSON.parse(localStorage.getItem('cart') || '[]');
 
     const updatedCart = currentCart.filter(product => product.id !== item.id);
-
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
-    setCartStorage(updatedCart);
 
     localStorage.setItem('cart', JSON.stringify(updatedCart));
     setCartStorage(updatedCart);
@@ -106,10 +103,118 @@ export function handleRemoveFromFavorites(item: Product,
 
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     setFavoriteStorage(updatedFavorites);
-
-    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-    setFavoriteStorage(updatedFavorites);
   } catch (error) {
     throw new Error('Error updating favorites data');
   }
+}
+
+export function changeAmount(item: CartProduct,
+  setCartStorage: React.Dispatch<React.SetStateAction<CartProduct[]>>,
+  action: string): void {
+  try {
+    const currentCart: CartProduct[]
+      = JSON.parse(localStorage.getItem('cart') || '[]');
+
+    const isItemInCart = currentCart.find(product => product.id === item.id);
+
+    if (!isItemInCart) {
+      throw new Error('item doesn`t exist');
+    }
+
+    const newQuantity = isItemInCart?.quantity
+      ? isItemInCart?.quantity + 1
+      : 1;
+
+    switch (action) {
+      case 'plus':
+        if (isItemInCart) {
+          const updatedCart = currentCart.map(product => {
+            return product.id === isItemInCart.id
+              ? { ...product, quantity: newQuantity }
+              : { ...product };
+          });
+
+          localStorage.setItem('cart', JSON.stringify(updatedCart));
+          setCartStorage(updatedCart);
+        }
+
+        break;
+      case 'minus':
+        if (isItemInCart?.quantity === 1) {
+          const updatedCart = currentCart
+            .filter(product => product.id !== isItemInCart.id);
+
+          localStorage.setItem('cart', JSON.stringify(updatedCart));
+          setCartStorage(updatedCart);
+        } else {
+          const updatedCart = currentCart.map(product => {
+            return product.id === isItemInCart.id
+              ? { ...product, quantity: product.quantity - 1 }
+              : { ...product };
+          });
+
+          localStorage.setItem('cart', JSON.stringify(updatedCart));
+          setCartStorage(updatedCart);
+        }
+
+        break;
+
+      default:
+        throw new Error('error');
+    }
+  } catch (error) {
+    throw new Error('Error updating cart data');
+  }
+}
+
+export function sortProductList(
+  product: Product[],
+  sortBy: string,
+  order: string,
+) {
+  let preparedList = [...product];
+
+  switch (sortBy) {
+    case 'Years':
+      if (order === 'Ascending') {
+        preparedList = preparedList.sort((a, b) => a.year - b.year);
+      } else {
+        preparedList = preparedList.sort((a, b) => b.year - a.year);
+      }
+
+      break;
+
+    case 'Price':
+      if (order === 'Ascending') {
+        preparedList = preparedList.sort((a, b) => a.price - b.price);
+      } else {
+        preparedList = preparedList.sort((a, b) => b.price - a.price);
+      }
+
+      break;
+
+    case 'Screen':
+      if (order === 'Ascending') {
+        preparedList = preparedList.sort((a, b) => {
+          const aScreenSize = parseFloat(a.screen);
+          const bScreenSize = parseFloat(b.screen);
+
+          return aScreenSize - bScreenSize;
+        });
+      } else {
+        preparedList = preparedList.sort((a, b) => {
+          const aScreenSize = parseFloat(a.screen);
+          const bScreenSize = parseFloat(b.screen);
+
+          return bScreenSize - aScreenSize;
+        });
+      }
+
+      break;
+
+    default:
+      break;
+  }
+
+  return preparedList;
 }

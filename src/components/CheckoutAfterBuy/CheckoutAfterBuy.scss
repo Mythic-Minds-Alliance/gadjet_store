@@ -1,0 +1,147 @@
+@import "../../assets/normalize";
+@import "../../assets/variables";
+@import "../../assets/colors.scss";
+@import "../../assets/mixins";
+
+.page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkoutPage {
+  max-height: 90vh;
+  overflow-y: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(161, 151, 151, 0.2);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  border: 1px solid rgba(231, 231, 231, 0);
+  border-radius: 10px;
+  @include headline-3;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &__closer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    color: $primary;
+
+    &--img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    color: #313237;
+  }
+
+  &__txt {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+  }
+
+  .orderContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .productDescription {
+    display: block;
+    width: 100%;
+  }
+
+  .orderItem {
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid rgb(247, 247, 247);
+    background-color: rgb(247, 247, 247);
+    border-radius: 10px;
+  }
+
+  .productInfo {
+    font-weight: 400;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .productImage {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+  }
+
+  .orderTotal {
+    color: #555;
+    font-weight: 500;
+    margin-top: 18px;
+    text-align: center;
+  }
+
+  .orderNumber {
+    color: #555;
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 10px;
+    text-align: center;
+  }
+}
+
+.checkoutPage__closerButton {
+  @include secondaryText;
+  font-weight: 700;
+  color: $white;
+
+  background-color: $primary;
+  background-color: $primary;
+  padding: 13.5px 85.5px;
+  margin-top: 16px;
+  border: 1px solid $primary;
+  transition: ease-in-out 0.2s;
+
+  display: block;
+  margin-top: 20px;
+  padding: 10px 15px;
+  border-radius: 5px;
+
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.40);
+  }
+
+  &:active {
+    border: 1px solid $elements;
+    background-color: $white;
+    color: $green;
+  }
+}

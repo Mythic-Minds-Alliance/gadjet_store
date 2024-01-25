@@ -63,7 +63,7 @@ export const Header: React.FC<Props> = ({ cartCount, favoriteCount }) => {
 
         <div className="links">
           <NavLink
-            to="/favourites"
+            to="/favorites"
             onClick={() => { }}
             className={({ isActive }) => classNames(
               'service_btn',

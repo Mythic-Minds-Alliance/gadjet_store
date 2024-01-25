@@ -5,17 +5,17 @@ import {
   createContext, useEffect, useState,
 }
   from 'react';
-import { Product } from './types/product';
+import { CartProduct, Product } from './types/product';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header';
 
 interface DataContextType {
   productList: Product[];
   isLoading: boolean;
-  cartStorage: Product[];
+  cartStorage: CartProduct[];
   favoriteStorage: Product[];
   setFavoriteStorage: Dispatch<SetStateAction<Product[]>>;
-  setCartStorage: Dispatch<SetStateAction<Product[]>>;
+  setCartStorage: Dispatch<SetStateAction<CartProduct[]>>;
 }
 
 export const DataContext = createContext<DataContextType>({
@@ -30,7 +30,7 @@ export const DataContext = createContext<DataContextType>({
 export const App = () => {
   const [productList, setProductList] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [cartStorage, setCartStorage] = useState<Product[]>([]);
+  const [cartStorage, setCartStorage] = useState<CartProduct[]>([]);
   const [favoriteStorage, setFavoriteStorage] = useState<Product[]>([]);
 
   if (!localStorage.getItem('cart')) {
@@ -53,7 +53,7 @@ export const App = () => {
           localStorage.getItem('favorites') || '[]',
         ));
       } catch (error) {
-        throw new Error('error');
+        throw new Error('error when fetching data from API');
       } finally {
         setIsLoading(false);
       }
