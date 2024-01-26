@@ -251,5 +251,4 @@ export function sortProductCarusel(
   }
 
   return preparedList.slice(0, 7);
-
 }

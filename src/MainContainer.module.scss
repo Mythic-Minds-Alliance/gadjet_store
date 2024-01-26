@@ -12,12 +12,11 @@
   }
 
   @include onDesktop {
-    padding: 0 32px;
     margin-bottom: 80px;
   }
 
   @include onLargeDesktop {
-    max-width: 1400px;
+    max-width: 1200px;
   }
 }
 
