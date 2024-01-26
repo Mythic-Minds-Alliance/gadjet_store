@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import styles from './ShopByCategory.module.scss';
 import TabletImg from '../../images/tablets.png';
 import Accessories from '../../images/accesorise.png';
+import PhonesImg from '../../images/mobilePhones.png';
 
 export const ShopByCategory = () => {
   return (
@@ -17,7 +18,7 @@ export const ShopByCategory = () => {
             className={styles.categoryTitle}
           >
             <img
-              src="img/phones/apple-iphone-7/black/00.jpg"
+              src={PhonesImg}
               alt="Iphone 14 in black color"
               className={styles.categoryImg}
             />
