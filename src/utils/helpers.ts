@@ -2,6 +2,8 @@ import { FC, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { CartProduct, Product } from '../types/product';
 
+export const SERVER_HOST = 'http://localhost:3005/';
+
 export const scrollToTop = () => {
   window.scrollTo({
     top: 0,
