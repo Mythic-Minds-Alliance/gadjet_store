@@ -4,6 +4,7 @@ import './FavoritesPage.scss';
 import { Card } from '../../components/Card/Card';
 import { DataContext } from '../../App';
 import { Loader } from '../../components/Loader';
+import { EmptyFavorites } from '../../components/EmptyFavorites/EmptyFavorites';
 
 export const FavoritesPage = () => {
   const {
@@ -16,12 +17,17 @@ export const FavoritesPage = () => {
       <h1 className="FavoritesPage--title">
         Favorites
       </h1>
-      <p className="FavoritesPage--favoritesCount">
-        {(favoriteStorage.length === 1)
-          ? (`${favoriteStorage.length} item`)
-          : (`${favoriteStorage.length} items`)}
-      </p>
+      {favoriteStorage.length !== 0 && (
+        <p className="FavoritesPage--favoritesCount">
+          {(favoriteStorage.length === 1)
+            ? (`${favoriteStorage.length} item`)
+            : (`${favoriteStorage.length} items`)}
+        </p>
+      )}
 
+      {!favoriteStorage.length && (
+        <EmptyFavorites />
+      )}
       {isLoading ? (
         <Loader />
       ) : (
