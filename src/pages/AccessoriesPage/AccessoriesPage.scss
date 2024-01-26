@@ -1,18 +1,6 @@
 @import '../../assets/mixins';
 
 .AccessoriesPage {
-  padding: 16px 24px;
-  max-width: 1136px;
-  margin: 0 auto;
-
-  @include onTablet {
-    padding: 24px 16px;
-  }
-
-  @include onLargeDesktop {
-    padding: 32px 32px;
-  }
-
   &--title {
     @include headline-1;
     margin-bottom: 8px;
@@ -31,7 +19,6 @@
   &--container {
     display: grid;
     justify-items: center;
-    justify-content: center;
     row-gap: 40px;
 
     @include pageGrid;
