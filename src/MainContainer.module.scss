@@ -17,15 +17,12 @@
   }
 
   @include onLargeDesktop {
-    padding: 0 152px;
     max-width: 1400px;
-
   }
 }
 
 .app {
   @include onLargeDesktop {
-    max-width: 1400px;
     margin: 0 auto;
   }
 }
