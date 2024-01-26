@@ -3,26 +3,20 @@
 @import '../../assets/variables';
 @import "../../assets/mixins";
 
-.сarusel {
-  position: relative;
+
+.carousel-buttons {
+  display: flex;
+  gap: 16px;
 }
 
-.arrou {
-  display: flex;
+.button {
+  display: block;
+  width: 32px;
   height: 32px;
-  background-color: #fff;
-  border: 1px solid rgba(180, 189, 195, 1);
-  border-radius: 50%;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
 
-  &--right {
-    transform: rotate(180deg);
-  }
-
   &--left {
-    transform: rotate(0deg);
+    transform: rotate(180deg)
   }
 
   &--disabled {
@@ -31,13 +25,50 @@
   }
 }
 
-.my-own-custom-container {
-  display: flex;
-  flex-direction: column-reverse;
-};
+.carusel {
+  padding-bottom: 80px;
 
-.carousel-button-group {
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+  }
+
+  &__sliderFull {
+    max-width: 1200px;
+    display: flex;
+    gap: 16px;
+    flex-direction: row;
+    padding-top: 16px;
+    white-space: nowrap;
+  }
+
+  &__slider {
+    max-width: 1200px;
+    display: flex;
+    gap: 16px;
+    flex-direction: row;
+    padding-top: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+.carusel__slider {
   display: flex;
-  justify-content: end;
-  gap: 16px;
-};
+  transition: transform 0.5s ease-in-out;
+}
+
+.carusel-card {
+  transition: transform 0.5s ease-in-out;
+}
+
+.carusel-card--active {
+  transform: translateX(0);
+}
+
+.carusel__title {
+  @include headline-2;
+  color: $primary;
+}
