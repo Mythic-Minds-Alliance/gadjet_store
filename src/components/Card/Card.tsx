@@ -2,13 +2,12 @@ import { Link } from 'react-router-dom';
 
 import './Card.scss';
 import React from 'react';
-import test from '../../images/00.webp';
 import { Product } from '../../types/product';
 import { DetailsList } from '../DetailsList/DetailsList';
 import { AddToCart } from '../AddToCart/AddToCart';
 import { CardSeparator } from '../СardSeparator/CardSeparator';
 import { CardPrices } from '../CardPrices/CardPrices';
-import { scrollToTop } from '../../utils/helpers';
+import { SERVER_HOST, scrollToTop } from '../../utils/helpers';
 
 type Props = {
   product: Product,
@@ -19,7 +18,7 @@ export const Card: React.FC<Props> = ({ product }) => {
     name,
     price,
     fullPrice,
-    // image,
+    image,
   } = product;
 
   const productPageLink = `/phones/${product.name}`;
@@ -34,7 +33,7 @@ export const Card: React.FC<Props> = ({ product }) => {
         />
         <Link to={productPageLink} className="card--photo">
           <img
-            src={test}
+            src={`${SERVER_HOST}/${image}`}
             alt={`${name}`}
             className="card--image"
           />
