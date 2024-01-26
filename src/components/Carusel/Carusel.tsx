@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
-import 'react-multi-carousel/lib/styles.css';
 
 import './Carusel.scss';
 import { DataContext } from '../../App';
@@ -23,19 +22,30 @@ export const Carusel: React.FC<Props> = ({
 }) => {
   const { productList } = useContext(DataContext);
   const visibleCart = sortProductCarusel(productList, selectedSortCarusel);
-  const [carouselPosition, setCarouselPosition] = useState(0);
-  const [counter, setCounter] = useState(0);
-  const [windowWidth] = useState(window.innerWidth);
 
-  const calculateVisiblePages = () => {
-    return (visibleCart.length + 1 - Math.floor(windowWidth / CARUSEL_STEP));
-  };
+  // const [setWindowWidth] = useState(window.innerWidth);
+  const [wCounter, setWCounter] = useState(0);
+
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setWindowWidth(window.innerWidth);
+  //   };
+
+  //   window.addEventListener('resize', handleResize);
+
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize);
+  //   };
+  // }, []);
+
+  const SLIDER_W = visibleCart.length * CARUSEL_STEP;
 
   const handleSlide = (direction: 'left' | 'right') => {
-    const newPosition = direction === 'left'
-      ? carouselPosition + CARUSEL_STEP : carouselPosition - CARUSEL_STEP;
-
-    setCarouselPosition(newPosition);
+    if (direction === 'left' && wCounter > 0) {
+      setWCounter((prevCounter) => prevCounter + CARUSEL_STEP);
+    } else if (direction === 'right' && wCounter < SLIDER_W) {
+      setWCounter((prevCounter) => prevCounter - CARUSEL_STEP);
+    }
   };
 
   return (
@@ -47,14 +57,11 @@ export const Carusel: React.FC<Props> = ({
             className={classNames(
               'button',
               'button--left',
-              { 'button--disabled': counter === 0 },
+              { 'button--disabled': wCounter === 0 },
             )}
             type="button"
             onClick={() => {
-              if (counter > 0) {
-                handleSlide('left');
-                setCounter((prevCounter) => prevCounter - 1);
-              }
+              handleSlide('left');
             }}
           >
             <img src={arrou} alt="arrow_left" />
@@ -65,14 +72,12 @@ export const Carusel: React.FC<Props> = ({
             className={classNames(
               'Button',
               'Button--right',
-              { 'button--disabled': counter === +calculateVisiblePages - 1 },
+              { 'button--disabled': wCounter >= SLIDER_W - CARUSEL_STEP },
             )}
             aria-label="Go right"
             onClick={() => {
-              if (counter < visibleCart.length - 3) {
-                handleSlide('right');
-                setCounter((prevCounter) => prevCounter + 1);
-              }
+              handleSlide('right');
+              // console.log(SLIDER_W);
             }}
           >
             <img src={arrou} alt="arrou_right" />
@@ -84,7 +89,7 @@ export const Carusel: React.FC<Props> = ({
         <div
           className="carusel__sliderFull"
           style={{
-            transform: `translateX(${carouselPosition}px)`,
+            transform: `translateX(${wCounter}px)`,
             transition: 'transform 0.5s ease-in-out',
           }}
         >
