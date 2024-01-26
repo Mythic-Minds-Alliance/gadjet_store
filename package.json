@@ -2,7 +2,7 @@
   "name": "gadjets_store_client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mythic-minds-alliance.github.io/gadjets_store_client",
+  "homepage": "https://Mythic-Minds-Alliance.github.io/gadjets_store_client",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
