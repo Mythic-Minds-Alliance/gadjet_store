@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
 import 'react-multi-carousel/lib/styles.css';
+
 import './Carusel.scss';
 import { DataContext } from '../../App';
 import { sortProductCarusel } from '../../utils/helpers';
