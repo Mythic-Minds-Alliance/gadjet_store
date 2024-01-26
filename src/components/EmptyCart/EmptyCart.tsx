@@ -7,12 +7,12 @@ export const EmptyCart = () => (
     <div className="EmptyCart">
       <img
         className="EmptyCart--image"
-        src="https://images-ext-2.discordapp.net/external/iwVvk8QVMdPDTqvO4e9zxc4UOWkNa1AatOD5t-sPsGU/https/media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHc5MXZmc3N3ZnljcTRmZDJpcXNsdDh3Y2Y2YTVxcWgweXpocTdnbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/J8YpfDX0kvPQNSVGHY/giphy.gif"
+        src="https://poruch.store/img/empty-cart.svg"
         alt="Empty cart"
       />
     </div>
 
-    <h1 className="EmptyCart--title">No items in cart</h1>
+    <h1 className="EmptyCart--title">Any items found</h1>
 
     <NavLink
       to="/phones"
