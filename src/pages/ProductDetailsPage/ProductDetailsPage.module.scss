@@ -3,22 +3,6 @@
 @import "../../assets/colors";
 @import "../../assets/mixins";
 
-.container {
-  padding: 0 16px;
-
-  @include onTablet {
-    padding: 0 24px;
-  }
-
-  @include onDesktop {
-    padding: 0 32px;
-  }
-
-  @include onLargeDesktop {
-    padding: 0 152px;
-  }
-}
-
 .extendedDetails {
   &__pictures {
     margin: 0 auto;

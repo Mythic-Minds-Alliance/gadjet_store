@@ -2,6 +2,8 @@ import { FC, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { CartProduct, Product } from '../types/product';
 
+export const SERVER_HOST = 'http://localhost:3005/';
+
 export const scrollToTop = () => {
   window.scrollTo({
     top: 0,
@@ -250,5 +252,5 @@ export function sortProductCarusel(
       break;
   }
 
-  return preparedList.slice(5);
+  return preparedList.slice(0, 7);
 }
