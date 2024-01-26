@@ -24,3 +24,7 @@
 .lastCrumb {
   color: $icons;
 }
+
+.crumb {
+  text-transform: capitalize;
+}

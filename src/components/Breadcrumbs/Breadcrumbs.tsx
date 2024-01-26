@@ -25,7 +25,12 @@ export const Breadcrumbs = () => {
       return (
         <React.Fragment key={crumb}>
           <div className={crumbStyle}>
-            <Link to={currentLink}>{crumb.replaceAll('%20', ' ')}</Link>
+            <Link
+              to={currentLink}
+              className={style.crumb}
+            >
+              {crumb.replaceAll('%20', ' ')}
+            </Link>
           </div>
           {!isLastCrumb && (
             <img
