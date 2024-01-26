@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
-import Carousel, { ButtonGroupProps } from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
 
