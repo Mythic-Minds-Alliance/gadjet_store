@@ -1,7 +1,17 @@
+@import "../../assets/normalize";
+@import "../../assets/variables";
+@import "../../assets/mixins";
+
 .details {
   display: flex;
   justify-content: space-between;
   width: inherit;
+  margin-bottom: 56px;
+
+  @include onTablet{
+    margin-bottom: 0;
+  }
+
 
   &--list {
     list-style: none;
@@ -27,6 +37,7 @@
       font-weight: 700;
       line-height: 15px;
       color: inherit;
+      text-align: end;
     }
   }
 }
