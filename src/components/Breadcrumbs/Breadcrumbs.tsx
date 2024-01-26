@@ -57,7 +57,9 @@ export const Breadcrumbs = () => {
         alt="arrow right"
         className={style.arrowRight}
       />
-      {crumbs}
+      <div className={style.crumbsContainer}>
+        {crumbs}
+      </div>
     </div>
   );
 };
