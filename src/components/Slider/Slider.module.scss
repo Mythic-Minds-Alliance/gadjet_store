@@ -18,19 +18,10 @@ $sliderItemSize: 100%;
 
   @include onTablet {
     margin-bottom: 64px;
-    padding-left: 24px;
-    padding-right: 24px;
   }
 
   @include onDesktop {
     margin-bottom: 80px;
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-
-  @include onLargeDesktop {
-    padding-left: 152px;
-    padding-right: 152px;
   }
 }
 
