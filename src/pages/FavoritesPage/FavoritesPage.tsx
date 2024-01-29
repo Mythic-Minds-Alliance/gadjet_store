@@ -18,7 +18,7 @@ export const FavoritesPage = () => {
         Favorites
       </h1>
       {favoriteStorage.length !== 0 && (
-        <p className={style.CataloguePage__favoritesCount}>
+        <p className={style.CataloguePage__CatalogueCount}>
           {(favoriteStorage.length === 1)
             ? (`${favoriteStorage.length} item`)
             : (`${favoriteStorage.length} items`)}
