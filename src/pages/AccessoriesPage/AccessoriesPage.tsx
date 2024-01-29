@@ -91,7 +91,7 @@ export const AccessoriesPage = () => {
         <div className={style.CataloguePage__container}>
           {currentItems.map(product => (
             <Card
-              key={product.id}
+              key={product.name}
               product={product}
             />
           ))}
@@ -102,6 +102,7 @@ export const AccessoriesPage = () => {
         postPorPage={postPerPage}
         totalPost={visibleList.length}
         onPageChange={handlePageChange}
+        currentPage={currentPage}
       />
     </div>
   );

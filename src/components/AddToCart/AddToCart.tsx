@@ -27,7 +27,7 @@ export const AddToCart: React.FC<Props> = ({ product }) => {
     item: Product,
     productStorage: CartProduct[] | Product[],
   ) => {
-    return productStorage.some(phoneCard => phoneCard.id === item.id);
+    return productStorage.some(phoneCard => phoneCard.name === item.name);
   };
 
   useEffect(() => {

@@ -25,7 +25,7 @@ export const ProductControls: React.FC<Props> = ({ product }) => {
 
       <CardSeparator />
 
-      <CardPrices price={100} fullPrice={150} />
+      <CardPrices price="100" fullPrice="100" />
 
       <AddToCart product={product} />
     </div>
