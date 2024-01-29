@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/gadjets_store_client/static/css/main.20d8d1b6.css",
-    "main.js": "/gadjets_store_client/static/js/main.5fae5dc2.js",
+    "main.js": "/gadjets_store_client/static/js/main.3ef4733c.js",
     "static/media/tablets.png": "/gadjets_store_client/static/media/tablets.8ca07b70f7b983efdcf4.png",
     "static/media/sliderBig1.png": "/gadjets_store_client/static/media/sliderBig1.2df82b50899099e0108b.png",
     "static/media/accesorise.png": "/gadjets_store_client/static/media/accesorise.7836a378770602c325a4.png",
@@ -30,10 +30,10 @@
     "static/media/Arrow.svg": "/gadjets_store_client/static/media/Arrow.837e2957378258c8ddb071859e53301f.svg",
     "index.html": "/gadjets_store_client/index.html",
     "main.20d8d1b6.css.map": "/gadjets_store_client/static/css/main.20d8d1b6.css.map",
-    "main.5fae5dc2.js.map": "/gadjets_store_client/static/js/main.5fae5dc2.js.map"
+    "main.3ef4733c.js.map": "/gadjets_store_client/static/js/main.3ef4733c.js.map"
   },
   "entrypoints": [
     "static/css/main.20d8d1b6.css",
-    "static/js/main.5fae5dc2.js"
+    "static/js/main.3ef4733c.js"
   ]
 }
