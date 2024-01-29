@@ -10,10 +10,9 @@ import { ProductImagesSlider } from '../../components/ProductImagesSlider';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
-import { ProductVariants } from '../../components/ProductVariants/ProductVariants';
+// import { ProductVariants } from '../../components/ProductVariants/ProductVariants';
 import { Carusel } from '../../components/Carusel';
 import { CaruselSort } from '../../types/CaruselSort';
-
 
 export const ProductDetailsPage = () => {
   return (
