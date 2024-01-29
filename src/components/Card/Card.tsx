@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-
 import './Card.scss';
+
+import { Link } from 'react-router-dom';
 
 import React from 'react';
 import { Product } from '../../types/product';
@@ -50,7 +50,7 @@ export const Card: React.FC<Props> = ({ product }) => {
         {name}
       </p>
 
-      <CardPrices price={price} fullPrice={priceDiscount} />
+      <CardPrices price={priceDiscount} fullPrice={price} />
 
       <div className="card--line">
         <CardSeparator />

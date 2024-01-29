@@ -11,6 +11,7 @@ import ordersLogo from '../../images/ShoppingBag.png';
 import burgerMenu from '../../images/Menu.png';
 import close from '../../images/Close.png';
 import { HeaderCounter } from '../HeaderCounter/HeaderCounter';
+import { scrollToTop } from '../../utils/helpers';
 
 type Props = {
   cartCount: number,
@@ -79,7 +80,7 @@ export const Header: React.FC<Props> = ({ cartCount, favoriteCount }) => {
 
           <NavLink
             to="/favorites"
-            onClick={() => { }}
+            onClick={() => scrollToTop()}
             className={({ isActive }) => classNames(
               'service_btn',
               { active: isActive },
@@ -102,6 +103,7 @@ export const Header: React.FC<Props> = ({ cartCount, favoriteCount }) => {
               'service_btn',
               { active: isActive },
             )}
+            onClick={() => scrollToTop()}
           >
             <img
               src={ordersLogo}

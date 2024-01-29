@@ -1,23 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
 import './Pagination.scss';
 import nextPage from '../../images/Slider_button.png';
+import { scrollToTop } from '../../utils/helpers';
 
 type Props = {
   postPorPage: number;
   totalPost: number;
   onPageChange: (page: number) => void;
+  currentPage: number;
 };
 
 export const Pagination: React.FC<Props> = ({
   postPorPage,
   totalPost,
   onPageChange,
+  currentPage,
 }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const pages = [];
+  const pages: number[] = [];
 
   for (let i = 1; i <= Math.ceil(totalPost / postPorPage); i += 1) {
     pages.push(i);
@@ -25,13 +26,13 @@ export const Pagination: React.FC<Props> = ({
 
   const handleChangeNextPage = () => {
     if (currentPage < Math.ceil(totalPost / postPorPage)) {
-      setCurrentPage(currentPage + 1);
+      onPageChange(currentPage + 1);
     }
   };
 
   const handleChangePrevPage = () => {
     if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
+      onPageChange(currentPage - 1);
     }
   };
 
@@ -40,7 +41,10 @@ export const Pagination: React.FC<Props> = ({
       <button
         className="Pagination--button-next"
         type="submit"
-        onClick={handleChangeNextPage}
+        onClick={() => {
+          handleChangePrevPage();
+          scrollToTop();
+        }}
       >
         <img
           src={nextPage}
@@ -50,8 +54,11 @@ export const Pagination: React.FC<Props> = ({
       {pages.map(page => (
         <button
           key={page}
-          onClick={() => onPageChange}
-          type="submit"
+          onClick={() => {
+            onPageChange(page);
+            scrollToTop();
+          }}
+          type="button"
           className={classNames(
             'Pagination--button', { isActive: page === currentPage },
           )}
@@ -63,7 +70,10 @@ export const Pagination: React.FC<Props> = ({
       <button
         className="Pagination--button-back"
         type="submit"
-        onClick={handleChangePrevPage}
+        onClick={() => {
+          handleChangeNextPage();
+          scrollToTop();
+        }}
       >
         <img
           src={nextPage}

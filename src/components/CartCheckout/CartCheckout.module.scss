@@ -17,6 +17,7 @@
   }
 
   &__totalItems {
+    @include mainText;
     color: $secondary;
     margin-bottom: 16px;
   }
@@ -46,6 +47,4 @@
       color: $green;
     }
   }
-
-
 }

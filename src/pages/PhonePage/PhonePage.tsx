@@ -101,6 +101,7 @@ export const PhonePage = () => {
         postPorPage={postPerPage}
         totalPost={visibleList.length}
         onPageChange={handlePageChange}
+        currentPage={currentPage}
       />
     </div>
   );

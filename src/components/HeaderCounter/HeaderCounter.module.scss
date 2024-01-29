@@ -1,4 +1,6 @@
-@import './../../assets/mixins';
+@import "../../assets/normalize";
+@import "../../assets/variables";
+@import "../../assets/mixins";
 
 @include onPhone {
   .countContainer {
@@ -10,9 +12,9 @@
     justify-content: center;
     height: 14px;
     width: 14px;
-    background-color: #EB5757;
+    background-color: $red;
     border-radius: 50%;
-    border: 1px solid #fff;
+    border: 1px solid $white;
   }
 }
 
@@ -26,9 +28,7 @@
 }
 
 .numberOfItems {
-  color: #fff;
+  color: $white;
   font-size: 9px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
+  @include smallText;
 }
