@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { FC, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { CartProduct, Product } from '../types/product';
@@ -29,10 +30,10 @@ export function handleAddToCart(item: Product,
     const currentCart: CartProduct[]
       = JSON.parse(localStorage.getItem('cart') || '[]');
 
-    const isItemInCart = currentCart.some(product => product.id === item.id);
+    const isItemInCart = currentCart.some(product => product.name === item.name);
 
     if (isItemInCart) {
-      const updatedCart = currentCart.filter(product => product.id !== item.id);
+      const updatedCart = currentCart.filter(product => product.name !== item.name);
 
       localStorage.setItem('cart', JSON.stringify(updatedCart));
       setCartStorage(updatedCart);
@@ -57,7 +58,7 @@ export function handleRemoveFromCart(item: Product,
     const currentCart: CartProduct[]
       = JSON.parse(localStorage.getItem('cart') || '[]');
 
-    const updatedCart = currentCart.filter(product => product.id !== item.id);
+    const updatedCart = currentCart.filter(product => product.name !== item.name);
 
     localStorage.setItem('cart', JSON.stringify(updatedCart));
     setCartStorage(updatedCart);
@@ -73,11 +74,11 @@ export function handleAddToFavorites(item: Product,
       = JSON.parse(localStorage.getItem('favorites') || '[]');
 
     const isItemInFavorites
-      = currentFavorites.some(product => product.id === item.id);
+      = currentFavorites.some(product => product.name === item.name);
 
     if (isItemInFavorites) {
       const updatedFavorites
-        = currentFavorites.filter(product => product.id !== item.id);
+        = currentFavorites.filter(product => product.name !== item.name);
 
       localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
       setFavoriteStorage(updatedFavorites);
@@ -101,7 +102,7 @@ export function handleRemoveFromFavorites(item: Product,
       = JSON.parse(localStorage.getItem('favorites') || '[]');
 
     const updatedFavorites
-      = currentFavorites.filter(product => product.id !== item.id);
+      = currentFavorites.filter(product => product.name !== item.name);
 
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     setFavoriteStorage(updatedFavorites);
@@ -117,7 +118,7 @@ export function changeAmount(item: CartProduct,
     const currentCart: CartProduct[]
       = JSON.parse(localStorage.getItem('cart') || '[]');
 
-    const isItemInCart = currentCart.find(product => product.id === item.id);
+    const isItemInCart = currentCart.find(product => product.name === item.name);
 
     if (!isItemInCart) {
       throw new Error('item doesn`t exist');
@@ -131,7 +132,7 @@ export function changeAmount(item: CartProduct,
       case 'plus':
         if (isItemInCart) {
           const updatedCart = currentCart.map(product => {
-            return product.id === isItemInCart.id
+            return product.name === isItemInCart.name
               ? { ...product, quantity: newQuantity }
               : { ...product };
           });
@@ -144,13 +145,13 @@ export function changeAmount(item: CartProduct,
       case 'minus':
         if (isItemInCart?.quantity === 1) {
           const updatedCart = currentCart
-            .filter(product => product.id !== isItemInCart.id);
+            .filter(product => product.name !== isItemInCart.name);
 
           localStorage.setItem('cart', JSON.stringify(updatedCart));
           setCartStorage(updatedCart);
         } else {
           const updatedCart = currentCart.map(product => {
-            return product.id === isItemInCart.id
+            return product.name === isItemInCart.name
               ? { ...product, quantity: product.quantity - 1 }
               : { ...product };
           });
