@@ -17,7 +17,7 @@ export const CartPage = () => {
         <div className="CartPage--section">
           <div className="CartPage--block">
             {cartStorage.map(item => (
-              <CartItem item={item} />
+              <CartItem item={item} key={item.name} />
             ))}
           </div>
 

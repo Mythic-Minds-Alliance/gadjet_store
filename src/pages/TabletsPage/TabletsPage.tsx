@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import style from '../../assets/catalogue.module.scss';
 import { Card } from '../../components/Card/Card';
 import { Loader } from '../../components/Loader';
-import { SortPanel } from '../../SortPanel/SortPanel';
+import { SortPanel } from '../../components/SortPanel/SortPanel';
 import { sortProductList } from '../../utils/helpers';
 import { Pagination } from '../../components/Pagination/Pagination';
 
@@ -91,7 +91,7 @@ export const TabletsPage = () => {
         <div className={style.CataloguePage__container}>
           {currentItems.map(product => (
             <Card
-              key={product.id}
+              key={product.name}
               product={product}
             />
           ))}

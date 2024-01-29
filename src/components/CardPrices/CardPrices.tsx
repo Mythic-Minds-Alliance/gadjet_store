@@ -1,8 +1,8 @@
 import './CardPrices.scss';
 
 type Props = {
-  price: number,
-  fullPrice: number,
+  price: string,
+  fullPrice: string,
 };
 
 export const CardPrices: React.FC<Props> = ({ price, fullPrice }) => {

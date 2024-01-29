@@ -19,11 +19,8 @@
     &-item {
       margin-bottom: 8px;
 
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 15px;
-
-      color: #89939A;
+      @include smallText;
+      color: $secondary;
     }
   }
 
@@ -33,10 +30,8 @@
     &-item {
       margin-bottom: 8px;
 
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 15px;
-      color: inherit;
+      @include smallText;
+      color: $primary;
       text-align: end;
     }
   }
