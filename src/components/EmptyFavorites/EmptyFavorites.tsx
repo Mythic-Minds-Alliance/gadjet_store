@@ -7,7 +7,7 @@ export const EmptyFavorites = () => (
     <div className="EmptyFavorites">
       <img
         className="EmptyFavorites--image"
-        src="https://images-ext-2.discordapp.net/external/iwVvk8QVMdPDTqvO4e9zxc4UOWkNa1AatOD5t-sPsGU/https/media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHc5MXZmc3N3ZnljcTRmZDJpcXNsdDh3Y2Y2YTVxcWgweXpocTdnbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/J8YpfDX0kvPQNSVGHY/giphy.gif"
+        src="https://i.pinimg.com/originals/09/fa/46/09fa464f74f2b4d578f98a54b82fb456.gif"
         alt="Empty cart"
       />
     </div>

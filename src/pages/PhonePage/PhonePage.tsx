@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 
-import './PhonePage.scss';
+import style from '../../assets/catalogue.module.scss';
 import { Card } from '../../components/Card/Card';
 import { DataContext } from '../../App';
 import { Loader } from '../../components/Loader';
@@ -55,11 +55,11 @@ export const PhonePage = () => {
   };
 
   return (
-    <div className="PhonePage">
-      <h1 className="PhonePage--title">
+    <div className={style.CataloguePage}>
+      <h1 className={style.CataloguePage__title}>
         Mobile phones
       </h1>
-      <p className="PhonePage--phoneCount">
+      <p className={style.CataloguePage__CatalogueCount}>
         {`${visibleList.length} models`}
       </p>
 
@@ -75,7 +75,7 @@ export const PhonePage = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="PhonePage--container">
+        <div className={style.CataloguePage__container}>
           {currentItems.map(product => (
             <Card
               key={product.id}
@@ -89,6 +89,7 @@ export const PhonePage = () => {
         postPorPage={postPerPage}
         totalPost={visibleList.length}
         onPageChange={handlePageChange}
+        currentPage={currentPage}
       />
     </div>
   );
