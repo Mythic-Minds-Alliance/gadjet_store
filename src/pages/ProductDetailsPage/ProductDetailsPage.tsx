@@ -14,6 +14,7 @@ import { ProductVariants } from '../../components/ProductVariants/ProductVariant
 import { Carusel } from '../../components/Carusel';
 import { CaruselSort } from '../../types/CaruselSort';
 
+
 export const ProductDetailsPage = () => {
   return (
     <>
@@ -24,9 +25,9 @@ export const ProductDetailsPage = () => {
             <div className={detailsStyles.extendedDetails__pictures}>
               <ProductImagesSlider />
             </div>
-            <div className={detailsStyles.extendedDetails__mainInfo}>
+            {/* <div className={detailsStyles.extendedDetails__mainInfo}>
               <ProductVariants product={phonesFromServer[0]} />
-            </div>
+            </div> */}
           </div>
 
           <div className={detailsStyles.bottomContent}>
