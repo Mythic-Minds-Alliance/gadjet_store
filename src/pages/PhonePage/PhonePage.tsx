@@ -4,7 +4,7 @@ import style from '../../assets/catalogue.module.scss';
 import { Card } from '../../components/Card/Card';
 import { DataContext } from '../../App';
 import { Loader } from '../../components/Loader';
-import { SortPanel } from '../../SortPanel/SortPanel';
+import { SortPanel } from '../../components/SortPanel/SortPanel';
 import { sortProductList } from '../../utils/helpers';
 import { Pagination } from '../../components/Pagination/Pagination';
 
