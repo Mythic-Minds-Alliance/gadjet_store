@@ -7,6 +7,8 @@
   }
 
   &--phoneCount {
+    margin-bottom: 32px;
+
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
@@ -15,16 +17,9 @@
   }
 
   &--container {
-    display: grid;
-    justify-items: center;
-    row-gap: 40px;
-    margin-bottom: 24px;
-
     @include pageGrid;
 
-    @include onTablet {
-      grid-template-columns: repeat(auto-fill, minmax(229px, 288px));
-      justify-items: start;
-    }
+    justify-items: center;
+    row-gap: 40px;
   }
 }
