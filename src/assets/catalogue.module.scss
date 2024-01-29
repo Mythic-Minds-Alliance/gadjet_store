@@ -9,10 +9,9 @@
   }
 
   &__CatalogueCount {
-    @include buttonsText;
-    margin-bottom: 32px;
-
-    color: $secondary;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
 
     @include onTablet {
       margin-bottom: 40px;
@@ -26,5 +25,10 @@
     margin-bottom: 24px;
 
     @include pageGrid;
+
+    @include onTablet {
+      grid-template-columns: repeat(auto-fill, minmax(229px, 288px));
+      justify-items: start;
+    }
   }
 }
