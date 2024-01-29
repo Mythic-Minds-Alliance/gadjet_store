@@ -38,9 +38,8 @@
   &--title {
     margin-bottom: 8px;
 
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 21px;
+    @include buttonsText;
+    color: $primary;
   }
 
   &--prices {
