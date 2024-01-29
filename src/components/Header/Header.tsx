@@ -5,6 +5,7 @@ import './Header.scss';
 import { NavigationLink } from '../NavigationLink/NavigationLink';
 import { BurgerMenuOpened } from '../BurgerMenuOpened';
 import logo from '../../images/Logo.png';
+import user from '../../icons/User.svg';
 import favoriteImg from '../../images/Favourites.png';
 import ordersLogo from '../../images/ShoppingBag.png';
 import burgerMenu from '../../images/Menu.png';
@@ -62,6 +63,20 @@ export const Header: React.FC<Props> = ({ cartCount, favoriteCount }) => {
         </div>
 
         <div className="links">
+          <NavLink
+            to="/account"
+            className={({ isActive }) => classNames(
+              'service_btn',
+              { active: isActive },
+            )}
+          >
+            <img
+              src={user}
+              alt="account logo"
+              className="service_btn_img"
+            />
+          </NavLink>
+
           <NavLink
             to="/favorites"
             onClick={() => { }}

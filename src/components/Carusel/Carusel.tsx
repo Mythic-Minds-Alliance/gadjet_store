@@ -4,7 +4,7 @@ import './Carusel.scss';
 import { DataContext } from '../../App';
 import { sortProductCarusel } from '../../utils/helpers';
 import { Card } from '../Card/Card';
-import arrou from '../../icons/Slider button - Default (right).svg';
+import arrow from '../../icons/SliderButtonRight.png';
 
 const CART_W = 229;
 const GAP = 16;
@@ -63,7 +63,11 @@ export const Carusel: React.FC<Props> = ({
               handleSlide('left');
             }}
           >
-            <img src={arrou} alt="arrow_left" />
+            <img
+              src={arrow}
+              alt="arrow_left"
+              className="button__img"
+            />
           </button>
 
           <button
@@ -79,7 +83,11 @@ export const Carusel: React.FC<Props> = ({
               // console.log(SLIDER_W);
             }}
           >
-            <img src={arrou} alt="arrou_right" />
+            <img
+              src={arrow}
+              alt="arrou_right"
+              className="button__img button--right"
+            />
           </button>
         </div>
       </div>
