@@ -9,9 +9,10 @@
   }
 
   &__CatalogueCount {
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 21px;
+    @include buttonsText;
+    margin-bottom: 32px;
+
+    color: $secondary;
 
     @include onTablet {
       margin-bottom: 40px;
