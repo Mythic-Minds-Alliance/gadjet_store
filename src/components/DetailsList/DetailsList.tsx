@@ -6,12 +6,6 @@ type Props = {
 };
 
 export const DetailsList: React.FC<Props> = ({ product }) => {
-  // const {
-  //   screen,
-  //   capacity,
-  //   ram,
-  // } = product;
-
   return (
     <div className="details">
       <ul className="details--list">
