@@ -9,6 +9,7 @@ import { CartProduct, Product } from './types/product';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header';
 import { Breadcrumbs } from './components/Breadcrumbs';
+import style from './MainContainer.module.scss';
 
 interface DataContextType {
   productList: Product[];
@@ -45,7 +46,8 @@ export const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3005/products');
+        const response = await
+        axios.get('http://localhost:3005/products?categoryId=1');
 
         setProductList(response.data);
 
@@ -73,14 +75,17 @@ export const App = () => {
       setFavoriteStorage,
     }}
     >
-      <div data-cy="app">
+      <div className={style.app}>
         <Header
           cartCount={cartStorage.length}
           favoriteCount={favoriteStorage.length}
         />
-        <Breadcrumbs />
+        <div data-cy="app" className={style.MainContainer}>
 
-        <Outlet />
+          <Breadcrumbs />
+          <Outlet />
+        </div>
+
         <Footer />
       </div>
     </DataContext.Provider>

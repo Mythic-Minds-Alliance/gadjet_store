@@ -1,17 +1,34 @@
-import { useContext, useState } from 'react';
-
-import './PhonePage.scss';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import style from '../../assets/catalogue.module.scss';
 import { Card } from '../../components/Card/Card';
-import { DataContext } from '../../App';
 import { Loader } from '../../components/Loader';
-import { SortPanel } from '../../SortPanel/SortPanel';
+import { SortPanel } from '../../components/SortPanel/SortPanel';
 import { sortProductList } from '../../utils/helpers';
 import { Pagination } from '../../components/Pagination/Pagination';
 
 export const PhonePage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(12);
+  const [phonesList, setphonesList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios
+          .get('http://localhost:3005/products?categoryId=1');
+
+        setphonesList(response.data);
+      } catch (error) {
+        throw new Error('error when fetching data from API');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
   const [
     selectedSortField, setSelectedSortField,
   ] = useState('Years');
@@ -35,13 +52,8 @@ export const PhonePage = () => {
     setPostPerPage(+event.target.value);
   };
 
-  const {
-    productList,
-    isLoading,
-  } = useContext(DataContext);
-
   const visibleList = sortProductList(
-    productList,
+    phonesList,
     selectedSortField,
     sortOrder,
   );
@@ -55,11 +67,11 @@ export const PhonePage = () => {
   };
 
   return (
-    <div className="PhonePage">
-      <h1 className="PhonePage--title">
+    <div className={style.CataloguePage}>
+      <h1 className={style.CataloguePage__title}>
         Mobile phones
       </h1>
-      <p className="PhonePage--phoneCount">
+      <p className={style.CataloguePage__CatalogueCount}>
         {`${visibleList.length} models`}
       </p>
 
@@ -75,10 +87,10 @@ export const PhonePage = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="PhonePage--container">
+        <div className={style.CataloguePage__container}>
           {currentItems.map(product => (
             <Card
-              key={product.id}
+              key={product.name}
               product={product}
             />
           ))}
@@ -89,6 +101,7 @@ export const PhonePage = () => {
         postPorPage={postPerPage}
         totalPost={visibleList.length}
         onPageChange={handlePageChange}
+        currentPage={currentPage}
       />
     </div>
   );

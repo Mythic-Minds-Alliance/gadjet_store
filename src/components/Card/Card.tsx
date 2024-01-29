@@ -1,13 +1,14 @@
 import './Card.scss';
 
 import { Link } from 'react-router-dom';
+
 import React from 'react';
-import test from '../../images/00.webp';
 import { Product } from '../../types/product';
 import { DetailsList } from '../DetailsList/DetailsList';
 import { AddToCart } from '../AddToCart/AddToCart';
 import { CardSeparator } from '../СardSeparator/CardSeparator';
 import { CardPrices } from '../CardPrices/CardPrices';
+import { SERVER_HOST, scrollToTop } from '../../utils/helpers';
 
 type Props = {
   product: Product,
@@ -17,7 +18,8 @@ export const Card: React.FC<Props> = ({ product }) => {
   const {
     name,
     price,
-    fullPrice,
+    priceDiscount,
+    images,
   } = product;
 
   const productPageLink = `/phones/${product.name}`;
@@ -25,9 +27,19 @@ export const Card: React.FC<Props> = ({ product }) => {
   return (
     <div className="card">
       <div className="card--top">
+        <Link
+          className="card--photo"
+          to="/productDetails"
+          onClick={scrollToTop}
+        />
+        <Link
+          className="card--photo"
+          to="/productDetails"
+          onClick={scrollToTop}
+        />
         <Link to={productPageLink} className="card--photo">
           <img
-            src={test}
+            src={`${SERVER_HOST}/${images[0]}`}
             alt={`${name}`}
             className="card--image"
           />
@@ -38,7 +50,7 @@ export const Card: React.FC<Props> = ({ product }) => {
         {name}
       </p>
 
-      <CardPrices price={price} fullPrice={fullPrice} />
+      <CardPrices price={priceDiscount} fullPrice={price} />
 
       <div className="card--line">
         <CardSeparator />

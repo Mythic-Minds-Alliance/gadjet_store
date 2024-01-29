@@ -13,7 +13,8 @@ export const CartCheckout: React.FC<CartCheckoutProps> = ({ cartStorage }) => {
 
   const totalPrice = cartStorage
     .reduce(
-      (sum: number, item: CartProduct) => sum + item.price * item.quantity, 0,
+      (sum: number, item: CartProduct) => sum
+        + (+item.price) * item.quantity, 0,
     );
 
   return (

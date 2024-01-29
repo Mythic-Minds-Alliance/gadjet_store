@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './CheckoutAfterBuy.scss';
 import close from '../../images/Close.png';
 import { CartProduct } from '../../types/product';
-import TestImg from '../../images/image 8.png';
+import { SERVER_HOST } from '../../utils/helpers';
 
 interface Props {
   totalPrice: number;
@@ -39,7 +39,7 @@ export const CheckoutAfterBuy: React.FC<Props> = ({
             <div key={product.id} className="orderItem">
               <div className="productInfo">
                 <img
-                  src={TestImg}
+                  src={`${SERVER_HOST}/${product.images[0]}`}
                   alt={product.name}
                   className="productImage"
                 />
@@ -47,7 +47,7 @@ export const CheckoutAfterBuy: React.FC<Props> = ({
                   <p>{product.quantity > 1 ? `${product.name} x ${product.quantity} items` : product.name}</p>
                   <p>
                     $
-                    {`${product.price.toFixed(2)} `}
+                    {`${(+product.price).toFixed(2)} `}
                   </p>
                 </div>
               </div>

@@ -4,7 +4,7 @@ import './CartPage.scss';
 import { CartCheckout } from '../../components/CartCheckout/CartCheckout';
 
 import { DataContext } from '../../App';
-import { NoItems } from '../../components/NoItems/NoItems';
+import { EmptyCart } from '../../components/EmptyCart/EmptyCart';
 
 export const CartPage = () => {
   const { cartStorage } = useContext(DataContext);
@@ -17,7 +17,7 @@ export const CartPage = () => {
         <div className="CartPage--section">
           <div className="CartPage--block">
             {cartStorage.map(item => (
-              <CartItem item={item} />
+              <CartItem item={item} key={item.name} />
             ))}
           </div>
 
@@ -28,7 +28,7 @@ export const CartPage = () => {
           </div>
         </div>
       ) : (
-        <NoItems />
+        <EmptyCart />
       )}
     </div>
   );

@@ -1,9 +1,10 @@
 import { useContext } from 'react';
 
-import './FavoritesPage.scss';
+import style from '../../assets/catalogue.module.scss';
 import { Card } from '../../components/Card/Card';
 import { DataContext } from '../../App';
 import { Loader } from '../../components/Loader';
+import { EmptyFavorites } from '../../components/EmptyFavorites/EmptyFavorites';
 
 export const FavoritesPage = () => {
   const {
@@ -12,23 +13,28 @@ export const FavoritesPage = () => {
   } = useContext(DataContext);
 
   return (
-    <div className="FavoritesPage">
-      <h1 className="FavoritesPage--title">
+    <div className={style.CataloguePage}>
+      <h1 className={style.CataloguePage__title}>
         Favorites
       </h1>
-      <p className="FavoritesPage--favoritesCount">
-        {(favoriteStorage.length === 1)
-          ? (`${favoriteStorage.length} item`)
-          : (`${favoriteStorage.length} items`)}
-      </p>
+      {favoriteStorage.length !== 0 && (
+        <p className={style.CataloguePage__CatalogueCount}>
+          {(favoriteStorage.length === 1)
+            ? (`${favoriteStorage.length} item`)
+            : (`${favoriteStorage.length} items`)}
+        </p>
+      )}
 
+      {!favoriteStorage.length && (
+        <EmptyFavorites />
+      )}
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="FavoritesPage--container">
+        <div className={style.CataloguePage__container}>
           {favoriteStorage.map(product => (
             <Card
-              key={product.id}
+              key={product.name}
               product={product}
             />
           ))}

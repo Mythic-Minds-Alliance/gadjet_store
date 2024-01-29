@@ -1,4 +1,6 @@
 @import "variables";
+@import "colors";
+@import "fontsLibrary";
 
 @mixin hover($_property, $_toValue) {
   transition: #{$_property} 0.3s;
@@ -33,21 +35,23 @@
 
 @mixin pageGrid {
   display: grid;
-  column-gap: 30px;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(4, 4fr);
+  column-gap: 16px;
 
   @include onTablet {
-    grid-template-columns: repeat(3, 4fr);
+    grid-template-columns: repeat(12, 4fr);
   }
 
   @include onDesktop {
-    grid-template-columns: repeat(3, 8fr);
+    grid-template-columns: repeat(24, 4fr);
   }
 }
 
 @mixin headline-1 {
+  font-family: 'MontTitle', sans-serif;
+  color: $primary;
+
   font-size: 32px;
-  font-weight: 800;
   line-height: 41px;
   letter-spacing: -0.32px;
 
@@ -60,8 +64,10 @@
 }
 
 @mixin headline-2 {
+  font-family: 'MontTitle', sans-serif;
+  color: $primary;
+
   font-size: 22px;
-  font-weight: 800;
   line-height: 140%;
 
   @include onTablet {
@@ -72,6 +78,8 @@
 }
 
 @mixin headline-3 {
+  font-family: 'MontTitle', sans-serif;
+
   font-size: 20px;
   font-weight: 700;
 
@@ -83,17 +91,23 @@
 }
 
 @mixin secondaryText {
+  font-family: 'MontRegular', sans-serif;
+
   font-size: 14px;
   line-height: 21px;
   font-weight: 500;
 }
 
 @mixin mainText {
+  font-family: 'MontRegular', sans-serif;
+
   font-size: 16px;
   line-height: 24px;
 }
 
 @mixin headline-4 {
+  font-family: 'MontTitle', sans-serif;
+
   font-size: 16px;
   font-weight: 700;
 
@@ -103,6 +117,8 @@
 }
 
 @mixin uppercaseText {
+  font-family: 'MontTitle', sans-serif;
+
   font-size: 12px;
   font-weight: 700;
   line-height: 11px;
@@ -111,18 +127,24 @@
 }
 
 @mixin buttonsText {
+  font-family: 'MontRegularSemiBold', sans-serif;
+
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
 }
 
 @mixin bodyText {
+  font-family: 'MontRegular', sans-serif;
+
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
 }
 
 @mixin smallText {
+  font-family: 'MontRegularSemiBold', sans-serif;
+
   font-size: 12px;
   font-weight: 600;
 }

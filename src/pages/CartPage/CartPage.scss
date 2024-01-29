@@ -1,15 +1,8 @@
 @import '../../assets/_mixins.scss';
 
 .CartPage {
-  padding: 16px 24px;
-  @include onTablet {
-    padding: 24px 16px;
-  }
-  @include onLargeDesktop {
-    padding: 32px 32px;
-  }
-
   &--title {
+    @include headline-1;
     margin-bottom: 32px;
   }
 
@@ -27,7 +20,6 @@
 
   &--block {
     display: grid;
-
     row-gap: 16px;
   }
 }

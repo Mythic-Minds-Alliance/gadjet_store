@@ -3,15 +3,6 @@
 @import '../../assets/variables';
 @import "../../assets/mixins";
 
-.mainPageContainer {
-  padding: 0 16px;
-
-  @include onLargeDesktop {
-    padding-left: 152px;
-    padding-right: 152px;
-  }
-}
-
 .section{
   margin-bottom: 32px;
 }
