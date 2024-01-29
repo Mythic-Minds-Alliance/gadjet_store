@@ -46,7 +46,8 @@ export const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3005/products');
+        const response = await
+        axios.get('http://localhost:3005/products?categoryId=1');
 
         setProductList(response.data);
 

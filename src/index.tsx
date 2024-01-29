@@ -12,9 +12,10 @@ import { PhonePage } from './pages/PhonePage/PhonePage';
 import { HomePage } from './pages/HomePage/HomePage';
 import { CartPage } from './pages/CartPage/CartPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
-import { TabletsPage } from './pages/TabletsPage/TabtetsPage';
+
 import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
 import { FavoritesPage } from './pages/FavoritesPage/FavoritesPage';
+import { TabletsPage } from './pages/TabletsPage/TabletsPage';
 
 createRoot(document.getElementById('root') as HTMLDivElement).render(
   <Router>

@@ -1,12 +1,14 @@
-@import '../../assets/mixins';
+@import './variables.scss';
+@import './mixins';
+@import './colors.scss';
 
-.PhonePage {
-  &--title {
+.CataloguePage {
+  &__title {
     @include headline-1;
     margin-bottom: 8px;
   }
 
-  &--phoneCount {
+  &__CatalogueCount {
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
@@ -14,7 +16,7 @@
     color: #89939A;
   }
 
-  &--container {
+  &__container {
     display: grid;
     justify-items: center;
     row-gap: 40px;

@@ -33,15 +33,15 @@
 
 @mixin pageGrid {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(4, 4fr);
   column-gap: 16px;
 
   @include onTablet {
-    grid-template-columns: repeat(3, 4fr);
+    grid-template-columns: repeat(12, 4fr);
   }
 
   @include onDesktop {
-    grid-template-columns: repeat(3, 8fr);
+    grid-template-columns: repeat(24, 4fr);
   }
 }
 
