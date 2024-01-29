@@ -5,6 +5,7 @@
 .MainContainer {
   padding: 0 16px;
   margin: 0 auto 56px;
+  min-height: 100vh;
 
   @include onTablet {
     padding: 0 24px;

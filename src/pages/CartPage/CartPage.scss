@@ -2,6 +2,7 @@
 
 .CartPage {
   &--title {
+    @include headline-1;
     margin-bottom: 32px;
   }
 
