@@ -15,8 +15,9 @@
   }
 
   &--title {
-    @include headline-1;
+    @include headline-2;
     margin-bottom: 40px;
+    color: $primary;
   }
 
   &--image {
