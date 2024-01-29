@@ -1,11 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import classNames from 'classnames';
 import Carousel, { ButtonGroupProps } from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
-import { DataContext } from '../../App';
 import { sortProductCarusel } from '../../utils/helpers';
 import { Card } from '../Card/Card';
+import styles from './Carousel.module.scss';
 import arrow from '../../icons/SliderButtonRight.png';
 
 const responsive = {
@@ -38,7 +39,7 @@ const responsive = {
   },
 };
 
-const ButtonGroup: React.FC = ({
+const ButtonGroup: React.FC<ButtonGroupProps> = ({
   next,
   previous,
   carouselState,
@@ -59,12 +60,12 @@ const ButtonGroup: React.FC = ({
   };
 
   return (
-    <div className={classNames('carousel-button-group')}>
+    <div className={classNames(styles['carousel-button-group'])}>
       <button
         type="button"
         className={classNames(
-          'button',
-          { 'button--disabled': isInitialSlide },
+          styles.button,
+          { [styles['button--disabled']]: isInitialSlide },
         )}
         aria-label="Go left"
         onClick={handlePrevClick}
@@ -72,20 +73,20 @@ const ButtonGroup: React.FC = ({
         <img
           src={arrow}
           alt="arrow_left"
-          className="button__img"
+          className={classNames(styles.buttonImg)}
         />
       </button>
 
       <button
         type="button"
-        className={classNames('Button', 'Button--right')}
+        className={classNames(styles.button, styles.buttonRight)}
         aria-label="Go right"
         onClick={handleNextClick}
       >
         <img
           src={arrow}
-          alt="arrou_right"
-          className="button__img button--right"
+          alt="arrow_right"
+          className={classNames(styles.buttonImg, styles['button--right'])}
         />
       </button>
     </div>
@@ -97,21 +98,32 @@ interface Props {
   selectedSortCarusel: string;
 }
 
-export const Carusel: React.FC<Props> = ({
-  title,
-  selectedSortCarusel,
-}) => {
-  const { cartStorage } = useContext(DataContext);
-  // console.log(cartStorage.length);
+export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel }) => {
+  const [phonesList, setphonesList] = useState([]);
 
-  const visibleCart = sortProductCarusel(cartStorage, selectedSortCarusel);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios
+          .get('http://localhost:3005/products?categoryId=1');
+
+        setphonesList(response.data);
+      } catch (error) {
+        throw new Error('error when fetching data from API');
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const visibleCart = sortProductCarusel(phonesList, selectedSortCarusel);
 
   return (
-    <section className={classNames('CarouselContainer')}>
-      <div className="carusel__title">{title}</div>
+    <section className={classNames(styles.CarouselContainer)}>
+      <div className={classNames(styles.carusel__title)}>{title}</div>
 
       <Carousel
-        itemClass="Cards"
+        itemClass={classNames(styles.Cards)}
         arrows={false}
         renderButtonGroupOutside
         customButtonGroup={<ButtonGroup />}
