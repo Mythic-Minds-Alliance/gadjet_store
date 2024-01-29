@@ -59,7 +59,7 @@ const ButtonGroup: React.FC = ({
   };
 
   return (
-    <div className="carousel-button-group">
+    <div className={classNames('carousel-button-group')}>
       <button
         type="button"
         className={classNames(
@@ -78,7 +78,7 @@ const ButtonGroup: React.FC = ({
 
       <button
         type="button"
-        className="Button Button--right"
+        className={classNames('Button', 'Button--right')}
         aria-label="Go right"
         onClick={handleNextClick}
       >
@@ -102,27 +102,27 @@ export const Carusel: React.FC<Props> = ({
   selectedSortCarusel,
 }) => {
   const { cartStorage } = useContext(DataContext);
+  // console.log(cartStorage.length);
+
   const visibleCart = sortProductCarusel(cartStorage, selectedSortCarusel);
 
   return (
-    <section className="carusel">
+    <section className={classNames('CarouselContainer')}>
       <div className="carusel__title">{title}</div>
 
-      <div className="carusel__slider">
-        <Carousel
-          itemClass="Cards"
-          arrows={false}
-          renderButtonGroupOutside
-          customButtonGroup={<ButtonGroup />}
-          partialVisible
-          responsive={responsive}
-          infinite
-        >
-          {visibleCart.map((product) => (
-            <Card product={product} key={product.id} />
-          ))}
-        </Carousel>
-      </div>
+      <Carousel
+        itemClass="Cards"
+        arrows={false}
+        renderButtonGroupOutside
+        customButtonGroup={<ButtonGroup />}
+        partialVisible
+        responsive={responsive}
+        infinite
+      >
+        {visibleCart.map((product) => (
+          <Card product={product} key={product.id} />
+        ))}
+      </Carousel>
     </section>
   );
 };
