@@ -88,7 +88,7 @@ export const Carusel: React.FC<Props> = ({
           }}
         >
           {visibleCart.map((product) => (
-            <div className="caruselSlide" key={product.id}>
+            <div className="caruselSlide" key={product.name}>
               <Card product={product} />
             </div>
           ))}

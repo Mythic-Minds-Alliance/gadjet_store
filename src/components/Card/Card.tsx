@@ -18,8 +18,8 @@ export const Card: React.FC<Props> = ({ product }) => {
   const {
     name,
     price,
-    fullPrice,
-    image,
+    priceDiscount,
+    images,
   } = product;
 
   const productPageLink = `/phones/${product.name}`;
@@ -39,7 +39,7 @@ export const Card: React.FC<Props> = ({ product }) => {
         />
         <Link to={productPageLink} className="card--photo">
           <img
-            src={`${SERVER_HOST}/${image}`}
+            src={`${SERVER_HOST}/${images[0]}`}
             alt={`${name}`}
             className="card--image"
           />
@@ -50,7 +50,7 @@ export const Card: React.FC<Props> = ({ product }) => {
         {name}
       </p>
 
-      <CardPrices price={price} fullPrice={fullPrice} />
+      <CardPrices price={price} fullPrice={priceDiscount} />
 
       <div className="card--line">
         <CardSeparator />
