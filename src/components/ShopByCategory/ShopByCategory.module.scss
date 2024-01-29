@@ -15,7 +15,13 @@
 }
 
 .categoriesContainer {
-  @include pageGrid;
+  display: grid;
+  grid-template-columns: repeat(1, 4fr);
+
+  @include onTablet {
+    grid-template-columns: repeat(3, 4fr);
+    gap: 0 16px;
+  }
 }
 
 .categoryImg {
