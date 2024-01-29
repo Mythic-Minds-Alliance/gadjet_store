@@ -2,12 +2,12 @@ import './Card.scss';
 
 import { Link } from 'react-router-dom';
 import React from 'react';
-import test from '../../images/00.webp';
 import { Product } from '../../types/product';
 import { DetailsList } from '../DetailsList/DetailsList';
 import { AddToCart } from '../AddToCart/AddToCart';
 import { CardSeparator } from '../СardSeparator/CardSeparator';
 import { CardPrices } from '../CardPrices/CardPrices';
+import { SERVER_HOST } from '../../utils/helpers';
 
 type Props = {
   product: Product,
@@ -17,8 +17,8 @@ export const Card: React.FC<Props> = ({ product }) => {
   const {
     name,
     price,
-    fullPrice,
-    // image,
+    priceDiscount,
+    images,
   } = product;
 
   const productPageLink = `/phones/${product.name}`;
@@ -28,7 +28,7 @@ export const Card: React.FC<Props> = ({ product }) => {
       <div className="card--top">
         <Link to={productPageLink} className="card--photo">
           <img
-            src={test}
+            src={`${SERVER_HOST}/${images[0]}`}
             alt={`${name}`}
             className="card--image"
           />
@@ -39,7 +39,7 @@ export const Card: React.FC<Props> = ({ product }) => {
         {name}
       </p>
 
-      <CardPrices price={price} fullPrice={fullPrice} />
+      <CardPrices price={price} fullPrice={priceDiscount} />
 
       <div className="card--line">
         <CardSeparator />

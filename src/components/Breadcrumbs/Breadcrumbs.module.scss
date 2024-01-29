@@ -9,6 +9,7 @@
   gap: 8px;
   margin-bottom: 24px;
   align-items: center;
+  @include mainText;
 }
 
 .crumbsContainer {
