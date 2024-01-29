@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { Outlet } from 'react-router-dom';
 import {
   Dispatch, SetStateAction,
@@ -12,7 +11,6 @@ import { Breadcrumbs } from './components/Breadcrumbs';
 import style from './MainContainer.module.scss';
 
 interface DataContextType {
-  productList: Product[];
   isLoading: boolean;
   cartStorage: CartProduct[];
   favoriteStorage: Product[];
@@ -21,7 +19,6 @@ interface DataContextType {
 }
 
 export const DataContext = createContext<DataContextType>({
-  productList: [],
   isLoading: true,
   cartStorage: [],
   favoriteStorage: [],
@@ -30,7 +27,6 @@ export const DataContext = createContext<DataContextType>({
 });
 
 export const App = () => {
-  const [productList, setProductList] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [cartStorage, setCartStorage] = useState<CartProduct[]>([]);
   const [favoriteStorage, setFavoriteStorage] = useState<Product[]>([]);
@@ -46,11 +42,6 @@ export const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await
-        axios.get('https://gadjets-store.onrender.com/products?categoryId=1');
-
-        setProductList(response.data);
-
         setCartStorage(JSON.parse(localStorage.getItem('cart') || '[]'));
         setFavoriteStorage(JSON.parse(
           localStorage.getItem('favorites') || '[]',
@@ -67,7 +58,6 @@ export const App = () => {
 
   return (
     <DataContext.Provider value={{
-      productList,
       isLoading,
       cartStorage,
       favoriteStorage,
