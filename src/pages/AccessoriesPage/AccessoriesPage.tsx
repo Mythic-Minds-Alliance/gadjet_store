@@ -1,8 +1,7 @@
-import { useContext, useState } from 'react';
-
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import style from '../../assets/catalogue.module.scss';
 import { Card } from '../../components/Card/Card';
-import { DataContext } from '../../App';
 import { Loader } from '../../components/Loader';
 import { SortPanel } from '../../SortPanel/SortPanel';
 import { sortProductList } from '../../utils/helpers';
@@ -11,6 +10,25 @@ import { Pagination } from '../../components/Pagination/Pagination';
 export const AccessoriesPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(12);
+  const [accessoriesList, setAccessoriesList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios
+          .get('http://localhost:3005/products?categoryId=3');
+
+        setAccessoriesList(response.data);
+      } catch (error) {
+        throw new Error('error when fetching data from API');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const [
     selectedSortField, setSelectedSortField,
@@ -35,13 +53,8 @@ export const AccessoriesPage = () => {
     setPostPerPage(+event.target.value);
   };
 
-  const {
-    productList,
-    isLoading,
-  } = useContext(DataContext);
-
   const visibleList = sortProductList(
-    productList,
+    accessoriesList,
     selectedSortField,
     sortOrder,
   );
