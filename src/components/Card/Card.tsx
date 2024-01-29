@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import './Card.scss';
+
 import React from 'react';
 import { Product } from '../../types/product';
 import { DetailsList } from '../DetailsList/DetailsList';
@@ -26,6 +27,11 @@ export const Card: React.FC<Props> = ({ product }) => {
   return (
     <div className="card">
       <div className="card--top">
+        <Link
+          className="card--photo"
+          to="/productDetails"
+          onClick={scrollToTop}
+        />
         <Link
           className="card--photo"
           to="/productDetails"
