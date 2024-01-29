@@ -180,18 +180,18 @@ export function sortProductList(
   switch (sortBy) {
     case 'Years':
       if (order === 'Ascending') {
-        preparedList = preparedList.sort((a, b) => a.year - b.year);
+        preparedList = preparedList.sort((a, b) => +a.year - +b.year);
       } else {
-        preparedList = preparedList.sort((a, b) => b.year - a.year);
+        preparedList = preparedList.sort((a, b) => +b.year - +a.year);
       }
 
       break;
 
     case 'Price':
       if (order === 'Ascending') {
-        preparedList = preparedList.sort((a, b) => a.price - b.price);
+        preparedList = preparedList.sort((a, b) => +a.price - +b.price);
       } else {
-        preparedList = preparedList.sort((a, b) => b.price - a.price);
+        preparedList = preparedList.sort((a, b) => +b.price - +a.price);
       }
 
       break;

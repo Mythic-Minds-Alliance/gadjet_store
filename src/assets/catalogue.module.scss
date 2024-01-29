@@ -23,10 +23,5 @@
     margin-bottom: 24px;
 
     @include pageGrid;
-
-    @include onTablet {
-      grid-template-columns: repeat(auto-fill, minmax(229px, 288px));
-      justify-items: start;
-    }
   }
 }

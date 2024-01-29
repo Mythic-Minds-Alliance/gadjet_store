@@ -34,7 +34,7 @@ export const FavoritesPage = () => {
         <div className="FavoritesPage--container">
           {favoriteStorage.map(product => (
             <Card
-              key={product.id}
+              key={product.name}
               product={product}
             />
           ))}

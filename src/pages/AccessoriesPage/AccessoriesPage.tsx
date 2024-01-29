@@ -91,7 +91,7 @@ export const AccessoriesPage = () => {
         <div className={style.CataloguePage__container}>
           {currentItems.map(product => (
             <Card
-              key={product.id}
+              key={product.name}
               product={product}
             />
           ))}

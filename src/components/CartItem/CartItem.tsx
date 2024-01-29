@@ -28,7 +28,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           to="./phones"
         >
           <img
-            src={`${SERVER_HOST}/${item.image}`}
+            src={`${SERVER_HOST}/${item.images[0]}`}
             className={styles.item__container_phone}
             alt="phone"
           />
@@ -71,7 +71,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         </div>
 
         <span className={styles.item__container_price}>
-          {`$${item.price * item.quantity}`}
+          {`$${(+item.price) * item.quantity}`}
         </span>
       </div>
     </div>
