@@ -102,6 +102,7 @@ export const AccessoriesPage = () => {
         postPorPage={postPerPage}
         totalPost={visibleList.length}
         onPageChange={handlePageChange}
+        currentPage={currentPage}
       />
     </div>
   );

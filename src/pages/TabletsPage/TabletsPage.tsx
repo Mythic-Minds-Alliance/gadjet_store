@@ -102,6 +102,7 @@ export const TabletsPage = () => {
         postPorPage={postPerPage}
         totalPost={visibleList.length}
         onPageChange={handlePageChange}
+        currentPage={currentPage}
       />
     </div>
   );
