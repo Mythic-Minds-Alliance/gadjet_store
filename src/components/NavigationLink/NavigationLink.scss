@@ -1,16 +1,15 @@
 @import '../../assets/colors';
+@import '../../assets/variables';
+@import '../../assets/mixins';
 
 .nav__link {
   display: block;
   padding: 26px 0;
   margin-left: 64px;
   color: $secondary;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 11px;
-  letter-spacing: 0.48px;
+  @include uppercaseText;
+
   text-decoration: none;
-  text-transform: uppercase;
   transition: color 0.3s;
 
   &:first-child {
