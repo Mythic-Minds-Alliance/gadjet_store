@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 
-import './AccessoriesPage.scss';
+import style from '../../assets/catalogue.module.scss';
 import { Card } from '../../components/Card/Card';
 import { DataContext } from '../../App';
 import { Loader } from '../../components/Loader';
@@ -55,11 +55,11 @@ export const AccessoriesPage = () => {
   };
 
   return (
-    <div className="AccessoriesPage">
-      <h1 className="AccessoriesPage--title">
+    <div className={style.CataloguePage}>
+      <h1 className={style.CataloguePage__title}>
         Accessories Page
       </h1>
-      <p className="AccessoriesPage--accessoriesCount">
+      <p className={style.CataloguePage__CatalogueCount}>
         {`${visibleList.length} models`}
       </p>
 
@@ -75,7 +75,7 @@ export const AccessoriesPage = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="AccessoriesPage--container">
+        <div className={style.CataloguePage__container}>
           {currentItems.map(product => (
             <Card
               key={product.id}

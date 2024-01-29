@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import styles from './CartItem.module.scss';
 import { Cross } from '../Cross/Cross';
-import TestImg from '../../images/image 8.png';
+
 import { Minus } from '../Minus/Minus';
 import plus from '../../images/Plus.svg';
 import { CartProduct } from '../../types/product';
-import { changeAmount } from '../../utils/helpers';
+import { SERVER_HOST, changeAmount } from '../../utils/helpers';
 
 import { DataContext } from '../../App';
 
@@ -28,7 +28,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           to="./phones"
         >
           <img
-            src={TestImg}
+            src={`${SERVER_HOST}/${item.image}`}
             className={styles.item__container_phone}
             alt="phone"
           />
