@@ -21,30 +21,12 @@ export const Carusel: React.FC<Props> = ({
 }) => {
   const { productList } = useContext(DataContext);
   const visibleCart = sortProductCarusel(productList, selectedSortCarusel);
-
-  // const [setWindowWidth] = useState(window.innerWidth);
   const [wCounter, setWCounter] = useState(0);
-
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setWindowWidth(window.innerWidth);
-  //   };
-
-  //   window.addEventListener('resize', handleResize);
-
-  //   return () => {
-  //     window.removeEventListener('resize', handleResize);
-  //   };
-  // }, []);
 
   const SLIDER_W = visibleCart.length * CARUSEL_STEP;
 
-  const handleSlide = (direction: 'left' | 'right') => {
-    if (direction === 'left' && wCounter > 0) {
-      setWCounter((prevCounter) => prevCounter + CARUSEL_STEP);
-    } else if (direction === 'right' && wCounter < SLIDER_W) {
-      setWCounter((prevCounter) => prevCounter - CARUSEL_STEP);
-    }
+  const handleSlide = (step: number) => {
+    setWCounter(wCounter + step);
   };
 
   return (
@@ -60,7 +42,7 @@ export const Carusel: React.FC<Props> = ({
             )}
             type="button"
             onClick={() => {
-              handleSlide('left');
+              handleSlide(-CART_W);
             }}
           >
             <img
@@ -79,8 +61,7 @@ export const Carusel: React.FC<Props> = ({
             )}
             aria-label="Go right"
             onClick={() => {
-              handleSlide('right');
-              // console.log(SLIDER_W);
+              handleSlide(CART_W);
             }}
           >
             <img
@@ -96,7 +77,7 @@ export const Carusel: React.FC<Props> = ({
         <div
           className="carusel__sliderFull"
           style={{
-            transform: `translateX(${wCounter}px)`,
+            transform: `translateX(${-wCounter}px)`,
             transition: 'transform 0.5s ease-in-out',
           }}
         >
