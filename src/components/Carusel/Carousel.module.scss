@@ -44,10 +44,16 @@
 }
 
 .Cards {
-  margin-right: 16px;
+  padding-right: 16px;
   padding-bottom: 64px;
 }
 
 .react-multi-carousel-list {
   margin-bottom: 64px;
+}
+
+.carusel__sliderFull {
+  transition: transform 0.5s ease-in-out;
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55); 
+  will-change: transform; 
 }
