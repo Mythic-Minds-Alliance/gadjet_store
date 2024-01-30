@@ -220,6 +220,7 @@ export function sortProductList(
       break;
   }
 
+
   if (query) {
     preparedList = preparedList.filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
   }

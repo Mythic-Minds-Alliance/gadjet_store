@@ -1,9 +1,14 @@
+import { Product } from '../../types/product';
 import productTitleStyles from './ProductTitle.module.scss';
 
-export const ProductTitle = () => {
+type Props = {
+  title: Product;
+};
+
+export const ProductTitle: React.FC<Props> = ({ title }) => {
   return (
     <h1 className={productTitleStyles.title}>
-      Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
+      {title.name}
     </h1>
   );
 };

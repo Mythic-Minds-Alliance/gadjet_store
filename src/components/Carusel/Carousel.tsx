@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 import classNames from 'classnames';
 import Carousel, { ButtonGroupProps } from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
-import { sortProductCarusel } from '../../utils/helpers';
 import { Card } from '../Card/Card';
 import styles from './Carousel.module.scss';
 import arrow from '../../icons/SliderButtonRight.png';
+import { Loader } from '../Loader';
 
 const responsive = {
   desktop: {
@@ -100,41 +101,55 @@ interface Props {
 
 export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel }) => {
   const [phonesList, setphonesList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios
-          .get('http://localhost:3005/products?categoryId=1');
+        let response;
+
+        if (selectedSortCarusel === 'Years') {
+          response = await axios
+            .get('http://localhost:3005/products?sortBy=year&limit=8');
+        } else if (selectedSortCarusel === 'Price') {
+          response = await axios
+            .get('http://localhost:3005/products?sortBy=priceDiscount&limit=8');
+        } else {
+          response = await axios
+            .get('http://localhost:3005/products?limit=8');
+        }
 
         setphonesList(response.data);
       } catch (error) {
         throw new Error('error when fetching data from API');
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchData();
-  }, []);
-
-  const visibleCart = sortProductCarusel(phonesList, selectedSortCarusel);
+  }, [selectedSortCarusel]);
 
   return (
     <section className={classNames(styles.CarouselContainer)}>
       <div className={classNames(styles.carusel__title)}>{title}</div>
-
-      <Carousel
-        itemClass={classNames(styles.Cards, 'Cards')}
-        responsive={responsive}
-        customButtonGroup={<ButtonGroup />}
-        arrows={false}
-        renderButtonGroupOutside
-        partialVisible
-        infinite
-      >
-        {visibleCart.map((product) => (
-          <Card product={product} key={product.id} />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <Carousel
+          itemClass={classNames(styles.Cards, 'Cards')}
+          responsive={responsive}
+          customButtonGroup={<ButtonGroup />}
+          arrows={false}
+          renderButtonGroupOutside
+          partialVisible
+          infinite
+        >
+          {phonesList.map((product) => (
+          <Card product={product} key={uuidv4()} />
         ))}
-      </Carousel>
+        </Carousel>
+      )}
     </section>
   );
 };
