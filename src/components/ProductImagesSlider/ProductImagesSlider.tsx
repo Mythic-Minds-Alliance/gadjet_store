@@ -1,27 +1,22 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import cn from 'classnames';
 import style from './ProductImagesSlider.module.scss';
-
-import img1 from '../../images/apple-iphone-11/black/00.jpg';
-import img2 from '../../images/apple-iphone-11/black/01.jpg';
-import img3 from '../../images/apple-iphone-11/black/02.jpg';
-import img4 from '../../images/apple-iphone-11/black/03.jpg';
-import img5 from '../../images/apple-iphone-11/black/04.jpg';
 import { SERVER_HOST } from '../../utils/helpers';
 
-export const productImages = [img1, img2, img3, img4, img5];
-
 type Props = {
-  images: string[],
+  images: string[];
 };
 
 export const ProductImagesSlider: React.FC<Props> = ({ images }) => {
-  const [selectedPhoto, setSelectedPhoto]
-    = useState<string | null>(`${SERVER_HOST}/${images[0]}`);
+  const [selectedPhoto, setSelectedPhoto] = useState<string | null>(`${SERVER_HOST}/${images[0]}`);
 
   const handlePhotoClick = (photo: string) => {
     setSelectedPhoto(`${SERVER_HOST}/${photo}`);
   };
+
+  useEffect(() => {
+    setSelectedPhoto(`${SERVER_HOST}/${images[0]}`);
+  }, [images]);
 
   return (
     <div className={style.container}>
@@ -29,7 +24,7 @@ export const ProductImagesSlider: React.FC<Props> = ({ images }) => {
         {images.map((photo, index) => (
           <button
             className={cn(style.photo__block_button, {
-              [style['photo__block-button__selected']]: selectedPhoto === photo,
+              [style['photo__block-button__selected']]: selectedPhoto === `${SERVER_HOST}/${photo}`,
             })}
             type="button"
             key={photo}

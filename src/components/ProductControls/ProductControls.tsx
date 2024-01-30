@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import { Product } from '../../types/product';
 import { AddToCart } from '../AddToCart/AddToCart';
@@ -17,7 +18,7 @@ export const ProductControls: React.FC<Props> = ({ product }) => {
 
   return (
     <div className="ProductControls">
-      <CardColors colors={colors} id={id} />
+      <CardColors product={product} />
       <CardSeparator />
 
       <CardCapacity product={product} />
