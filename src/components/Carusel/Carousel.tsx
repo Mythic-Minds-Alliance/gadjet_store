@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
@@ -110,7 +111,7 @@ export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel }) => {
 
         if (selectedSortCarusel === 'Years') {
           response = await axios
-            .get('http://localhost:3005/products?sortBy=year&limit=8');
+            .get('http://localhost:3005/products?sort=DESC&sortBy=year&limit=8');
         } else if (selectedSortCarusel === 'Price') {
           response = await axios
             .get('http://localhost:3005/products?sortBy=priceDiscount&limit=8');
