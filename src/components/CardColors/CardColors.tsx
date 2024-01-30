@@ -13,7 +13,7 @@ export const CardColors: React.FC<Props> = ({ colors, id }) => {
         <p className={style.CardColors__top__title}>Available colors</p>
         <p className={style.CardColors__top__id}>
           ID:
-          {id}
+          {Math.abs(id * 143865)}
         </p>
       </div>
 
