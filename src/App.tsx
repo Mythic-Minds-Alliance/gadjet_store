@@ -46,7 +46,7 @@ export const App = () => {
     const fetchData = async () => {
       try {
         const response = await
-        axios.get('http://localhost:3005/products?categoryId=1');
+        axios.get('http://gadjets-store.onrender.com/products?categoryId=1');
 
         setProductList(response.data);
 

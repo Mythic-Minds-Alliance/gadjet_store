@@ -20,7 +20,7 @@ export const TabletsPage = () => {
     const fetchData = async () => {
       try {
         const response = await axios
-          .get('http://localhost:3005/products?categoryId=2');
+          .get('http://gadjets-store.onrender.com/products?categoryId=2');
 
         setTabletsList(response.data);
       } catch (error) {
