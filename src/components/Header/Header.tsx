@@ -12,6 +12,7 @@ import burgerMenu from '../../images/Menu.png';
 import close from '../../images/Close.png';
 import { HeaderCounter } from '../HeaderCounter/HeaderCounter';
 import { scrollToTop } from '../../utils/helpers';
+import { Search } from '../SearchComponent/Search';
 
 type Props = {
   cartCount: number,
@@ -64,6 +65,8 @@ export const Header: React.FC<Props> = ({ cartCount, favoriteCount }) => {
         </div>
 
         <div className="links">
+          <Search />
+
           <NavLink
             to="/account"
             className={({ isActive }) => classNames(
