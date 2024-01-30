@@ -1,4 +1,5 @@
 /* eslint-disable react/button-has-type */
+import { Link } from 'react-router-dom';
 import FooterStyle from './Footer.module.scss';
 import Logo from '../../images/Logo.png';
 import ArrowUp from '../../images/Slider_button.png';
@@ -15,9 +16,14 @@ export const Footer = () => (
     </a>
 
     <div className={FooterStyle.footerLinks}>
-      <a href="/" className={FooterStyle.footerLinkItem}>Github</a>
-      <a href="/" className={FooterStyle.footerLinkItem}>Contacts</a>
-      <a href="/" className={FooterStyle.footerLinkItem}>Rights</a>
+      <a
+        href="https://github.com/Mythic-Minds-Alliance"
+        className={FooterStyle.footerLinkItem}
+      >
+        Github
+      </a>
+      <Link to="contacts" className={FooterStyle.footerLinkItem}>Contacts</Link>
+      <Link to="rights" className={FooterStyle.footerLinkItem}>Rights</Link>
     </div>
 
     <div className={FooterStyle.footerGoUp}>
