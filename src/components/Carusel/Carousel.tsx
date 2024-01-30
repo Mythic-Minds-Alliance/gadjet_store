@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 import classNames from 'classnames';
 import Carousel, { ButtonGroupProps } from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
-import { sortProductCarusel } from '../../utils/helpers';
 import { Card } from '../Card/Card';
 import styles from './Carousel.module.scss';
 import arrow from '../../icons/SliderButtonRight.png';
@@ -106,8 +106,18 @@ export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios
-          .get('http://localhost:3005/products?categoryId=1');
+        let response;
+
+        if (selectedSortCarusel === 'Years') {
+          response = await axios
+            .get('http://localhost:3005/products?sortBy=year&limit=8');
+        } else if (selectedSortCarusel === 'Price') {
+          response = await axios
+            .get('http://localhost:3005/products?sortBy=priceDiscount&limit=8');
+        } else {
+          response = await axios
+            .get('http://localhost:3005/products?limit=8');
+        }
 
         setphonesList(response.data);
       } catch (error) {
@@ -118,9 +128,7 @@ export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel }) => {
     };
 
     fetchData();
-  }, []);
-
-  const visibleCart = sortProductCarusel(phonesList, selectedSortCarusel);
+  }, [selectedSortCarusel]);
 
   return (
     <section className={classNames(styles.CarouselContainer)}>
@@ -137,9 +145,9 @@ export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel }) => {
           partialVisible
           infinite
         >
-          {visibleCart.map((product) => (
-            <Card product={product} key={product.id} />
-          ))}
+          {phonesList.map((product) => (
+          <Card product={product} key={uuidv4()} />
+        ))}
         </Carousel>
       )}
     </section>
