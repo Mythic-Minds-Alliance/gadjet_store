@@ -1,16 +1,20 @@
+import React, { useState, ChangeEvent } from 'react';
 import classNames from 'classnames';
-import { ChangeEvent, useState } from 'react';
-
 import './Search.scss';
 import searchIcon from '../../icons/search.png';
 
-export const Search = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [isHidden, setIsHidden] = useState(true);
+type Props = {
+  setSearchQuery: (query: string) => void;
+  searchQuery: string;
+};
 
-  const handleSearchInputChange = (
-    event: ChangeEvent<HTMLInputElement>,
-  ) => {
+export const Search: React.FC<Props> = ({
+  setSearchQuery,
+  searchQuery,
+}) => {
+  const [isHidden, setIsHidden] = useState<boolean>(true);
+
+  const handleSearchInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
   };
 

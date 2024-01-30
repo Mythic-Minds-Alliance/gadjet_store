@@ -174,6 +174,7 @@ export function sortProductList(
   product: Product[],
   sortBy: string,
   order: string,
+  query: string,
 ) {
   let preparedList = [...product];
 
@@ -219,39 +220,9 @@ export function sortProductList(
       break;
   }
 
-  return preparedList;
-}
-
-export function sortProductCarusel(
-  product: Product[],
-  sortBy: string,
-) {
-  let preparedList = [...product];
-
-  switch (sortBy) {
-    case 'Years':
-      sortProductList(preparedList, 'Years', 'Ascending');
-
-      break;
-
-    case 'Screen':
-      sortProductList(preparedList, 'Price', 'Ascending');
-
-      break;
-
-    case 'YouPropose':
-      preparedList = preparedList.sort((a, b) => {
-        const aScreenSize = parseFloat(a.screen);
-        const bScreenSize = parseFloat(b.screen);
-
-        return aScreenSize - bScreenSize;
-      });
-
-      break;
-
-    default:
-      break;
+  if (query) {
+    preparedList = preparedList.filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
   }
 
-  return preparedList.slice(0, 8);
+  return preparedList;
 }
