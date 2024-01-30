@@ -12,7 +12,7 @@ import { ProductImagesSlider } from '../../components/ProductImagesSlider';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
-// import { ProductVariants } from '../../components/ProductVariants/ProductVariants';
+import { ProductVariants } from '../../components/ProductVariants/ProductVariants';
 import { Carusel } from '../../components/Carusel';
 import { CaruselSort } from '../../types/CaruselSort';
 import { BackButton } from '../../components/BackButton';
@@ -61,9 +61,9 @@ export const ProductDetailsPage = () => {
                 <div className={detailsStyles.extendedDetails__pictures}>
                   <ProductImagesSlider />
                 </div>
-                {/* <div className={detailsStyles.extendedDetails__mainInfo}>
-                  <ProductVariants product={currentProduct} />
-                </div> */}
+                <div className={detailsStyles.extendedDetails__mainInfo}>
+                  <ProductVariants product={currentProduct[0]} />
+                </div>
               </div>
 
               <div className={detailsStyles.bottomContent}>
