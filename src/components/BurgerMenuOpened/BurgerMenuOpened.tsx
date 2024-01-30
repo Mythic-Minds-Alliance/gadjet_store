@@ -65,8 +65,6 @@ export const BurgerMenuOpened: FC<BurgerMenuProps> = ({
               alt="user logo"
               className={classNames('like')}
             />
-
-            <HeaderCounter productsCount={cartCount} />
           </div>
         </Link>
 
@@ -86,7 +84,7 @@ export const BurgerMenuOpened: FC<BurgerMenuProps> = ({
               className={classNames('like')}
             />
 
-            <HeaderCounter productsCount={cartCount} />
+            <HeaderCounter productsCount={favoriteCount} />
           </div>
         </Link>
 
@@ -106,7 +104,7 @@ export const BurgerMenuOpened: FC<BurgerMenuProps> = ({
               className={classNames('service_btn_img')}
             />
 
-            <HeaderCounter productsCount={favoriteCount} />
+            <HeaderCounter productsCount={cartCount} />
           </div>
         </Link>
       </div>
