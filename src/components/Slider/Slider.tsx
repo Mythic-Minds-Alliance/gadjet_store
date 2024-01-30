@@ -177,6 +177,7 @@ export const Slider = () => {
         {slides.map((_slide, index) => (
           <button
             type="button"
+            key={_slide.toString()}
             className={cn('slider__dot', {
               'slider__dot-active': index === currentIndex,
             })}

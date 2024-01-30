@@ -19,7 +19,8 @@ export const ImageSlider: FC<Props> = ({ slides, currentIndex }) => {
       >
         {slides.map((slide) => (
           <NavLink
-            to="/phones/saas"
+            key={slide.toString()}
+            to="/phones"
             className={cn('slider__slide')}
           >
             <img
