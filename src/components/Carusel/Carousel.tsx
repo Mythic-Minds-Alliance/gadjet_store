@@ -8,6 +8,7 @@ import { sortProductCarusel } from '../../utils/helpers';
 import { Card } from '../Card/Card';
 import styles from './Carousel.module.scss';
 import arrow from '../../icons/SliderButtonRight.png';
+import { Loader } from '../Loader';
 
 const responsive = {
   desktop: {
@@ -100,6 +101,7 @@ interface Props {
 
 export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel }) => {
   const [phonesList, setphonesList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -110,6 +112,8 @@ export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel }) => {
         setphonesList(response.data);
       } catch (error) {
         throw new Error('error when fetching data from API');
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -121,20 +125,23 @@ export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel }) => {
   return (
     <section className={classNames(styles.CarouselContainer)}>
       <div className={classNames(styles.carusel__title)}>{title}</div>
-
-      <Carousel
-        itemClass={classNames(styles.Cards, 'Cards')}
-        responsive={responsive}
-        customButtonGroup={<ButtonGroup />}
-        arrows={false}
-        renderButtonGroupOutside
-        partialVisible
-        infinite
-      >
-        {visibleCart.map((product) => (
-          <Card product={product} key={product.id} />
-        ))}
-      </Carousel>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <Carousel
+          itemClass={classNames(styles.Cards, 'Cards')}
+          responsive={responsive}
+          customButtonGroup={<ButtonGroup />}
+          arrows={false}
+          renderButtonGroupOutside
+          partialVisible
+          infinite
+        >
+          {visibleCart.map((product) => (
+            <Card product={product} key={product.id} />
+          ))}
+        </Carousel>
+      )}
     </section>
   );
 };
