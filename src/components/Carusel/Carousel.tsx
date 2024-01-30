@@ -12,12 +12,12 @@ import arrow from '../../icons/SliderButtonRight.png';
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1200 },
-    items: 5,
+    items: 4.5,
     slidesToSlide: 2,
   },
   tablet: {
     breakpoint: { max: 1199, min: 860 },
-    items: 4,
+    items: 3,
     slidesToSlide: 1,
     partialVisibilityGutter: 30,
   },
