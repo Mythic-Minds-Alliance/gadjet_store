@@ -20,7 +20,7 @@ export const ProductControls: React.FC<Props> = ({ product }) => {
       <CardColors colors={colors} id={id} />
       <CardSeparator />
 
-      <CardCapacity capacities={product.capacitiesavailable} />
+      <CardCapacity product={product} />
 
       <CardSeparator />
 
