@@ -4,10 +4,10 @@ import classNames from 'classnames';
 import Carousel, { ButtonGroupProps } from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
-import { sortProductCarusel } from '../../utils/helpers';
 import { Card } from '../Card/Card';
 import styles from './Carousel.module.scss';
 import arrow from '../../icons/SliderButtonRight.png';
+import { Product } from '../../types/product';
 
 const responsive = {
   desktop: {
@@ -104,19 +104,35 @@ export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios
-          .get('http://localhost:3005/products?categoryId=1');
+        let response;
+
+        if (selectedSortCarusel === 'Years') {
+          response = await axios
+            .get('http://localhost:3005/products?sortBy=year');
+        } else if (selectedSortCarusel === 'Price') {
+          response = await axios
+            .get('http://localhost:3005/products?sortBy=priceDiscount');
+        } else {
+          response = await axios
+            .get('http://localhost:3005/products?categoryId=1');
+        }
 
         setphonesList(response.data);
       } catch (error) {
-        throw new Error('error when fetching data from API');
+        throw new Error('Error when fetching data from API');
       }
     };
 
     fetchData();
-  }, []);
+  }, [selectedSortCarusel]);
 
-  const visibleCart = sortProductCarusel(phonesList, selectedSortCarusel);
+  function sortProductCarusel(product: Product[]) {
+    const preparedList = [...product];
+
+    return preparedList.slice(0, 8);
+  }
+
+  const visibleCart = sortProductCarusel(phonesList);
 
   return (
     <section className={classNames(styles.CarouselContainer)}>
