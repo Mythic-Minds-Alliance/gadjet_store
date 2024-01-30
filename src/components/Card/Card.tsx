@@ -1,6 +1,6 @@
 import './Card.scss';
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import React from 'react';
 import { Product } from '../../types/product';
@@ -22,7 +22,9 @@ export const Card: React.FC<Props> = ({ product }) => {
     images,
   } = product;
 
-  const productPageLink = `/phones/${product.name}`;
+  const location = useLocation().pathname;
+
+  const productPageLink = `${location}/${product.name}`;
 
   return (
     <div className="card">
