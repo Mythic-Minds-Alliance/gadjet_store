@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 import classNames from 'classnames';
 import Carousel, { ButtonGroupProps } from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -7,7 +8,6 @@ import 'react-multi-carousel/lib/styles.css';
 import { Card } from '../Card/Card';
 import styles from './Carousel.module.scss';
 import arrow from '../../icons/SliderButtonRight.png';
-import { Product } from '../../types/product';
 
 const responsive = {
   desktop: {
@@ -108,13 +108,13 @@ export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel }) => {
 
         if (selectedSortCarusel === 'Years') {
           response = await axios
-            .get('http://localhost:3005/products?sortBy=year');
+            .get('http://localhost:3005/products?sortBy=year&limit=8');
         } else if (selectedSortCarusel === 'Price') {
           response = await axios
-            .get('http://localhost:3005/products?sortBy=priceDiscount');
+            .get('http://localhost:3005/products?sortBy=priceDiscount&limit=8');
         } else {
           response = await axios
-            .get('http://localhost:3005/products?categoryId=1');
+            .get('http://localhost:3005/products?limit=8');
         }
 
         setphonesList(response.data);
@@ -125,14 +125,6 @@ export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel }) => {
 
     fetchData();
   }, [selectedSortCarusel]);
-
-  function sortProductCarusel(product: Product[]) {
-    const preparedList = [...product];
-
-    return preparedList.slice(0, 8);
-  }
-
-  const visibleCart = sortProductCarusel(phonesList);
 
   return (
     <section className={classNames(styles.CarouselContainer)}>
@@ -147,8 +139,8 @@ export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel }) => {
         partialVisible
         infinite
       >
-        {visibleCart.map((product) => (
-          <Card product={product} key={product.id} />
+        {phonesList.map((product) => (
+          <Card product={product} key={uuidv4()} />
         ))}
       </Carousel>
     </section>
