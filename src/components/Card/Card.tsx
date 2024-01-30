@@ -24,7 +24,7 @@ export const Card: React.FC<Props> = ({ product }) => {
 
   let location = useLocation().pathname;
 
-  if (location === '/') {
+  if (location === '/' || location === '/favorites') {
     switch (product.categoryId) {
       case 1:
         location = '/phones';
