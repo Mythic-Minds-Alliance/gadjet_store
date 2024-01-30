@@ -20,7 +20,7 @@ export const PhonePage = () => {
     const fetchData = async () => {
       try {
         const response = await axios
-          .get('http://localhost:3005/products?categoryId=1');
+          .get('https://gadjets-store.onrender.com/products?categoryId=1');
 
         setphonesList(response.data);
       } catch (error) {

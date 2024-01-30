@@ -29,7 +29,7 @@ export const ProductDetailsPage = () => {
   const productId = searchParams.get('productId');
   const color = searchParams.get('color');
 
-  const requestedPhone = `http://localhost:3005/products?productId=${productId}&color=${color}&capacity=${capacity}`;
+  const requestedPhone = `https://gadjets-store.onrender.com/products?productId=${productId}&color=${color}&capacity=${capacity}`;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -68,7 +68,8 @@ export const ProductDetailsPage = () => {
 
               <div className={detailsStyles.bottomContent}>
                 <div className={detailsStyles.extendedDetails__about}>
-                  <AboutProduct />
+                  <AboutProduct product={currentProduct} />
+
                 </div>
                 <div className={detailsStyles.extendedDetails__techSpecs}>
                   <TechSpecs
