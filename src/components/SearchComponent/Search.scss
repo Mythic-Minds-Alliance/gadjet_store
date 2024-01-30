@@ -1,0 +1,67 @@
+@import '../../assets/colors.scss';
+@import "../../assets/mixins";
+
+.Search {
+  position: relative;
+
+  width: 64px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 0;
+
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  border-left: 1px solid $elements;
+  text-decoration: none;
+
+  @media (max-width: 1199px) {
+    width: 48px;
+  }
+
+  &--input {
+    position: absolute;
+    top: 52px;
+    right: -50%;
+
+    width: 40vh;
+    height: 36px;
+    padding: 10px;
+
+    z-index: 100;
+
+    @include buttonsText;
+    color: $primary;
+
+    border: 1px solid $icons;
+
+    @media (max-width: 640px) {
+      left: -20px;
+      width: 200px;
+    }
+
+    @media (min-width: 1200px) {
+      top: 72px;
+      right: 0;
+    }
+
+    &-hidden {
+      visibility: hidden;
+    }
+
+    &-on {
+      visibility: visible;
+    }
+  }
+
+  &--btn {
+    position: absolute;
+  }
+
+  &--icon {
+    width: 16px;
+    height: 16px;
+  }
+}
