@@ -1,6 +1,6 @@
 import React from 'react';
 import './TechSpecs.scss';
-// import { DetailsOptions } from '../DetailsOptions/DetailsOptions';
+import { DetailsOptions } from '../DetailsOptions/DetailsOptions';
 import { CardSeparator } from '../СardSeparator/CardSeparator';
 import { Product } from '../../types/product';
 
@@ -28,6 +28,7 @@ export const TechSpecs: React.FC<Props> = ({ phone }) => {
     capacity,
     camera,
     zoom,
+    cells,
   } = phone;
 
   return (
@@ -50,14 +51,17 @@ export const TechSpecs: React.FC<Props> = ({ phone }) => {
           <li className="TechSpecs--characteristics-item">{ram}</li>
           <li className="TechSpecs--characteristics-item">{capacity}</li>
           <li className="TechSpecs--characteristics-item">{camera}</li>
-          <li className="TechSpecs--characteristics-item">{zoom}</li>
+          {zoom && (
+            <li className="TechSpecs--characteristics-item">{zoom}</li>
+          )}
+
           <li className="TechSpecs--characteristics-item">
-            {/* {cells.map(option => (
+            {cells.map(option => (
               <DetailsOptions
                 key={option}
                 option={option}
               />
-            ))} */}
+            ))}
           </li>
         </ul>
       </div>
