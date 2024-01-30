@@ -45,15 +45,19 @@ export const TechSpecs: React.FC<Props> = ({ phone }) => {
         </ul>
 
         <ul className="TechSpecs--characteristics">
-          <li className="TechSpecs--characteristics-item">{screen}</li>
-          <li className="TechSpecs--characteristics-item">{resolution}</li>
-          <li className="TechSpecs--characteristics-item">{processor}</li>
-          <li className="TechSpecs--characteristics-item">{ram}</li>
-          <li className="TechSpecs--characteristics-item">{capacity}</li>
-          <li className="TechSpecs--characteristics-item">{camera}</li>
-          {zoom && (
-            <li className="TechSpecs--characteristics-item">{zoom}</li>
-          )}
+          <li className="TechSpecs--characteristics-item">{screen || '-'}</li>
+          <li className="TechSpecs--characteristics-item">
+            {resolution || '-'}
+          </li>
+          <li className="TechSpecs--characteristics-item">
+            {processor || '-'}
+          </li>
+          <li className="TechSpecs--characteristics-item">{ram || '-'}</li>
+          <li className="TechSpecs--characteristics-item">{capacity || '-'}</li>
+          <li className="TechSpecs--characteristics-item">{camera || '-'}</li>
+          <li className="TechSpecs--characteristics-item">
+            {zoom || '-'}
+          </li>
 
           <li className="TechSpecs--characteristics-item">
             {cells.map(option => (
@@ -61,7 +65,7 @@ export const TechSpecs: React.FC<Props> = ({ phone }) => {
                 key={option}
                 option={option}
               />
-            ))}
+            )) || '-'}
           </li>
         </ul>
       </div>
