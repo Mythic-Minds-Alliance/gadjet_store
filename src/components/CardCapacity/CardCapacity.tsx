@@ -32,21 +32,35 @@ export const CardCapacity: React.FC<Props> = ({ product }) => {
       </p>
 
       <div className={style.CardCapacity__list}>
+
         {product.capacitiesavailable
-          .map(capacity => parseFloat(capacity))
+          .map(capacity => {
+            const value = parseFloat(capacity);
+
+            if (capacity.includes('TB')) {
+              return value * 1024;
+            }
+
+            return value;
+          })
           .sort((a, b) => a - b)
-          .map(capacity => (
-            <Link
-              to={{
-                pathname: productPageLink,
-                search: `?capacity=${capacity}GB&productId=${product.id}&color=${product.color}`,
-              }}
-              key={capacity}
-              className={style.CardCapacity__item}
-            >
-              {`${capacity}GB`}
-            </Link>
-          ))}
+          .map(capacity => {
+            const value = capacity < 1024 ? capacity : capacity / 1024;
+            const unit = capacity < 1024 ? 'GB' : 'TB';
+
+            return (
+              <Link
+                to={{
+                  pathname: productPageLink,
+                  search: `?capacity=${value}${unit}&productId=${product.id}&color=${product.color}`,
+                }}
+                key={capacity}
+                className={style.CardCapacity__item}
+              >
+                {`${capacity}GB`}
+              </Link>
+            );
+          })}
       </div>
     </div>
   );
