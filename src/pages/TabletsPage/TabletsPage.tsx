@@ -6,6 +6,7 @@ import { Loader } from '../../components/Loader';
 import { SortPanel } from '../../components/SortPanel/SortPanel';
 import { sortProductList } from '../../utils/helpers';
 import { Pagination } from '../../components/Pagination/Pagination';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const TabletsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -69,6 +70,8 @@ export const TabletsPage = () => {
 
   return (
     <div className={style.CataloguePage}>
+      <Breadcrumbs />
+
       <h1 className={style.CataloguePage__title}>
         Tablets
       </h1>

@@ -5,6 +5,7 @@ import { Card } from '../../components/Card/Card';
 import { DataContext } from '../../App';
 import { Loader } from '../../components/Loader';
 import { EmptyFavorites } from '../../components/EmptyFavorites/EmptyFavorites';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const FavoritesPage = () => {
   const {
@@ -14,6 +15,8 @@ export const FavoritesPage = () => {
 
   return (
     <div className={style.CataloguePage}>
+      <Breadcrumbs />
+
       <h1 className={style.CataloguePage__title}>
         Favorites
       </h1>

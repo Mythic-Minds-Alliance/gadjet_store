@@ -13,11 +13,15 @@ import 'swiper/css/thumbs';
 import { ProductVariants } from '../../components/ProductVariants/ProductVariants';
 import { Carusel } from '../../components/Carusel';
 import { CaruselSort } from '../../types/CaruselSort';
+import { BackButton } from '../../components/BackButton';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const ProductDetailsPage = () => {
   return (
     <>
       <div className={detailsStyles.container}>
+        <Breadcrumbs />
+        <BackButton />
         <ProductTitle />
         <div className={detailsStyles.extendedDetails}>
           <div className={detailsStyles.topContent}>
