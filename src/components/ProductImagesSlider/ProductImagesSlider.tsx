@@ -10,14 +10,14 @@ type Props = {
 export const ProductImagesSlider: React.FC<Props> = ({ images }) => {
   const [selectedPhoto, setSelectedPhoto] = useState<string | null>(`${SERVER_HOST}/${images[0]}`);
 
+
   const handlePhotoClick = (photo: string) => {
     setSelectedPhoto(`${SERVER_HOST}/${photo}`);
   };
 
   useEffect(() => {
-    // Set the selected photo when the component mounts or when the images prop changes
     setSelectedPhoto(`${SERVER_HOST}/${images[0]}`);
-  }, [images]); // Add images as a dependency
+  }, [images]);
 
   return (
     <div className={style.container}>

@@ -24,7 +24,6 @@ export const CardCapacity: React.FC<Props> = ({ product }) => {
   }
 
   const productPageLink = `${location}/${product.name}`;
-
   return (
     <div className={style.CardCapacity}>
       <p className={style.CardCapacity__title}>
@@ -32,7 +31,6 @@ export const CardCapacity: React.FC<Props> = ({ product }) => {
       </p>
 
       <div className={style.CardCapacity__list}>
-
         {product.capacitiesavailable
           .map(capacity => {
             const value = parseFloat(capacity);

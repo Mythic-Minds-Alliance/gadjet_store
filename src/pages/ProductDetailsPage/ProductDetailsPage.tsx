@@ -69,6 +69,7 @@ export const ProductDetailsPage = () => {
               <div className={detailsStyles.bottomContent}>
                 <div className={detailsStyles.extendedDetails__about}>
                   <AboutProduct product={currentProduct} />
+
                 </div>
                 <div className={detailsStyles.extendedDetails__techSpecs}>
                   <TechSpecs
