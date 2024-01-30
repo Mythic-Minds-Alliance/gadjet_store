@@ -2,7 +2,7 @@ import React from 'react';
 import style from './CardCapacity.module.scss';
 
 type Props = {
-  capacities: number[],
+  capacities: string[],
 };
 export const CardCapacity: React.FC<Props> = ({ capacities }) => {
   return (
@@ -15,8 +15,6 @@ export const CardCapacity: React.FC<Props> = ({ capacities }) => {
         {capacities.map(capacity => (
           <div className={style.CardCapacity__item}>
             {capacity}
-            {' '}
-            GB
           </div>
         ))}
       </div>
