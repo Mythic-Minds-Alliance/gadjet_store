@@ -111,7 +111,7 @@ export const Header: React.FC<Props> = ({ cartCount, favoriteCount }) => {
               className="service_btn_img"
             />
 
-            <div className={classNames('headerCounter')}>
+            <div className={classNames('header__counter')}>
               <HeaderCounter productsCount={cartCount} />
             </div>
           </NavLink>
