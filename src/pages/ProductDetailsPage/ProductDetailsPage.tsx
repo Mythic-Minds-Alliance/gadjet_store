@@ -59,7 +59,7 @@ export const ProductDetailsPage = () => {
             <div className={detailsStyles.extendedDetails}>
               <div className={detailsStyles.topContent}>
                 <div className={detailsStyles.extendedDetails__pictures}>
-                  <ProductImagesSlider />
+                  <ProductImagesSlider images={currentProduct[0].images} />
                 </div>
                 <div className={detailsStyles.extendedDetails__mainInfo}>
                   <ProductVariants product={currentProduct[0]} />
