@@ -79,11 +79,6 @@ export const TabletsPage = () => {
         Tablets
       </h1>
 
-      <Search
-        setSearchQuery={setSearchQuery}
-        searchQuery={searchQuery}
-      />
-
       {isLoading ? (
         <Loader />
       ) : (
@@ -99,6 +94,11 @@ export const TabletsPage = () => {
             onSelectOrder={handleSortOrder}
             onSelectPerPage={handleSortPostCount}
             postPerPage={postPerPage}
+          />
+
+          <Search
+            setSearchQuery={setSearchQuery}
+            searchQuery={searchQuery}
           />
 
           <div className={style.CataloguePage__container}>
