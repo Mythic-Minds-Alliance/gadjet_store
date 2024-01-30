@@ -38,13 +38,17 @@ export const CheckoutAfterBuy: React.FC<Props> = ({
           {cartStorage.map((product) => (
             <div key={product.id} className="orderItem">
               <div className="productInfo">
-                <img
-                  src={`${SERVER_HOST}/${product.images[0]}`}
-                  alt={product.name}
-                  className="productImage"
-                />
+                <Link to={`../phones/${product.name}`}>
+                  <img
+                    src={`${SERVER_HOST}/${product.images[0]}`}
+                    alt={product.name}
+                    className="productImage"
+                  />
+                </Link>
                 <div className="productDescription">
-                  <p>{product.quantity > 1 ? `${product.name} x ${product.quantity} items` : product.name}</p>
+                  <Link to={`../phones/${product.name}`}>
+                    <p>{product.quantity > 1 ? `${product.name} x ${product.quantity} items` : product.name}</p>
+                  </Link>
                   <p>
                     $
                     {`${(+product.price).toFixed(2)} `}
