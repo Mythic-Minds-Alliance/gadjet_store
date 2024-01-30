@@ -38,7 +38,9 @@ export const CheckoutAfterBuy: React.FC<Props> = ({
 
         <div className="orderContainer">
           {cartStorage.map((product) => {
-            if (location === '/' || location === '/favorites') {
+            if (location === '/'
+              || location === '/favorites'
+              || location === '/cart') {
               switch (product.categoryId) {
                 case 1:
                   location = '/phones';
