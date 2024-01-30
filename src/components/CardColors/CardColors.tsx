@@ -42,7 +42,7 @@ export const CardColors: React.FC<Props> = ({ product }) => {
             <Link
               to={{
                 pathname: productPageLink,
-                search: `?color=${product.capacity}GB&productId=${product.id}&color=${colorItem}`,
+                search: `?capacity=${product.capacity}&productId=${product.id}&color=${colorItem}`,
               }}
               key={colorItem}
               className={style.color__item}
