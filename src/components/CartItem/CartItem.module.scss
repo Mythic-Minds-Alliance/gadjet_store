@@ -97,11 +97,12 @@
 .item_phone_info {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-self: stretch;
   gap: 23px;
 
   @include onTablet {
+    justify-content: space-between;
     gap: 32px;
   }
 }
@@ -109,10 +110,11 @@
 .item_price_info {
   display: flex;
   align-self: stretch;
-  justify-content: space-around;
+  justify-content: flex-end;
   gap: 48px;
 
   @include onTablet {
+    justify-content: space-between;
     align-items: center;
   }
 }
