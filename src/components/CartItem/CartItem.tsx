@@ -25,7 +25,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         </div>
 
         <Link
-          to={`../phones/${item.name}`}
+          to={`./phones/${item.name}`}
         >
           <img
             src={`${SERVER_HOST}/${item.images[0]}`}
@@ -34,7 +34,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           />
         </Link>
         <Link
-          to={`../phones/${item.name}`}
+          to={`./phones/${item.name}`}
         >
           <p className={styles.item__container_model}>
             {item.name}
