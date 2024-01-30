@@ -55,6 +55,7 @@
   },
   "devDependencies": {
     "@mate-academy/eslint-config-react-typescript": "^1.0.13",
+    "@types/uuid": "^9.0.8",
     "husky": "^8.0.3",
     "lint-staged": "^15.2.0"
   },

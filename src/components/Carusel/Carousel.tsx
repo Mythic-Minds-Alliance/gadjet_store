@@ -146,8 +146,8 @@ export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel }) => {
           infinite
         >
           {phonesList.map((product) => (
-          <Card product={product} key={uuidv4()} />
-        ))}
+            <Card product={product} key={uuidv4()} />
+          ))}
         </Carousel>
       )}
     </section>
