@@ -17,10 +17,11 @@ export const ProductControls: React.FC<Props> = ({ product }) => {
 
   return (
     <div className="ProductControls">
-      <CardColors colors={colors} id={id} />
+      <CardColors product={product} />
       <CardSeparator />
 
-      <CardCapacity capacities={product.capacitiesavailable} />
+      <CardCapacity product={product} />
+
 
       <CardSeparator />
 

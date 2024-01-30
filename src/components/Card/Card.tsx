@@ -24,20 +24,20 @@ export const Card: React.FC<Props> = ({ product }) => {
 
   let location = useLocation().pathname;
 
-  if (location === '/' || location === '/favorites') {
-    switch (product.categoryId) {
-      case 1:
-        location = '/phones';
-        break;
-      case 2:
-        location = '/tablets';
-        break;
-      case 3:
-        location = '/accessories';
-        break;
-      default:
-        break;
-    }
+
+  switch (product.categoryId) {
+    case 1:
+      location = '/phones';
+      break;
+    case 2:
+      location = '/tablets';
+      break;
+    case 3:
+      location = '/accessories';
+      break;
+    default:
+      location = '/phones';
+      break;
   }
 
   const productPageLink = `${location}/${product.name}`;
