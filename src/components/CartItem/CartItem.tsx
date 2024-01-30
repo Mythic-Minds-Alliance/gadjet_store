@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import styles from './CartItem.module.scss';
 import { Cross } from '../Cross/Cross';
@@ -17,6 +17,26 @@ type Props = {
 export const CartItem: React.FC<Props> = ({ item }) => {
   const { setCartStorage } = useContext(DataContext);
 
+  let location = useLocation().pathname;
+
+  if (location === '/' || location === '/favorites' || location === '/cart') {
+    switch (item.categoryId) {
+      case 1:
+        location = '/phones';
+        break;
+      case 2:
+        location = '/tablets';
+        break;
+      case 3:
+        location = '/accessories';
+        break;
+      default:
+        break;
+    }
+  }
+
+  const productPageLink = `${location}/${item.name}`;
+
   return (
     <div className={styles.item__container}>
       <div className={styles.item_phone_info}>
@@ -25,7 +45,10 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         </div>
 
         <Link
-          to={`../phones/${item.name}`}
+          to={{
+            pathname: productPageLink,
+            search: `?capacity=${item.capacity}&productId=${item.id}&color=${item.color}`,
+          }}
         >
           <img
             src={`${SERVER_HOST}/${item.images[0]}`}
@@ -34,7 +57,10 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           />
         </Link>
         <Link
-          to={`../phones/${item.name}`}
+          to={{
+            pathname: productPageLink,
+            search: `?capacity=${item.capacity}&productId=${item.id}&color=${item.color}`,
+          }}
         >
           <p className={styles.item__container_model}>
             {item.name}

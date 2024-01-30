@@ -14,10 +14,10 @@ type Props = {
 export const ProductControls: React.FC<Props> = ({ product }) => {
   return (
     <div className="ProductControls">
-      <CardColors colors={product.colorsavailable} id={product.id} />
+      <CardColors product={product} />
       <CardSeparator />
 
-      <CardCapacity capacities={product.capacitiesavailable} />
+      <CardCapacity product={product} />
 
       <CardSeparator />
 
