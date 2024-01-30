@@ -1,1 +1,0 @@
-export { CardCapacity } from './CardCapacity';
