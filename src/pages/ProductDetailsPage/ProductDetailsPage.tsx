@@ -20,7 +20,7 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Product } from '../../types/product';
 
 export const ProductDetailsPage = () => {
-  const [currentProduct, setCurrentProduct] = useState<Product>();
+  const [currentProduct, setCurrentProduct] = useState<Product[]>();
   const [, setIsLoading] = useState(true);
 
   const queris = useLocation();
@@ -55,7 +55,7 @@ export const ProductDetailsPage = () => {
           <>
             <Breadcrumbs />
             <BackButton />
-            <ProductTitle title={currentProduct.name} />
+            <ProductTitle title={currentProduct[0]} />
             <div className={detailsStyles.extendedDetails}>
               <div className={detailsStyles.topContent}>
                 <div className={detailsStyles.extendedDetails__pictures}>
@@ -72,8 +72,8 @@ export const ProductDetailsPage = () => {
                 </div>
                 <div className={detailsStyles.extendedDetails__techSpecs}>
                   <TechSpecs
-                    phone={currentProduct}
-                    key={currentProduct.id}
+                    phone={currentProduct[0]}
+                    key={currentProduct[0].id}
                   />
                 </div>
               </div>
