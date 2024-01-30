@@ -78,11 +78,6 @@ export const PhonePage = () => {
         Mobile phones
       </h1>
 
-      <Search
-        setSearchQuery={setSearchQuery}
-        searchQuery={searchQuery}
-      />
-
       {isLoading ? (
         <Loader />
       ) : (
@@ -97,6 +92,11 @@ export const PhonePage = () => {
             onSelectOrder={handleSortOrder}
             onSelectPerPage={handleSortPostCount}
             postPerPage={postPerPage}
+          />
+
+          <Search
+            setSearchQuery={setSearchQuery}
+            searchQuery={searchQuery}
           />
 
           <div className={style.CataloguePage__container}>
