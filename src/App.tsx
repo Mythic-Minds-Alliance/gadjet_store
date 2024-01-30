@@ -8,7 +8,6 @@ import {
 import { CartProduct, Product } from './types/product';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header';
-import { Breadcrumbs } from './components/Breadcrumbs';
 import style from './MainContainer.module.scss';
 
 interface DataContextType {
@@ -82,7 +81,6 @@ export const App = () => {
         />
         <div data-cy="app" className={style.MainContainer}>
 
-          <Breadcrumbs />
           <Outlet />
         </div>
 

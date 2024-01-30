@@ -28,16 +28,10 @@ export const Card: React.FC<Props> = ({ product }) => {
     <div className="card">
       <div className="card--top">
         <Link
+          to={productPageLink}
           className="card--photo"
-          to="/productDetails"
           onClick={scrollToTop}
-        />
-        <Link
-          className="card--photo"
-          to="/productDetails"
-          onClick={scrollToTop}
-        />
-        <Link to={productPageLink} className="card--photo">
+        >
           <img
             src={`${SERVER_HOST}/${images[0]}`}
             alt={`${name}`}
