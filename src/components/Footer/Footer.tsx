@@ -15,7 +15,12 @@ export const Footer = () => (
     </a>
 
     <div className={FooterStyle.footerLinks}>
-      <a href="/" className={FooterStyle.footerLinkItem}>Github</a>
+      <a
+        href="https://github.com/Mythic-Minds-Alliance"
+        className={FooterStyle.footerLinkItem}
+      >
+        Github
+      </a>
       <a href="/" className={FooterStyle.footerLinkItem}>Contacts</a>
       <a href="/" className={FooterStyle.footerLinkItem}>Rights</a>
     </div>
