@@ -73,7 +73,6 @@ export const ProductDetailsPage = () => {
                 <div className={detailsStyles.extendedDetails__techSpecs}>
                   <TechSpecs
                     phone={currentProduct[0]}
-                    key={currentProduct[0].id}
                   />
                 </div>
               </div>
