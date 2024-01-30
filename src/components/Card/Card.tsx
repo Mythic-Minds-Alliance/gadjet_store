@@ -46,7 +46,10 @@ export const Card: React.FC<Props> = ({ product }) => {
     <div className="card">
       <div className="card--top">
         <Link
-          to={productPageLink}
+          to={{
+            pathname: productPageLink,
+            search: `?capacity=${product.capacity}&productId=${product.id}&color=${product.color}`,
+          }}
           className="card--photo"
           onClick={scrollToTop}
         >

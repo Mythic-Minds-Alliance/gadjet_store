@@ -1,13 +1,13 @@
 /* eslint-disable max-len */
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import detailsStyles from './ProductDetailsPage.module.scss';
 import { ProductTitle } from '../../components/ProductTitle';
 import {
   AboutProduct,
-  phonesFromServer,
 } from '../../components/AboutProduct/AboutProduct';
-import { TechSpecs } from '../../components/TechSpecs/TechSpecs';
+// import { TechSpecs } from '../../components/TechSpecs/TechSpecs';
 import { ProductImagesSlider } from '../../components/ProductImagesSlider';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -17,18 +17,25 @@ import { Carusel } from '../../components/Carusel';
 import { CaruselSort } from '../../types/CaruselSort';
 import { BackButton } from '../../components/BackButton';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { Product } from '../../types/product';
 
 export const ProductDetailsPage = () => {
-  const [, setCurrentProduct] = useState([]);
+  const [currentProduct, setCurrentProduct] = useState<Product>();
   const [, setIsLoading] = useState(true);
 
-  // const pathname = useLocation();
+  const queris = useLocation();
+  const searchParams = new URLSearchParams(queris.search);
+  const capacity = searchParams.get('capacity');
+  const productId = searchParams.get('productId');
+  const color = searchParams.get('color');
+
+  const requestedPhone = `http://localhost:3005/products?productId=${productId}&color=${color}&capacity=${capacity}`;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios
-          .get('http://localhost:3005/products?categoryId=1');
+          .get(requestedPhone);
 
         setCurrentProduct(response.data);
       } catch (error) {
@@ -52,23 +59,25 @@ export const ProductDetailsPage = () => {
             <div className={detailsStyles.extendedDetails__pictures}>
               <ProductImagesSlider />
             </div>
-            <div className={detailsStyles.extendedDetails__mainInfo}>
-              <ProductVariants product={phonesFromServer[0]} />
-            </div>
+            {currentProduct && (
+              <div className={detailsStyles.extendedDetails__mainInfo}>
+                <ProductVariants product={currentProduct} />
+              </div>
+            )}
           </div>
 
           <div className={detailsStyles.bottomContent}>
             <div className={detailsStyles.extendedDetails__about}>
               <AboutProduct />
             </div>
-            <div className={detailsStyles.extendedDetails__techSpecs}>
+            {/* <div className={detailsStyles.extendedDetails__techSpecs}>
               {phonesFromServer.map(phone => (
                 <TechSpecs
-                  phone={phone}
+                  currentProduct={phone}
                   key={phone.id}
                 />
               ))}
-            </div>
+            </div> */}
           </div>
 
         </div>

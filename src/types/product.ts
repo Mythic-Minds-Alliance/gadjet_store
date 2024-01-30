@@ -17,23 +17,10 @@ export interface Product {
   cells: string[];
   images: string[];
   capacitiesavailable: string[];
+  camera: string | null;
+  zoom: string | null;
 }
 
 export interface CartProduct extends Product {
   quantity: number;
-}
-
-export interface IPhone extends Product {
-  camera: string;
-  zoom: string;
-}
-
-export interface IPad extends Product {
-  camera: string;
-  zoom: string;
-}
-
-export interface AppleWatch extends Product {
-  camera: string | null;
-  zoom: string | null;
 }
