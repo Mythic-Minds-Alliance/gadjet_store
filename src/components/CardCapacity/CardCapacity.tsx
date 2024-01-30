@@ -12,11 +12,14 @@ export const CardCapacity: React.FC<Props> = ({ capacities }) => {
       </p>
 
       <div className={style.CardCapacity__list}>
-        {capacities.map(capacity => (
-          <div className={style.CardCapacity__item}>
-            {capacity}
-          </div>
-        ))}
+        {capacities
+          .map(capacity => parseFloat(capacity))
+          .sort((a, b) => a - b)
+          .map(capacity => (
+            <div key={capacity} className={style.CardCapacity__item}>
+              {`${capacity}GB`}
+            </div>
+          ))}
       </div>
     </div>
   );

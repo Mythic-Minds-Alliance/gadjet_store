@@ -221,7 +221,9 @@ export function sortProductList(
   }
 
   if (query) {
-    preparedList = preparedList.filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
+    preparedList = preparedList.filter(
+      item => item.name.toLowerCase().includes(query.toLowerCase().trim()),
+    );
   }
 
   return preparedList;
