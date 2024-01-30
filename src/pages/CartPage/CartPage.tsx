@@ -5,12 +5,15 @@ import { CartCheckout } from '../../components/CartCheckout/CartCheckout';
 
 import { DataContext } from '../../App';
 import { EmptyCart } from '../../components/EmptyCart/EmptyCart';
+import { BackButton } from '../../components/BackButton';
 
 export const CartPage = () => {
   const { cartStorage } = useContext(DataContext);
 
   return (
     <div className="CartPage">
+      <BackButton />
+
       <h1 className="CartPage--title">Cart</h1>
 
       {cartStorage.length ? (

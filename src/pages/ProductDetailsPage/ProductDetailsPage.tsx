@@ -13,21 +13,24 @@ import 'swiper/css/thumbs';
 import { ProductVariants } from '../../components/ProductVariants/ProductVariants';
 import { Carusel } from '../../components/Carusel';
 import { CaruselSort } from '../../types/CaruselSort';
-
+import { BackButton } from '../../components/BackButton';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const ProductDetailsPage = () => {
   return (
     <>
       <div className={detailsStyles.container}>
+        <Breadcrumbs />
+        <BackButton />
         <ProductTitle />
         <div className={detailsStyles.extendedDetails}>
           <div className={detailsStyles.topContent}>
             <div className={detailsStyles.extendedDetails__pictures}>
               <ProductImagesSlider />
             </div>
-            {/* <div className={detailsStyles.extendedDetails__mainInfo}>
+            <div className={detailsStyles.extendedDetails__mainInfo}>
               <ProductVariants product={phonesFromServer[0]} />
-            </div> */}
+            </div>
           </div>
 
           <div className={detailsStyles.bottomContent}>
