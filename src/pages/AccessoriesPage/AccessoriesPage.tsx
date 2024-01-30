@@ -12,7 +12,7 @@ export const AccessoriesPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(12);
   const [accessoriesList, setAccessoriesList] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -75,38 +75,39 @@ export const AccessoriesPage = () => {
       <h1 className={style.CataloguePage__title}>
         Accessories Page
       </h1>
-      <p className={style.CataloguePage__CatalogueCount}>
-        {`${visibleList.length} models`}
-      </p>
-
-      <SortPanel
-        onSortField={handleSortFieldChange}
-        selectedSortField={selectedSortField}
-        selectedSortOrder={sortOrder}
-        onSelectOrder={handleSortOrder}
-        onSelectPerPage={handleSortPostCount}
-        postPerPage={postPerPage}
-      />
 
       {isLoading ? (
         <Loader />
       ) : (
-        <div className={style.CataloguePage__container}>
-          {currentItems.map(product => (
-            <Card
-              key={product.name}
-              product={product}
-            />
-          ))}
-        </div>
-      )}
+        <>
+          <p className={style.CataloguePage__CatalogueCount}>
+            {`${visibleList.length} models`}
+          </p>
 
-      <Pagination
-        postPorPage={postPerPage}
-        totalPost={visibleList.length}
-        onPageChange={handlePageChange}
-        currentPage={currentPage}
-      />
+          <SortPanel
+            onSortField={handleSortFieldChange}
+            selectedSortField={selectedSortField}
+            selectedSortOrder={sortOrder}
+            onSelectOrder={handleSortOrder}
+            onSelectPerPage={handleSortPostCount}
+            postPerPage={postPerPage}
+          />
+          <div className={style.CataloguePage__container}>
+            {currentItems.map(product => (
+              <Card
+                key={product.name}
+                product={product}
+              />
+            ))}
+          </div>
+          <Pagination
+            postPorPage={postPerPage}
+            totalPost={visibleList.length}
+            onPageChange={handlePageChange}
+            currentPage={currentPage}
+          />
+        </>
+      )}
     </div>
   );
 };
