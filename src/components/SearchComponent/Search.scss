@@ -1,0 +1,47 @@
+@import '../../assets/colors.scss';
+@import "../../assets/mixins";
+
+.Search {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  height: 40px;
+  width: 40px;
+
+  margin-bottom: 24px;
+  border: 1px solid #B4BDC3;
+
+  &--input {
+    height: 40px;
+    padding: 10px 10px 10px 36px;
+
+    @include buttonsText;
+    color: $primary;
+
+    border: 1px solid $icons;
+
+    &-hidden {
+      visibility: hidden;
+    }
+
+    &-on {
+      visibility: visible;
+    }
+  }
+
+  &--btn {
+    position: absolute;
+
+    height: 40px;
+    width: 40px;
+
+    z-index: 3;
+  }
+
+  &--icon {
+    width: 16px;
+    height: 16px;
+  }
+}
