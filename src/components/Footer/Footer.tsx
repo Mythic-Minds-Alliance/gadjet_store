@@ -22,7 +22,7 @@ export const Footer = () => (
       >
         Github
       </a>
-      <a href="/" className={FooterStyle.footerLinkItem}>Contacts</a>
+      <Link to="contacts" className={FooterStyle.footerLinkItem}>Contacts</Link>
       <Link to="rights" className={FooterStyle.footerLinkItem}>Rights</Link>
     </div>
 
