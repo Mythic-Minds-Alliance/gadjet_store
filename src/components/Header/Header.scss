@@ -7,28 +7,53 @@
   position: sticky;
   top: 0;
   margin-bottom: 24px;
-  height: 64px;
+  height: 48px;
   border-bottom: 1px solid $elements;
   background: $white;
   z-index: 10;
 
   @include onTablet {
     margin-bottom: 32px;
+    height: 48px;
   }
 
   @include onDesktop {
     margin-bottom: 56px;
-    height: 48px;
+    height: 64px;
+  }
+}
+
+.container {
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+
+  @include onTablet {
+    overflow: hidden;
+  }
+}
+
+.navlinks {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__logo.active {
+    color: initial;
+
+    &::after {
+      display: none;
+    }
   }
 
-  &__logo {
+  &__img {
     display: block;
-    width: 80px;
-    margin: 0 24px;
+    width: 64px;
+    margin: 0 16px;
 
     @include onDesktop {
-      width: 64px;
-      margin: 0 16px;
+      width: 80px;
+      margin: 0 24px;
     }
 
     &:hover {
@@ -40,124 +65,95 @@
       color: $primary;
     }
   }
-
-  &__counter {
-    @media (max-width: 639px) {
-      position: absolute;
-      top: 25%;
-      right: 40%;
-    }
-  }
-}
-
-.container {
-  display: flex;
-  height: 100%;
-  justify-content: space-between;
-
-  @media (max-width: 639px) {
-    padding: 0;
-    overflow: hidden;
-  }
-
-  @media (max-width: 1199px) {
-    padding-left: 16px;
-  }
 }
 
 .nav {
-  display: flex;
+  display: none;
 
-  @media (max-width: 639px) {
-    display: none;
+  @include onTablet {
+    display: flex;
+    gap: 32px;
+    padding-inline: 16px;
+  }
+
+  @include onDesktop {
+    gap: 64px;
+    padding-inline: 24px;
   }
 }
 
-.links {
+.service {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
-.logo-link.active {
-  color: initial;
-
-  &::after {
+  &_btn {
+    position: relative;
     display: none;
-  }
-}
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 47px;
 
-.service_btn {
-  position: relative;
-  width: 64px;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 18px 0;
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  border-left: 1px solid $elements;
-  text-decoration: none;
+    cursor: pointer;
+    background: transparent;
+    border-left: 1px solid $elements;
+    text-decoration: none;
 
-  &_img {
-    width: 16px;
-    position: absolute;
-    transition: transform 0.3s ease-in-out;
+    @include onTablet {
+      display: flex;
+    }
 
     @include onDesktop {
-      position: relative;
+      width: 64px;
+      height: 63px;
     }
-  }
 
-  &:hover .service_btn_img {
-    transform: scale(1.1);
-  }
+    &:hover .service_btn-img {
+      transform: scale(1.1);
+    }
 
-  @media (max-width: 639px) {
-    display: none;
-  }
+    & .active {
+      position: relative;
+      color: $primary;
 
-  @media (max-width: 1199px) {
-    width: 48px;
-  }
-}
+      &::after {
+        position: absolute;
+        content: '';
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: $primary;
+        border-radius: 8px;
+      }
+    }
 
-.active {
-  position: relative;
-  color: $primary;
+    &-img {
+      width: 16px;
+      transition: transform 0.3s ease-in-out;
 
-  &::after {
-    position: absolute;
-    bottom: 0;
-    content: '';
-    display: block;
-    width: 100%;
-    height: 4px;
-    background-color: $primary;
-    border-radius: 8px;
+      @include onDesktop {
+        position: relative;
+      }
+    }
   }
 }
 
 .burger_btn {
   width: 48px;
-  display: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   background: transparent;
-  border: none;
   border-left: 1px solid $elements;
   background: transparent;
 
-  @media (max-width: 639px) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  @include onTablet {
+    display: none;
   }
-  
+
   &_img {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     transition: transform 0.3s ease-in-out;
   }
 

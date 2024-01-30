@@ -24,16 +24,16 @@ export const Header: React.FC<Props> = ({ cartCount, favoriteCount }) => {
   return (
     <header className="header">
       <div className="container">
-        <div className="links">
+        <div className="navlinks">
           <NavLink
             to="/"
-            className="logo-link"
+            className="navlinks__logo"
             onClick={() => setIsMenuOpen(false)}
           >
             <img
               src={logo}
               alt="Nice Gadgets logo"
-              className="header__logo"
+              className="navlinks__img"
             />
           </NavLink>
 
@@ -42,28 +42,24 @@ export const Header: React.FC<Props> = ({ cartCount, favoriteCount }) => {
               <NavigationLink
                 to="/"
                 linkText="Home"
-                onClick={() => { }}
               />
               <NavigationLink
                 to="/phones"
                 linkText="Phones"
-                onClick={() => { }}
               />
               <NavigationLink
                 to="/tablets"
                 linkText="Tablets"
-                onClick={() => { }}
               />
               <NavigationLink
                 to="/accessories"
                 linkText="Accessories"
-                onClick={() => { }}
               />
             </nav>
           )}
         </div>
 
-        <div className="links">
+        <div className="service">
           <NavLink
             to="/account"
             className={({ isActive }) => classNames(
@@ -74,7 +70,7 @@ export const Header: React.FC<Props> = ({ cartCount, favoriteCount }) => {
             <img
               src={user}
               alt="user logo"
-              className="service_btn_img"
+              className="service_btn-img"
             />
           </NavLink>
 
@@ -89,7 +85,7 @@ export const Header: React.FC<Props> = ({ cartCount, favoriteCount }) => {
             <img
               src={favoriteImg}
               alt="like button"
-              className="service_btn_img"
+              className="service_btn-img"
             />
 
             <div className={classNames('headerCounter')}>
@@ -108,10 +104,10 @@ export const Header: React.FC<Props> = ({ cartCount, favoriteCount }) => {
             <img
               src={ordersLogo}
               alt="orders button"
-              className="service_btn_img"
+              className="service_btn-img"
             />
 
-            <div className={classNames('header__counter')}>
+            <div>
               <HeaderCounter productsCount={cartCount} />
             </div>
           </NavLink>
