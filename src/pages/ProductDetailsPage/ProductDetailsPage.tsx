@@ -1,4 +1,6 @@
 /* eslint-disable max-len */
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import detailsStyles from './ProductDetailsPage.module.scss';
 import { ProductTitle } from '../../components/ProductTitle';
 import {
@@ -17,6 +19,28 @@ import { BackButton } from '../../components/BackButton';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const ProductDetailsPage = () => {
+  const [, setCurrentProduct] = useState([]);
+  const [, setIsLoading] = useState(true);
+
+  // const pathname = useLocation();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios
+          .get('http://localhost:3005/products?categoryId=1');
+
+        setCurrentProduct(response.data);
+      } catch (error) {
+        throw new Error('error when fetching data from API');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <div className={detailsStyles.container}>

@@ -22,7 +22,23 @@ export const Card: React.FC<Props> = ({ product }) => {
     images,
   } = product;
 
-  const location = useLocation().pathname;
+  let location = useLocation().pathname;
+
+  if (location === '/') {
+    switch (product.categoryId) {
+      case 1:
+        location = '/phones';
+        break;
+      case 2:
+        location = '/tablets';
+        break;
+      case 3:
+        location = '/accessories';
+        break;
+      default:
+        break;
+    }
+  }
 
   const productPageLink = `${location}/${product.name}`;
 
