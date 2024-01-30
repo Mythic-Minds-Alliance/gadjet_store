@@ -174,7 +174,7 @@ export function sortProductList(
   product: Product[],
   sortBy: string,
   order: string,
-  query: string,
+  query?: string,
 ) {
   let preparedList = [...product];
 
