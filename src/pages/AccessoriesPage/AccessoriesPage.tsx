@@ -20,7 +20,7 @@ export const AccessoriesPage = () => {
     const fetchData = async () => {
       try {
         const response = await axios
-          .get('http://gadjets-store.onrender.com/products?categoryId=3');
+          .get('https://gadjets-store.onrender.com/products?categoryId=3');
 
         setAccessoriesList(response.data);
       } catch (error) {

@@ -29,7 +29,7 @@ export const ProductDetailsPage = () => {
   const productId = searchParams.get('productId');
   const color = searchParams.get('color');
 
-  const requestedPhone = `http://gadjets-store.onrender.com/products?productId=${productId}&color=${color}&capacity=${capacity}`;
+  const requestedPhone = `https://gadjets-store.onrender.com/products?productId=${productId}&color=${color}&capacity=${capacity}`;
 
   useEffect(() => {
     const fetchData = async () => {
