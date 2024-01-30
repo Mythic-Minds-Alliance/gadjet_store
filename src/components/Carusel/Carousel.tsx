@@ -12,12 +12,12 @@ import arrow from '../../icons/SliderButtonRight.png';
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1200 },
-    items: 4,
+    items: 5,
     slidesToSlide: 2,
   },
   tablet: {
     breakpoint: { max: 1199, min: 860 },
-    items: 3,
+    items: 4,
     slidesToSlide: 1,
     partialVisibilityGutter: 30,
   },
@@ -34,7 +34,7 @@ const responsive = {
   },
   mobile: {
     breakpoint: { max: 400, min: 320 },
-    items: 1.1,
+    items: 1,
     slidesToSlide: 1,
   },
 };
@@ -67,7 +67,7 @@ const ButtonGroup: React.FC<ButtonGroupProps> = ({
           styles.button,
           { [styles['button--disabled']]: isInitialSlide },
         )}
-        aria-label="Go left"
+        aria-label="previous slide / item"
         onClick={handlePrevClick}
       >
         <img
@@ -80,7 +80,7 @@ const ButtonGroup: React.FC<ButtonGroupProps> = ({
       <button
         type="button"
         className={classNames(styles.button, styles.buttonRight)}
-        aria-label="Go right"
+        aria-label="next slide / item"
         onClick={handleNextClick}
       >
         <img
@@ -123,12 +123,12 @@ export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel }) => {
       <div className={classNames(styles.carusel__title)}>{title}</div>
 
       <Carousel
-        itemClass={classNames(styles.Cards)}
+        itemClass={classNames(styles.Cards, 'Cards')}
+        responsive={responsive}
+        customButtonGroup={<ButtonGroup />}
         arrows={false}
         renderButtonGroupOutside
-        customButtonGroup={<ButtonGroup />}
         partialVisible
-        responsive={responsive}
         infinite
       >
         {visibleCart.map((product) => (

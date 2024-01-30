@@ -253,5 +253,5 @@ export function sortProductCarusel(
       break;
   }
 
-  return preparedList.slice(0, 7);
+  return preparedList.slice(0, 8);
 }
