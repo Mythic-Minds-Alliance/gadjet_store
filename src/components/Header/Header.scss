@@ -1,0 +1,225 @@
+@import '../../assets/normalize.scss';
+@import '../../assets/colors.scss';
+@import '../../assets/variables';
+@import "../../assets/mixins";
+
+@mixin iconseSize {
+  width: 16px;
+  height: 16px;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  margin-bottom: 24px;
+  height: 64px;
+  border-bottom: 1px solid $elements;
+  background: $white;
+  z-index: 10;
+
+  @include onTablet {
+    margin-bottom: 32px;
+  }
+
+  @include onDesktop {
+    margin-bottom: 56px;
+  }
+
+  &__logo {
+    display: block;
+    width: 80px;
+    margin: 0 24px;
+  }
+
+  &__logo:hover {
+    animation: wave 2s infinite linear;
+  }
+
+  &__logo.active {
+    position: relative;
+    color: $primary;
+  }
+}
+
+.container {
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+
+  @media (max-width: 639px) {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  @media (max-width: 1199px) {
+    padding-left: 16px;
+  }
+}
+
+.nav {
+  display: flex;
+
+  @media (max-width: 639px) {
+    display: none;
+  }
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-link.active {
+  color: initial;
+
+  &::after {
+    display: none;
+  }
+}
+
+.service_btn {
+  position: relative;
+  width: 64px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 0;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  border-left: 1px solid $elements;
+  text-decoration: none;
+
+  &_img {
+    position: absolute;
+    transition: transform 0.3s ease-in-out;
+
+    @include onDesktop {
+      position: relative;
+      width: 16px;
+    }
+  }
+
+  &:hover .service_btn_img {
+    transform: scale(1.1);
+  }
+}
+
+.active {
+  position: relative;
+  color: $primary;
+
+  &::after {
+    position: absolute;
+    bottom: 0;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: $primary;
+    border-radius: 8px;
+  }
+}
+
+.burger_btn {
+  width: 48px;
+  display: none;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  border-left: 1px solid $elements;
+
+  &_img {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &-active {
+    background-color: $white;
+  }
+
+  &:hover .burger_btn_img {
+    transform: scale(1.1);
+  }
+}
+
+@media (max-width: 639px) {
+  .service_btn {
+    display: none;
+  }
+
+  .dropdown-content {
+    width: 144px;
+  }
+
+  .headerCounter {
+    position: absolute;
+    top: 25%;
+    right: 40%;
+  }
+
+  .burger_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 1199px) {
+  .header {
+    height: 48px;
+
+    &__logo {
+      width: 64px;
+      margin: 0 16px;
+    }
+  }
+
+  .service_btn {
+    width: 48px;
+
+    &_img {
+      position: relative;
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.burger-block {
+  display: flex;
+}
+
+.burger-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+
+  & img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@keyframes wave {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  25% {
+    transform: translateY(-4px);
+  }
+
+  75% {
+    transform: translateY(4px);
+  }
+}
