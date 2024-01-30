@@ -83,11 +83,6 @@ export const PhonePage = () => {
         searchQuery={searchQuery}
       />
 
-      <Search
-        setSearchQuery={setSearchQuery}
-        searchQuery={searchQuery}
-      />
-
       {isLoading ? (
         <Loader />
       ) : (

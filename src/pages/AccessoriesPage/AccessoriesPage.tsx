@@ -7,12 +7,14 @@ import { SortPanel } from '../../components/SortPanel/SortPanel';
 import { sortProductList } from '../../utils/helpers';
 import { Pagination } from '../../components/Pagination/Pagination';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { Search } from '../../components/SearchComponent/Search';
 
 export const AccessoriesPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(12);
   const [accessoriesList, setAccessoriesList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,6 +60,7 @@ export const AccessoriesPage = () => {
     accessoriesList,
     selectedSortField,
     sortOrder,
+    searchQuery,
   );
 
   const indexOfLastItem = currentPage * postPerPage;
@@ -75,6 +78,11 @@ export const AccessoriesPage = () => {
       <h1 className={style.CataloguePage__title}>
         Accessories Page
       </h1>
+
+      <Search
+        setSearchQuery={setSearchQuery}
+        searchQuery={searchQuery}
+      />
 
       {isLoading ? (
         <Loader />
