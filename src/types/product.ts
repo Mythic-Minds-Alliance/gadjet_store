@@ -17,6 +17,8 @@ export interface Product {
   cells: string[];
   images: string[];
   capacitiesavailable: string[];
+  camera: string | null;
+  zoom: string | null;
 }
 
 export interface CartProduct extends Product {
