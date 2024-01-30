@@ -174,6 +174,7 @@ export function sortProductList(
   product: Product[],
   sortBy: string,
   order: string,
+  query: string,
 ) {
   let preparedList = [...product];
 
@@ -217,6 +218,11 @@ export function sortProductList(
 
     default:
       break;
+  }
+
+
+  if (query) {
+    preparedList = preparedList.filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
   }
 
   return preparedList;

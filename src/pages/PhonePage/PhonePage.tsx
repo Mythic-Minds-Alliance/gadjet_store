@@ -7,12 +7,14 @@ import { SortPanel } from '../../components/SortPanel/SortPanel';
 import { sortProductList } from '../../utils/helpers';
 import { Pagination } from '../../components/Pagination/Pagination';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { Search } from '../../components/SearchComponent/Search';
 
 export const PhonePage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(12);
   const [phonesList, setphonesList] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -57,6 +59,7 @@ export const PhonePage = () => {
     phonesList,
     selectedSortField,
     sortOrder,
+    searchQuery,
   );
 
   const indexOfLastItem = currentPage * postPerPage;
@@ -74,6 +77,11 @@ export const PhonePage = () => {
       <h1 className={style.CataloguePage__title}>
         Mobile phones
       </h1>
+
+      <Search
+        setSearchQuery={setSearchQuery}
+        searchQuery={searchQuery}
+      />
 
       {isLoading ? (
         <Loader />
