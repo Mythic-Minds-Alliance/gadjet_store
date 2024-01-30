@@ -73,7 +73,7 @@ export const Header: React.FC<Props> = ({ cartCount, favoriteCount }) => {
           >
             <img
               src={user}
-              alt="account logo"
+              alt="user logo"
               className="service_btn_img"
             />
           </NavLink>

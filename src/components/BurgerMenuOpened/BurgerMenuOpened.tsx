@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import './BurgerMenuOpened.modules.scss';
 import favoriteImg from '../../images/Favourites.png';
 import ordersLogo from '../../images/ShoppingBag.png';
+import user from '../../icons/User.svg';
 import { NavigationLink } from '../NavigationLink/NavigationLink';
 import { HeaderCounter } from '../HeaderCounter/HeaderCounter';
 
@@ -50,7 +51,27 @@ export const BurgerMenuOpened: FC<BurgerMenuProps> = ({
 
       <div className={classNames('burger__service')}>
         <Link
-          to="/favourites"
+          to="/account"
+          className={classNames(
+            'service__button',
+            'service__like',
+            { 'service__button-active': isMenuOpen },
+          )}
+          onClick={handleMenuClose}
+        >
+          <div className={classNames('imageContainer')}>
+            <img
+              src={user}
+              alt="user logo"
+              className={classNames('like')}
+            />
+
+            <HeaderCounter productsCount={cartCount} />
+          </div>
+        </Link>
+
+        <Link
+          to="/favorites"
           className={classNames(
             'service__button',
             'service__like',
