@@ -52,6 +52,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         <div className={styles.item__container_buttons}>
           <button
             type="button"
+            disabled={(item.quantity === 1)}
             aria-label="btn"
             className={styles.item__container_minus}
             onClick={() => {
