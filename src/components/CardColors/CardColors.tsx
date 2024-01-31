@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import style from './CardColors.module.scss';
 import { Product } from '../../types/product';
@@ -9,6 +9,8 @@ type Props = {
 
 export const CardColors: React.FC<Props> = ({ product }) => {
   let location = useLocation().pathname;
+  const [selectedColor, setSelectedColor]
+      = useState<string | null>(product.color);
 
   switch (product.categoryId) {
     case 1:
@@ -26,6 +28,10 @@ export const CardColors: React.FC<Props> = ({ product }) => {
 
   const productPageLink = `${location}/${product.name}`;
 
+  const handleColorClick = (colorItem: string) => {
+    setSelectedColor(colorItem);
+  };
+
   return (
     <div className={style.CardColors}>
       <div className={style.CardColors__top}>
@@ -38,13 +44,18 @@ export const CardColors: React.FC<Props> = ({ product }) => {
 
       <div className={style.colors__list}>
         {product.colorsavailable.map(colorItem => (
-          <div className={style.color__item__wrapper}>
+          <div
+            key={colorItem}
+            className={`${style.color__item__wrapper} ${
+              selectedColor === colorItem ? style.active : '' // Use style.active
+            }`}
+          >
             <Link
               to={{
                 pathname: productPageLink,
                 search: `?capacity=${product.capacity}&productId=${product.id}&color=${colorItem}`,
               }}
-              key={colorItem}
+              onClick={() => handleColorClick(colorItem)}
               className={style.color__item}
               style={{ backgroundColor: colorItem }}
             />

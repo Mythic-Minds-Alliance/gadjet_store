@@ -48,8 +48,8 @@
   &:hover {
     border: 1px solid $primary;
   }
+}
 
-  &:active {
-    border: 0.5px solid $primary;
-  }
+.active {
+  border: 0.5px solid $primary;
 }

@@ -13,9 +13,6 @@ type Props = {
 };
 
 export const ProductControls: React.FC<Props> = ({ product }) => {
-  const colors = ['#364935', '#215E7C', '#FAE0D8', 'black'];
-  const id = 552435;
-
   return (
     <div className="ProductControls">
       <CardColors product={product} />
