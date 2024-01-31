@@ -2,25 +2,25 @@ import './CardPrices.scss';
 
 type Props = {
   price: string,
-  priceDiscount: string,
+  priceActual: string,
 };
 
-export const CardPrices: React.FC<Props> = ({ price, priceDiscount }) => {
+export const CardPrices: React.FC<Props> = ({ price, priceActual }) => {
   return (
     <div className="card--price">
-      {+priceDiscount !== 0 ? (
+      {+priceActual !== +price ? (
         <>
           <p className="card--price-current">
-            {`$${price}`}
+            {`$${priceActual}`}
           </p>
           <strong className="card--price-maxPrice">
-            {`$${priceDiscount}`}
+            {`$${price}`}
           </strong>
         </>
 
       ) : (
         <p className="card--price-current">
-          {`$${price}`}
+          {`$${priceActual}`}
         </p>
       )}
 
