@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import style from './CardCapacity.module.scss';
 import { Product } from '../../types/product';
@@ -15,6 +15,10 @@ export const CardCapacity: React.FC<Props> = ({ product }) => {
   const handleCapacityClick = (capacity: number) => {
     setSelectedCapacity(capacity);
   };
+
+  useEffect(() => {
+    setSelectedCapacity(+product.capacity.toString().slice(0, -2));
+  }, [product]);
 
   return (
     <div className={style.CardCapacity}>

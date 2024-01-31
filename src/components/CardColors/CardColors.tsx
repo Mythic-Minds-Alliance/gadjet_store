@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import style from './CardColors.module.scss';
 import { Product } from '../../types/product';
@@ -11,6 +11,10 @@ export const CardColors: React.FC<Props> = ({ product }) => {
   let location = useLocation().pathname;
   const [selectedColor, setSelectedColor]
       = useState<string | null>(product.color);
+
+  useEffect(() => {
+    setSelectedColor(product.color);
+  }, [product]);
 
   switch (product.categoryId) {
     case 1:
