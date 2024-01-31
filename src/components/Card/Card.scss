@@ -10,9 +10,15 @@
   padding: 28px;
   height: 506px;
 
-  border: 1px solid #E2E6E9;
+  border: 2px solid #E2E6E9;
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3); 
+  }
 
   @include onDesktop {
+    border: 1px solid #E2E6E9;
     grid-column: span 6;
   }
 
