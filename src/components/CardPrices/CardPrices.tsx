@@ -11,10 +11,10 @@ export const CardPrices: React.FC<Props> = ({ price, priceDiscount }) => {
       {+priceDiscount !== 0 ? (
         <>
           <p className="card--price-current">
-            {`$${priceDiscount}`}
+            {`$${price}`}
           </p>
           <strong className="card--price-maxPrice">
-            {`$${price}`}
+            {`$${priceDiscount}`}
           </strong>
         </>
 
