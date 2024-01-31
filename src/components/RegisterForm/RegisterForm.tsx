@@ -1,15 +1,12 @@
 import style from './RegisterForm.module.scss';
 import mobileImg from '../../images/registration-horizontal.png';
-import tabletImg from '../../images/registration-vertical.png';
 
 export const RegisterForm = () => {
-  const screenWidth = window.innerWidth;
-
   return (
     <div className={style.RegisterFormContainer}>
       <div className={style.RegisterFormImageContainer}>
         <img
-          src={screenWidth > 640 ? mobileImg : tabletImg}
+          src={mobileImg}
           alt="iphone 15"
           className={style.RegisterFormImage}
         />
@@ -115,6 +112,11 @@ export const RegisterForm = () => {
         >
           Register
         </button>
+
+        <p className={style.RegisterForm__haveAnAcc}>
+          Already have an account?
+          <a href="/" className={style.RegisterForm__signIn}> Sign In</a>
+        </p>
       </form>
     </div>
   );
