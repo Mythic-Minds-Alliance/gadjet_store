@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import style from '../../assets/catalogue.module.scss';
 import { Card } from '../../components/Card/Card';
@@ -16,11 +17,16 @@ export const PhonePage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState<string>('');
 
+  const [serchParams, setSearchParams] = useSearchParams();
+  const currentUrl = new URLSearchParams(serchParams);
+  const sortBy = currentUrl.get('sortBy') || 'year';
+  const order = currentUrl.get('sort') || 'DESC';
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios
-          .get('https://gadjets-store.onrender.com/products?categoryId=1');
+          .get(`https://gadjets-store.onrender.com/products?categoryId=1&sort=${order}&sortBy=${sortBy}`);
 
         setphonesList(response.data);
       } catch (error) {
@@ -31,7 +37,7 @@ export const PhonePage = () => {
     };
 
     fetchData();
-  }, []);
+  }, [sortBy, order]);
   const [
     selectedSortField, setSelectedSortField,
   ] = useState('Years');
@@ -41,12 +47,16 @@ export const PhonePage = () => {
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
     setSelectedSortField(event.target.value);
+    currentUrl.set('sortBy', event.target.value);
+    setSearchParams(currentUrl);
   };
 
   const handleSortOrder = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
     setSortOrder(event.target.value);
+    currentUrl.set('sort', event.target.value);
+    setSearchParams(currentUrl);
   };
 
   const handleSortPostCount = (
@@ -58,7 +68,7 @@ export const PhonePage = () => {
   const visibleList = sortProductList(
     phonesList,
     selectedSortField,
-    sortOrder,
+    order,
     searchQuery,
   );
 

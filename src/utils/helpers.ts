@@ -174,7 +174,7 @@ export function sortProductList(
 
   switch (sortBy) {
     case 'Years':
-      if (order === 'Ascending') {
+      if (order === 'ASC') {
         preparedList = preparedList.sort((a, b) => +a.year - +b.year);
       } else {
         preparedList = preparedList.sort((a, b) => +b.year - +a.year);
@@ -183,7 +183,7 @@ export function sortProductList(
       break;
 
     case 'Price':
-      if (order === 'Ascending') {
+      if (order === 'ASC') {
         preparedList = preparedList.sort((a, b) => +a.price - +b.price);
       } else {
         preparedList = preparedList.sort((a, b) => +b.price - +a.price);
@@ -192,7 +192,7 @@ export function sortProductList(
       break;
 
     case 'Screen':
-      if (order === 'Ascending') {
+      if (order === 'ASC') {
         preparedList = preparedList.sort((a, b) => {
           const aScreenSize = parseFloat(a.screen);
           const bScreenSize = parseFloat(b.screen);
