@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './CheckoutAfterBuy.scss';
 import close from '../../images/Close.png';
 import { CartProduct } from '../../types/product';
-import { SERVER_HOST } from '../../utils/helpers';
+import { SERVER_HOST, getLocation } from '../../utils/helpers';
 
 interface Props {
   totalPrice: number;
@@ -15,8 +15,6 @@ export const CheckoutAfterBuy: React.FC<Props> = ({
   cartStorage,
 }) => {
   const orderNumber = Math.floor(Math.random() * 10000) + 1;
-
-  let location = useLocation().pathname;
 
   return (
     <div className="page">
@@ -38,31 +36,11 @@ export const CheckoutAfterBuy: React.FC<Props> = ({
 
         <div className="orderContainer">
           {cartStorage.map((product) => {
-            if (location === '/'
-              || location === '/favorites'
-              || location === '/cart') {
-              switch (product.categoryId) {
-                case 1:
-                  location = '/phones';
-                  break;
-                case 2:
-                  location = '/tablets';
-                  break;
-                case 3:
-                  location = '/accessories';
-                  break;
-                default:
-                  break;
-              }
-            }
-
-            const productPageLink = `${location}/${product.name}`;
-
             return (
               <div key={product.id} className="orderItem">
                 <div className="productInfo">
                   <Link to={{
-                    pathname: productPageLink,
+                    pathname: getLocation(product),
                     search: `?capacity=${product.capacity}&productId=${product.id}&color=${product.color}`,
                   }}
                   >
@@ -74,7 +52,7 @@ export const CheckoutAfterBuy: React.FC<Props> = ({
                   </Link>
                   <div className="productDescription">
                     <Link to={{
-                      pathname: productPageLink,
+                      pathname: getLocation(product),
                       search: `?capacity=${product.capacity}&productId=${product.id}&color=${product.color}`,
                     }}
                     >
