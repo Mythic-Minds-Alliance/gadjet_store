@@ -10,7 +10,6 @@ type Props = {
 export const ProductImagesSlider: React.FC<Props> = ({ images }) => {
   const [selectedPhoto, setSelectedPhoto] = useState<string | null>(`${SERVER_HOST}/${images[0]}`);
 
-
   const handlePhotoClick = (photo: string) => {
     setSelectedPhoto(`${SERVER_HOST}/${photo}`);
   };

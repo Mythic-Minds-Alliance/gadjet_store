@@ -25,6 +25,7 @@ export const CardColors: React.FC<Props> = ({ product }) => {
   }
 
   const productPageLink = `${location}/${product.name}`;
+
   return (
     <div className={style.CardColors}>
       <div className={style.CardColors__top}>

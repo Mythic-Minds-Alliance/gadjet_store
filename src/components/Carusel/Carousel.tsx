@@ -10,6 +10,7 @@ import { Card } from '../Card/Card';
 import styles from './Carousel.module.scss';
 import arrow from '../../icons/SliderButtonRight.png';
 import { Loader } from '../Loader';
+import { CaruselSort } from '../../types/CaruselSort';
 
 const responsive = {
   desktop: {
@@ -109,11 +110,10 @@ export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel }) => {
       try {
         let response;
 
-        if (selectedSortCarusel === 'Years') {
+        if (selectedSortCarusel === CaruselSort.Years) {
           response = await axios
-            .get('https://gadjets-store.onrender.com/products?sort=DESC&sortBy=year&limit=8');
-
-        } else if (selectedSortCarusel === 'Price') {
+            .get('http://localhost:3005/products?sortBy=year&limit=8');
+        } else if (selectedSortCarusel === CaruselSort.Price) {
           response = await axios
             .get('https://gadjets-store.onrender.com/products?sortBy=priceDiscount&limit=8');
         } else {
@@ -123,7 +123,7 @@ export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel }) => {
 
         setphonesList(response.data);
       } catch (error) {
-        throw new Error('error when fetching data from API');
+        throw new Error('Error when fetching data from API');
       } finally {
         setIsLoading(false);
       }
