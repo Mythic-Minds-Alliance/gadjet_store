@@ -10,7 +10,7 @@ type Props = {
 
 export const CardCapacity: React.FC<Props> = ({ product }) => {
   const [selectedCapacity, setSelectedCapacity]
-      = useState<number | null>(+product.capacity.toString().slice(0, -2));
+    = useState<number | null>(+product.capacity.toString().slice(0, -2));
 
   const handleCapacityClick = (capacity: number) => {
     setSelectedCapacity(capacity);
@@ -40,7 +40,11 @@ export const CardCapacity: React.FC<Props> = ({ product }) => {
           .sort((a, b) => a - b)
           .map(capacity => {
             const value = capacity < 1024 ? capacity : capacity / 1024;
-            const unit = capacity < 1024 ? 'GB' : 'TB';
+            let unit = capacity < 1024 ? 'GB' : 'TB';
+
+            if (product.categoryId === 3) {
+              unit = 'mm';
+            }
 
             return (
               <Link
@@ -50,11 +54,14 @@ export const CardCapacity: React.FC<Props> = ({ product }) => {
                 }}
                 onClick={() => handleCapacityClick(capacity)}
                 key={capacity}
-                className={`${style.CardCapacity__item} ${
-                  selectedCapacity === capacity ? style.active : ''
+                className={`${style.CardCapacity__item} ${selectedCapacity === capacity ? style.active : ''
                 }`}
               >
-                {`${capacity}GB`}
+                {product.capacity.includes('mm') ? (
+                  `${capacity}mm`
+                ) : (
+                  `${capacity}GB`
+                )}
               </Link>
             );
           })}
