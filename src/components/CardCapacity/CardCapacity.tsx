@@ -23,7 +23,11 @@ export const CardCapacity: React.FC<Props> = ({ product }) => {
   return (
     <div className={style.CardCapacity}>
       <p className={style.CardCapacity__title}>
-        Select capacity
+        {product.capacity.includes('mm') ? (
+          'Select size'
+        ) : (
+          'Select capacity'
+        )}
       </p>
 
       <div className={style.CardCapacity__list}>
