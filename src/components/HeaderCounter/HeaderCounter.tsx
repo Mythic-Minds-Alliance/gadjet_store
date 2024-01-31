@@ -12,12 +12,10 @@ export const HeaderCounter: FC<Props> = memo(({ productsCount }) => {
   return (
     <>
       {productsCount > 0 && (
-        <div className={cn('countContainer', 'numberOfItems')}>
+        <div className={cn('container', 'items')}>
           {productsCount < 100 ? productsCount : '99+'}
         </div>
       )}
     </>
   );
 });
-
-HeaderCounter.displayName = 'HeaderCounter';
