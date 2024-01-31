@@ -112,7 +112,7 @@ export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel }) => {
 
         if (selectedSortCarusel === CaruselSort.Years) {
           response = await axios
-            .get('http://localhost:3005/products?sortBy=year&limit=8');
+            .get('https://gadjets-store.onrender.com/products?sort=DESC&sortBy=year&limit=8');
         } else if (selectedSortCarusel === CaruselSort.Price) {
           response = await axios
             .get('https://gadjets-store.onrender.com/products?sortBy=priceDiscount&limit=8');

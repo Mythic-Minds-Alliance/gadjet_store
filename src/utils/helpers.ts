@@ -228,3 +228,26 @@ export function sortProductList(
 
   return preparedList;
 }
+
+export function getLocation(product: Product) {
+  let location = '';
+
+  switch (product.categoryId) {
+    case 1:
+      location = '/phones';
+      break;
+    case 2:
+      location = '/tablets';
+      break;
+    case 3:
+      location = '/accessories';
+      break;
+    default:
+      location = '/';
+      break;
+  }
+
+  const productPageLink = `${location}/${product.name}`;
+
+  return productPageLink;
+}
