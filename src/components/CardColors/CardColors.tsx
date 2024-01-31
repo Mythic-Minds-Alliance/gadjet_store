@@ -72,7 +72,7 @@ export const CardColors: React.FC<Props> = ({ product }) => {
               }}
               onClick={() => handleColorClick(colorItem)}
               className={style.color__item}
-              style={{ backgroundColor: getColor(colorItem) }} // Fix: Pass color to getColor function
+              style={{ backgroundColor: getColor(colorItem) }}
             />
           </div>
         ))}
