@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import style from './CardColors.module.scss';
 import { Product } from '../../types/product';
@@ -10,7 +10,38 @@ type Props = {
 
 export const CardColors: React.FC<Props> = ({ product }) => {
   const [selectedColor, setSelectedColor]
-      = useState<string | null>(product.color);
+        = useState<string | null>(product.color);
+
+  useEffect(() => {
+    setSelectedColor(product.color);
+  }, [product]);
+
+  const colorMap: Record<string, string> = {
+    green: '#ade1cd',
+    purple: '#d1cddb',
+    yellow: '#ffe680',
+    black: '#202020',
+    white: '#f9f6ef',
+    red: '#ba0c2f',
+    silver: '#ebebe3',
+    gold: '#fac990',
+    'space gray': '#52514f',
+    starlight: '#faf7f2',
+    pink: '#ffb6c1',
+    'rose gold': '#fbc8bd',
+    'sky blue': '#87ceeb',
+    coral: '#e4664f',
+    midnightgreen: '#4e5850',
+    blue: '#215e7c',
+    midnight: '#171E27',
+    graphite: '#4C4A46',
+    sierrablue: '#9BB5CE',
+    spaceblack: '#4b4845',
+  };
+
+  const getColor = (color: string) => {
+    return colorMap[color] || color;
+  };
 
   const handleColorClick = (colorItem: string) => {
     setSelectedColor(colorItem);
@@ -41,7 +72,7 @@ export const CardColors: React.FC<Props> = ({ product }) => {
               }}
               onClick={() => handleColorClick(colorItem)}
               className={style.color__item}
-              style={{ backgroundColor: colorItem }}
+              style={{ backgroundColor: getColor(colorItem) }}
             />
           </div>
         ))}
