@@ -3,58 +3,40 @@
 @import '../../assets/mixins';
 
 .nav__link {
-  display: block;
-  padding: 26px 0;
-  margin-left: 64px;
+  display: flex;
+  align-items: center;
   color: $secondary;
+  height: 27px;
   @include uppercaseText;
-
+  
   text-decoration: none;
   transition: color 0.3s;
 
-  &:first-child {
-    margin-left: 24px;
+  &:hover {
+    color: $primary;
   }
-}
 
-.nav__link:hover {
-  color: $primary;
+  @include onTablet {
+    height: 47px;
+  }
+
+  @include onDesktop {
+    height: 63px;
+  }
 }
 
 .active {
   position: relative;
   color: $primary;
-}
 
-.active::after {
-  position: absolute;
-  bottom: 0;
-  content: '';
-  display: block;
-  width: 100%;
-  height: 4px;
-  background-color: $primary;
-  border-radius: 8px;
-}
-
-@media (max-width: 1199px) {
-  .nav__link {
-    margin-left: 32px;
-    padding: 18px 0;
-
-    &:first-child {
-      margin-left: 16px;
-    }
-  }
-}
-
-@media (max-width: 639px) {
-  .nav__link {
-    margin: 0;
-
-    &:first-child {
-      margin-left: 0;
-      padding-top: 0;
-    }
-  }
+  &::after {
+    position: absolute;
+    bottom: 0;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: $primary;
+    border-radius: 8px;
+  }  
 }

@@ -19,11 +19,25 @@ export const Footer = () => (
       <a
         href="https://github.com/Mythic-Minds-Alliance"
         className={FooterStyle.footerLinkItem}
+        target="_blank"
+        rel="noreferrer"
       >
         Github
       </a>
-      <Link to="contacts" className={FooterStyle.footerLinkItem}>Contacts</Link>
-      <Link to="rights" className={FooterStyle.footerLinkItem}>Rights</Link>
+      <Link
+        to="contacts"
+        className={FooterStyle.footerLinkItem}
+        onClick={scrollToTop}
+      >
+        Contacts
+      </Link>
+      <Link
+        to="rights"
+        className={FooterStyle.footerLinkItem}
+        onClick={scrollToTop}
+      >
+        Rights
+      </Link>
     </div>
 
     <div className={FooterStyle.footerGoUp}>

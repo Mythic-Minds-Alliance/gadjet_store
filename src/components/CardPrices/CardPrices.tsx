@@ -8,12 +8,22 @@ type Props = {
 export const CardPrices: React.FC<Props> = ({ price, fullPrice }) => {
   return (
     <div className="card--price">
-      <p className="card--price-current">
-        {`$${price}`}
-      </p>
-      <strong className="card--price-maxPrice">
-        {`$${fullPrice}`}
-      </strong>
+      {+price !== 0 ? (
+        <>
+          <p className="card--price-current">
+            {`$${price}`}
+          </p>
+          <strong className="card--price-maxPrice">
+            {`$${fullPrice}`}
+          </strong>
+        </>
+
+      ) : (
+        <p className="card--price-current">
+          {`$${fullPrice}`}
+        </p>
+      )}
+
     </div>
   );
 };

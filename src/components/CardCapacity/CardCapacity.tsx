@@ -1,29 +1,20 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import style from './CardCapacity.module.scss';
 import { Product } from '../../types/product';
+import { getLocation } from '../../utils/helpers';
 
 type Props = {
   product: Product,
 };
+
 export const CardCapacity: React.FC<Props> = ({ product }) => {
-  let location = useLocation().pathname;
+  const [selectedCapacity, setSelectedCapacity]
+      = useState<number | null>(+product.capacity.toString().slice(0, -2));
 
-  switch (product.categoryId) {
-    case 1:
-      location = '/phones';
-      break;
-    case 2:
-      location = '/tablets';
-      break;
-    case 3:
-      location = '/accessories';
-      break;
-    default:
-      break;
-  }
-
-  const productPageLink = `${location}/${product.name}`;
+  const handleCapacityClick = (capacity: number) => {
+    setSelectedCapacity(capacity);
+  };
 
   return (
     <div className={style.CardCapacity}>
@@ -32,7 +23,6 @@ export const CardCapacity: React.FC<Props> = ({ product }) => {
       </p>
 
       <div className={style.CardCapacity__list}>
-
         {product.capacitiesavailable
           .map(capacity => {
             const value = parseFloat(capacity);
@@ -51,11 +41,14 @@ export const CardCapacity: React.FC<Props> = ({ product }) => {
             return (
               <Link
                 to={{
-                  pathname: productPageLink,
+                  pathname: getLocation(product),
                   search: `?capacity=${value}${unit}&productId=${product.id}&color=${product.color}`,
                 }}
+                onClick={() => handleCapacityClick(capacity)}
                 key={capacity}
-                className={style.CardCapacity__item}
+                className={`${style.CardCapacity__item} ${
+                  selectedCapacity === capacity ? style.active : ''
+                }`}
               >
                 {`${capacity}GB`}
               </Link>

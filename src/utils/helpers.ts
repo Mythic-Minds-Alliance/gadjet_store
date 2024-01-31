@@ -3,7 +3,7 @@ import { FC, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { CartProduct, Product } from '../types/product';
 
-export const SERVER_HOST = 'http://localhost:3005/';
+export const SERVER_HOST = 'https://gadjets-store.onrender.com/';
 
 export const scrollToTop = () => {
   window.scrollTo({
@@ -227,4 +227,27 @@ export function sortProductList(
   }
 
   return preparedList;
+}
+
+export function getLocation(product: Product) {
+  let location = '';
+
+  switch (product.categoryId) {
+    case 1:
+      location = '/phones';
+      break;
+    case 2:
+      location = '/tablets';
+      break;
+    case 3:
+      location = '/accessories';
+      break;
+    default:
+      location = '/';
+      break;
+  }
+
+  const productPageLink = `${location}/${product.name}`;
+
+  return productPageLink;
 }

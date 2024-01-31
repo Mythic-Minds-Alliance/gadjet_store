@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import { Product } from '../../types/product';
 import { AddToCart } from '../AddToCart/AddToCart';
@@ -12,12 +13,9 @@ type Props = {
 };
 
 export const ProductControls: React.FC<Props> = ({ product }) => {
-  const colors = ['#364935', '#215E7C', '#FAE0D8', 'black'];
-  const id = 552435;
-
   return (
     <div className="ProductControls">
-      <CardColors colors={colors} id={id} />
+      <CardColors product={product} />
       <CardSeparator />
 
       <CardCapacity product={product} />
