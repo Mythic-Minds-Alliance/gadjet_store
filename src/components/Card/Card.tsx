@@ -45,7 +45,7 @@ export const Card: React.FC<Props> = ({ product }) => {
         {name}
       </p>
 
-      <CardPrices price={price} fullPrice={priceDiscount} />
+      <CardPrices price={priceDiscount} fullPrice={price} />
 
       <div className="card--line">
         <CardSeparator />
