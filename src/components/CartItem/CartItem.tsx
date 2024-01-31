@@ -20,22 +20,25 @@ export const CartItem: React.FC<Props> = ({ item }) => {
   return (
     <div className={styles.item__container}>
       <div className={styles.item_phone_info}>
-        <div className={styles.item__container_close}>
-          <Cross item={item} />
+        <div className={styles.item__container_closeAndFoto}>
+          <div className={styles.item__container_close}>
+            <Cross item={item} />
+          </div>
+
+          <Link
+            to={{
+              pathname: getLocation(item),
+              search: `?capacity=${item.capacity}&productId=${item.id}&color=${item.color}`,
+            }}
+          >
+            <img
+              src={`${SERVER_HOST}/${item.images[0]}`}
+              className={styles.item__container_phone}
+              alt="phone"
+            />
+          </Link>
         </div>
 
-        <Link
-          to={{
-            pathname: getLocation(item),
-            search: `?capacity=${item.capacity}&productId=${item.id}&color=${item.color}`,
-          }}
-        >
-          <img
-            src={`${SERVER_HOST}/${item.images[0]}`}
-            className={styles.item__container_phone}
-            alt="phone"
-          />
-        </Link>
         <Link
           to={{
             pathname: getLocation(item),

@@ -7,7 +7,6 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: space-between;
   padding: 16px;
   gap: 16px;
   flex-grow: 1;
@@ -17,6 +16,7 @@
 
   @include onTablet {
     flex-direction: row;
+    justify-content: space-between;
     padding: 24px;
   }
 
@@ -30,6 +30,12 @@
       transition: 0.3s;
       color: $primary;
     }
+  }
+
+  &_closeAndFoto {
+    display: flex;
+    align-items: center;
+    gap: 16px;
   }
 
   &_phone {
@@ -53,9 +59,10 @@
   }
 
   &_number {
-    @include buttonsText;
-    padding: 0 15px;
+    width: 32px;
     text-align: center;
+    
+    @include buttonsText;
     color: $primary;
   }
 
@@ -84,6 +91,8 @@
   }
 
   &_price {
+    min-width: 80px;
+
     @include headline-2;
     text-align: end;
     color: $primary;
@@ -97,7 +106,7 @@
 .item_phone_info {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-self: stretch;
   gap: 23px;
 
@@ -110,7 +119,7 @@
 .item_price_info {
   display: flex;
   align-self: stretch;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 48px;
 
   @include onTablet {
