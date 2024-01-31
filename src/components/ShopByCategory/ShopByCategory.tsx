@@ -3,6 +3,7 @@ import styles from './ShopByCategory.module.scss';
 import TabletImg from '../../images/tablets.png';
 import Accessories from '../../images/accesorise.png';
 import PhonesImg from '../../images/mobilePhones.png';
+import { scrollToTop } from '../../utils/helpers';
 
 export const ShopByCategory = () => {
   return (
@@ -14,7 +15,7 @@ export const ShopByCategory = () => {
 
           <NavLink
             to="/phones"
-            onClick={() => { }}
+            onClick={scrollToTop}
             className={styles.categoryTitle}
           >
             <img
@@ -30,7 +31,7 @@ export const ShopByCategory = () => {
         <div className={styles.categoryItem}>
           <NavLink
             to="/tablets"
-            onClick={() => { }}
+            onClick={scrollToTop}
             className={styles.categoryTitle}
           >
             <img
@@ -45,8 +46,8 @@ export const ShopByCategory = () => {
 
         <div className={styles.categoryItem}>
           <NavLink
-            to="/tablets"
-            onClick={() => { }}
+            to="/accessories"
+            onClick={scrollToTop}
             className={styles.categoryTitle}
           >
             <img
