@@ -29,7 +29,7 @@
 }
 
 .logo {
-  &::after {
+  &.active::after {
     display: none;
   }
 
@@ -64,7 +64,7 @@
   @include uppercaseText;
   color: $secondary;
   text-decoration: none;
-  transition:  0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
 
   &:hover {
     color: $primary;
@@ -92,8 +92,8 @@
   transition: transform 0.3s ease-in-out;
 }
 
-.goUpLink:hover .goUpText {
-  color: $primary;
+.goUpLink:hover .goUpBtn {
+  transform: scale(1.1);
 }
 
 @keyframes wave {
