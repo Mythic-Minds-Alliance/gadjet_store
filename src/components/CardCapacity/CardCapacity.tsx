@@ -19,6 +19,7 @@ export const CardCapacity: React.FC<Props> = ({ product }) => {
   useEffect(() => {
     setSelectedCapacity(+product.capacity.toString().slice(0, -2));
   }, [product]);
+
   return (
     <div className={style.CardCapacity}>
       <p className={style.CardCapacity__title}>

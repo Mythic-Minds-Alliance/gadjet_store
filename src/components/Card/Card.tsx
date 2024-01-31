@@ -22,24 +22,6 @@ export const Card: React.FC<Props> = ({ product }) => {
     images,
   } = product;
 
-  let location = useLocation().pathname;
-
-
-  switch (product.categoryId) {
-    case 1:
-      location = '/phones';
-      break;
-    case 2:
-      location = '/tablets';
-      break;
-    case 3:
-      location = '/accessories';
-      break;
-    default:
-      location = '/phones';
-      break;
-  }
-  
   return (
     <div className="card">
       <div className="card--top">
