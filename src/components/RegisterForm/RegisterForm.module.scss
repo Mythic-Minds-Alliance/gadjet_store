@@ -1,0 +1,92 @@
+@import "../../assets/normalize";
+@import "../../assets/variables";
+@import "../../assets/colors";
+@import "../../assets/mixins";
+
+.RegisterFormContainer {
+  box-shadow: 0 0 5px 0 rgba(86, 86, 86, 0.75);
+  border-radius: 1%;
+
+  @include onTablet {
+    display: grid;
+    grid-template-columns: repeat(2, 4fr);
+    gap: 36px;
+  }
+}
+
+.RegisterFormImageContainer {
+  display: block;
+  width: 100%;
+  margin-bottom: 12px;
+  border-radius: 1% 1% 0 0;
+
+}
+
+.RegisterFormImage {
+  max-width: 100%;
+}
+
+.RegisterForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 12px;
+
+
+  @include onTablet {
+    width: 100%;
+  }
+
+  &__title {
+    @include headline-2;
+    text-align: center;
+    color: $primary;
+  }
+
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__label{
+    @include mainText;
+    color: $primary;
+  }
+
+  &__input {
+    padding: 6px;
+    @include mainText;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-color: $icons;
+  }
+
+  &__submitBtn {
+    @include secondaryText;
+    font-weight: 700;
+    color: $white;
+
+    background-color: $primary;
+    padding: 13.5px 85.5px;
+    margin-top: 16px;
+    border: 1px solid $primary;
+    transition: ease-in-out 0.2s;
+
+    @include onTablet {
+      width: 100%;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.40);
+    }
+
+    &:active {
+      border: 1px solid $elements;
+      background-color: $white;
+      color: $green;
+    }
+  }
+}
