@@ -2,32 +2,28 @@
 @import "../../assets/variables";
 @import "../../assets/mixins";
 
-@include onPhone {
-  .countContainer {
-    position: absolute;
-    bottom: 60%;
-    left: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 14px;
-    width: 14px;
-    background-color: $red;
-    border-radius: 50%;
-    border: 1px solid $white;
-  }
-}
+.container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 60%;
+  left: 50%;
+  height: 14px;
+  width: 14px;
+  background-color: $red;
+  border-radius: 50%;
+  border: 1px solid $white;
 
-@include onTablet {
-  .countContainer {
+  @include onTablet {
     left: 50%;
     bottom: 45%;
-    height: 18px;
-    width: 18px;
+    height: 14px;
+    width: 14px;
   }
 }
 
-.numberOfItems {
+.items {
   color: $white;
   font-size: 9px;
   @include smallText;

@@ -143,13 +143,7 @@ export function changeAmount(item: CartProduct,
 
         break;
       case 'minus':
-        if (isItemInCart?.quantity === 1) {
-          const updatedCart = currentCart
-            .filter(product => product.name !== isItemInCart.name);
-
-          localStorage.setItem('cart', JSON.stringify(updatedCart));
-          setCartStorage(updatedCart);
-        } else {
+        if (isItemInCart) {
           const updatedCart = currentCart.map(product => {
             return product.name === isItemInCart.name
               ? { ...product, quantity: product.quantity - 1 }
@@ -227,4 +221,27 @@ export function sortProductList(
   }
 
   return preparedList;
+}
+
+export function getLocation(product: Product) {
+  let location = '';
+
+  switch (product.categoryId) {
+    case 1:
+      location = '/phones';
+      break;
+    case 2:
+      location = '/tablets';
+      break;
+    case 3:
+      location = '/accessories';
+      break;
+    default:
+      location = '/';
+      break;
+  }
+
+  const productPageLink = `${location}/${product.name}`;
+
+  return productPageLink;
 }
