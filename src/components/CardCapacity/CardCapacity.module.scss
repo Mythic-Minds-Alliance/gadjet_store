@@ -30,11 +30,12 @@
     &:hover {
       border: 1px solid $primary;
     }
-
-    &:active {
-      color: $white;
-      border: 1px solid $primary;
-      background-color: $primary;
-    }
   }
+}
+
+
+.active {
+  color: $white;
+  border: 1px solid $primary;
+  background-color: $primary;
 }
