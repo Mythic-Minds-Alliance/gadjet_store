@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import style from './CardCapacity.module.scss';
 import { Product } from '../../types/product';
@@ -6,8 +6,11 @@ import { Product } from '../../types/product';
 type Props = {
   product: Product,
 };
+
 export const CardCapacity: React.FC<Props> = ({ product }) => {
   let location = useLocation().pathname;
+  const [selectedCapacity, setSelectedCapacity]
+      = useState<number | null>(+product.capacity.toString().slice(0, -2));
 
   switch (product.categoryId) {
     case 1:
@@ -24,6 +27,10 @@ export const CardCapacity: React.FC<Props> = ({ product }) => {
   }
 
   const productPageLink = `${location}/${product.name}`;
+
+  const handleCapacityClick = (capacity: number) => {
+    setSelectedCapacity(capacity);
+  };
 
   return (
     <div className={style.CardCapacity}>
@@ -53,8 +60,11 @@ export const CardCapacity: React.FC<Props> = ({ product }) => {
                   pathname: productPageLink,
                   search: `?capacity=${value}${unit}&productId=${product.id}&color=${product.color}`,
                 }}
+                onClick={() => handleCapacityClick(capacity)}
                 key={capacity}
-                className={style.CardCapacity__item}
+                className={`${style.CardCapacity__item} ${
+                  selectedCapacity === capacity ? style.active : ''
+                }`}
               >
                 {`${capacity}GB`}
               </Link>
