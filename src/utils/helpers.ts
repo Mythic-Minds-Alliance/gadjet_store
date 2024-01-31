@@ -184,9 +184,9 @@ export function sortProductList(
 
     case 'Price':
       if (order === 'Ascending') {
-        preparedList = preparedList.sort((a, b) => +a.price - +b.price);
+        preparedList = preparedList.sort((a, b) => +a.priceActual - +b.priceActual);
       } else {
-        preparedList = preparedList.sort((a, b) => +b.price - +a.price);
+        preparedList = preparedList.sort((a, b) => +b.priceActual - +a.priceActual);
       }
 
       break;
