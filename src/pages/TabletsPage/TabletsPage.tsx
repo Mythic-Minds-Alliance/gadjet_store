@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+
 import axios from 'axios';
 import style from '../../assets/catalogue.module.scss';
 import { Card } from '../../components/Card/Card';
@@ -16,11 +18,16 @@ export const TabletsPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState<string>('');
 
+  const [serchParams, setSearchParams] = useSearchParams();
+  const currentUrl = new URLSearchParams(serchParams);
+  const sortBy = currentUrl.get('sortBy') || 'year';
+  const order = currentUrl.get('sort') || 'DESC';
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios
-          .get('https://gadjets-store.onrender.com/products?categoryId=2');
+          .get(`https://gadjets-store.onrender.com/products?categoryId=2&sort=${order}&sortBy=${sortBy}`);
 
         setTabletsList(response.data);
       } catch (error) {
@@ -31,7 +38,7 @@ export const TabletsPage = () => {
     };
 
     fetchData();
-  }, []);
+  }, [sortBy, order]);
 
   const [
     selectedSortField, setSelectedSortField,
@@ -42,12 +49,16 @@ export const TabletsPage = () => {
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
     setSelectedSortField(event.target.value);
+    currentUrl.set('sortBy', event.target.value);
+    setSearchParams(currentUrl);
   };
 
   const handleSortOrder = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
     setSortOrder(event.target.value);
+    currentUrl.set('sort', event.target.value);
+    setSearchParams(currentUrl);
   };
 
   const handleSortPostCount = (
@@ -59,7 +70,7 @@ export const TabletsPage = () => {
   const visibleList = sortProductList(
     tabletsList,
     selectedSortField,
-    sortOrder,
+    order,
     searchQuery,
   );
 
