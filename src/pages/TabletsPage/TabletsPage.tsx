@@ -6,15 +6,15 @@ import style from '../../assets/catalogue.module.scss';
 import { Card } from '../../components/Card/Card';
 import { Loader } from '../../components/Loader';
 import { SortPanel } from '../../components/SortPanel/SortPanel';
-import { sortProductList } from '../../utils/helpers';
 import { Pagination } from '../../components/Pagination/Pagination';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Search } from '../../components/SearchComponent/Search';
+import { Product } from '../../types/product';
 
 export const TabletsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(12);
-  const [tabletsList, setTabletsList] = useState([]);
+  const [tabletsList, setTabletsList] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState<string>('');
 
@@ -40,15 +40,9 @@ export const TabletsPage = () => {
     fetchData();
   }, [sortBy, order]);
 
-  const [
-    selectedSortField, setSelectedSortField,
-  ] = useState('Years');
-  const [sortOrder, setSortOrder] = useState('Descending');
-
   const handleSortFieldChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    setSelectedSortField(event.target.value);
     currentUrl.set('sortBy', event.target.value);
     setSearchParams(currentUrl);
   };
@@ -56,7 +50,6 @@ export const TabletsPage = () => {
   const handleSortOrder = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    setSortOrder(event.target.value);
     currentUrl.set('sort', event.target.value);
     setSearchParams(currentUrl);
   };
@@ -67,16 +60,9 @@ export const TabletsPage = () => {
     setPostPerPage(+event.target.value);
   };
 
-  const visibleList = sortProductList(
-    tabletsList,
-    selectedSortField,
-    order,
-    searchQuery,
-  );
-
   const indexOfLastItem = currentPage * postPerPage;
   const indexOfFirstItem = indexOfLastItem - postPerPage;
-  const currentItems = visibleList.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = tabletsList.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -95,13 +81,13 @@ export const TabletsPage = () => {
       ) : (
         <>
           <p className={style.CataloguePage__CatalogueCount}>
-            {`${visibleList.length} models`}
+            {`${tabletsList.length} models`}
           </p>
 
           <SortPanel
             onSortField={handleSortFieldChange}
-            selectedSortField={selectedSortField}
-            selectedSortOrder={sortOrder}
+            selectedSortField={sortBy}
+            selectedSortOrder={order}
             onSelectOrder={handleSortOrder}
             onSelectPerPage={handleSortPostCount}
             postPerPage={postPerPage}
@@ -123,7 +109,7 @@ export const TabletsPage = () => {
 
           <Pagination
             postPorPage={postPerPage}
-            totalPost={visibleList.length}
+            totalPost={tabletsList.length}
             onPageChange={handlePageChange}
             currentPage={currentPage}
           />

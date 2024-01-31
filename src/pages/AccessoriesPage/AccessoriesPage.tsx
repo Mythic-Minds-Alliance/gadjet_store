@@ -6,15 +6,15 @@ import style from '../../assets/catalogue.module.scss';
 import { Card } from '../../components/Card/Card';
 import { Loader } from '../../components/Loader';
 import { SortPanel } from '../../components/SortPanel/SortPanel';
-import { sortProductList } from '../../utils/helpers';
 import { Pagination } from '../../components/Pagination/Pagination';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Search } from '../../components/SearchComponent/Search';
+import { Product } from '../../types/product';
 
 export const AccessoriesPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(12);
-  const [accessoriesList, setAccessoriesList] = useState([]);
+  const [accessoriesList, setAccessoriesList] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState<string>('');
 
@@ -67,16 +67,9 @@ export const AccessoriesPage = () => {
     setPostPerPage(+event.target.value);
   };
 
-  const visibleList = sortProductList(
-    accessoriesList,
-    selectedSortField,
-    order,
-    searchQuery,
-  );
-
   const indexOfLastItem = currentPage * postPerPage;
   const indexOfFirstItem = indexOfLastItem - postPerPage;
-  const currentItems = visibleList.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = accessoriesList.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -95,7 +88,7 @@ export const AccessoriesPage = () => {
       ) : (
         <>
           <p className={style.CataloguePage__CatalogueCount}>
-            {`${visibleList.length} models`}
+            {`${accessoriesList.length} models`}
           </p>
 
           <SortPanel
@@ -121,7 +114,7 @@ export const AccessoriesPage = () => {
           </div>
           <Pagination
             postPorPage={postPerPage}
-            totalPost={visibleList.length}
+            totalPost={currentItems.length}
             onPageChange={handlePageChange}
             currentPage={currentPage}
           />

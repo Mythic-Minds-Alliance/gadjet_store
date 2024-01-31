@@ -12,7 +12,7 @@ type Props = {
 
 const sortOptions = {
   Years: 'year',
-  Price: 'price',
+  Price: 'priceActual',
   Screen: 'screen',
 };
 
