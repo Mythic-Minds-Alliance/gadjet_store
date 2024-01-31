@@ -1,0 +1,96 @@
+@import '../../assets/normalize.scss';
+@import '../../assets/colors.scss';
+@import '../../assets/variables';
+@import "../../assets/mixins";
+
+.burger {
+  overflow: hidden;
+  position: relative;
+  transition: 1s;
+  top: 1px;
+  width: 100%;
+  height: 100vh;
+  left: 0;
+  z-index: 1;
+  transform: translate(-100%);
+  background-color: $white;
+
+  @include onTablet {
+    display: none;
+  }
+
+  &__nav {
+    padding-top: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &_opened {
+    transform: translate(0%);
+  }
+}
+
+.service {
+  border: none;
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 49px;
+  width: 100%;
+  height: 64px;
+  align-items: center;  
+
+  @include onTablet {
+    display: none;
+  }
+
+  &__button {
+    background: $white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: -1px 0px 0px 1px $elements;
+
+    &:hover {
+      cursor: pointer;
+
+      img {
+        transform: scale(1.1);
+      }
+
+      &::after {
+        position: absolute;
+        bottom: 0;
+        content: '';
+        display: block;
+        width: 100%;
+        border-bottom: 3px solid $primary;
+        border-radius: 8px;
+      }
+      
+    }
+
+
+
+    &__container {
+      position: relative;
+    }
+  }
+
+  &__img {
+    transition: transform 0.3s ease-in-out;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__container {
+    position: absolute;
+  }
+}
+

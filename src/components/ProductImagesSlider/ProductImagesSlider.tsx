@@ -15,9 +15,8 @@ export const ProductImagesSlider: React.FC<Props> = ({ images }) => {
   };
 
   useEffect(() => {
-    // Set the selected photo when the component mounts or when the images prop changes
     setSelectedPhoto(`${SERVER_HOST}/${images[0]}`);
-  }, [images]); // Add images as a dependency
+  }, [images]);
 
   return (
     <div className={style.container}>

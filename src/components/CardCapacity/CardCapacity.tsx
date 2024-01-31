@@ -32,7 +32,6 @@ export const CardCapacity: React.FC<Props> = ({ product }) => {
       </p>
 
       <div className={style.CardCapacity__list}>
-
         {product.capacitiesavailable
           .map(capacity => {
             const value = parseFloat(capacity);
