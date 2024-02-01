@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import './CheckoutAfterBuy.scss';
 import close from '../../icons/Close.png';
@@ -16,6 +15,8 @@ export const CheckoutAfterBuy: React.FC<Props> = ({
   cartStorage,
 }) => {
   const orderNumber = Math.floor(Math.random() * 10000) + 1;
+
+  document.body.style.overflow = 'hidden';
 
   return (
     <div className="fone">
@@ -94,7 +95,10 @@ export const CheckoutAfterBuy: React.FC<Props> = ({
           </div>
         </div>
 
-        <Link to="/phones" className="checkout__closerButton">
+        <Link
+          to="/phones"
+          className="checkout__closerButton"
+        >
           Close
         </Link>
 
