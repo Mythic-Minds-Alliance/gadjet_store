@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import style from './CardColors.module.scss';
 import { Product } from '../../types/product';
 import { getLocation } from '../../utils/helpers';
@@ -9,12 +9,13 @@ type Props = {
 };
 
 export const CardColors: React.FC<Props> = ({ product }) => {
+  const location = useLocation();
   const [selectedColor, setSelectedColor]
         = useState<string | null>(product.color);
 
   useEffect(() => {
     setSelectedColor(product.color);
-  }, [product]);
+  }, [product, location.search]);
 
   const colorMap: Record<string, string> = {
     green: '#ade1cd',
@@ -25,11 +26,11 @@ export const CardColors: React.FC<Props> = ({ product }) => {
     red: '#ba0c2f',
     silver: '#ebebe3',
     gold: '#fac990',
-    'space gray': '#52514f',
+    spacegray: '#52514f',
     starlight: '#faf7f2',
     pink: '#ffb6c1',
-    'rose gold': '#fbc8bd',
-    'sky blue': '#87ceeb',
+    rosegold: '#fbc8bd',
+    skyblue: '#87ceeb',
     coral: '#e4664f',
     midnightgreen: '#4e5850',
     blue: '#215e7c',
