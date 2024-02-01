@@ -11,6 +11,7 @@ import styles from './Carousel.module.scss';
 import arrow from '../../icons/SliderButtonRight.png';
 import { Loader } from '../Loader';
 import { CaruselSort } from '../../types/CaruselSort';
+import { SERVER_HOST } from '../../utils/helpers';
 
 const responsive = {
   desktop: {
@@ -113,13 +114,13 @@ export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel, categoryI
 
         if (selectedSortCarusel === CaruselSort.Years) {
           response = await axios
-            .get('https://gadjets-store.onrender.com/products?sort=DESC&sortBy=year&limit=8&capacity=256GB');
+            .get(`${SERVER_HOST}/products?sort=DESC&sortBy=year&limit=8&capacity=256GB`);
         } else if (selectedSortCarusel === CaruselSort.HotPrices) {
           response = await axios
-            .get('https://gadjets-store.onrender.com/products/hotPrices?limit=8');
+            .get(`${SERVER_HOST}/products/hotPrices?limit=8`);
         } else {
           response = await axios
-            .get(`https://gadjets-store.onrender.com/products?categoryId=${categoryId}`);
+            .get(`${SERVER_HOST}/products?categoryId=${categoryId}`);
         }
 
         setphonesList(response.data);

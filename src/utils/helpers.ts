@@ -1,9 +1,8 @@
-/* eslint-disable max-len */
 import { FC, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { CartProduct, Product } from '../types/product';
 
-export const SERVER_HOST = 'https://gadjets-store.onrender.com/';
+export const SERVER_HOST = 'https://gadjets-store.onrender.com';
 
 export const scrollToTop = () => {
   window.scrollTo({
@@ -30,10 +29,12 @@ export function handleAddToCart(item: Product,
     const currentCart: CartProduct[]
         = JSON.parse(localStorage.getItem('cart') || '[]');
 
-    const isItemInCart = currentCart.some(product => product.name === item.name);
+    const isItemInCart = currentCart
+      .some(product => product.name === item.name);
 
     if (isItemInCart) {
-      const updatedCart = currentCart.filter(product => product.name !== item.name);
+      const updatedCart = currentCart
+        .filter(product => product.name !== item.name);
 
       localStorage.setItem('cart', JSON.stringify(updatedCart));
       setCartStorage(updatedCart);
@@ -58,7 +59,8 @@ export function handleRemoveFromCart(item: Product,
     const currentCart: CartProduct[]
         = JSON.parse(localStorage.getItem('cart') || '[]');
 
-    const updatedCart = currentCart.filter(product => product.name !== item.name);
+    const updatedCart = currentCart
+      .filter(product => product.name !== item.name);
 
     localStorage.setItem('cart', JSON.stringify(updatedCart));
     setCartStorage(updatedCart);
@@ -118,7 +120,8 @@ export function changeAmount(item: CartProduct,
     const currentCart: CartProduct[]
         = JSON.parse(localStorage.getItem('cart') || '[]');
 
-    const isItemInCart = currentCart.find(product => product.name === item.name);
+    const isItemInCart = currentCart
+      .find(product => product.name === item.name);
 
     if (!isItemInCart) {
       throw new Error('item doesn`t exist');

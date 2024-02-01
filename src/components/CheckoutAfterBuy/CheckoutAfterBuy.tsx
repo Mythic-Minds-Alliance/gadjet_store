@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './CheckoutAfterBuy.scss';
 import close from '../../icons/Close.png';
 import { CartProduct } from '../../types/product';
-import { SERVER_HOST, getLocation } from '../../utils/helpers';
+import { SERVER_HOST, generateId, getLocation } from '../../utils/helpers';
 import check from '../../icons/approval-40.png';
 import { DataContext } from '../../App';
 
@@ -17,7 +17,7 @@ export const CheckoutAfterBuy: React.FC<Props> = ({
   cartStorage,
 }) => {
   const { setCartStorage } = useContext(DataContext);
-  const orderNumber = Math.floor(Math.random() * 10000) + 1;
+  const orderNumber = generateId();
 
   const handleClearCart = () => {
     setCartStorage([]);

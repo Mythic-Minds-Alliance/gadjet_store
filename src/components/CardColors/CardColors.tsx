@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import style from './CardColors.module.scss';
 import { Product } from '../../types/product';
-import { getLocation } from '../../utils/helpers';
+import { generateId, getLocation } from '../../utils/helpers';
 
 type Props = {
   product: Product,
@@ -54,7 +54,7 @@ export const CardColors: React.FC<Props> = ({ product }) => {
         <p className={style.CardColors__top__title}>Available colors</p>
         <p className={style.CardColors__top__id}>
           ID:
-          {Math.abs(product.id * 143865)}
+          {generateId()}
         </p>
       </div>
 

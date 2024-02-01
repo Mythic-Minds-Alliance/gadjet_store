@@ -11,7 +11,7 @@ import { Pagination } from '../../components/Pagination/Pagination';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Search } from '../../components/SearchComponent/Search';
 import { Product } from '../../types/product';
-import { searchProductList } from '../../utils/helpers';
+import { SERVER_HOST, searchProductList } from '../../utils/helpers';
 import { NotFoundSearchItems } from '../../components/NotFoundSearchItems/NotFoundSearchItems';
 
 export const TabletsPage = () => {
@@ -30,7 +30,7 @@ export const TabletsPage = () => {
     const fetchData = async () => {
       try {
         const response = await axios
-          .get(`https://gadjets-store.onrender.com/products?categoryId=2&sort=${order}&sortBy=${sortBy}`);
+          .get(`${SERVER_HOST}/products?categoryId=2&sort=${order}&sortBy=${sortBy}`);
 
         setTabletsList(response.data);
       } catch (error) {

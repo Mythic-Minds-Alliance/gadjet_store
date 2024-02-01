@@ -19,6 +19,7 @@ import { BackButton } from '../../components/BackButton';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Product } from '../../types/product';
 import notFoundImg from '../../images/not found.jpg';
+import { SERVER_HOST } from '../../utils/helpers';
 
 export const ProductDetailsPage = () => {
   const [currentProduct, setCurrentProduct] = useState<Product[]>();
@@ -30,7 +31,7 @@ export const ProductDetailsPage = () => {
   const productId = searchParams.get('productId');
   const color = searchParams.get('color');
 
-  const requestedPhone = `https://gadjets-store.onrender.com/products?productId=${productId}&color=${color}&capacity=${capacity}`;
+  const requestedPhone = `${SERVER_HOST}/products?productId=${productId}&color=${color}&capacity=${capacity}`;
 
   useEffect(() => {
     const fetchData = async () => {

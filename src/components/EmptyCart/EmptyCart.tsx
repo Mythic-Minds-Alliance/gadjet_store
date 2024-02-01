@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import { NavLink } from 'react-router-dom';
 import './EmptyCart.scss';
 

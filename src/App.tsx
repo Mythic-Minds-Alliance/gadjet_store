@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import axios from 'axios';
 import { Outlet } from 'react-router-dom';
 import {
@@ -10,6 +9,7 @@ import { CartProduct, Product } from './types/product';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header';
 import style from './MainContainer.module.scss';
+import { SERVER_HOST } from './utils/helpers';
 
 interface DataContextType {
   productList: Product[];
@@ -47,7 +47,7 @@ export const App = () => {
     const fetchData = async () => {
       try {
         const response = await axios
-          .get('https://gadjets-store.onrender.com/products');
+          .get(`${SERVER_HOST}/products`);
 
         setProductList(response.data);
 
