@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './CheckoutAfterBuy.scss';
-import close from '../../images/Close.png';
+import close from '../../icons/Close.png';
 import { CartProduct } from '../../types/product';
 import { SERVER_HOST, getLocation } from '../../utils/helpers';
 import check from '../../icons/approval-40.png';

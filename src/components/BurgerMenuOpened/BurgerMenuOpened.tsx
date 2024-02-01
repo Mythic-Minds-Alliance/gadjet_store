@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
 import styles from './BurgerMenuOpened.module.scss';
-import favoriteImg from '../../images/Favourites.png';
-import ordersLogo from '../../images/ShoppingBag.png';
+import favoriteImg from '../../icons/Favourites.png';
+import ordersLogo from '../../icons/ShoppingBag.png';
 import user from '../../icons/User.svg';
 import { NavigationLink } from '../NavigationLink/NavigationLink';
 import { HeaderCounter } from '../HeaderCounter/HeaderCounter';

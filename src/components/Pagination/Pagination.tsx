@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import './Pagination.scss';
-import nextPage from '../../images/Slider_button.png';
+import nextPage from '../../icons/Slider_button.png';
 import { scrollToTop } from '../../utils/helpers';
 
 type Props = {
