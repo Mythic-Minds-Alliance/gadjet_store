@@ -90,7 +90,8 @@ export const ProductDetailsPage = () => {
 
             <Carusel
               title="You may also like"
-              selectedSortCarusel={CaruselSort.YouPropose}
+              selectedSortCarusel={CaruselSort.Recommended}
+              categoryId={currentProduct[0].categoryId}
             />
           </>
         )}
