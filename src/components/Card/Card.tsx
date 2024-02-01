@@ -23,6 +23,8 @@ export const Card: React.FC<Props> = ({ product }) => {
     images,
   } = product;
 
+  document.body.style.overflow = '';
+
   return (
     <div className="card">
       <div className="card--top">
