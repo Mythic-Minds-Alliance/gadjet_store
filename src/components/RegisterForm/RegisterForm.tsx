@@ -1,13 +1,37 @@
 import { Link } from 'react-router-dom';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import style from './RegisterForm.module.scss';
 import { scrollToTop } from '../../utils/helpers';
 
 export const RegisterForm = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    surname: '',
+    email: '',
+    password: '',
+    repeatPassword: '',
+  });
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    localStorage.setItem('registeredUser', JSON.stringify(formData));
+  };
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
   return (
     <form
       action="#"
       method="post"
       className={style.RegisterForm}
+      onSubmit={handleSubmit}
     >
       <h2 className={style.RegisterForm__title}>Register</h2>
 
@@ -23,6 +47,8 @@ export const RegisterForm = () => {
           id="firstName"
           name="firstName"
           placeholder="Enter your first name"
+          value={formData.firstName}
+          onChange={handleInputChange}
           required
           className={style.RegisterForm__input}
         />
@@ -42,6 +68,8 @@ export const RegisterForm = () => {
           required
           placeholder="Enter your surname"
           className={style.RegisterForm__input}
+          value={formData.surname}
+          onChange={handleInputChange}
         />
       </div>
 
@@ -59,6 +87,8 @@ export const RegisterForm = () => {
           placeholder="Enter your email"
           required
           className={style.RegisterForm__input}
+          value={formData.email}
+          onChange={handleInputChange}
         />
       </div>
 
@@ -77,6 +107,8 @@ export const RegisterForm = () => {
           placeholder="Enter your password"
           required
           className={style.RegisterForm__input}
+          value={formData.password}
+          onChange={handleInputChange}
         />
       </div>
 
@@ -95,6 +127,8 @@ export const RegisterForm = () => {
           placeholder="Repeat your password"
           required
           className={style.RegisterForm__input}
+          value={formData.repeatPassword}
+          onChange={handleInputChange}
         />
       </div>
 
