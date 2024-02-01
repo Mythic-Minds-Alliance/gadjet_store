@@ -17,6 +17,14 @@
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3); 
   }
 
+  @include onTablet {
+    grid-column: span 6;
+  }
+
+  @media screen and (min-width: 800px) {
+    grid-column: span 4;
+  }
+
   @include onDesktop {
     border: 1px solid #E2E6E9;
     grid-column: span 6;
