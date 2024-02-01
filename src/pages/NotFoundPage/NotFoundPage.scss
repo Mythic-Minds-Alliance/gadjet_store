@@ -1,35 +1,182 @@
-@import "../../assets/normalize";
+@import '../../assets/normalize.scss';
 @import '../../assets/colors.scss';
 @import '../../assets/variables';
 @import "../../assets/mixins";
 
-.notFound {
-  &--section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+.header {
+  position: sticky;
+  top: 0;
+  margin-bottom: 24px;
+  height: 48px;
+  border-bottom: 1px solid $elements;
+  background: $white;
+  z-index: 10;
+
+  @include onTablet {
+    margin-bottom: 32px;
+    height: 48px;
   }
 
-  &--title {
-    @include headline-1;
-    margin-bottom: 40px;
+  @include onDesktop {
+    margin-bottom: 56px;
+    height: 64px;
   }
 }
 
-.homeButton {
-  @include buttonsText;
+.container {
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+
+  @include onTablet {
+    overflow: hidden;
+  }
+}
+
+.navlinks {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__logo.active {
+    &::after {
+      display: none;
+    }
+  }
+
+  &__img {
+    display: block;
+    width: 64px;
+    margin: 0 16px;
+
+    @include onDesktop {
+      width: 80px;
+      margin: 0 24px;
+    }
+
+    &:hover {
+      animation: wave 2s infinite linear;
+    }
+
+    &.active {
+      position: relative;
+      color: $primary;
+    }
+  }
+}
+
+.nav {
+  display: none;
+
+  @include onTablet {
+    display: flex;
+    gap: 32px;
+    padding-inline: 16px;
+  }
+
+  @include onDesktop {
+    gap: 64px;
+    padding-inline: 24px;
+  }
+}
+
+.service {
+  display: flex;
+
+  &_btn {
+    position: relative;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 47px;
+
+    cursor: pointer;
+    background: transparent;
+    border-left: 1px solid $elements;
+    text-decoration: none;
+
+    @include onTablet {
+      display: flex;
+    }
+
+    @include onDesktop {
+      width: 64px;
+      height: 63px;
+    }
+
+    &:hover .service_btn-img {
+      transform: scale(1.1);
+    }
+
+    & .active {
+      position: relative;
+      color: $primary;
+
+      &::after {
+        position: absolute;
+        content: '';
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: $primary;
+        border-radius: 8px;
+      }
+    }
+
+    &-img {
+      width: 16px;
+      transition: transform 0.3s ease-in-out;
+
+      @include onDesktop {
+        position: relative;
+      }
+    }
+  }
+}
+
+.burger_btn {
+  width: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  background: transparent;
+  border-left: 1px solid $elements;
+  background: transparent;
 
-  width: 240px;
-  height: 48px;
+  @include onTablet {
+    display: none;
+  }
 
-  text-decoration: none;
-  background: #313237;
-  border-radius: 4px;
+  &_img {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease-in-out;
+  }
 
-  color: $white;
+  &-active {
+    background-color: $white;
+  }
+
+  &:hover .burger_btn_img {
+    transform: scale(1.1);
+  }
+
+}
+
+@keyframes wave {
+  0%,
+
+  100% {
+    transform: translateY(0);
+  }
+
+  25% {
+    transform: translateY(-4px);
+  }
+
+  75% {
+    transform: translateY(4px);
+  }
 }

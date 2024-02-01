@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import './Header.scss';
-import { NavigationLink } from '../NavigationLink/NavigationLink';
+import { NavigationLink } from '../NavigationLink';
 import { BurgerMenuOpened } from '../BurgerMenuOpened';
 import user from '../../icons/User.svg';
 import favoriteImg from '../../icons/Favourites.png';
 import ordersLogo from '../../icons/ShoppingBag.png';
 import burgerMenu from '../../icons/Menu.png';
 import close from '../../icons/Close.png';
-import { HeaderCounter } from '../HeaderCounter/HeaderCounter';
+import { HeaderCounter } from '../HeaderCounter';
 import { scrollToTop } from '../../utils/helpers';
 import { Logo } from '../Logo';
 
