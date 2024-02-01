@@ -4,12 +4,12 @@ import { NavLink } from 'react-router-dom';
 import './Header.scss';
 import { NavigationLink } from '../NavigationLink/NavigationLink';
 import { BurgerMenuOpened } from '../BurgerMenuOpened';
-import logo from '../../images/Logo.png';
+import logo from '../../icons/Logo.png';
 import user from '../../icons/User.svg';
-import favoriteImg from '../../images/Favourites.png';
-import ordersLogo from '../../images/ShoppingBag.png';
-import burgerMenu from '../../images/Menu.png';
-import close from '../../images/Close.png';
+import favoriteImg from '../../icons/Favourites.png';
+import ordersLogo from '../../icons/ShoppingBag.png';
+import burgerMenu from '../../icons/Menu.png';
+import close from '../../icons/Close.png';
 import { HeaderCounter } from '../HeaderCounter/HeaderCounter';
 import { scrollToTop } from '../../utils/helpers';
 

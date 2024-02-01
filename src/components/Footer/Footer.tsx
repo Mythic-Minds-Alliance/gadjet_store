@@ -1,8 +1,8 @@
 /* eslint-disable react/button-has-type */
 import { Link, NavLink } from 'react-router-dom';
 import FooterStyle from './Footer.module.scss';
-import Logo from '../../images/Logo.png';
-import ArrowUp from '../../images/Slider_button.png';
+import Logo from '../../icons/Logo.png';
+import ArrowUp from '../../icons/Slider_button.png';
 import { scrollToTop } from '../../utils/helpers';
 
 export const Footer = () => (
