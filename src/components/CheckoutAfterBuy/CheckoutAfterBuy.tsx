@@ -39,7 +39,7 @@ export const CheckoutAfterBuy: React.FC<Props> = ({
         <div className="check">
           {cartStorage.map((product) => {
             return (
-              <div key={product.id} className="product">
+              <div key={product.name} className="product">
                 <div className="product_info">
                   <Link to={{
                     pathname: getLocation(product),
