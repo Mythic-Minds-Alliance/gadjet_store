@@ -6,27 +6,29 @@
 .header {
   position: sticky;
   top: 0;
-  margin-bottom: 24px;
-  height: 48px;
-  border-bottom: 1px solid $elements;
-  background: $white;
   z-index: 10;
 
+  height: 48px;
+  margin-bottom: 24px;
+
+  border-bottom: 1px solid $elements;
+  background: $white;
+
   @include onTablet {
-    margin-bottom: 32px;
     height: 48px;
+    margin-bottom: 32px;
   }
 
   @include onDesktop {
-    margin-bottom: 56px;
     height: 64px;
+    margin-bottom: 56px;
   }
 }
 
 .container {
   display: flex;
-  height: 100%;
   justify-content: space-between;
+  height: 100%;
 
   @include onTablet {
     overflow: hidden;
