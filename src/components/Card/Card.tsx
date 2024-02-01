@@ -9,6 +9,7 @@ import { AddToCart } from '../AddToCart/AddToCart';
 import { CardSeparator } from '../СardSeparator/CardSeparator';
 import { CardPrices } from '../CardPrices/CardPrices';
 import { SERVER_HOST, getLocation, scrollToTop } from '../../utils/helpers';
+import notFoundImg from '../../images/not found.jpg';
 
 type Props = {
   product: Product,
@@ -33,11 +34,19 @@ export const Card: React.FC<Props> = ({ product }) => {
           className="card--photo"
           onClick={scrollToTop}
         >
-          <img
-            src={`${SERVER_HOST}/${images[0]}`}
-            alt={`${name}`}
-            className="card--image"
-          />
+          {images !== null ? (
+            <img
+              src={`${SERVER_HOST}/${images[0]}`}
+              alt={`${name}`}
+              className="card--image"
+            />
+          ) : (
+            <img
+              src={notFoundImg}
+              alt={`${name}`}
+              className="card--image"
+            />
+          )}
         </Link>
       </div>
 
