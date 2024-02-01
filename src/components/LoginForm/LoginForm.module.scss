@@ -3,7 +3,7 @@
 @import "../../assets/colors";
 @import "../../assets/mixins";
 
-.RegisterForm {
+.LoginForm {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -68,8 +68,10 @@
 
   }
 
-  &__signIn {
+  &__register {
     @include buttonsText;
     color: $primary;
   }
 }
+
+
