@@ -52,31 +52,66 @@ export const Pagination: React.FC<Props> = ({
         />
       </button>
 
-      {pages.slice(currentPage - 1, currentPage + 3).map(page => (
-        <button
-          key={page}
-          onClick={() => {
-            onPageChange(page);
-            scrollToTop();
-          }}
-          type="button"
-          className={classNames(
-            'Pagination--button',
-            { isActive: page === currentPage },
-          )}
-        >
-          {page}
-        </button>
-      ))}
+      {currentPage > 2 && (
+        <>
+          <button
+            onClick={() => {
+              onPageChange(1);
+              scrollToTop();
+            }}
+            type="button"
+            className="Pagination--button"
+          >
+            1
+          </button>
+          <span>...</span>
+        </>
+      )}
 
-      {currentPage <= pages[pages.length - 6] ? (
+      {currentPage === 1 ? (
+        pages.slice(currentPage - 1, currentPage + 3).map(page => (
+          <button
+            key={page}
+            onClick={() => {
+              onPageChange(page);
+              scrollToTop();
+            }}
+            type="button"
+            className={classNames(
+              'Pagination--button',
+              { isActive: page === currentPage },
+            )}
+          >
+            {page}
+          </button>
+        ))
+      ) : (
+        pages.slice(currentPage - 2, currentPage + 3).map(page => (
+          <button
+            key={page}
+            onClick={() => {
+              onPageChange(page);
+              scrollToTop();
+            }}
+            type="button"
+            className={classNames(
+              'Pagination--button',
+              { isActive: page === currentPage },
+            )}
+          >
+            {page}
+          </button>
+        ))
+      )}
+
+      {currentPage <= pages[pages.length - 5] ? (
         <>
           <span>...</span>
 
           <button
             onClick={() => {
               onPageChange(pages[pages.length - 1]);
-              // scrollToTop();
+              scrollToTop();
             }}
             type="button"
             className="Pagination--button"
