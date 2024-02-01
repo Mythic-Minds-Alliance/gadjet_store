@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import style from './LoginForm.module.scss';
+import { scrollToTop } from '../../utils/helpers';
 
 export const LoginForm = () => {
   return (
@@ -57,6 +58,7 @@ export const LoginForm = () => {
         <Link
           to="/account/register"
           className={style.LoginForm__register}
+          onClick={scrollToTop}
         >
           Register
         </Link>
