@@ -2,15 +2,10 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import HomeIcon from '../../icons/Home.svg';
 import style from './Breadcrumbs.module.scss';
-import arrow from '../../images/Arrow.svg';
+import arrow from '../../icons/Arrow.svg';
 
 export const Breadcrumbs = () => {
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
-
-  if (isHomePage) {
-    return null;
-  }
 
   let currentLink = '';
 

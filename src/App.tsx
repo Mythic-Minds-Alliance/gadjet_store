@@ -46,8 +46,8 @@ export const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await
-        axios.get('https://gadjets-store.onrender.com/products?categoryId=1&sort=DESC&sortBy=year');
+        const response = await axios
+          .get('https://gadjets-store.onrender.com/products');
 
         setProductList(response.data);
 

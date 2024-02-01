@@ -1,33 +1,25 @@
-/* eslint-disable react/button-has-type */
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import FooterStyle from './Footer.module.scss';
-import Logo from '../../images/Logo.png';
-import ArrowUp from '../../images/Slider_button.png';
+import ArrowUp from '../../icons/Slider_button.png';
 import { scrollToTop } from '../../utils/helpers';
+import { Logo } from '../Logo';
 
 export const Footer = () => (
   <footer className={FooterStyle.container}>
-    <NavLink
-      to="/"
-      className={FooterStyle.logo}
-      onClick={scrollToTop}
-    >
-      <img
-        src={Logo}
-        alt="Logotype of company"
-        className={FooterStyle.logo__img}
-      />
-    </NavLink>
+    <div className={FooterStyle.logo}>
+      <Logo onClick={() => scrollToTop} />
+    </div>
 
     <div className={FooterStyle.footerLinks}>
-      <a
-        href="https://github.com/Mythic-Minds-Alliance"
+      <Link
+        to="https://github.com/Mythic-Minds-Alliance"
         className={FooterStyle.footerLinkItem}
         target="_blank"
         rel="noreferrer"
       >
         Github
-      </a>
+      </Link>
+
       <Link
         to="contacts"
         className={FooterStyle.footerLinkItem}
@@ -35,6 +27,7 @@ export const Footer = () => (
       >
         Contacts
       </Link>
+
       <Link
         to="rights"
         className={FooterStyle.footerLinkItem}
@@ -46,7 +39,9 @@ export const Footer = () => (
 
     <div className={FooterStyle.footerGoUp}>
       <p className={FooterStyle.goUpText}>Back to top</p>
+
       <button
+        type="button"
         className={FooterStyle.goUpLink}
         onClick={scrollToTop}
       >

@@ -1,26 +1,35 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import style from '../../assets/catalogue.module.scss';
 import { Card } from '../../components/Card/Card';
 import { Loader } from '../../components/Loader';
 import { SortPanel } from '../../components/SortPanel/SortPanel';
-import { sortProductList } from '../../utils/helpers';
 import { Pagination } from '../../components/Pagination/Pagination';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Search } from '../../components/SearchComponent/Search';
+import { Product } from '../../types/product';
+import { searchProductList } from '../../utils/helpers';
 
 export const PhonePage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(12);
-  const [phonesList, setphonesList] = useState([]);
+  const [phonesList, setphonesList] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState<string>('');
+
+  const [serchParams, setSearchParams] = useSearchParams();
+  const currentUrl = new URLSearchParams(serchParams);
+  const sortBy = currentUrl.get('sortBy') || 'year';
+  const order = currentUrl.get('sort') || 'DESC';
+
+  document.body.style.overflow = '';
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios
-          .get('https://gadjets-store.onrender.com/products?categoryId=1');
+          .get(`https://gadjets-store.onrender.com/products?categoryId=1&sort=${order}&sortBy=${sortBy}`);
 
         setphonesList(response.data);
       } catch (error) {
@@ -31,22 +40,20 @@ export const PhonePage = () => {
     };
 
     fetchData();
-  }, []);
-  const [
-    selectedSortField, setSelectedSortField,
-  ] = useState('Years');
-  const [sortOrder, setSortOrder] = useState('Descending');
+  }, [sortBy, order]);
 
   const handleSortFieldChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    setSelectedSortField(event.target.value);
+    currentUrl.set('sortBy', event.target.value);
+    setSearchParams(currentUrl);
   };
 
   const handleSortOrder = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    setSortOrder(event.target.value);
+    currentUrl.set('sort', event.target.value);
+    setSearchParams(currentUrl);
   };
 
   const handleSortPostCount = (
@@ -55,16 +62,11 @@ export const PhonePage = () => {
     setPostPerPage(+event.target.value);
   };
 
-  const visibleList = sortProductList(
-    phonesList,
-    selectedSortField,
-    sortOrder,
-    searchQuery,
-  );
+  const visibleProduct = searchProductList(phonesList, searchQuery);
 
   const indexOfLastItem = currentPage * postPerPage;
   const indexOfFirstItem = indexOfLastItem - postPerPage;
-  const currentItems = visibleList.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = visibleProduct.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -83,12 +85,12 @@ export const PhonePage = () => {
       ) : (
         <>
           <p className={style.CataloguePage__CatalogueCount}>
-            {`${visibleList.length} models`}
+            {`${visibleProduct.length} models`}
           </p>
           <SortPanel
             onSortField={handleSortFieldChange}
-            selectedSortField={selectedSortField}
-            selectedSortOrder={sortOrder}
+            selectedSortField={sortBy}
+            selectedSortOrder={order}
             onSelectOrder={handleSortOrder}
             onSelectPerPage={handleSortPostCount}
             postPerPage={postPerPage}
@@ -109,7 +111,7 @@ export const PhonePage = () => {
           </div>
           <Pagination
             postPorPage={postPerPage}
-            totalPost={visibleList.length}
+            totalPost={visibleProduct.length}
             onPageChange={handlePageChange}
             currentPage={currentPage}
           />

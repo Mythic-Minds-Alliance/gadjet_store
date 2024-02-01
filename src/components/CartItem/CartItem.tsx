@@ -4,7 +4,7 @@ import styles from './CartItem.module.scss';
 import { Cross } from '../Cross/Cross';
 
 import { Minus } from '../Minus/Minus';
-import plus from '../../images/Plus.svg';
+import plus from '../../icons/Plus.svg';
 import { CartProduct } from '../../types/product';
 import { SERVER_HOST, changeAmount, getLocation } from '../../utils/helpers';
 

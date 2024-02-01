@@ -1,17 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import './Header.scss';
-import { NavigationLink } from '../NavigationLink/NavigationLink';
+import { NavigationLink } from '../NavigationLink';
 import { BurgerMenuOpened } from '../BurgerMenuOpened';
-import logo from '../../images/Logo.png';
 import user from '../../icons/User.svg';
-import favoriteImg from '../../images/Favourites.png';
-import ordersLogo from '../../images/ShoppingBag.png';
-import burgerMenu from '../../images/Menu.png';
-import close from '../../images/Close.png';
-import { HeaderCounter } from '../HeaderCounter/HeaderCounter';
+import favoriteImg from '../../icons/Favourites.png';
+import ordersLogo from '../../icons/ShoppingBag.png';
+import burgerMenu from '../../icons/Menu.png';
+import close from '../../icons/Close.png';
+import { HeaderCounter } from '../HeaderCounter';
 import { scrollToTop } from '../../utils/helpers';
+import { Logo } from '../Logo';
 
 type Props = {
   cartCount: number,
@@ -21,21 +21,21 @@ type Props = {
 export const Header: React.FC<Props> = ({ cartCount, favoriteCount }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [isMenuOpen]);
+
   return (
     <header className="header">
       <div className="container">
         <div className="navlinks">
-          <NavLink
-            to="/"
-            className="navlinks__logo"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            <img
-              src={logo}
-              alt="Nice Gadgets logo"
-              className="navlinks__img"
-            />
-          </NavLink>
+          <div className="navlinks__logo">
+            <Logo onClick={() => setIsMenuOpen(false)} />
+          </div>
 
           {!isMenuOpen && (
             <nav className="nav">
@@ -61,7 +61,8 @@ export const Header: React.FC<Props> = ({ cartCount, favoriteCount }) => {
 
         <div className="service">
           <NavLink
-            to="/account"
+            to="/account/login"
+            onClick={scrollToTop}
             className={({ isActive }) => classNames(
               'service_btn',
               { active: isActive },

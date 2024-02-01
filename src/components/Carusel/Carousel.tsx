@@ -99,9 +99,10 @@ const ButtonGroup: React.FC<ButtonGroupProps> = ({
 interface Props {
   title: string;
   selectedSortCarusel: string;
+  categoryId?: number;
 }
 
-export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel }) => {
+export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel, categoryId }) => {
   const [phonesList, setphonesList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -112,13 +113,13 @@ export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel }) => {
 
         if (selectedSortCarusel === CaruselSort.Years) {
           response = await axios
-            .get('https://gadjets-store.onrender.com/products?sort=DESC&sortBy=year&limit=8');
-        } else if (selectedSortCarusel === CaruselSort.Price) {
+            .get('https://gadjets-store.onrender.com/products?sort=DESC&sortBy=year&limit=8&capacity=256GB');
+        } else if (selectedSortCarusel === CaruselSort.HotPrices) {
           response = await axios
-            .get('https://gadjets-store.onrender.com/products?sortBy=priceDiscount&limit=8');
+            .get('https://gadjets-store.onrender.com/products/hotPrices?limit=8');
         } else {
           response = await axios
-            .get('https://gadjets-store.onrender.com/products?limit=8');
+            .get(`https://gadjets-store.onrender.com/products?categoryId=${categoryId}`);
         }
 
         setphonesList(response.data);
@@ -130,7 +131,7 @@ export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel }) => {
     };
 
     fetchData();
-  }, [selectedSortCarusel]);
+  }, [selectedSortCarusel, categoryId]);
 
   return (
     <section className={classNames(styles.CarouselContainer)}>
