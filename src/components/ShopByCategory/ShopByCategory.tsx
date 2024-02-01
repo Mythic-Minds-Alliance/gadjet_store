@@ -1,11 +1,22 @@
 import { NavLink } from 'react-router-dom';
+import { useContext } from 'react';
 import styles from './ShopByCategory.module.scss';
 import TabletImg from '../../images/tablets.png';
 import Accessories from '../../images/accesorise.png';
 import PhonesImg from '../../images/mobilePhones.png';
 import { scrollToTop } from '../../utils/helpers';
 
+import { DataContext } from '../../App';
+
 export const ShopByCategory = () => {
+  const { productList } = useContext(DataContext);
+  const numberOfPhones = productList
+    .filter(product => product.categoryId === 1).length;
+  const numberOfTablets = productList
+    .filter(product => product.categoryId === 2).length;
+  const numberOfAccessories = productList
+    .filter(product => product.categoryId === 3).length;
+
   return (
     <section className={`${styles.section} ${styles.shopByCategory}`}>
       <h3 className={styles.sectionTitle}>Shop by category</h3>
@@ -25,7 +36,7 @@ export const ShopByCategory = () => {
             />
             Mobile phones
           </NavLink>
-          <p className={styles.categorySubtitle}>95 models</p>
+          <p className={styles.categorySubtitle}>{`${numberOfPhones} models`}</p>
         </div>
 
         <div className={styles.categoryItem}>
@@ -41,7 +52,7 @@ export const ShopByCategory = () => {
             />
             Tablets
           </NavLink>
-          <p className={styles.categorySubtitle}>24 models</p>
+          <p className={styles.categorySubtitle}>{`${numberOfTablets} models`}</p>
         </div>
 
         <div className={styles.categoryItem}>
@@ -57,7 +68,7 @@ export const ShopByCategory = () => {
             />
             Accessories
           </NavLink>
-          <p className={styles.categorySubtitle}>100 models</p>
+          <p className={styles.categorySubtitle}>{`${numberOfAccessories} models`}</p>
         </div>
       </div>
     </section>

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
@@ -78,28 +79,27 @@ export const TabletsPage = () => {
       <h1 className={style.CataloguePage__title}>
         Tablets
       </h1>
+      <p className={style.CataloguePage__CatalogueCount}>
+        {`${tabletsList.length} models`}
+      </p>
 
+      <SortPanel
+        onSortField={handleSortFieldChange}
+        selectedSortField={sortBy}
+        selectedSortOrder={order}
+        onSelectOrder={handleSortOrder}
+        onSelectPerPage={handleSortPostCount}
+        postPerPage={postPerPage}
+      />
+
+      <Search
+        setSearchQuery={setSearchQuery}
+        searchQuery={searchQuery}
+      />
       {isLoading ? (
         <Loader />
       ) : (
         <>
-          <p className={style.CataloguePage__CatalogueCount}>
-            {`${tabletsList.length} models`}
-          </p>
-
-          <SortPanel
-            onSortField={handleSortFieldChange}
-            selectedSortField={sortBy}
-            selectedSortOrder={order}
-            onSelectOrder={handleSortOrder}
-            onSelectPerPage={handleSortPostCount}
-            postPerPage={postPerPage}
-          />
-
-          <Search
-            setSearchQuery={setSearchQuery}
-            searchQuery={searchQuery}
-          />
 
           {currentItems.length > 0 ? (
             <div className={style.CataloguePage__container}>
@@ -116,7 +116,6 @@ export const TabletsPage = () => {
                 Sorry, no results found.
               </h1>
               <img
-                /* eslint-disable max-len */
                 src="https://media1.tenor.com/m/w0ZPbbkuLNkAAAAC/retail-john-travolta.gif"
                 alt="travolta"
                 className={style.NotFondProduct_img}
