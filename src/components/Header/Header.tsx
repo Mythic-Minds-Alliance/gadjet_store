@@ -69,7 +69,7 @@ export const Header: React.FC<Props> = ({ cartCount, favoriteCount }) => {
 
         <div className="service">
           <NavLink
-            to="/account"
+            to="/account/login"
             onClick={scrollToTop}
             className={({ isActive }) => classNames(
               'service_btn',

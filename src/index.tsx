@@ -18,7 +18,7 @@ import { FavoritesPage } from './pages/FavoritesPage/FavoritesPage';
 import { TabletsPage } from './pages/TabletsPage/TabletsPage';
 import { FooterRights } from './components/FooterRights';
 import { FooterContacts } from './components/FooterContacts';
-import { RegistrationPage } from './pages/RegistrationPage/RegistrationPage';
+import { AccountPage } from './pages/AccountPage/AccountPage';
 
 createRoot(document.getElementById('root') as HTMLDivElement).render(
   <Router>
@@ -39,7 +39,10 @@ createRoot(document.getElementById('root') as HTMLDivElement).render(
 
         <Route path="contacts" element={<FooterContacts />} />
 
-        <Route path="account" element={<RegistrationPage />} />
+        <Route path="account" element={<AccountPage />} />
+
+        <Route path="account/register" element={<AccountPage />} />
+        <Route path="account/login" element={<AccountPage />} />
 
         <Route path="phones/:productId" element={<ProductDetailsPage />} />
         <Route path="tablets/:productId" element={<ProductDetailsPage />} />
