@@ -31,12 +31,16 @@ export const BurgerMenuOpened: FC<BurgerMenuProps> = ({
       className={
         classNames(
           styles.burger,
-          { [styles.burger_opened]: isMenuOpen },
+          { [styles.burger__opened]: isMenuOpen },
         )
       }
     >
       <nav className={classNames(styles.burger__nav)}>
-        <NavigationLink to="/" linkText="Home" onClick={handleMenuClose} />
+        <NavigationLink
+          to="/"
+          linkText="Home"
+          onClick={handleMenuClose}
+        />
         <NavigationLink
           to="/phones"
           linkText="Phones"
