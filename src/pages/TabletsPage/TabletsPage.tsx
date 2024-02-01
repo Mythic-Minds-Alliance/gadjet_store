@@ -78,29 +78,27 @@ export const TabletsPage = () => {
       <h1 className={style.CataloguePage__title}>
         Tablets
       </h1>
+      <p className={style.CataloguePage__CatalogueCount}>
+        {`${tabletsList.length} models`}
+      </p>
 
+      <SortPanel
+        onSortField={handleSortFieldChange}
+        selectedSortField={sortBy}
+        selectedSortOrder={order}
+        onSelectOrder={handleSortOrder}
+        onSelectPerPage={handleSortPostCount}
+        postPerPage={postPerPage}
+      />
+
+      <Search
+        setSearchQuery={setSearchQuery}
+        searchQuery={searchQuery}
+      />
       {isLoading ? (
         <Loader />
       ) : (
         <>
-          <p className={style.CataloguePage__CatalogueCount}>
-            {`${tabletsList.length} models`}
-          </p>
-
-          <SortPanel
-            onSortField={handleSortFieldChange}
-            selectedSortField={sortBy}
-            selectedSortOrder={order}
-            onSelectOrder={handleSortOrder}
-            onSelectPerPage={handleSortPostCount}
-            postPerPage={postPerPage}
-          />
-
-          <Search
-            setSearchQuery={setSearchQuery}
-            searchQuery={searchQuery}
-          />
-
           <div className={style.CataloguePage__container}>
             {currentItems.map(product => (
               <Card
