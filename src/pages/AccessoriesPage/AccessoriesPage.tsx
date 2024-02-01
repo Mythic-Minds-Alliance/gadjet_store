@@ -10,6 +10,7 @@ import { Pagination } from '../../components/Pagination/Pagination';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Search } from '../../components/SearchComponent/Search';
 import { Product } from '../../types/product';
+import { searchProductList } from '../../utils/helpers';
 
 export const AccessoriesPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -60,9 +61,11 @@ export const AccessoriesPage = () => {
     setPostPerPage(+event.target.value);
   };
 
+  const visibleProduct = searchProductList(accessoriesList, searchQuery);
+
   const indexOfLastItem = currentPage * postPerPage;
   const indexOfFirstItem = indexOfLastItem - postPerPage;
-  const currentItems = accessoriesList.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = visibleProduct.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
