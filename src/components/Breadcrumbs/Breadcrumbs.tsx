@@ -10,7 +10,7 @@ export const Breadcrumbs = () => {
   const location = useLocation();
   const [crumbs, setCrumbs] = useState<ReactNode>([]);
   const isHomePage = location.pathname === '/';
-  const currentLinkRef = useRef<string>(''); // Use a useRef for mutable value
+  const currentLinkRef = useRef<string>('');
 
   useEffect(() => {
     if (!isHomePage) {
