@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import classNames from 'classnames';
 import styles from './CartCheckout.module.scss';
 import { CardSeparator } from '../СardSeparator/CardSeparator';
 import { CheckoutAfterBuy } from '../CheckoutAfterBuy/CheckoutAfterBuy';
@@ -33,7 +34,10 @@ export const CartCheckout: React.FC<CartCheckoutProps> = ({ cartStorage }) => {
 
       <button
         type="button"
-        className={styles.checkout__btn}
+        className={classNames(
+          styles.checkout__btn,
+          { [styles.showThankYou]: showThankYou },
+        )}
         onClick={() => {
           setShowThankYou(true);
         }}

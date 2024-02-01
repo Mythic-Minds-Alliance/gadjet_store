@@ -6,7 +6,7 @@ import { Cross } from '../Cross/Cross';
 import { Minus } from '../Minus/Minus';
 import plus from '../../images/Plus.svg';
 import { CartProduct } from '../../types/product';
-import { SERVER_HOST, changeAmount } from '../../utils/helpers';
+import { SERVER_HOST, changeAmount, getLocation } from '../../utils/helpers';
 
 import { DataContext } from '../../App';
 
@@ -20,21 +20,30 @@ export const CartItem: React.FC<Props> = ({ item }) => {
   return (
     <div className={styles.item__container}>
       <div className={styles.item_phone_info}>
-        <div className={styles.item__container_close}>
-          <Cross item={item} />
+        <div className={styles.item__container_closeAndFoto}>
+          <div className={styles.item__container_close}>
+            <Cross item={item} />
+          </div>
+
+          <Link
+            to={{
+              pathname: getLocation(item),
+              search: `?capacity=${item.capacity}&productId=${item.id}&color=${item.color}`,
+            }}
+          >
+            <img
+              src={`${SERVER_HOST}/${item.images[0]}`}
+              className={styles.item__container_phone}
+              alt="phone"
+            />
+          </Link>
         </div>
 
         <Link
-          to={`../phones/${item.name}`}
-        >
-          <img
-            src={`${SERVER_HOST}/${item.images[0]}`}
-            className={styles.item__container_phone}
-            alt="phone"
-          />
-        </Link>
-        <Link
-          to={`../phones/${item.name}`}
+          to={{
+            pathname: getLocation(item),
+            search: `?capacity=${item.capacity}&productId=${item.id}&color=${item.color}`,
+          }}
         >
           <p className={styles.item__container_model}>
             {item.name}
@@ -46,6 +55,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         <div className={styles.item__container_buttons}>
           <button
             type="button"
+            disabled={(item.quantity === 1)}
             aria-label="btn"
             className={styles.item__container_minus}
             onClick={() => {

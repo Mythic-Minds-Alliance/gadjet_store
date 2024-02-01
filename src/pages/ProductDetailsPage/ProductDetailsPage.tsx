@@ -12,12 +12,13 @@ import { ProductImagesSlider } from '../../components/ProductImagesSlider';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
-// import { ProductVariants } from '../../components/ProductVariants/ProductVariants';
+import { ProductVariants } from '../../components/ProductVariants/ProductVariants';
 import { Carusel } from '../../components/Carusel';
 import { CaruselSort } from '../../types/CaruselSort';
 import { BackButton } from '../../components/BackButton';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Product } from '../../types/product';
+import notFoundImg from '../../images/not found.jpg';
 
 export const ProductDetailsPage = () => {
   const [currentProduct, setCurrentProduct] = useState<Product[]>();
@@ -29,7 +30,7 @@ export const ProductDetailsPage = () => {
   const productId = searchParams.get('productId');
   const color = searchParams.get('color');
 
-  const requestedPhone = `http://localhost:3005/products?productId=${productId}&color=${color}&capacity=${capacity}`;
+  const requestedPhone = `https://gadjets-store.onrender.com/products?productId=${productId}&color=${color}&capacity=${capacity}`;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,22 +59,29 @@ export const ProductDetailsPage = () => {
             <ProductTitle title={currentProduct[0]} />
             <div className={detailsStyles.extendedDetails}>
               <div className={detailsStyles.topContent}>
-                <div className={detailsStyles.extendedDetails__pictures}>
-                  <ProductImagesSlider />
+                {currentProduct[0].images ? (
+                  <div className={detailsStyles.extendedDetails__pictures}>
+                    <ProductImagesSlider images={currentProduct[0].images} />
+                  </div>
+                ) : (
+                  <div className={detailsStyles.extendedDetails__pictures}>
+                    <ProductImagesSlider images={[notFoundImg]} />
+                  </div>
+                )}
+
+                <div className={detailsStyles.extendedDetails__mainInfo}>
+                  <ProductVariants product={currentProduct[0]} />
                 </div>
-                {/* <div className={detailsStyles.extendedDetails__mainInfo}>
-                  <ProductVariants product={currentProduct} />
-                </div> */}
               </div>
 
               <div className={detailsStyles.bottomContent}>
                 <div className={detailsStyles.extendedDetails__about}>
-                  <AboutProduct />
+                  <AboutProduct product={currentProduct} />
+
                 </div>
                 <div className={detailsStyles.extendedDetails__techSpecs}>
                   <TechSpecs
                     phone={currentProduct[0]}
-                    key={currentProduct[0].id}
                   />
                 </div>
               </div>

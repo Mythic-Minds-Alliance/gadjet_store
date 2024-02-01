@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import './CheckoutAfterBuy.scss';
 import close from '../../images/Close.png';
 import { CartProduct } from '../../types/product';
-import { SERVER_HOST } from '../../utils/helpers';
+import { SERVER_HOST, getLocation } from '../../utils/helpers';
+import check from '../../icons/approval-40.png';
 
 interface Props {
   totalPrice: number;
@@ -17,58 +18,83 @@ export const CheckoutAfterBuy: React.FC<Props> = ({
   const orderNumber = Math.floor(Math.random() * 10000) + 1;
 
   return (
-    <div className="page">
-      <div className="checkoutPage">
-        <Link to="/phones" className="checkoutPage__closer">
+    <div className="fone">
+      <div className="checkout">
+        <Link to="/phones" className="checkout__closer">
           <img
             src={close}
-            className="checkoutPage__closer--img"
+            className="checkout__closer--img"
             alt="phone"
           />
         </Link>
-        <h4 className="checkoutPage__h3">
-          thank you for your order
-        </h4>
-
-        <p className="checkoutPage__txt">
-          Your order has been successfully received.
-        </p>
-
-        <div className="orderContainer">
-          {cartStorage.map((product) => (
-            <div key={product.id} className="orderItem">
-              <div className="productInfo">
-                <Link to={`../phones/${product.name}`}>
-                  <img
-                    src={`${SERVER_HOST}/${product.images[0]}`}
-                    alt={product.name}
-                    className="productImage"
-                  />
-                </Link>
-                <div className="productDescription">
-                  <Link to={`../phones/${product.name}`}>
-                    <p>{product.quantity > 1 ? `${product.name} x ${product.quantity} items` : product.name}</p>
-                  </Link>
-                  <p>
-                    $
-                    {`${(+product.price).toFixed(2)} `}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
+        <div>
+          <img src={check} alt="check" />
         </div>
 
-        <p className="orderTotal">
-          Total: $
-          {totalPrice.toFixed(2)}
+        <p className="checkout__txt">
+          thank you for your order
         </p>
 
-        <p className="orderNumber">
-          {`Order Number: №${orderNumber}`}
-        </p>
+        <div className="check">
+          {cartStorage.map((product) => {
+            return (
+              <div key={product.id} className="product">
+                <div className="product_info">
+                  <Link to={{
+                    pathname: getLocation(product),
+                    search: `?capacity=${product.capacity}&productId=${product.id}&color=${product.color}`,
+                  }}
+                  >
+                    <img
+                      src={`${SERVER_HOST}/${product.images[0]}`}
+                      alt={product.name}
+                      className="product_image"
+                    />
+                  </Link>
 
-        <Link to="/phones" className="checkoutPage__closerButton">
+                  <p className="product_count">
+                    {product.quantity > 1 && ` x ${product.quantity}`}
+                  </p>
+
+                  <div className="product_description">
+                    <Link
+                      className="product_name"
+                      to={{
+                        pathname: getLocation(product),
+                        search: `?capacity=${product.capacity}&productId=${product.id}&color=${product.color}`,
+                      }}
+                    >
+                      <p>{product.name}</p>
+                    </Link>
+                    <p>
+                      $
+                      {`${(+product.price).toFixed(2)} `}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="order">
+          <p>
+            {`Total: $  
+          ${totalPrice.toFixed(2)}`}
+          </p>
+
+          <div className="order_num">
+            <p className="order_txt">
+              Order Number:
+            </p>
+
+            <p className="order_txt">
+              {`№${orderNumber}`}
+            </p>
+          </div>
+        </div>
+
+        <Link to="/phones" className="checkout__closerButton">
           Close
         </Link>
 

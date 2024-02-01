@@ -1,16 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import './Header.scss';
-import { NavigationLink } from '../NavigationLink/NavigationLink';
+import { NavigationLink } from '../NavigationLink';
 import { BurgerMenuOpened } from '../BurgerMenuOpened';
-import logo from '../../images/Logo.png';
+import logo from '../../icons/Logo.png';
 import user from '../../icons/User.svg';
-import favoriteImg from '../../images/Favourites.png';
-import ordersLogo from '../../images/ShoppingBag.png';
-import burgerMenu from '../../images/Menu.png';
-import close from '../../images/Close.png';
-import { HeaderCounter } from '../HeaderCounter/HeaderCounter';
+import favoriteImg from '../../icons/Favourites.png';
+import ordersLogo from '../../icons/ShoppingBag.png';
+import burgerMenu from '../../icons/Menu.png';
+import close from '../../icons/Close.png';
+import { HeaderCounter } from '../HeaderCounter';
 import { scrollToTop } from '../../utils/helpers';
 
 type Props = {
@@ -21,19 +21,27 @@ type Props = {
 export const Header: React.FC<Props> = ({ cartCount, favoriteCount }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [isMenuOpen]);
+
   return (
     <header className="header">
       <div className="container">
-        <div className="links">
+        <div className="navlinks">
           <NavLink
             to="/"
-            className="logo-link"
+            className="navlinks__logo"
             onClick={() => setIsMenuOpen(false)}
           >
             <img
               src={logo}
               alt="Nice Gadgets logo"
-              className="header__logo"
+              className="navlinks__img"
             />
           </NavLink>
 
@@ -42,30 +50,27 @@ export const Header: React.FC<Props> = ({ cartCount, favoriteCount }) => {
               <NavigationLink
                 to="/"
                 linkText="Home"
-                onClick={() => { }}
               />
               <NavigationLink
                 to="/phones"
                 linkText="Phones"
-                onClick={() => { }}
               />
               <NavigationLink
                 to="/tablets"
                 linkText="Tablets"
-                onClick={() => { }}
               />
               <NavigationLink
                 to="/accessories"
                 linkText="Accessories"
-                onClick={() => { }}
               />
             </nav>
           )}
         </div>
 
-        <div className="links">
+        <div className="service">
           <NavLink
-            to="/account"
+            to="/account/login"
+            onClick={scrollToTop}
             className={({ isActive }) => classNames(
               'service_btn',
               { active: isActive },
@@ -73,8 +78,8 @@ export const Header: React.FC<Props> = ({ cartCount, favoriteCount }) => {
           >
             <img
               src={user}
-              alt="account logo"
-              className="service_btn_img"
+              alt="user logo"
+              className="service_btn-img"
             />
           </NavLink>
 
@@ -89,7 +94,7 @@ export const Header: React.FC<Props> = ({ cartCount, favoriteCount }) => {
             <img
               src={favoriteImg}
               alt="like button"
-              className="service_btn_img"
+              className="service_btn-img"
             />
 
             <div className={classNames('headerCounter')}>
@@ -108,10 +113,10 @@ export const Header: React.FC<Props> = ({ cartCount, favoriteCount }) => {
             <img
               src={ordersLogo}
               alt="orders button"
-              className="service_btn_img"
+              className="service_btn-img"
             />
 
-            <div className={classNames('headerCounter')}>
+            <div>
               <HeaderCounter productsCount={cartCount} />
             </div>
           </NavLink>
