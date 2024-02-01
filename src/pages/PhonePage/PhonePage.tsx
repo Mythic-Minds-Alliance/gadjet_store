@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
@@ -100,20 +101,38 @@ export const PhonePage = () => {
         <Loader />
       ) : (
         <>
-          <div className={style.CataloguePage__container}>
-            {currentItems.map(product => (
-              <Card
-                key={product.name}
-                product={product}
+          {currentItems.length > 0 ? (
+            <div className={style.CataloguePage__container}>
+              {currentItems.map(product => (
+                <Card
+                  key={product.name}
+                  product={product}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className={style.NotFondProduct}>
+              <h1 className={style.CataloguePage__title}>
+                Sorry, no results found.
+              </h1>
+              <img
+                src="https://media1.tenor.com/m/w0ZPbbkuLNkAAAAC/retail-john-travolta.gif"
+                alt="travolta"
+                className={style.NotFondProduct_img}
               />
-            ))}
-          </div>
-          <Pagination
-            postPorPage={postPerPage}
-            totalPost={visibleProduct.length}
-            onPageChange={handlePageChange}
-            currentPage={currentPage}
-          />
+            </div>
+          )}
+
+          {visibleProduct.length > postPerPage ? (
+            <Pagination
+              postPorPage={postPerPage}
+              totalPost={visibleProduct.length}
+              onPageChange={handlePageChange}
+              currentPage={currentPage}
+            />
+          ) : (
+            <span />
+          )}
         </>
       )}
     </div>
