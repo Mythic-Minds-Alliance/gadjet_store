@@ -1,9 +1,11 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './CheckoutAfterBuy.scss';
 import close from '../../icons/Close.png';
 import { CartProduct } from '../../types/product';
 import { SERVER_HOST, getLocation } from '../../utils/helpers';
 import check from '../../icons/approval-40.png';
+import { DataContext } from '../../App';
 
 interface Props {
   totalPrice: number;
@@ -14,14 +16,24 @@ export const CheckoutAfterBuy: React.FC<Props> = ({
   totalPrice,
   cartStorage,
 }) => {
+  const { setCartStorage } = useContext(DataContext);
   const orderNumber = Math.floor(Math.random() * 10000) + 1;
+
+  const handleClearCart = () => {
+    setCartStorage([]);
+    localStorage.removeItem('cart');
+  };
 
   document.body.style.overflow = 'hidden';
 
   return (
     <div className="fone">
       <div className="checkout">
-        <Link to="/phones" className="checkout__closer">
+        <Link
+          to="/phones"
+          className="checkout__closer"
+          onClick={handleClearCart}
+        >
           <img
             src={close}
             className="checkout__closer--img"
@@ -41,10 +53,12 @@ export const CheckoutAfterBuy: React.FC<Props> = ({
             return (
               <div key={product.name} className="product">
                 <div className="product_info">
-                  <Link to={{
-                    pathname: getLocation(product),
-                    search: `?capacity=${product.capacity}&productId=${product.id}&color=${product.color}`,
-                  }}
+                  <Link
+                    to={{
+                      pathname: getLocation(product),
+                      search: `?capacity=${product.capacity}&productId=${product.id}&color=${product.color}`,
+                    }}
+                    onClick={handleClearCart}
                   >
                     <img
                       src={`${SERVER_HOST}/${product.images[0]}`}
@@ -60,6 +74,7 @@ export const CheckoutAfterBuy: React.FC<Props> = ({
                   <div className="product_description">
                     <Link
                       className="product_name"
+                      onClick={handleClearCart}
                       to={{
                         pathname: getLocation(product),
                         search: `?capacity=${product.capacity}&productId=${product.id}&color=${product.color}`,
@@ -98,6 +113,7 @@ export const CheckoutAfterBuy: React.FC<Props> = ({
         <Link
           to="/phones"
           className="checkout__closerButton"
+          onClick={handleClearCart}
         >
           Close
         </Link>

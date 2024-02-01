@@ -12,12 +12,6 @@
 
   margin-bottom: 24px;
 
-  transition: box-shadow 0.3s;
-
-  &:hover {
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  }
-
   &--input {
     height: 40px;
     width: 100%;
@@ -27,11 +21,6 @@
     color: $primary;
 
     border: 1px solid $icons;
-
-    &:hover {
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    }
-
     &-hidden {
       visibility: hidden;
     }

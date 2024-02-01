@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
@@ -11,6 +12,7 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Search } from '../../components/SearchComponent/Search';
 import { Product } from '../../types/product';
 import { searchProductList } from '../../utils/helpers';
+import { NotFoundSearchItems } from '../../components/NotFoundSearchItems/NotFoundSearchItems';
 
 export const AccessoriesPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -79,41 +81,51 @@ export const AccessoriesPage = () => {
         Accessories Page
       </h1>
 
+      <p className={style.CataloguePage__CatalogueCount}>
+        {`${accessoriesList.length} models`}
+      </p>
+
+      <SortPanel
+        onSortField={handleSortFieldChange}
+        selectedSortField={sortBy}
+        selectedSortOrder={order}
+        onSelectOrder={handleSortOrder}
+        onSelectPerPage={handleSortPostCount}
+        postPerPage={postPerPage}
+      />
+
+      <Search
+        setSearchQuery={setSearchQuery}
+        searchQuery={searchQuery}
+      />
+
       {isLoading ? (
         <Loader />
       ) : (
         <>
-          <p className={style.CataloguePage__CatalogueCount}>
-            {`${accessoriesList.length} models`}
-          </p>
+          {currentItems.length > 0 ? (
+            <div className={style.CataloguePage__container}>
+              {currentItems.map(product => (
+                <Card
+                  key={product.name}
+                  product={product}
+                />
+              ))}
+            </div>
+          ) : (
+            <NotFoundSearchItems />
+          )}
 
-          <SortPanel
-            onSortField={handleSortFieldChange}
-            selectedSortField={sortBy}
-            selectedSortOrder={order}
-            onSelectOrder={handleSortOrder}
-            onSelectPerPage={handleSortPostCount}
-            postPerPage={postPerPage}
-          />
-
-          <Search
-            setSearchQuery={setSearchQuery}
-            searchQuery={searchQuery}
-          />
-          <div className={style.CataloguePage__container}>
-            {currentItems.map(product => (
-              <Card
-                key={product.name}
-                product={product}
-              />
-            ))}
-          </div>
-          <Pagination
-            postPorPage={postPerPage}
-            totalPost={currentItems.length}
-            onPageChange={handlePageChange}
-            currentPage={currentPage}
-          />
+          {visibleProduct.length > postPerPage ? (
+            <Pagination
+              postPorPage={postPerPage}
+              totalPost={visibleProduct.length}
+              onPageChange={handlePageChange}
+              currentPage={currentPage}
+            />
+          ) : (
+            <span />
+          )}
         </>
       )}
     </div>
