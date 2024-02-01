@@ -38,15 +38,10 @@ export const PhonePage = () => {
 
     fetchData();
   }, [sortBy, order]);
-  const [
-    selectedSortField, setSelectedSortField,
-  ] = useState('Years');
-  const [sortOrder, setSortOrder] = useState('Descending');
 
   const handleSortFieldChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    setSelectedSortField(event.target.value);
     currentUrl.set('sortBy', event.target.value);
     setSearchParams(currentUrl);
   };
@@ -54,7 +49,6 @@ export const PhonePage = () => {
   const handleSortOrder = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    setSortOrder(event.target.value);
     currentUrl.set('sort', event.target.value);
     setSearchParams(currentUrl);
   };
@@ -90,8 +84,8 @@ export const PhonePage = () => {
           </p>
           <SortPanel
             onSortField={handleSortFieldChange}
-            selectedSortField={selectedSortField}
-            selectedSortOrder={sortOrder}
+            selectedSortField={sortBy}
+            selectedSortOrder={order}
             onSelectOrder={handleSortOrder}
             onSelectPerPage={handleSortPostCount}
             postPerPage={postPerPage}
