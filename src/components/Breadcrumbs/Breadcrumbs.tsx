@@ -29,10 +29,7 @@ export const Breadcrumbs = () => {
               to={currentLink}
               className={style.crumb}
             >
-              {crumb
-                .replaceAll('%20', ' ')
-                .split(' ')
-                .slice(0, -2).join(' ')}
+              {crumb.replaceAll('%20', ' ')}
             </Link>
           </div>
           {!isLastCrumb && (
