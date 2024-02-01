@@ -5,7 +5,7 @@ export interface Product {
   color: string;
   colorsavailable: string[];
   price: string;
-  priceDiscount: string;
+  priceActual: string;
   brand: string;
   categoryId: number;
   description: { title: string; text: string[] }[];

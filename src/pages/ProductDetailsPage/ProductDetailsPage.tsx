@@ -18,6 +18,7 @@ import { CaruselSort } from '../../types/CaruselSort';
 import { BackButton } from '../../components/BackButton';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Product } from '../../types/product';
+import notFoundImg from '../../images/not found.jpg';
 
 export const ProductDetailsPage = () => {
   const [currentProduct, setCurrentProduct] = useState<Product[]>();
@@ -58,9 +59,16 @@ export const ProductDetailsPage = () => {
             <ProductTitle title={currentProduct[0]} />
             <div className={detailsStyles.extendedDetails}>
               <div className={detailsStyles.topContent}>
-                <div className={detailsStyles.extendedDetails__pictures}>
-                  <ProductImagesSlider images={currentProduct[0].images} />
-                </div>
+                {currentProduct[0].images ? (
+                  <div className={detailsStyles.extendedDetails__pictures}>
+                    <ProductImagesSlider images={currentProduct[0].images} />
+                  </div>
+                ) : (
+                  <div className={detailsStyles.extendedDetails__pictures}>
+                    <ProductImagesSlider images={[notFoundImg]} />
+                  </div>
+                )}
+
                 <div className={detailsStyles.extendedDetails__mainInfo}>
                   <ProductVariants product={currentProduct[0]} />
                 </div>

@@ -115,12 +115,7 @@ export const RegisterForm = () => {
 
         <p className={style.RegisterForm__haveAnAcc}>
           Already have an account?
-          <a
-            href="/"
-            className={style.RegisterForm__signIn}
-          >
-            Sign In
-          </a>
+          <a href="/" className={style.RegisterForm__signIn}> Sign In</a>
         </p>
       </form>
     </div>
