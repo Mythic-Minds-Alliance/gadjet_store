@@ -18,12 +18,6 @@ export const CartCheckout: React.FC<CartCheckoutProps> = ({ cartStorage }) => {
         + (+item.price) * item.quantity, 0,
     );
 
-  if (showThankYou) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = '';
-  }
-
   return (
     <div className={styles.checkout}>
       <h3 className={styles.checkout__summary}>
