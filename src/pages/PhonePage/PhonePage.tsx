@@ -9,6 +9,7 @@ import { Pagination } from '../../components/Pagination/Pagination';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Search } from '../../components/SearchComponent/Search';
 import { Product } from '../../types/product';
+import { searchProductList } from '../../utils/helpers';
 
 export const PhonePage = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -59,9 +60,11 @@ export const PhonePage = () => {
     setPostPerPage(+event.target.value);
   };
 
+  const visibleProduct = searchProductList(phonesList, searchQuery);
+
   const indexOfLastItem = currentPage * postPerPage;
   const indexOfFirstItem = indexOfLastItem - postPerPage;
-  const currentItems = phonesList.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = visibleProduct.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -80,7 +83,7 @@ export const PhonePage = () => {
       ) : (
         <>
           <p className={style.CataloguePage__CatalogueCount}>
-            {`${phonesList.length} models`}
+            {`${visibleProduct.length} models`}
           </p>
           <SortPanel
             onSortField={handleSortFieldChange}
@@ -106,7 +109,7 @@ export const PhonePage = () => {
           </div>
           <Pagination
             postPorPage={postPerPage}
-            totalPost={phonesList.length}
+            totalPost={visibleProduct.length}
             onPageChange={handlePageChange}
             currentPage={currentPage}
           />
