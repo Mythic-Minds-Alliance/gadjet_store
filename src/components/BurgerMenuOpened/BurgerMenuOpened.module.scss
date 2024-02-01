@@ -17,6 +17,9 @@
   transition: 1s;
   transform: translate(-100%);
 
+  transition: 1s;
+  transform: translate(-100%);
+
   @include onTablet {
     display: none;
   }
