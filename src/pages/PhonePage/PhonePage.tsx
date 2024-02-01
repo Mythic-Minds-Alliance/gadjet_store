@@ -23,6 +23,8 @@ export const PhonePage = () => {
   const sortBy = currentUrl.get('sortBy') || 'year';
   const order = currentUrl.get('sort') || 'DESC';
 
+  document.body.style.overflow = '';
+
   useEffect(() => {
     const fetchData = async () => {
       try {
