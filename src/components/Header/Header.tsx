@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import './Header.scss';
 import { NavigationLink } from '../NavigationLink';
 import { BurgerMenuOpened } from '../BurgerMenuOpened';
-import logo from '../../icons/Logo.png';
 import user from '../../icons/User.svg';
 import favoriteImg from '../../icons/Favourites.png';
 import ordersLogo from '../../icons/ShoppingBag.png';
@@ -12,6 +11,7 @@ import burgerMenu from '../../icons/Menu.png';
 import close from '../../icons/Close.png';
 import { HeaderCounter } from '../HeaderCounter';
 import { scrollToTop } from '../../utils/helpers';
+import { Logo } from '../Logo';
 
 type Props = {
   cartCount: number,
@@ -33,17 +33,9 @@ export const Header: React.FC<Props> = ({ cartCount, favoriteCount }) => {
     <header className="header">
       <div className="container">
         <div className="navlinks">
-          <NavLink
-            to="/"
-            className="navlinks__logo"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            <img
-              src={logo}
-              alt="Nice Gadgets logo"
-              className="navlinks__img"
-            />
-          </NavLink>
+          <div className="navlinks__logo">
+            <Logo onClick={() => setIsMenuOpen(false)} />
+          </div>
 
           {!isMenuOpen && (
             <nav className="nav">
