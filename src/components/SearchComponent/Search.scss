@@ -7,16 +7,26 @@
   display: flex;
   align-items: center;
 
+  height: 40px;
+  width: 100%;
+
   margin-bottom: 24px;
+
+  transition: box-shadow 0.3s;
 
   &--input {
     height: 40px;
-    padding: 10px 10px 10px 30px;
+    width: 100%;
+    padding: 10px 10px 10px 42px;
 
     @include buttonsText;
     color: $primary;
 
     border: 1px solid $icons;
+
+    &:hover {
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+    }
 
     &-hidden {
       visibility: hidden;
@@ -32,12 +42,15 @@
 
     height: 40px;
     width: 40px;
+    border: 1px solid $icons;
 
-    z-index: 3;
+    z-index: 100;
   }
 
   &--icon {
     width: 16px;
     height: 16px;
+
+    pointer-events: none;
   }
 }

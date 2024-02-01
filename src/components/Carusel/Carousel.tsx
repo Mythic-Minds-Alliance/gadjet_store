@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
@@ -9,6 +10,7 @@ import { Card } from '../Card/Card';
 import styles from './Carousel.module.scss';
 import arrow from '../../icons/SliderButtonRight.png';
 import { Loader } from '../Loader';
+import { CaruselSort } from '../../types/CaruselSort';
 
 const responsive = {
   desktop: {
@@ -97,9 +99,10 @@ const ButtonGroup: React.FC<ButtonGroupProps> = ({
 interface Props {
   title: string;
   selectedSortCarusel: string;
+  categoryId?: number;
 }
 
-export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel }) => {
+export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel, categoryId }) => {
   const [phonesList, setphonesList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -108,27 +111,27 @@ export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel }) => {
       try {
         let response;
 
-        if (selectedSortCarusel === 'Years') {
+        if (selectedSortCarusel === CaruselSort.Years) {
           response = await axios
-            .get('http://localhost:3005/products?sortBy=year&limit=8');
-        } else if (selectedSortCarusel === 'Price') {
+            .get('https://gadjets-store.onrender.com/products?sort=DESC&sortBy=year&limit=8&capacity=256GB');
+        } else if (selectedSortCarusel === CaruselSort.HotPrices) {
           response = await axios
-            .get('http://localhost:3005/products?sortBy=priceDiscount&limit=8');
+            .get('https://gadjets-store.onrender.com/products/hotPrices?limit=8');
         } else {
           response = await axios
-            .get('http://localhost:3005/products?limit=8');
+            .get(`https://gadjets-store.onrender.com/products?categoryId=${categoryId}`);
         }
 
         setphonesList(response.data);
       } catch (error) {
-        throw new Error('error when fetching data from API');
+        throw new Error('Error when fetching data from API');
       } finally {
         setIsLoading(false);
       }
     };
 
     fetchData();
-  }, [selectedSortCarusel]);
+  }, [selectedSortCarusel, categoryId]);
 
   return (
     <section className={classNames(styles.CarouselContainer)}>
@@ -146,8 +149,8 @@ export const Carusel: React.FC<Props> = ({ title, selectedSortCarusel }) => {
           infinite
         >
           {phonesList.map((product) => (
-          <Card product={product} key={uuidv4()} />
-        ))}
+            <Card product={product} key={uuidv4()} />
+          ))}
         </Carousel>
       )}
     </section>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import HomeIcon from '../../icons/Home.svg';
 import style from './Breadcrumbs.module.scss';
-import arrow from '../../images/Arrow.svg';
+import arrow from '../../icons/Arrow.svg';
 
 export const Breadcrumbs = () => {
   const location = useLocation();
@@ -29,7 +29,10 @@ export const Breadcrumbs = () => {
               to={currentLink}
               className={style.crumb}
             >
-              {crumb.replaceAll('%20', ' ')}
+              {crumb
+                .replaceAll('%20', ' ')
+                .split(' ')
+                .slice(0, -2).join(' ')}
             </Link>
           </div>
           {!isLastCrumb && (

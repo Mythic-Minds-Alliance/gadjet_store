@@ -2,18 +2,28 @@ import './CardPrices.scss';
 
 type Props = {
   price: string,
-  fullPrice: string,
+  priceActual: string,
 };
 
-export const CardPrices: React.FC<Props> = ({ price, fullPrice }) => {
+export const CardPrices: React.FC<Props> = ({ price, priceActual }) => {
   return (
     <div className="card--price">
-      <p className="card--price-current">
-        {`$${price}`}
-      </p>
-      <strong className="card--price-maxPrice">
-        {`$${fullPrice}`}
-      </strong>
+      {+priceActual !== +price ? (
+        <>
+          <p className="card--price-current">
+            {`$${priceActual}`}
+          </p>
+          <strong className="card--price-maxPrice">
+            {`$${price}`}
+          </strong>
+        </>
+
+      ) : (
+        <p className="card--price-current">
+          {`$${priceActual}`}
+        </p>
+      )}
+
     </div>
   );
 };

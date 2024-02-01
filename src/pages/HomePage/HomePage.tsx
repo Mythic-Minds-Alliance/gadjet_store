@@ -22,7 +22,7 @@ export const HomePage = () => {
         <ShopByCategory />
         <Carusel
           title="Hot prices"
-          selectedSortCarusel={CaruselSort.Price}
+          selectedSortCarusel={CaruselSort.HotPrices}
         />
       </div>
     </>

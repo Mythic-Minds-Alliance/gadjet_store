@@ -3,137 +3,145 @@
 @import '../../assets/variables';
 @import "../../assets/mixins";
 
-@mixin iconseSize {
-  width: 16px;
-  height: 16px;
-}
-
 .header {
   position: sticky;
   top: 0;
-  margin-bottom: 24px;
-  height: 64px;
-  border-bottom: 1px solid $elements;
-  background: $white;
   z-index: 10;
 
+  height: 48px;
+  margin-bottom: 24px;
+
+  border-bottom: 1px solid $elements;
+  background: $white;
+
   @include onTablet {
+    height: 48px;
     margin-bottom: 32px;
   }
 
   @include onDesktop {
+    height: 64px;
     margin-bottom: 56px;
-  }
-
-  &__logo {
-    display: block;
-    width: 80px;
-    margin: 0 24px;
-  }
-
-  &__logo:hover {
-    animation: wave 2s infinite linear;
-  }
-
-  &__logo.active {
-    position: relative;
-    color: $primary;
   }
 }
 
 .container {
   display: flex;
-  height: 100%;
   justify-content: space-between;
+  height: 100%;
 
-  @media (max-width: 639px) {
-    padding: 0;
+  @include onTablet {
     overflow: hidden;
   }
+}
 
-  @media (max-width: 1199px) {
-    padding-left: 16px;
+.navlinks {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__logo {
+    width: 64px;
+    margin: 0 16px;
+  }
+
+  @include onDesktop {
+    &__logo {
+      width: 80px;
+      margin: 0 24px;
+    }
   }
 }
 
 .nav {
-  display: flex;
+  display: none;
 
-  @media (max-width: 639px) {
-    display: none;
+  @include onTablet {
+    display: flex;
+    gap: 32px;
+    padding-inline: 16px;
+  }
+
+  @include onDesktop {
+    gap: 64px;
+    padding-inline: 24px;
   }
 }
 
-.links {
+.service {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
-.logo-link.active {
-  color: initial;
-
-  &::after {
+  &_btn {
+    position: relative;
     display: none;
-  }
-}
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 47px;
 
-.service_btn {
-  position: relative;
-  width: 64px;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 18px 0;
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  border-left: 1px solid $elements;
-  text-decoration: none;
+    cursor: pointer;
+    background: transparent;
+    border-left: 1px solid $elements;
+    text-decoration: none;
 
-  &_img {
-    position: absolute;
-    transition: transform 0.3s ease-in-out;
+    @include onTablet {
+      display: flex;
+    }
 
     @include onDesktop {
-      position: relative;
-      width: 16px;
+      width: 64px;
+      height: 63px;
     }
-  }
 
-  &:hover .service_btn_img {
-    transform: scale(1.1);
-  }
-}
+    &:hover .service_btn-img {
+      transform: scale(1.1);
+    }
 
-.active {
-  position: relative;
-  color: $primary;
+    & .active {
+      position: relative;
+      color: $primary;
 
-  &::after {
-    position: absolute;
-    bottom: 0;
-    content: '';
-    display: block;
-    width: 100%;
-    height: 4px;
-    background-color: $primary;
-    border-radius: 8px;
+      &::after {
+        position: absolute;
+
+        display: block;
+        width: 100%;
+        height: 3px;
+
+        background-color: $primary;
+        border-radius: 8px;
+        content: '';
+      }
+    }
+
+    &-img {
+      width: 16px;
+      transition: transform 0.3s ease-in-out;
+
+      @include onDesktop {
+        position: relative;
+      }
+    }
   }
 }
 
 .burger_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 48px;
-  display: none;
+
   cursor: pointer;
-  background: transparent;
-  border: none;
   border-left: 1px solid $elements;
+  background: transparent;
+
+  @include onTablet {
+    display: none;
+  }
 
   &_img {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     transition: transform 0.3s ease-in-out;
   }
 
@@ -143,83 +151,5 @@
 
   &:hover .burger_btn_img {
     transform: scale(1.1);
-  }
-}
-
-@media (max-width: 639px) {
-  .service_btn {
-    display: none;
-  }
-
-  .dropdown-content {
-    width: 144px;
-  }
-
-  .headerCounter {
-    position: absolute;
-    top: 25%;
-    right: 40%;
-  }
-
-  .burger_btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-@media (max-width: 1199px) {
-  .header {
-    height: 48px;
-
-    &__logo {
-      width: 64px;
-      margin: 0 16px;
-    }
-  }
-
-  .service_btn {
-    width: 48px;
-
-    &_img {
-      position: relative;
-      width: 16px;
-      height: 16px;
-    }
-  }
-}
-
-.burger-block {
-  display: flex;
-}
-
-.burger-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-
-  & img {
-    width: 16px;
-    height: 16px;
-  }
-}
-
-@keyframes wave {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  25% {
-    transform: translateY(-4px);
-  }
-
-  75% {
-    transform: translateY(4px);
   }
 }

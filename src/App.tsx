@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import axios from 'axios';
 import { Outlet } from 'react-router-dom';
 import {
@@ -45,8 +46,8 @@ export const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await
-        axios.get('http://localhost:3005/products?categoryId=1');
+        const response = await axios
+          .get('https://gadjets-store.onrender.com/products?categoryId=1&sort=DESC&sortBy=year');
 
         setProductList(response.data);
 

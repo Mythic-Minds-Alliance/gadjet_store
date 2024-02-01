@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import './Pagination.scss';
-import nextPage from '../../images/Slider_button.png';
+import nextPage from '../../icons/Slider_button.png';
 import { scrollToTop } from '../../utils/helpers';
 
 type Props = {
@@ -51,7 +51,8 @@ export const Pagination: React.FC<Props> = ({
           alt="Next Page Button"
         />
       </button>
-      {pages.map(page => (
+
+      {pages.slice(currentPage - 1, currentPage + 3).map(page => (
         <button
           key={page}
           onClick={() => {
@@ -60,12 +61,30 @@ export const Pagination: React.FC<Props> = ({
           }}
           type="button"
           className={classNames(
-            'Pagination--button', { isActive: page === currentPage },
+            'Pagination--button',
+            { isActive: page === currentPage },
           )}
         >
           {page}
         </button>
       ))}
+
+      {currentPage <= pages[pages.length - 6] ? (
+        <>
+          <span>...</span>
+
+          <button
+            onClick={() => {
+              onPageChange(pages[pages.length - 1]);
+              // scrollToTop();
+            }}
+            type="button"
+            className="Pagination--button"
+          >
+            {pages[pages.length - 1]}
+          </button>
+        </>
+      ) : (<span />)}
 
       <button
         className="Pagination--button-back"

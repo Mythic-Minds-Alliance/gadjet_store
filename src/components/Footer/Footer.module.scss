@@ -3,8 +3,8 @@
 @import "../../assets/colors";
 @import "../../assets/mixins";
 
-.footerContainer {
-  border-top: 1px solid $secondary;
+.container {
+  border-top: 1px solid $elements;
   padding: 32px 16px;
   display: flex;
   flex-direction: column;
@@ -28,9 +28,8 @@
   }
 }
 
-.footerLogo {
-  width: 89px;
-  height: 30.252px;
+.logo {
+    width: 89px;
 }
 
 .footerLinks {
@@ -42,7 +41,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 13.5px;
+    gap: 30px;
   }
 
   @include onDesktop {
@@ -54,6 +53,11 @@
   @include uppercaseText;
   color: $secondary;
   text-decoration: none;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    color: $primary;
+  }
 }
 
 .footerGoUp {
@@ -64,13 +68,19 @@
   align-items: center;
 }
 
-.goUpText{
+.goUpText {
   @include smallText;
   color: $secondary;
 }
 
-.goUpBtn, .goUpLink {
+.goUpBtn,
+.goUpLink {
   display: block;
   background-color: $white;
   border: none;
+  transition: transform 0.3s ease-in-out;
+}
+
+.goUpLink:hover .goUpBtn {
+  transform: scale(1.1);
 }

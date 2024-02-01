@@ -1,4 +1,9 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, {
+  useState,
+  ChangeEvent,
+  useEffect,
+  useRef,
+} from 'react';
 import classNames from 'classnames';
 import './Search.scss';
 import searchIcon from '../../icons/search.png';
@@ -13,6 +18,7 @@ export const Search: React.FC<Props> = ({
   searchQuery,
 }) => {
   const [isHidden, setIsHidden] = useState<boolean>(true);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSearchInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
@@ -22,9 +28,29 @@ export const Search: React.FC<Props> = ({
     setIsHidden(prevIsHidden => !prevIsHidden);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        inputRef.current
+        && event.target instanceof HTMLElement
+        && !inputRef.current.contains(event.target)
+        && !event.target.classList.contains('Search--btn')
+      ) {
+        setIsHidden(true);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+
   return (
     <div className="Search">
       <input
+        ref={inputRef}
         type="text"
         placeholder="Explore our electronic inventory..."
         onChange={handleSearchInputChange}

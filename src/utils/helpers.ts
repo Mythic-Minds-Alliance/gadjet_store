@@ -3,7 +3,7 @@ import { FC, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { CartProduct, Product } from '../types/product';
 
-export const SERVER_HOST = 'http://localhost:3005/';
+export const SERVER_HOST = 'https://gadjets-store.onrender.com/';
 
 export const scrollToTop = () => {
   window.scrollTo({
@@ -143,13 +143,7 @@ export function changeAmount(item: CartProduct,
 
         break;
       case 'minus':
-        if (isItemInCart?.quantity === 1) {
-          const updatedCart = currentCart
-            .filter(product => product.name !== isItemInCart.name);
-
-          localStorage.setItem('cart', JSON.stringify(updatedCart));
-          setCartStorage(updatedCart);
-        } else {
+        if (isItemInCart) {
           const updatedCart = currentCart.map(product => {
             return product.name === isItemInCart.name
               ? { ...product, quantity: product.quantity - 1 }
@@ -170,60 +164,40 @@ export function changeAmount(item: CartProduct,
   }
 }
 
-export function sortProductList(
+export function searchProductList(
   product: Product[],
-  sortBy: string,
-  order: string,
-  query: string,
+  query?: string,
 ) {
   let preparedList = [...product];
 
-  switch (sortBy) {
-    case 'Years':
-      if (order === 'Ascending') {
-        preparedList = preparedList.sort((a, b) => +a.year - +b.year);
-      } else {
-        preparedList = preparedList.sort((a, b) => +b.year - +a.year);
-      }
-
-      break;
-
-    case 'Price':
-      if (order === 'Ascending') {
-        preparedList = preparedList.sort((a, b) => +a.price - +b.price);
-      } else {
-        preparedList = preparedList.sort((a, b) => +b.price - +a.price);
-      }
-
-      break;
-
-    case 'Screen':
-      if (order === 'Ascending') {
-        preparedList = preparedList.sort((a, b) => {
-          const aScreenSize = parseFloat(a.screen);
-          const bScreenSize = parseFloat(b.screen);
-
-          return aScreenSize - bScreenSize;
-        });
-      } else {
-        preparedList = preparedList.sort((a, b) => {
-          const aScreenSize = parseFloat(a.screen);
-          const bScreenSize = parseFloat(b.screen);
-
-          return bScreenSize - aScreenSize;
-        });
-      }
-
-      break;
-
-    default:
-      break;
-  }
-
-
   if (query) {
-    preparedList = preparedList.filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
+    preparedList = preparedList.filter(
+      item => item.name.toLowerCase().includes(query.toLowerCase().trim()),
+    );
   }
 
   return preparedList;
+}
+
+export function getLocation(product: Product) {
+  let location = '';
+
+  switch (product.categoryId) {
+    case 1:
+      location = '/phones';
+      break;
+    case 2:
+      location = '/tablets';
+      break;
+    case 3:
+      location = '/accessories';
+      break;
+    default:
+      location = '/';
+      break;
+  }
+
+  const productPageLink = `${location}/${product.name}`;
+
+  return productPageLink;
 }
