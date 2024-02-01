@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
@@ -11,6 +12,7 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Search } from '../../components/SearchComponent/Search';
 import { Product } from '../../types/product';
 import { searchProductList } from '../../utils/helpers';
+import { NotFoundSearchItems } from '../../components/NotFoundSearchItems/NotFoundSearchItems';
 
 export const AccessoriesPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -79,27 +81,28 @@ export const AccessoriesPage = () => {
         Accessories Page
       </h1>
 
+      <p className={style.CataloguePage__CatalogueCount}>
+        {`${accessoriesList.length} models`}
+      </p>
+
+      <SortPanel
+        onSortField={handleSortFieldChange}
+        selectedSortField={sortBy}
+        selectedSortOrder={order}
+        onSelectOrder={handleSortOrder}
+        onSelectPerPage={handleSortPostCount}
+        postPerPage={postPerPage}
+      />
+
+      <Search
+        setSearchQuery={setSearchQuery}
+        searchQuery={searchQuery}
+      />
+
       {isLoading ? (
         <Loader />
       ) : (
         <>
-          <p className={style.CataloguePage__CatalogueCount}>
-            {`${accessoriesList.length} models`}
-          </p>
-
-          <SortPanel
-            onSortField={handleSortFieldChange}
-            selectedSortField={sortBy}
-            selectedSortOrder={order}
-            onSelectOrder={handleSortOrder}
-            onSelectPerPage={handleSortPostCount}
-            postPerPage={postPerPage}
-          />
-
-          <Search
-            setSearchQuery={setSearchQuery}
-            searchQuery={searchQuery}
-          />
           {currentItems.length > 0 ? (
             <div className={style.CataloguePage__container}>
               {currentItems.map(product => (
@@ -110,17 +113,7 @@ export const AccessoriesPage = () => {
               ))}
             </div>
           ) : (
-            <div className={style.NotFondProduct}>
-              <h1 className={style.CataloguePage__title}>
-                Sorry, no results found.
-              </h1>
-              <img
-                /* eslint-disable max-len */
-                src="https://media1.tenor.com/m/w0ZPbbkuLNkAAAAC/retail-john-travolta.gif"
-                alt="travolta"
-                className={style.NotFondProduct_img}
-              />
-            </div>
+            <NotFoundSearchItems />
           )}
 
           {visibleProduct.length > postPerPage ? (
