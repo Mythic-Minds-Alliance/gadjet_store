@@ -9,8 +9,8 @@
   justify-content: center;
   bottom: 60%;
   left: 50%;
-  height: 14px;
-  width: 14px;
+  height: 15px;
+  width: 15px;
   background-color: $red;
   border-radius: 50%;
   border: 1px solid $white;
@@ -18,13 +18,13 @@
   @include onTablet {
     left: 50%;
     bottom: 45%;
-    height: 14px;
-    width: 14px;
+    height: 16px;
+    width: 16px;
   }
 }
 
 .items {
   color: $white;
-  font-size: 9px;
+  font-size: 8px;
   @include smallText;
 }
