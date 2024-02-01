@@ -46,7 +46,10 @@ export const CartCheckout: React.FC<CartCheckoutProps> = ({ cartStorage }) => {
       </button>
 
       {showThankYou && (
-        <CheckoutAfterBuy totalPrice={totalPrice} cartStorage={cartStorage} />
+        <CheckoutAfterBuy
+          totalPrice={totalPrice}
+          cartStorage={cartStorage}
+        />
       )}
     </div>
   );
