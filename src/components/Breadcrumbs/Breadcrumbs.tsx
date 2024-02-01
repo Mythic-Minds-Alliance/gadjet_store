@@ -6,6 +6,11 @@ import arrow from '../../icons/Arrow.svg';
 
 export const Breadcrumbs = () => {
   const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
+  if (isHomePage) {
+    return null;
+  }
 
   let currentLink = '';
 
@@ -17,6 +22,13 @@ export const Breadcrumbs = () => {
       const isLastCrumb = index === array.length - 1;
       const crumbStyle = isLastCrumb ? style.lastCrumb : style.crumb;
 
+      const displayCrumb
+                    = crumb.replaceAll('%20', ' ')
+                      .split(' ').length >= 3
+                      ? crumb.replaceAll('%20', ' ')
+                        .split(' ').slice(0, -2).join(' ')
+                      : crumb.replaceAll('%20', ' ');
+
       return (
         <React.Fragment key={crumb}>
           <div className={crumbStyle}>
@@ -24,7 +36,7 @@ export const Breadcrumbs = () => {
               to={currentLink}
               className={style.crumb}
             >
-              {crumb.replaceAll('%20', ' ')}
+              {displayCrumb}
             </Link>
           </div>
           {!isLastCrumb && (

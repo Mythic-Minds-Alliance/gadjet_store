@@ -42,3 +42,14 @@
     color: #b4bdc3;
   }
 }
+
+.NotFondProduct {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &_img {
+    width: 60%;
+  }
+}

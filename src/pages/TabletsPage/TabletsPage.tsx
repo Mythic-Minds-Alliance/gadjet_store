@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
@@ -11,6 +12,7 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Search } from '../../components/SearchComponent/Search';
 import { Product } from '../../types/product';
 import { searchProductList } from '../../utils/helpers';
+import { NotFoundSearchItems } from '../../components/NotFoundSearchItems/NotFoundSearchItems';
 
 export const TabletsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -99,21 +101,30 @@ export const TabletsPage = () => {
         <Loader />
       ) : (
         <>
-          <div className={style.CataloguePage__container}>
-            {currentItems.map(product => (
-              <Card
-                key={product.name}
-                product={product}
-              />
-            ))}
-          </div>
 
-          <Pagination
-            postPorPage={postPerPage}
-            totalPost={tabletsList.length}
-            onPageChange={handlePageChange}
-            currentPage={currentPage}
-          />
+          {currentItems.length > 0 ? (
+            <div className={style.CataloguePage__container}>
+              {currentItems.map(product => (
+                <Card
+                  key={product.name}
+                  product={product}
+                />
+              ))}
+            </div>
+          ) : (
+            <NotFoundSearchItems />
+          )}
+
+          {visibleProduct.length > postPerPage ? (
+            <Pagination
+              postPorPage={postPerPage}
+              totalPost={visibleProduct.length}
+              onPageChange={handlePageChange}
+              currentPage={currentPage}
+            />
+          ) : (
+            <span />
+          )}
         </>
 
       )}
