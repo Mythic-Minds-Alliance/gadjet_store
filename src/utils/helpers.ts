@@ -28,7 +28,7 @@ export function handleAddToCart(item: Product,
   setCartStorage: React.Dispatch<React.SetStateAction<CartProduct[]>>): void {
   try {
     const currentCart: CartProduct[]
-      = JSON.parse(localStorage.getItem('cart') || '[]');
+        = JSON.parse(localStorage.getItem('cart') || '[]');
 
     const isItemInCart = currentCart.some(product => product.name === item.name);
 
@@ -56,7 +56,7 @@ export function handleRemoveFromCart(item: Product,
   setCartStorage: React.Dispatch<React.SetStateAction<CartProduct[]>>): void {
   try {
     const currentCart: CartProduct[]
-      = JSON.parse(localStorage.getItem('cart') || '[]');
+        = JSON.parse(localStorage.getItem('cart') || '[]');
 
     const updatedCart = currentCart.filter(product => product.name !== item.name);
 
@@ -71,14 +71,14 @@ export function handleAddToFavorites(item: Product,
   setFavoriteStorage: React.Dispatch<React.SetStateAction<Product[]>>): void {
   try {
     const currentFavorites: Product[]
-      = JSON.parse(localStorage.getItem('favorites') || '[]');
+        = JSON.parse(localStorage.getItem('favorites') || '[]');
 
     const isItemInFavorites
-      = currentFavorites.some(product => product.name === item.name);
+        = currentFavorites.some(product => product.name === item.name);
 
     if (isItemInFavorites) {
       const updatedFavorites
-        = currentFavorites.filter(product => product.name !== item.name);
+          = currentFavorites.filter(product => product.name !== item.name);
 
       localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
       setFavoriteStorage(updatedFavorites);
@@ -99,10 +99,10 @@ export function handleRemoveFromFavorites(item: Product,
   setFavoriteStorage: React.Dispatch<React.SetStateAction<Product[]>>): void {
   try {
     const currentFavorites: Product[]
-      = JSON.parse(localStorage.getItem('favorites') || '[]');
+        = JSON.parse(localStorage.getItem('favorites') || '[]');
 
     const updatedFavorites
-      = currentFavorites.filter(product => product.name !== item.name);
+        = currentFavorites.filter(product => product.name !== item.name);
 
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     setFavoriteStorage(updatedFavorites);
@@ -116,7 +116,7 @@ export function changeAmount(item: CartProduct,
   action: string): void {
   try {
     const currentCart: CartProduct[]
-      = JSON.parse(localStorage.getItem('cart') || '[]');
+        = JSON.parse(localStorage.getItem('cart') || '[]');
 
     const isItemInCart = currentCart.find(product => product.name === item.name);
 

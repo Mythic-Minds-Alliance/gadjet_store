@@ -16,10 +16,8 @@ interface DataContextType {
   isLoading: boolean;
   cartStorage: CartProduct[];
   favoriteStorage: Product[];
-  isLogged: boolean;
   setFavoriteStorage: Dispatch<SetStateAction<Product[]>>;
   setCartStorage: Dispatch<SetStateAction<CartProduct[]>>;
-  setIsLogged: Dispatch<SetStateAction<boolean>>;
 }
 
 export const DataContext = createContext<DataContextType>({
@@ -29,8 +27,6 @@ export const DataContext = createContext<DataContextType>({
   favoriteStorage: [],
   setFavoriteStorage: () => { },
   setCartStorage: () => { },
-  setIsLogged: () => { },
-  isLogged: false,
 });
 
 export const App = () => {
@@ -38,7 +34,6 @@ export const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [cartStorage, setCartStorage] = useState<CartProduct[]>([]);
   const [favoriteStorage, setFavoriteStorage] = useState<Product[]>([]);
-  const [isLogged, setIsLogged] = useState(false);
 
   if (!localStorage.getItem('cart')) {
     localStorage.setItem('cart', '[]');
@@ -48,15 +43,11 @@ export const App = () => {
     localStorage.setItem('favorites', '[]');
   }
 
-  if (!localStorage.getItem('isLogged')) {
-    localStorage.setItem('isLogged', 'false');
-  }
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios
-          .get('https://gadjets-store.onrender.com/products?categoryId=1&sort=DESC&sortBy=year');
+          .get('https://gadjets-store.onrender.com/products');
 
         setProductList(response.data);
 
@@ -64,7 +55,6 @@ export const App = () => {
         setFavoriteStorage(JSON.parse(
           localStorage.getItem('favorites') || '[]',
         ));
-        setCartStorage(JSON.parse(localStorage.getItem('isLogged') || 'false'));
       } catch (error) {
         throw new Error('error when fetching data from API');
       } finally {
@@ -79,12 +69,10 @@ export const App = () => {
     <DataContext.Provider value={{
       productList,
       isLoading,
-      isLogged,
       cartStorage,
       favoriteStorage,
       setCartStorage,
       setFavoriteStorage,
-      setIsLogged,
     }}
     >
       <div className={style.app}>
