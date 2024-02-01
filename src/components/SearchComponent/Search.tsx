@@ -34,7 +34,9 @@ export const Search: React.FC<Props> = ({
         inputRef.current
         && event.target instanceof HTMLElement
         && !inputRef.current.contains(event.target)
+        && !inputRef.current.contains(event.target as Node)
         && !event.target.classList.contains('Search--btn')
+        && searchQuery.length === 0
       ) {
         setIsHidden(true);
       }
@@ -45,7 +47,7 @@ export const Search: React.FC<Props> = ({
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
-  }, []);
+  }, [searchQuery]);
 
   return (
     <div className="Search">
