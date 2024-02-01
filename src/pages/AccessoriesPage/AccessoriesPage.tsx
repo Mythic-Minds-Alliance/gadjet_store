@@ -10,6 +10,7 @@ import { Pagination } from '../../components/Pagination/Pagination';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Search } from '../../components/SearchComponent/Search';
 import { Product } from '../../types/product';
+import { searchProductList } from '../../utils/helpers';
 
 export const AccessoriesPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -40,15 +41,9 @@ export const AccessoriesPage = () => {
     fetchData();
   }, [sortBy, order]);
 
-  const [
-    selectedSortField, setSelectedSortField,
-  ] = useState('Years');
-  const [sortOrder, setSortOrder] = useState('Descending');
-
   const handleSortFieldChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    setSelectedSortField(event.target.value);
     currentUrl.set('sortBy', event.target.value);
     setSearchParams(currentUrl);
   };
@@ -56,7 +51,6 @@ export const AccessoriesPage = () => {
   const handleSortOrder = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    setSortOrder(event.target.value);
     currentUrl.set('sort', event.target.value);
     setSearchParams(currentUrl);
   };
@@ -67,9 +61,11 @@ export const AccessoriesPage = () => {
     setPostPerPage(+event.target.value);
   };
 
+  const visibleProduct = searchProductList(accessoriesList, searchQuery);
+
   const indexOfLastItem = currentPage * postPerPage;
   const indexOfFirstItem = indexOfLastItem - postPerPage;
-  const currentItems = accessoriesList.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = visibleProduct.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -93,8 +89,8 @@ export const AccessoriesPage = () => {
 
           <SortPanel
             onSortField={handleSortFieldChange}
-            selectedSortField={selectedSortField}
-            selectedSortOrder={sortOrder}
+            selectedSortField={sortBy}
+            selectedSortOrder={order}
             onSelectOrder={handleSortOrder}
             onSelectPerPage={handleSortPostCount}
             postPerPage={postPerPage}

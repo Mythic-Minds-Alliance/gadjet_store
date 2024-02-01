@@ -164,64 +164,20 @@ export function changeAmount(item: CartProduct,
   }
 }
 
-// export function sortProductList(
-//   product: Product[],
-//   sortBy: string,
-//   order: string,
-//   query?: string,
-// ) {
-//   let preparedList = [...product];
+export function searchProductList(
+  product: Product[],
+  query?: string,
+) {
+  let preparedList = [...product];
 
-//   switch (sortBy) {
-//     case 'Years':
-//       if (order === 'ASC') {
-//         preparedList = preparedList.sort((a, b) => +a.year - +b.year);
-//       } else {
-//         preparedList = preparedList.sort((a, b) => +b.year - +a.year);
-//       }
+  if (query) {
+    preparedList = preparedList.filter(
+      item => item.name.toLowerCase().includes(query.toLowerCase().trim()),
+    );
+  }
 
-//       break;
-
-//     case 'Price':
-//       if (order === 'Ascending') {
-//         preparedList = preparedList.sort((a, b) => +a.priceActual - +b.priceActual);
-//       } else {
-//         preparedList = preparedList.sort((a, b) => +b.priceActual - +a.priceActual);
-//       }
-
-//       break;
-
-//     case 'Screen':
-//       if (order === 'ASC') {
-//         preparedList = preparedList.sort((a, b) => {
-//           const aScreenSize = parseFloat(a.screen);
-//           const bScreenSize = parseFloat(b.screen);
-
-//           return aScreenSize - bScreenSize;
-//         });
-//       } else {
-//         preparedList = preparedList.sort((a, b) => {
-//           const aScreenSize = parseFloat(a.screen);
-//           const bScreenSize = parseFloat(b.screen);
-
-//           return bScreenSize - aScreenSize;
-//         });
-//       }
-
-//       break;
-
-//     default:
-//       break;
-//   }
-
-//   if (query) {
-//     preparedList = preparedList.filter(
-//       item => item.name.toLowerCase().includes(query.toLowerCase().trim()),
-//     );
-//   }
-
-//   return preparedList;
-// }
+  return preparedList;
+}
 
 export function getLocation(product: Product) {
   let location = '';
