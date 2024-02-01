@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import classNames from 'classnames';
 import styles from './CartCheckout.module.scss';
 import { CardSeparator } from '../СardSeparator/CardSeparator';
 import { CheckoutAfterBuy } from '../CheckoutAfterBuy/CheckoutAfterBuy';
@@ -17,6 +18,12 @@ export const CartCheckout: React.FC<CartCheckoutProps> = ({ cartStorage }) => {
         + (+item.price) * item.quantity, 0,
     );
 
+  if (showThankYou) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+
   return (
     <div className={styles.checkout}>
       <h3 className={styles.checkout__summary}>
@@ -33,7 +40,10 @@ export const CartCheckout: React.FC<CartCheckoutProps> = ({ cartStorage }) => {
 
       <button
         type="button"
-        className={styles.checkout__btn}
+        className={classNames(
+          styles.checkout__btn,
+          { [styles.showThankYou]: showThankYou },
+        )}
         onClick={() => {
           setShowThankYou(true);
         }}

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import './Header.scss';
@@ -20,6 +20,14 @@ type Props = {
 
 export const Header: React.FC<Props> = ({ cartCount, favoriteCount }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [isMenuOpen]);
 
   return (
     <header className="header">
