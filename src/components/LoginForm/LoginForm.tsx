@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import style from './LoginForm.module.scss';
 import { scrollToTop } from '../../utils/helpers';
@@ -10,24 +10,29 @@ export const LoginForm = () => {
   });
   const [, setIsLogged] = useState(false);
 
-  const handleLogin = (e:FormEvent<HTMLFormElement>) => {
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
-    const storedUserData = JSON.parse(localStorage.getItem('registeredUser'));
+    const storedUserDataString = localStorage.getItem('registeredUser');
 
-    if (
-      storedUserData
-        && formData.email === storedUserData.email
-        && formData.password === storedUserData.password
-    ) {
-      // console.log('Login success');
-      setIsLogged(true);
+    if (storedUserDataString) {
+      const storedUserData = JSON.parse(storedUserDataString);
+
+      if (
+        formData.email === storedUserData.email
+          && formData.password === storedUserData.password
+      ) {
+        // console.log('Login success');
+        setIsLogged(true);
+      } else {
+        // console.log('Login failed');
+      }
     } else {
-      // console.log('Login failed');
+      // console.log('User not found');
     }
   };
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
 
     setFormData((prevData) => ({
