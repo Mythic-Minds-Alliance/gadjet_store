@@ -6,11 +6,6 @@ import arrow from '../../icons/Arrow.svg';
 
 export const Breadcrumbs = () => {
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
-
-  if (isHomePage) {
-    return null;
-  }
 
   let currentLink = '';
 
@@ -29,10 +24,7 @@ export const Breadcrumbs = () => {
               to={currentLink}
               className={style.crumb}
             >
-              {crumb
-                .replaceAll('%20', ' ')
-                .split(' ')
-                .slice(0, -2).join(' ')}
+              {crumb.replaceAll('%20', ' ')}
             </Link>
           </div>
           {!isLastCrumb && (
