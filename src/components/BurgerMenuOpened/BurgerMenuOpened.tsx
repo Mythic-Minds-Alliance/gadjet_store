@@ -56,7 +56,7 @@ export const BurgerMenuOpened: FC<BurgerMenuProps> = ({
 
       <div className={classNames(styles.service)}>
         <Link
-          to="/account"
+          to="/account/login"
           className={classNames(
             styles.service__button,
           )}

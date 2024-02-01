@@ -14,6 +14,8 @@ const sortOptions = {
   Years: 'year',
   Price: 'priceActual',
   Screen: 'screen',
+  Ram: 'ram',
+  Capacity: 'capacity',
 };
 
 const countPerPageOptions = {
