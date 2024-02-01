@@ -6,11 +6,6 @@ import arrow from '../../icons/Arrow.svg';
 
 export const Breadcrumbs = () => {
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
-
-  if (isHomePage) {
-    return null;
-  }
 
   let currentLink = '';
 
