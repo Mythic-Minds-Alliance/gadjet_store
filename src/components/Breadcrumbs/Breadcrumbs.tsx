@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import HomeIcon from '../../icons/Home.svg';
 import style from './Breadcrumbs.module.scss';
@@ -6,13 +6,17 @@ import arrow from '../../icons/Arrow.svg';
 
 export const Breadcrumbs = () => {
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
-
-  if (isHomePage) {
-    return null;
-  }
+  const [productColor, setProductColor] = useState('');
+  const [productCapacity, setProductCapacity] = useState('');
 
   let currentLink = '';
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+
+    setProductColor(searchParams.get('color') || '');
+    setProductCapacity(searchParams.get('capacity') || '');
+  }, [location.search]);
 
   const crumbs = location.pathname.split('/')
     .filter(crumb => crumb !== '')
@@ -23,21 +27,33 @@ export const Breadcrumbs = () => {
       const crumbStyle = isLastCrumb ? style.lastCrumb : style.crumb;
 
       const displayCrumb
-                    = crumb.replaceAll('%20', ' ')
-                      .split(' ').length >= 3
-                      ? crumb.replaceAll('%20', ' ')
-                        .split(' ').slice(0, -2).join(' ')
-                      : crumb.replaceAll('%20', ' ');
+            = crumb.split('%20').length >= 2
+              ? crumb.split('%20').slice(0, -2).join(' ')
+              : crumb.replaceAll('%20', ' ');
 
       return (
         <React.Fragment key={crumb}>
           <div className={crumbStyle}>
-            <Link
-              to={currentLink}
-              className={style.crumb}
-            >
-              {displayCrumb}
-            </Link>
+            {isLastCrumb ? (
+              <span className={style.crumb}>
+                {displayCrumb}
+                {productCapacity && productColor && (
+                  <>
+                    {' '}
+                    {productCapacity}
+                    {' '}
+                    {productColor}
+                  </>
+                )}
+              </span>
+            ) : (
+              <Link
+                to={currentLink}
+                className={style.crumb}
+              >
+                {displayCrumb}
+              </Link>
+            )}
           </div>
           {!isLastCrumb && (
             <img
