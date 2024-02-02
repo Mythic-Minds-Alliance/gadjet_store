@@ -8,6 +8,7 @@ export const Breadcrumbs = () => {
   const location = useLocation();
   const [productColor, setProductColor] = useState('');
   const [productCapacity, setProductCapacity] = useState('');
+
   let currentLink = '';
 
   useEffect(() => {
