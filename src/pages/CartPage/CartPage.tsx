@@ -8,13 +8,29 @@ import { EmptyCart } from '../../components/EmptyCart/EmptyCart';
 import { BackButton } from '../../components/BackButton';
 
 export const CartPage = () => {
-  const { cartStorage } = useContext(DataContext);
+  const { cartStorage, setCartStorage } = useContext(DataContext);
+
+  const handleClearCart = () => {
+    setCartStorage([]);
+    localStorage.removeItem('cart');
+  };
 
   return (
     <div className="CartPage">
       <BackButton />
 
-      <h1 className="CartPage--title">Cart</h1>
+      <div className="CartPage__top">
+        <h1 className="CartPage--title">Cart</h1>
+        {cartStorage.length > 0 && (
+          <button
+            type="button"
+            className="CartPage__clear"
+            onClick={handleClearCart}
+          >
+            Remove all
+          </button>
+        )}
+      </div>
 
       {cartStorage.length ? (
         <div className="CartPage--section">

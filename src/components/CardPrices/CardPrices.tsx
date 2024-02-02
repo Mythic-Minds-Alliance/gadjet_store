@@ -23,7 +23,6 @@ export const CardPrices: React.FC<Props> = ({ price, priceActual }) => {
           {`$${priceActual}`}
         </p>
       )}
-
     </div>
   );
 };

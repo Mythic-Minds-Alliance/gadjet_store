@@ -11,15 +11,34 @@ export const FavoritesPage = () => {
   const {
     isLoading,
     favoriteStorage,
+    setFavoriteStorage,
   } = useContext(DataContext);
+
+  const handleClearCart = () => {
+    setFavoriteStorage([]);
+    localStorage.removeItem('favorites');
+  };
 
   return (
     <div className={style.CataloguePage}>
       <Breadcrumbs />
 
-      <h1 className={style.CataloguePage__title}>
-        Favorites
-      </h1>
+      <div className={style.favoritePage__top}>
+        <h1 className={style.CataloguePage__title}>
+          Favorites
+        </h1>
+
+        {favoriteStorage.length > 0 && (
+          <button
+            type="button"
+            className={style.favoritePage__clear}
+            onClick={handleClearCart}
+          >
+            Remove all
+          </button>
+        )}
+      </div>
+
       {favoriteStorage.length !== 0 && (
         <p className={style.CataloguePage__CatalogueCount}>
           {(favoriteStorage.length === 1)
