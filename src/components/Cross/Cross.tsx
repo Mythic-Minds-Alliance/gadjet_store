@@ -1,23 +1,22 @@
 /* eslint-disable max-len */
-import { useContext } from 'react';
+import { useDispatch } from 'react-redux';
 import { Product } from '../../types/product';
-import { handleRemoveFromCart } from '../../utils/helpers';
 import './Cross.module.scss';
-import { DataContext } from '../../App';
+import { removeProduct } from '../../utils/cartSlice';
 
 type Props = {
   item: Product;
 };
 
 export const Cross: React.FC<Props> = ({ item }) => {
-  const { setCartStorage } = useContext(DataContext);
+  const dispatch = useDispatch();
 
   return (
     <button
       type="button"
       aria-label="btn"
       onClick={() => {
-        handleRemoveFromCart(item, setCartStorage);
+        dispatch(removeProduct(item));
       }}
     >
       <svg

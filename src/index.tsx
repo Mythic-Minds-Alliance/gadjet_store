@@ -6,7 +6,6 @@ import {
   Route,
 } from 'react-router-dom';
 
-import { App } from './App';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { PhonePage } from './pages/PhonePage/PhonePage';
 import { HomePage } from './pages/HomePage/HomePage';
@@ -19,11 +18,12 @@ import { TabletsPage } from './pages/TabletsPage/TabletsPage';
 import { FooterRights } from './components/FooterRights';
 import { FooterContacts } from './components/FooterContacts';
 import { AccountPage } from './pages/AccountPage/AccountPage';
+import { Root } from './root';
 
 createRoot(document.getElementById('root') as HTMLDivElement).render(
   <Router>
     <Routes>
-      <Route path="/" element={<App />}>
+      <Route path="/" element={<Root />}>
         <Route index element={<HomePage />} />
         <Route path="phones" element={<PhonePage />} />
 

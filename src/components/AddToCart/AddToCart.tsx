@@ -1,12 +1,13 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import classNames from 'classnames';
-
+import { useDispatch, useSelector } from 'react-redux';
 import './AddToCart.scss';
 import like from '../../icons/like.svg';
 import likeActive from '../../icons/like-active.svg';
 import { CartProduct, Product } from '../../types/product';
-import { DataContext } from '../../App';
-import { handleAddToCart, handleAddToFavorites } from '../../utils/helpers';
+import { RootState } from '../../store';
+import { addProduct } from '../../utils/cartSlice';
+import { addFavorite } from '../../utils/favoriteSlice';
 
 type Props = {
   product: Product,
@@ -15,13 +16,11 @@ type Props = {
 export const AddToCart: React.FC<Props> = ({ product }) => {
   const [isActiveAdd, setIsActiveAdd] = useState(false);
   const [isActiveFavorite, setIsActiveFavorite] = useState(false);
-
-  const {
-    setFavoriteStorage,
-    setCartStorage,
-    cartStorage,
-    favoriteStorage,
-  } = useContext(DataContext);
+  const dispatch = useDispatch();
+  const cart = useSelector((state: RootState) => state.cart.list);
+  const favoritesStorage = useSelector(
+    (state: RootState) => state.favorites.list,
+  );
 
   const checkIsActive = (
     item: Product,
@@ -31,14 +30,14 @@ export const AddToCart: React.FC<Props> = ({ product }) => {
   };
 
   useEffect(() => {
-    if (checkIsActive(product, cartStorage)) {
+    if (checkIsActive(product, cart)) {
       setIsActiveAdd(true);
     }
 
-    if (checkIsActive(product, favoriteStorage)) {
+    if (checkIsActive(product, favoritesStorage)) {
       setIsActiveFavorite(true);
     }
-  }, [cartStorage, favoriteStorage, product]);
+  }, [cart, favoritesStorage, product]);
 
   const handleClickAdd = () => {
     setIsActiveAdd(!isActiveAdd);
@@ -58,7 +57,7 @@ export const AddToCart: React.FC<Props> = ({ product }) => {
         type="submit"
         onClick={() => {
           handleClickAdd();
-          handleAddToCart(product, setCartStorage);
+          dispatch(addProduct(product));
         }}
       >
         {!isActiveAdd ? 'Add to cart' : 'Added to cart'}
@@ -72,7 +71,7 @@ export const AddToCart: React.FC<Props> = ({ product }) => {
         }
         onClick={() => {
           handleClickFavorite();
-          handleAddToFavorites(product, setFavoriteStorage);
+          dispatch(addFavorite(product));
         }}
       >
         <img

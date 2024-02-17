@@ -1,21 +1,26 @@
 import { useContext } from 'react';
-
+import { useDispatch, useSelector } from 'react-redux';
 import style from '../../assets/catalogue.module.scss';
 import { Card } from '../../components/Card/Card';
 import { DataContext } from '../../App';
 import { Loader } from '../../components/Loader';
 import { EmptyFavorites } from '../../components/EmptyFavorites/EmptyFavorites';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { RootState } from '../../store';
+import { clearFavorites } from '../../utils/favoriteSlice';
 
 export const FavoritesPage = () => {
+  const dispatch = useDispatch();
+  const favoritesStorage = useSelector(
+    (state: RootState) => state.favorites.list,
+  );
+
   const {
     isLoading,
-    favoriteStorage,
-    setFavoriteStorage,
   } = useContext(DataContext);
 
   const handleClearCart = () => {
-    setFavoriteStorage([]);
+    dispatch(clearFavorites());
     localStorage.removeItem('favorites');
   };
 
@@ -28,7 +33,7 @@ export const FavoritesPage = () => {
           Favorites
         </h1>
 
-        {favoriteStorage.length > 0 && (
+        {favoritesStorage.length > 0 && (
           <button
             type="button"
             className={style.favoritePage__clear}
@@ -39,22 +44,22 @@ export const FavoritesPage = () => {
         )}
       </div>
 
-      {favoriteStorage.length !== 0 && (
+      {favoritesStorage.length !== 0 && (
         <p className={style.CataloguePage__CatalogueCount}>
-          {(favoriteStorage.length === 1)
-            ? (`${favoriteStorage.length} item`)
-            : (`${favoriteStorage.length} items`)}
+          {(favoritesStorage.length === 1)
+            ? (`${favoritesStorage.length} item`)
+            : (`${favoritesStorage.length} items`)}
         </p>
       )}
 
-      {!favoriteStorage.length && (
+      {!favoritesStorage.length && (
         <EmptyFavorites />
       )}
       {isLoading ? (
         <Loader />
       ) : (
         <div className={style.CataloguePage__container}>
-          {favoriteStorage.map(product => (
+          {favoritesStorage.map(product => (
             <Card
               key={product.name}
               product={product}

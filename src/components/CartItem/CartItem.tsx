@@ -1,21 +1,21 @@
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { useDispatch } from 'react-redux';
 import styles from './CartItem.module.scss';
 import { Cross } from '../Cross/Cross';
 
 import { Minus } from '../Minus/Minus';
 import plus from '../../icons/Plus.svg';
 import { CartProduct } from '../../types/product';
-import { SERVER_HOST, changeAmount, getLocation } from '../../utils/helpers';
+import { SERVER_HOST, getLocation } from '../../utils/helpers';
 
-import { DataContext } from '../../App';
+import { minusOne, plusOne } from '../../utils/cartSlice';
 
 type Props = {
   item: CartProduct;
 };
 
 export const CartItem: React.FC<Props> = ({ item }) => {
-  const { setCartStorage } = useContext(DataContext);
+  const dispatch = useDispatch();
 
   return (
     <div className={styles.item__container}>
@@ -59,7 +59,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
             aria-label="btn"
             className={styles.item__container_minus}
             onClick={() => {
-              changeAmount(item, setCartStorage, 'minus');
+              dispatch(minusOne(item));
             }}
           >
             <Minus />
@@ -73,7 +73,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
             type="button"
             className={styles.item__container_plus}
             onClick={() => {
-              changeAmount(item, setCartStorage, 'plus');
+              dispatch(plusOne(item));
             }}
           >
             <img src={plus} alt="Plus" />

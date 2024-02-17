@@ -1,11 +1,11 @@
-import { useContext } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './CheckoutAfterBuy.scss';
 import close from '../../icons/Close.png';
 import { CartProduct } from '../../types/product';
 import { SERVER_HOST, generateId, getLocation } from '../../utils/helpers';
 import check from '../../icons/approval-40.png';
-import { DataContext } from '../../App';
+import { clearCart } from '../../utils/cartSlice';
 
 interface Props {
   totalPrice: number;
@@ -16,11 +16,11 @@ export const CheckoutAfterBuy: React.FC<Props> = ({
   totalPrice,
   cartStorage,
 }) => {
-  const { setCartStorage } = useContext(DataContext);
+  const dispatch = useDispatch();
   const orderNumber = generateId();
 
   const handleClearCart = () => {
-    setCartStorage([]);
+    dispatch(clearCart());
     localStorage.removeItem('cart');
   };
 

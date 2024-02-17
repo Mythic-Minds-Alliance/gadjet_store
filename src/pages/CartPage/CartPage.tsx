@@ -1,17 +1,19 @@
-import { useContext } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { CartItem } from '../../components/CartItem';
 import './CartPage.scss';
 import { CartCheckout } from '../../components/CartCheckout/CartCheckout';
-
-import { DataContext } from '../../App';
 import { EmptyCart } from '../../components/EmptyCart/EmptyCart';
 import { BackButton } from '../../components/BackButton';
 
+import { RootState } from '../../store';
+import { clearCart } from '../../utils/cartSlice';
+
 export const CartPage = () => {
-  const { cartStorage, setCartStorage } = useContext(DataContext);
+  const cartStorage = useSelector((state: RootState) => state.cart.list);
+  const dispatch = useDispatch();
 
   const handleClearCart = () => {
-    setCartStorage([]);
+    dispatch(clearCart());
     localStorage.removeItem('cart');
   };
 
