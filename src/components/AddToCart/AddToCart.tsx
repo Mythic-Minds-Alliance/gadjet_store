@@ -32,10 +32,14 @@ export const AddToCart: React.FC<Props> = ({ product }) => {
   useEffect(() => {
     if (checkIsActive(product, cart)) {
       setIsActiveAdd(true);
+    } else {
+      setIsActiveAdd(false);
     }
 
     if (checkIsActive(product, favoritesStorage)) {
       setIsActiveFavorite(true);
+    } else {
+      setIsActiveFavorite(false);
     }
   }, [cart, favoritesStorage, product]);
 
