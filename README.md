@@ -9,6 +9,7 @@ Here you can check what we've made =====> [DEMO LINK](https://mythic-minds-allia
 - JavaScript
 - TypeScript
 - React
+- Redux Toolkit
 
 # Functionality Overview:
 # Product Lineup:
