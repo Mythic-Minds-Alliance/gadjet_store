@@ -1,15 +1,14 @@
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { useContext } from 'react';
 import styles from './ShopByCategory.module.scss';
 import TabletImg from '../../images/tablets.png';
 import Accessories from '../../images/accesorise.png';
 import PhonesImg from '../../images/mobilePhones.png';
 import { scrollToTop } from '../../utils/helpers';
-
-import { DataContext } from '../../App';
+import { RootState } from '../../store';
 
 export const ShopByCategory = () => {
-  const { productList } = useContext(DataContext);
+  const productList = useSelector((state: RootState) => state.products.list);
   const numberOfPhones = productList
     .filter(product => product.categoryId === 1).length;
   const numberOfTablets = productList

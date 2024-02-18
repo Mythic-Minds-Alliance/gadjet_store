@@ -16,7 +16,7 @@ Here you can check what we've made =====> [DEMO LINK](https://mythic-minds-allia
 - Product categories for convenient searching.
 
 # User Experience:
-- Modern and aesthetic design using React App useContext
+- Modern and aesthetic design using React App Redux Toolkit
 - Responsive design for all devices - phones, tablets, and desktops.
 
 # Personal storage:

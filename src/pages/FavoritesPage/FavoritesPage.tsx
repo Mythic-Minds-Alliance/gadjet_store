@@ -1,9 +1,6 @@
-import { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import style from '../../assets/catalogue.module.scss';
 import { Card } from '../../components/Card/Card';
-import { DataContext } from '../../App';
-import { Loader } from '../../components/Loader';
 import { EmptyFavorites } from '../../components/EmptyFavorites/EmptyFavorites';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { RootState } from '../../store';
@@ -14,10 +11,6 @@ export const FavoritesPage = () => {
   const favoritesStorage = useSelector(
     (state: RootState) => state.favorites.list,
   );
-
-  const {
-    isLoading,
-  } = useContext(DataContext);
 
   const handleClearCart = () => {
     dispatch(clearFavorites());
@@ -55,18 +48,15 @@ export const FavoritesPage = () => {
       {!favoritesStorage.length && (
         <EmptyFavorites />
       )}
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <div className={style.CataloguePage__container}>
-          {favoritesStorage.map(product => (
-            <Card
-              key={product.name}
-              product={product}
-            />
-          ))}
-        </div>
-      )}
+      <div className={style.CataloguePage__container}>
+        {favoritesStorage.map(product => (
+          <Card
+            key={product.name}
+            product={product}
+          />
+        ))}
+      </div>
+
     </div>
   );
 };
