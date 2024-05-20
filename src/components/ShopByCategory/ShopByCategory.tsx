@@ -5,7 +5,7 @@ import TabletImg from '../../images/tablets.png';
 import Accessories from '../../images/accesorise.png';
 import PhonesImg from '../../images/mobilePhones.png';
 import { scrollToTop } from '../../utils/helpers';
-import { RootState } from '../../store';
+import { RootState } from '../../redux/store/store';
 
 export const ShopByCategory = () => {
   const productList = useSelector((state: RootState) => state.products.list);

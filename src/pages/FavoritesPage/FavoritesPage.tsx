@@ -1,16 +1,28 @@
+import axios from 'axios';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import style from '../../assets/catalogue.module.scss';
 import { Card } from '../../components/Card/Card';
 import { EmptyFavorites } from '../../components/EmptyFavorites/EmptyFavorites';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { RootState } from '../../store';
-import { clearFavorites } from '../../utils/favoriteSlice';
+import { RootState } from '../../redux/store/store';
+import { clearFavorites } from '../../redux/reducers/favoriteSlice';
+import { SERVER_HOST } from '../../utils/helpers';
 
 export const FavoritesPage = () => {
   const dispatch = useDispatch();
   const favoritesStorage = useSelector(
     (state: RootState) => state.favorites.list,
   );
+  const jwt = localStorage.getItem('jwt');
+
+  useEffect(() => {
+    axios.get(`${SERVER_HOST}/favourites/getFavourites`, {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
+    });
+  }, [jwt]);
 
   const handleClearCart = () => {
     dispatch(clearFavorites());

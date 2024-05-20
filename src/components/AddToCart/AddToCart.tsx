@@ -5,9 +5,9 @@ import './AddToCart.scss';
 import like from '../../icons/like.svg';
 import likeActive from '../../icons/like-active.svg';
 import { CartProduct, Product } from '../../types/product';
-import { RootState } from '../../store';
-import { addProduct } from '../../utils/cartSlice';
-import { addFavorite } from '../../utils/favoriteSlice';
+import { RootState } from '../../redux/store/store';
+import { addProduct } from '../../redux/reducers/cartSlice';
+import { addFavorite } from '../../redux/reducers/favoriteSlice';
 
 type Props = {
   product: Product,

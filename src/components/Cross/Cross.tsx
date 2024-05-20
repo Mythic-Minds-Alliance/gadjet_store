@@ -2,7 +2,7 @@
 import { useDispatch } from 'react-redux';
 import { Product } from '../../types/product';
 import './Cross.module.scss';
-import { removeProduct } from '../../utils/cartSlice';
+import { removeProduct } from '../../redux/reducers/cartSlice';
 
 type Props = {
   item: Product;

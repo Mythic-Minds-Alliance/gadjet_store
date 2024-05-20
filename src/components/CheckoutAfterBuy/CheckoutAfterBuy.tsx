@@ -5,7 +5,7 @@ import close from '../../icons/Close.png';
 import { CartProduct } from '../../types/product';
 import { SERVER_HOST, generateId, getLocation } from '../../utils/helpers';
 import check from '../../icons/approval-40.png';
-import { clearCart } from '../../utils/cartSlice';
+import { clearCart } from '../../redux/reducers/cartSlice';
 
 interface Props {
   totalPrice: number;

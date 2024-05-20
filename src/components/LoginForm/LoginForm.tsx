@@ -1,35 +1,30 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
 import style from './LoginForm.module.scss';
-import { scrollToTop } from '../../utils/helpers';
+import { SERVER_HOST, scrollToTop } from '../../utils/helpers';
 
 export const LoginForm = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
-  const [, setIsLogged] = useState(false);
-
+  const notify = (message: string) => toast(message);
+  const navigate = useNavigate();
   const handleLogin = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-
-    const storedUserDataString = localStorage.getItem('registeredUser');
-
-    if (storedUserDataString) {
-      const storedUserData = JSON.parse(storedUserDataString);
-
-      if (
-        formData.email === storedUserData.email
-          && formData.password === storedUserData.password
-      ) {
-        // console.log('Login success');
-        setIsLogged(true);
-      } else {
-        // console.log('Login failed');
-      }
-    } else {
-      // console.log('User not found');
-    }
+    axios.post(`${SERVER_HOST}/users/login`, {
+      email: formData.email,
+      password: formData.password,
+    }).then((res) => {
+      notify('Login verified, redirecting to account page');
+      localStorage.setItem('jwt', res.data.jwt);
+      setTimeout(() => navigate('/account'), 3000);
+    }).catch(err => {
+      notify(err.response.data.err);
+    });
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -42,60 +37,74 @@ export const LoginForm = () => {
   };
 
   return (
-    <form
-      action="#"
-      method="post"
-      className={style.LoginForm}
-      onSubmit={handleLogin}
-    >
-      <h2 className={style.LoginForm__title}>Log In</h2>
-
-      <div className={style.LoginForm__item}>
-        <label htmlFor="email" className={style.LoginForm__label}>
-          Email:
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Enter your email"
-          required
-          className={style.LoginForm__input}
-          value={formData.email}
-          onChange={handleInputChange}
+    <div>
+      <form
+        action="#"
+        method="post"
+        className={style.LoginForm}
+        onSubmit={handleLogin}
+      >
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss={false}
+          draggable
+          theme="dark"
+          closeButton={false}
         />
-      </div>
+        <h2 className={style.LoginForm__title}>Log In</h2>
 
-      <div className={style.LoginForm__item}>
-        <label htmlFor="password" className={style.LoginForm__label}>
-          Password:
-        </label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Enter your password"
-          required
-          className={style.LoginForm__input}
-          value={formData.password}
-          onChange={handleInputChange}
-        />
-      </div>
+        <div className={style.LoginForm__item}>
+          <label htmlFor="email" className={style.LoginForm__label}>
+            Email:
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+            className={style.LoginForm__input}
+            value={formData.email}
+            onChange={handleInputChange}
+          />
+        </div>
 
-      <button type="submit" className={style.LoginForm__submitBtn}>
-        Log In
-      </button>
+        <div className={style.LoginForm__item}>
+          <label htmlFor="password" className={style.LoginForm__label}>
+            Password:
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+            className={style.LoginForm__input}
+            value={formData.password}
+            onChange={handleInputChange}
+          />
+        </div>
 
-      <p className={style.LoginForm__haveAnAcc}>
-        Do not have an account yet?
-        <Link
-          to="/account/register"
-          className={style.LoginForm__register}
-          onClick={scrollToTop}
-        >
-          Register
-        </Link>
-      </p>
-    </form>
+        <button type="submit" className={style.LoginForm__submitBtn}>
+          Log In
+        </button>
+
+        <p className={style.LoginForm__haveAnAcc}>
+          Do not have an account yet?
+          <Link
+            to="/account/register"
+            className={style.LoginForm__register}
+            onClick={scrollToTop}
+          >
+            Register
+          </Link>
+        </p>
+      </form>
+    </div>
   );
 };

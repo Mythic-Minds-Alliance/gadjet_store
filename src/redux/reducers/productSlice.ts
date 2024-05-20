@@ -1,8 +1,8 @@
 /* eslint-disable no-param-reassign */
 
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Product } from '../types/product';
-import { fetchData } from './helpers';
+import { Product } from '../../types/product';
+import { fetchData } from '../../utils/helpers';
 
 export const init = createAsyncThunk('goods/fetch', () => {
   return fetchData();

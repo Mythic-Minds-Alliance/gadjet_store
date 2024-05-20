@@ -6,9 +6,9 @@ import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header';
 import style from './MainContainer.module.scss';
 
-import { RootState } from './store';
+import { RootState } from './redux/store/store';
 import { fetchData } from './utils/helpers';
-import { set } from './utils/productSlice';
+import { set } from './redux/reducers/productSlice';
 
 export const App = () => {
   const cartStorage = useSelector((state: RootState) => state.cart.list);
