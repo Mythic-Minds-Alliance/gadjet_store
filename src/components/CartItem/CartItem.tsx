@@ -8,7 +8,7 @@ import plus from '../../icons/Plus.svg';
 import { CartProduct } from '../../types/product';
 import { SERVER_HOST, getLocation } from '../../utils/helpers';
 
-import { minusOne, plusOne } from '../../utils/cartSlice';
+import { minusOne, plusOne } from '../../redux/reducers/cartSlice';
 
 type Props = {
   item: CartProduct;

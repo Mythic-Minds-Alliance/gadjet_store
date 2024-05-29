@@ -4,7 +4,7 @@ import { FC, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Product } from '../types/product';
 
-export const SERVER_HOST = 'https://gadjets-store.onrender.com';
+export const SERVER_HOST = 'http://localhost:3005';
 
 export const scrollToTop = () => {
   window.scrollTo({

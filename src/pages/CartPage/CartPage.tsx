@@ -5,8 +5,8 @@ import { CartCheckout } from '../../components/CartCheckout/CartCheckout';
 import { EmptyCart } from '../../components/EmptyCart/EmptyCart';
 import { BackButton } from '../../components/BackButton';
 
-import { RootState } from '../../store';
-import { clearCart } from '../../utils/cartSlice';
+import { RootState } from '../../redux/store/store';
+import { clearCart } from '../../redux/reducers/cartSlice';
 
 export const CartPage = () => {
   const cartStorage = useSelector((state: RootState) => state.cart.list);

@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { CartProduct, Product } from '../types/product';
+import { CartProduct, Product } from '../../types/product';
 
 export interface CartState {
   list: CartProduct[],
